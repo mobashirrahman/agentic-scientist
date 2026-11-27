@@ -1,0 +1,362 @@
+{
+  "101": {
+    "set": "dev",
+    "pred_seed": 101,
+    "fit_seed": 0,
+    "boards": {
+      "heart": 53.081944444444446
+    },
+    "splits": {
+      "heart_early": {
+        "board": "heart",
+        "score": 54.15,
+        "metrics": {
+          "de_score": 56.39333333333334,
+          "de_direction": 58.666666666666664,
+          "mmd_u": 54.199999999999996,
+          "variogram": 53.19,
+          "d2_shape": 47.5,
+          "occupancy_dice": 52.00666666666666,
+          "scale_log_ratio": 54.47333333333333,
+          "neighborhood_mmd": 53.97
+        },
+        "seed_scores": [
+          54.120000000000005,
+          55.51,
+          52.82
+        ],
+        "seed_sd": 1.3452509059651276,
+        "seconds": 57.0,
+        "cpu_seconds": 57.7
+      },
+      "heart_late": {
+        "board": "heart",
+        "score": 54.53666666666667,
+        "metrics": {
+          "de_score": 57.44,
+          "de_direction": 58.99,
+          "mmd_u": 53.73999999999999,
+          "variogram": 54.37,
+          "d2_shape": 47.26666666666667,
+          "occupancy_dice": 53.10999999999999,
+          "scale_log_ratio": 59.18,
+          "neighborhood_mmd": 52.76666666666667
+        },
+        "seed_scores": [
+          54.63,
+          55.69,
+          53.29
+        ],
+        "seed_sd": 1.2027191415011786,
+        "seconds": 55.0,
+        "cpu_seconds": 55.7
+      },
+      "heart_long": {
+        "board": "heart",
+        "score": 54.336666666666666,
+        "metrics": {
+          "de_score": 49.81666666666666,
+          "de_direction": 57.46333333333333,
+          "mmd_u": 52.91,
+          "variogram": 52.96666666666667,
+          "d2_shape": 55.51,
+          "occupancy_dice": 47.949999999999996,
+          "scale_log_ratio": 69.95,
+          "neighborhood_mmd": 52.92333333333334
+        },
+        "seed_scores": [
+          53.65,
+          56.62,
+          52.74
+        ],
+        "seed_sd": 2.029096679148957,
+        "seconds": 67.0,
+        "cpu_seconds": 67.9
+      },
+      "heart_e875": {
+        "board": "heart",
+        "score": 51.77,
+        "metrics": {
+          "de_score": 50.28666666666666,
+          "de_direction": 52.78333333333333,
+          "mmd_u": 52.10999999999999,
+          "variogram": 53.03333333333333,
+          "d2_shape": 49.54333333333333,
+          "occupancy_dice": 50.96666666666666,
+          "scale_log_ratio": 49.74,
+          "neighborhood_mmd": 52.99666666666667
+        },
+        "seed_scores": [
+          52.78,
+          51.260000000000005,
+          51.27
+        ],
+        "seed_sd": 0.8746999485537866,
+        "seconds": 47.6,
+        "cpu_seconds": 48.8
+      },
+      "heart_organ_proxy": {
+        "board": "heart",
+        "score": 54.446666666666665,
+        "metrics": {
+          "de_score": 59.30666666666667,
+          "de_direction": 60.01666666666667,
+          "mmd_u": 52.75,
+          "variogram": 53.669999999999995,
+          "d2_shape": 46.580000000000005,
+          "occupancy_dice": 48.99666666666667,
+          "scale_log_ratio": 61.910000000000004,
+          "neighborhood_mmd": 52.553333333333335
+        },
+        "seed_scores": [
+          55.25,
+          55.57,
+          52.52
+        ],
+        "seed_sd": 1.6761960903585618,
+        "seconds": 55.2,
+        "cpu_seconds": 56.3
+      }
+    }
+  },
+  "211": {
+    "set": "dev",
+    "pred_seed": 211,
+    "fit_seed": 0,
+    "boards": {
+      "heart": 53.827777777777776
+    },
+    "splits": {
+      "heart_early": {
+        "board": "heart",
+        "score": 54.03333333333333,
+        "metrics": {
+          "de_score": 56.88666666666666,
+          "de_direction": 57.833333333333336,
+          "mmd_u": 54.50666666666666,
+          "variogram": 53.946666666666665,
+          "d2_shape": 49.73,
+          "occupancy_dice": 51.596666666666664,
+          "scale_log_ratio": 53.833333333333336,
+          "neighborhood_mmd": 52.77333333333333
+        },
+        "seed_scores": [
+          54.25,
+          55.19,
+          52.66
+        ],
+        "seed_sd": 1.278840620770757,
+        "seconds": 54.3,
+        "cpu_seconds": 55.0
+      },
+      "heart_late": {
+        "board": "heart",
+        "score": 54.72666666666667,
+        "metrics": {
+          "de_score": 57.95666666666667,
+          "de_direction": 58.68000000000001,
+          "mmd_u": 54.660000000000004,
+          "variogram": 54.23666666666667,
+          "d2_shape": 49.080000000000005,
+          "occupancy_dice": 51.349999999999994,
+          "scale_log_ratio": 58.86333333333332,
+          "neighborhood_mmd": 53.01666666666667
+        },
+        "seed_scores": [
+          54.9,
+          55.86,
+          53.42
+        ],
+        "seed_sd": 1.2292002820262165,
+        "seconds": 52.8,
+        "cpu_seconds": 53.5
+      },
+      "heart_long": {
+        "board": "heart",
+        "score": 55.13333333333333,
+        "metrics": {
+          "de_score": 52.02333333333333,
+          "de_direction": 59.699999999999996,
+          "mmd_u": 53.76,
+          "variogram": 53.71333333333333,
+          "d2_shape": 59.48333333333333,
+          "occupancy_dice": 47.04,
+          "scale_log_ratio": 65.05333333333334,
+          "neighborhood_mmd": 53.73
+        },
+        "seed_scores": [
+          54.42,
+          57.0,
+          53.980000000000004
+        ],
+        "seed_sd": 1.63148194391888,
+        "seconds": 65.3,
+        "cpu_seconds": 66.6
+      },
+      "heart_e875": {
+        "board": "heart",
+        "score": 52.87,
+        "metrics": {
+          "de_score": 51.35666666666666,
+          "de_direction": 55.95666666666667,
+          "mmd_u": 53.35,
+          "variogram": 54.080000000000005,
+          "d2_shape": 50.21666666666667,
+          "occupancy_dice": 49.919999999999995,
+          "scale_log_ratio": 53.0,
+          "neighborhood_mmd": 53.10333333333333
+        },
+        "seed_scores": [
+          53.41,
+          52.65,
+          52.55
+        ],
+        "seed_sd": 0.47031904065219327,
+        "seconds": 50.4,
+        "cpu_seconds": 51.6
+      },
+      "heart_organ_proxy": {
+        "board": "heart",
+        "score": 54.94,
+        "metrics": {
+          "de_score": 59.04666666666666,
+          "de_direction": 60.95666666666667,
+          "mmd_u": 54.1,
+          "variogram": 54.13999999999999,
+          "d2_shape": 48.879999999999995,
+          "occupancy_dice": 46.49666666666667,
+          "scale_log_ratio": 61.48666666666667,
+          "neighborhood_mmd": 53.36666666666667
+        },
+        "seed_scores": [
+          55.42,
+          56.25,
+          53.15
+        ],
+        "seed_sd": 1.6047741274085907,
+        "seconds": 56.6,
+        "cpu_seconds": 57.7
+      }
+    }
+  },
+  "307": {
+    "set": "dev",
+    "pred_seed": 307,
+    "fit_seed": 0,
+    "boards": {
+      "heart": 53.52166666666667
+    },
+    "splits": {
+      "heart_early": {
+        "board": "heart",
+        "score": 53.09,
+        "metrics": {
+          "de_score": 53.61666666666667,
+          "de_direction": 55.98333333333333,
+          "mmd_u": 52.53,
+          "variogram": 53.64000000000001,
+          "d2_shape": 48.45666666666667,
+          "occupancy_dice": 53.82666666666666,
+          "scale_log_ratio": 54.21,
+          "neighborhood_mmd": 52.46333333333334
+        },
+        "seed_scores": [
+          53.22,
+          54.18,
+          51.870000000000005
+        ],
+        "seed_sd": 1.1604740410711452,
+        "seconds": 67.9,
+        "cpu_seconds": 68.8
+      },
+      "heart_late": {
+        "board": "heart",
+        "score": 53.403333333333336,
+        "metrics": {
+          "de_score": 53.26333333333333,
+          "de_direction": 57.41,
+          "mmd_u": 52.949999999999996,
+          "variogram": 52.50333333333333,
+          "d2_shape": 46.61666666666667,
+          "occupancy_dice": 52.196666666666665,
+          "scale_log_ratio": 59.98666666666667,
+          "neighborhood_mmd": 52.52333333333333
+        },
+        "seed_scores": [
+          53.71,
+          54.49,
+          52.01
+        ],
+        "seed_sd": 1.2681219710001632,
+        "seconds": 67.0,
+        "cpu_seconds": 67.9
+      },
+      "heart_long": {
+        "board": "heart",
+        "score": 57.026666666666664,
+        "metrics": {
+          "de_score": 53.51666666666667,
+          "de_direction": 62.306666666666665,
+          "mmd_u": 54.20333333333334,
+          "variogram": 53.92666666666667,
+          "d2_shape": 70.36666666666666,
+          "occupancy_dice": 49.5,
+          "scale_log_ratio": 66.16666666666667,
+          "neighborhood_mmd": 54.10999999999999
+        },
+        "seed_scores": [
+          55.91,
+          59.94,
+          55.230000000000004
+        ],
+        "seed_sd": 2.5458266502912807,
+        "seconds": 66.6,
+        "cpu_seconds": 67.6
+      },
+      "heart_e875": {
+        "board": "heart",
+        "score": 53.09,
+        "metrics": {
+          "de_score": 53.076666666666675,
+          "de_direction": 55.423333333333325,
+          "mmd_u": 52.78,
+          "variogram": 53.330000000000005,
+          "d2_shape": 51.07333333333332,
+          "occupancy_dice": 51.576666666666675,
+          "scale_log_ratio": 51.41,
+          "neighborhood_mmd": 53.73666666666666
+        },
+        "seed_scores": [
+          53.730000000000004,
+          52.87,
+          52.67
+        ],
+        "seed_sd": 0.5632051136131511,
+        "seconds": 49.6,
+        "cpu_seconds": 50.5
+      },
+      "heart_organ_proxy": {
+        "board": "heart",
+        "score": 53.4,
+        "metrics": {
+          "de_score": 55.47,
+          "de_direction": 58.666666666666664,
+          "mmd_u": 52.163333333333334,
+          "variogram": 52.156666666666666,
+          "d2_shape": 45.76,
+          "occupancy_dice": 47.60999999999999,
+          "scale_log_ratio": 63.01,
+          "neighborhood_mmd": 52.23666666666667
+        },
+        "seed_scores": [
+          54.1,
+          54.93,
+          51.17
+        ],
+        "seed_sd": 1.9753227584372122,
+        "seconds": 40.6,
+        "cpu_seconds": 41.6
+      }
+    }
+  }
+}

@@ -1,0 +1,791 @@
+{
+ "scope": "Retrospective donor-selector experiment; no hidden test target and no independent specimens.",
+ "primary": "ho_long",
+ "criterion": "At least +0.75 vs PCA on ho_long, both paired prediction draws nonnegative, neither shorter replay below -0.50.",
+ "advance": false,
+ "matched_genes": 474,
+ "output_genes": 500,
+ "output_cells": 3000,
+ "orthology_sha256": "0b8eb746eb41eb9505b3bf3c5c8b986aba8a51e6a75df77642dcac34322aeb06",
+ "device": "cuda",
+ "pool_seed": 83,
+ "embedding_seed": 42,
+ "prediction_seeds": [
+  0,
+  1
+ ],
+ "scoring_seeds": [
+  201,
+  202,
+  203
+ ],
+ "pool_cells_per_stage": {
+  "E8.25": 4096,
+  "E8.5": 4096,
+  "E8.75": 4096,
+  "E9.5": 4096
+ },
+ "projected_dimensions": 32,
+ "neighbors": 64,
+ "checkpoint": {
+  "args.json": "c18e075e018140cb8b2d9029387b9de26607a5ce6a8ccabd6ead70cd76b95d60",
+  "vocab.json": "acca93d114ca62c3f0f50debbd23e8c87f0714f4737764454f6b2b13f2e8580f",
+  "best_model.pt": "6cb5d451ab5c4b33eb673adbe4fddc61d2389df1b89b7651a9fe2e557572b922"
+ },
+ "encoder_tensors_loaded": 153,
+ "upstream_source_files": {
+  "scgpt/data_collator.py": "4543e16e5fd162ba935c8e7687059953503db1878189dfd33c0ecda3375428e9",
+  "scgpt/model/dsbn.py": "666e443b530b8f4c7a26759c18b2c3125d96bb8ae55b7d91f26599ae7f84fb9b",
+  "scgpt/model/flash_attn_compat.py": "5a37a9a172c83c286cd45d9387051d7cc09634bc7f635e11e7615da636860251",
+  "scgpt/model/grad_reverse.py": "506b0adb351b1dc50f5778434b6c4a553cd18d23a6100add62fdbf2791764ad6",
+  "scgpt/model/model.py": "4ae77618cc6f12a7d1f6d946fee3f7bd5c56f3e9e103073394a590ceba5a35ed",
+  "scgpt/preprocess.py": "e0928ef5cbbdbe5012869cf890740d972c4faa6852e22006ac8dc52846fd5c84"
+ },
+ "splits": {
+  "val_heart": {
+   "role": "validation",
+   "inputs": [
+    "E8.25",
+    "E8.75",
+    "E9.5"
+   ],
+   "target": "E10.5",
+   "reference": "E9.5",
+   "target_filter": "heart_chambers",
+   "dissection": "heart_chambers_only",
+   "max_cells": 3000,
+   "weight": 1.0
+  },
+  "ho_long": {
+   "role": "heldout",
+   "inputs": [
+    "E8.25",
+    "E8.5"
+   ],
+   "target": "E10.5",
+   "reference": "E8.5",
+   "target_filter": "heart_chambers",
+   "dissection": "heart_chambers_only",
+   "max_cells": 3000,
+   "weight": 1.0
+  },
+  "ho_heart": {
+   "role": "heldout",
+   "inputs": [
+    "E8.25",
+    "E8.5",
+    "E8.75"
+   ],
+   "target": "E9.5",
+   "reference": "E8.75",
+   "target_filter": "heart_chambers",
+   "dissection": "heart_chambers_only",
+   "max_cells": 3000,
+   "weight": 0.5
+  }
+ },
+ "stages_sha256": {
+  "E8.25": "d56f94d3e2d719ed3074d86c03eae457ccf90b24145d33300f9958f0e8078593",
+  "E8.5": "41c76db18bfaa92c1d66f8220ec5fbb6d6acccb0a6b78241f40080a3096d37db",
+  "E8.75": "149ab6df7c99ad85046c8aebebcf0c43689b3720c59ffb7cc550edcf2f13a83c",
+  "E9.5": "371ca6530e084de2b6cd6703b49d95f4bb59546c9291659809575382a630ee9a",
+  "E10.5": "d6b37967f9cf3533091964cd07421c48a5c7c04628e9321123a426cb2a9c7e8b"
+ },
+ "results": {
+  "val_heart": {
+   "uniform_donor": {
+    "headline": 49.117802999999995,
+    "metrics": {
+     "de_score": 46.641666666666666,
+     "de_direction": 48.849999999999994,
+     "mmd_u": 49.635,
+     "variogram": 49.115,
+     "d2_shape": 51.495000000000005,
+     "occupancy_dice": 48.75666666666666,
+     "scale_log_ratio": 50.175,
+     "neighborhood_mmd": 49.58166666666666
+    },
+    "prediction_draws": [
+     {
+      "score": 49.079315333333334,
+      "seed_scores": [
+       50.003265999999996,
+       48.3318,
+       48.902879999999996
+      ],
+      "seed_sd": 0.8495862036458277,
+      "metrics": {
+       "de_score": 46.699999999999996,
+       "de_direction": 48.346666666666664,
+       "mmd_u": 49.82333333333333,
+       "variogram": 49.02,
+       "d2_shape": 50.47333333333333,
+       "occupancy_dice": 49.54999999999999,
+       "scale_log_ratio": 50.75,
+       "neighborhood_mmd": 49.51333333333333
+      }
+     },
+     {
+      "score": 49.156290666666656,
+      "seed_scores": [
+       50.0737,
+       48.48,
+       48.915172
+      ],
+      "seed_sd": 0.8237557775586998,
+      "metrics": {
+       "de_score": 46.583333333333336,
+       "de_direction": 49.35333333333333,
+       "mmd_u": 49.446666666666665,
+       "variogram": 49.21,
+       "d2_shape": 52.51666666666667,
+       "occupancy_dice": 47.96333333333333,
+       "scale_log_ratio": 49.599999999999994,
+       "neighborhood_mmd": 49.65
+      }
+     }
+    ]
+   },
+   "pca": {
+    "headline": 48.989241,
+    "metrics": {
+     "de_score": 46.879999999999995,
+     "de_direction": 49.42,
+     "mmd_u": 48.971666666666664,
+     "variogram": 49.34833333333333,
+     "d2_shape": 49.63166666666666,
+     "occupancy_dice": 51.04166666666666,
+     "scale_log_ratio": 49.39166666666667,
+     "neighborhood_mmd": 49.33833333333333
+    },
+    "prediction_draws": [
+     {
+      "score": 48.99893466666666,
+      "seed_scores": [
+       49.868336,
+       48.082300000000004,
+       49.046168
+      ],
+      "seed_sd": 0.893954355186734,
+      "metrics": {
+       "de_score": 46.71666666666667,
+       "de_direction": 49.093333333333334,
+       "mmd_u": 49.153333333333336,
+       "variogram": 49.49666666666667,
+       "d2_shape": 49.843333333333334,
+       "occupancy_dice": 51.703333333333326,
+       "scale_log_ratio": 50.080000000000005,
+       "neighborhood_mmd": 49.13333333333333
+      }
+     },
+     {
+      "score": 48.979547333333336,
+      "seed_scores": [
+       50.079602,
+       48.13448,
+       48.72456
+      ],
+      "seed_sd": 0.9973157994543818,
+      "metrics": {
+       "de_score": 47.04333333333333,
+       "de_direction": 49.74666666666667,
+       "mmd_u": 48.79,
+       "variogram": 49.199999999999996,
+       "d2_shape": 49.419999999999995,
+       "occupancy_dice": 50.379999999999995,
+       "scale_log_ratio": 48.70333333333334,
+       "neighborhood_mmd": 49.54333333333333
+      }
+     }
+    ]
+   },
+   "scgpt": {
+    "headline": 49.316907666666665,
+    "metrics": {
+     "de_score": 48.30666666666666,
+     "de_direction": 49.82166666666667,
+     "mmd_u": 49.12833333333333,
+     "variogram": 50.08666666666667,
+     "d2_shape": 51.845,
+     "occupancy_dice": 51.04666666666667,
+     "scale_log_ratio": 50.24666666666666,
+     "neighborhood_mmd": 48.84
+    },
+    "prediction_draws": [
+     {
+      "score": 49.199643333333334,
+      "seed_scores": [
+       50.279270000000004,
+       48.18922,
+       49.13044
+      ],
+      "seed_sd": 1.0467421251833418,
+      "metrics": {
+       "de_score": 48.48,
+       "de_direction": 49.69333333333333,
+       "mmd_u": 49.23,
+       "variogram": 50.26333333333334,
+       "d2_shape": 50.94333333333333,
+       "occupancy_dice": 50.876666666666665,
+       "scale_log_ratio": 50.35999999999999,
+       "neighborhood_mmd": 48.693333333333335
+      }
+     },
+     {
+      "score": 49.434172,
+      "seed_scores": [
+       50.19373,
+       48.737666,
+       49.37112
+      ],
+      "seed_sd": 0.7300768857127334,
+      "metrics": {
+       "de_score": 48.133333333333326,
+       "de_direction": 49.95000000000001,
+       "mmd_u": 49.02666666666667,
+       "variogram": 49.910000000000004,
+       "d2_shape": 52.74666666666667,
+       "occupancy_dice": 51.21666666666667,
+       "scale_log_ratio": 50.13333333333333,
+       "neighborhood_mmd": 48.98666666666667
+      }
+     }
+    ]
+   },
+   "random_encoder": {
+    "headline": 49.442257999999995,
+    "metrics": {
+     "de_score": 48.608333333333334,
+     "de_direction": 50.63166666666666,
+     "mmd_u": 49.44,
+     "variogram": 49.66833333333333,
+     "d2_shape": 48.92333333333334,
+     "occupancy_dice": 52.156666666666666,
+     "scale_log_ratio": 47.78333333333333,
+     "neighborhood_mmd": 49.553333333333335
+    },
+    "prediction_draws": [
+     {
+      "score": 49.13788133333333,
+      "seed_scores": [
+       49.809696,
+       48.536908,
+       49.067040000000006
+      ],
+      "seed_sd": 0.6393443470598114,
+      "metrics": {
+       "de_score": 48.49,
+       "de_direction": 50.31666666666666,
+       "mmd_u": 49.54333333333333,
+       "variogram": 49.85666666666666,
+       "d2_shape": 48.64666666666667,
+       "occupancy_dice": 50.96333333333333,
+       "scale_log_ratio": 48.28,
+       "neighborhood_mmd": 49.083333333333336
+      }
+     },
+     {
+      "score": 49.746634666666665,
+      "seed_scores": [
+       50.68,
+       48.87,
+       49.689904
+      ],
+      "seed_sd": 0.9063325970113485,
+      "metrics": {
+       "de_score": 48.72666666666667,
+       "de_direction": 50.94666666666666,
+       "mmd_u": 49.336666666666666,
+       "variogram": 49.48,
+       "d2_shape": 49.20000000000001,
+       "occupancy_dice": 53.35,
+       "scale_log_ratio": 47.28666666666667,
+       "neighborhood_mmd": 50.02333333333333
+      }
+     }
+    ]
+   }
+  },
+  "ho_long": {
+   "uniform_donor": {
+    "headline": 50.86666666666667,
+    "metrics": {
+     "de_score": 44.23833333333333,
+     "de_direction": 57.845,
+     "mmd_u": 50.94499999999999,
+     "variogram": 50.56166666666667,
+     "d2_shape": 52.28833333333334,
+     "occupancy_dice": 48.540000000000006,
+     "scale_log_ratio": 50.88666666666668,
+     "neighborhood_mmd": 51.06333333333333
+    },
+    "prediction_draws": [
+     {
+      "score": 50.81666666666667,
+      "seed_scores": [
+       51.07,
+       50.95,
+       50.43
+      ],
+      "seed_sd": 0.3401960219246161,
+      "metrics": {
+       "de_score": 44.16,
+       "de_direction": 57.870000000000005,
+       "mmd_u": 50.85333333333333,
+       "variogram": 50.410000000000004,
+       "d2_shape": 52.31,
+       "occupancy_dice": 48.21333333333334,
+       "scale_log_ratio": 50.88666666666668,
+       "neighborhood_mmd": 51.120000000000005
+      }
+     },
+     {
+      "score": 50.916666666666664,
+      "seed_scores": [
+       51.33,
+       50.96,
+       50.46
+      ],
+      "seed_sd": 0.43661577311559907,
+      "metrics": {
+       "de_score": 44.31666666666666,
+       "de_direction": 57.82,
+       "mmd_u": 51.03666666666666,
+       "variogram": 50.71333333333333,
+       "d2_shape": 52.26666666666667,
+       "occupancy_dice": 48.866666666666674,
+       "scale_log_ratio": 50.88666666666668,
+       "neighborhood_mmd": 51.00666666666667
+      }
+     }
+    ]
+   },
+   "pca": {
+    "headline": 50.644999999999996,
+    "metrics": {
+     "de_score": 43.278333333333336,
+     "de_direction": 55.99166666666666,
+     "mmd_u": 51.121666666666655,
+     "variogram": 50.358333333333334,
+     "d2_shape": 54.81333333333333,
+     "occupancy_dice": 49.86333333333333,
+     "scale_log_ratio": 49.045,
+     "neighborhood_mmd": 50.89666666666667
+    },
+    "prediction_draws": [
+     {
+      "score": 50.416666666666664,
+      "seed_scores": [
+       50.78,
+       50.66,
+       49.81
+      ],
+      "seed_sd": 0.5288036812781578,
+      "metrics": {
+       "de_score": 42.550000000000004,
+       "de_direction": 55.93666666666667,
+       "mmd_u": 51.11333333333332,
+       "variogram": 50.36333333333334,
+       "d2_shape": 54.416666666666664,
+       "occupancy_dice": 48.46333333333333,
+       "scale_log_ratio": 49.120000000000005,
+       "neighborhood_mmd": 50.96333333333333
+      }
+     },
+     {
+      "score": 50.873333333333335,
+      "seed_scores": [
+       50.76,
+       51.44,
+       50.42
+      ],
+      "seed_sd": 0.5193585787616601,
+      "metrics": {
+       "de_score": 44.00666666666666,
+       "de_direction": 56.04666666666666,
+       "mmd_u": 51.129999999999995,
+       "variogram": 50.35333333333333,
+       "d2_shape": 55.21,
+       "occupancy_dice": 51.26333333333333,
+       "scale_log_ratio": 48.97,
+       "neighborhood_mmd": 50.830000000000005
+      }
+     }
+    ]
+   },
+   "scgpt": {
+    "headline": 51.041666666666664,
+    "metrics": {
+     "de_score": 45.56333333333333,
+     "de_direction": 56.44,
+     "mmd_u": 51.21,
+     "variogram": 50.785,
+     "d2_shape": 53.16166666666666,
+     "occupancy_dice": 49.685,
+     "scale_log_ratio": 49.86,
+     "neighborhood_mmd": 51.215
+    },
+    "prediction_draws": [
+     {
+      "score": 50.806666666666665,
+      "seed_scores": [
+       51.39,
+       50.71,
+       50.32
+      ],
+      "seed_sd": 0.5415102338214242,
+      "metrics": {
+       "de_score": 45.11666666666667,
+       "de_direction": 56.453333333333326,
+       "mmd_u": 51.27,
+       "variogram": 50.69666666666666,
+       "d2_shape": 52.28,
+       "occupancy_dice": 48.03666666666667,
+       "scale_log_ratio": 49.919999999999995,
+       "neighborhood_mmd": 51.326666666666675
+      }
+     },
+     {
+      "score": 51.276666666666664,
+      "seed_scores": [
+       51.48,
+       51.47,
+       50.879999999999995
+      ],
+      "seed_sd": 0.34355979586286617,
+      "metrics": {
+       "de_score": 46.01,
+       "de_direction": 56.42666666666667,
+       "mmd_u": 51.15,
+       "variogram": 50.873333333333335,
+       "d2_shape": 54.04333333333333,
+       "occupancy_dice": 51.333333333333336,
+       "scale_log_ratio": 49.800000000000004,
+       "neighborhood_mmd": 51.103333333333325
+      }
+     }
+    ]
+   },
+   "random_encoder": {
+    "headline": 49.80500000000001,
+    "metrics": {
+     "de_score": 40.62833333333333,
+     "de_direction": 54.16,
+     "mmd_u": 50.515,
+     "variogram": 49.79166666666666,
+     "d2_shape": 54.33833333333334,
+     "occupancy_dice": 49.65333333333333,
+     "scale_log_ratio": 49.233333333333334,
+     "neighborhood_mmd": 50.55499999999999
+    },
+    "prediction_draws": [
+     {
+      "score": 49.63666666666668,
+      "seed_scores": [
+       49.94,
+       49.74,
+       49.230000000000004
+      ],
+      "seed_sd": 0.36610563138707825,
+      "metrics": {
+       "de_score": 40.086666666666666,
+       "de_direction": 54.1,
+       "mmd_u": 50.43,
+       "variogram": 49.72333333333333,
+       "d2_shape": 53.89333333333334,
+       "occupancy_dice": 48.98666666666666,
+       "scale_log_ratio": 49.36666666666667,
+       "neighborhood_mmd": 50.56666666666666
+      }
+     },
+     {
+      "score": 49.973333333333336,
+      "seed_scores": [
+       50.49,
+       50.29,
+       49.14
+      ],
+      "seed_sd": 0.7285830998131467,
+      "metrics": {
+       "de_score": 41.169999999999995,
+       "de_direction": 54.22,
+       "mmd_u": 50.6,
+       "variogram": 49.85999999999999,
+       "d2_shape": 54.78333333333333,
+       "occupancy_dice": 50.32,
+       "scale_log_ratio": 49.1,
+       "neighborhood_mmd": 50.54333333333333
+      }
+     }
+    ]
+   }
+  },
+  "ho_heart": {
+   "uniform_donor": {
+    "headline": 50.58333333333333,
+    "metrics": {
+     "de_score": 47.586666666666666,
+     "de_direction": 55.64,
+     "mmd_u": 50.07833333333333,
+     "variogram": 50.17166666666667,
+     "d2_shape": 49.52,
+     "occupancy_dice": 50.07166666666667,
+     "scale_log_ratio": 49.16333333333333,
+     "neighborhood_mmd": 51.02333333333334
+    },
+    "prediction_draws": [
+     {
+      "score": 50.75666666666667,
+      "seed_scores": [
+       49.75,
+       51.65,
+       50.87
+      ],
+      "seed_sd": 0.9550567173384688,
+      "metrics": {
+       "de_score": 48.26,
+       "de_direction": 56.25,
+       "mmd_u": 50.166666666666664,
+       "variogram": 50.38666666666666,
+       "d2_shape": 49.28333333333334,
+       "occupancy_dice": 49.52666666666667,
+       "scale_log_ratio": 49.07333333333333,
+       "neighborhood_mmd": 51.24
+      }
+     },
+     {
+      "score": 50.41,
+      "seed_scores": [
+       49.58,
+       51.269999999999996,
+       50.38
+      ],
+      "seed_sd": 0.8453993139339527,
+      "metrics": {
+       "de_score": 46.913333333333334,
+       "de_direction": 55.03,
+       "mmd_u": 49.99,
+       "variogram": 49.95666666666667,
+       "d2_shape": 49.75666666666667,
+       "occupancy_dice": 50.61666666666667,
+       "scale_log_ratio": 49.25333333333333,
+       "neighborhood_mmd": 50.80666666666667
+      }
+     }
+    ]
+   },
+   "pca": {
+    "headline": 49.855914,
+    "metrics": {
+     "de_score": 45.78,
+     "de_direction": 53.68333333333334,
+     "mmd_u": 50.22,
+     "variogram": 50.209999999999994,
+     "d2_shape": 49.44333333333334,
+     "occupancy_dice": 48.125,
+     "scale_log_ratio": 48.620000000000005,
+     "neighborhood_mmd": 50.77333333333333
+    },
+    "prediction_draws": [
+     {
+      "score": 50.19333333333333,
+      "seed_scores": [
+       49.3,
+       50.91,
+       50.37
+      ],
+      "seed_sd": 0.8194103571064579,
+      "metrics": {
+       "de_score": 47.09,
+       "de_direction": 55.13,
+       "mmd_u": 50.413333333333334,
+       "variogram": 50.19,
+       "d2_shape": 49.18666666666667,
+       "occupancy_dice": 46.94333333333333,
+       "scale_log_ratio": 48.553333333333335,
+       "neighborhood_mmd": 51.09666666666667
+      }
+     },
+     {
+      "score": 49.51849466666667,
+      "seed_scores": [
+       48.865484,
+       50.35,
+       49.34
+      ],
+      "seed_sd": 0.7581834857640547,
+      "metrics": {
+       "de_score": 44.470000000000006,
+       "de_direction": 52.23666666666667,
+       "mmd_u": 50.026666666666664,
+       "variogram": 50.23,
+       "d2_shape": 49.70000000000001,
+       "occupancy_dice": 49.30666666666667,
+       "scale_log_ratio": 48.68666666666667,
+       "neighborhood_mmd": 50.449999999999996
+      }
+     }
+    ]
+   },
+   "scgpt": {
+    "headline": 49.131603000000005,
+    "metrics": {
+     "de_score": 43.955,
+     "de_direction": 51.915000000000006,
+     "mmd_u": 49.80499999999999,
+     "variogram": 49.67333333333333,
+     "d2_shape": 50.28,
+     "occupancy_dice": 47.435,
+     "scale_log_ratio": 48.245000000000005,
+     "neighborhood_mmd": 50.28333333333333
+    },
+    "prediction_draws": [
+     {
+      "score": 48.80987266666667,
+      "seed_scores": [
+       47.649618000000004,
+       49.58,
+       49.2
+      ],
+      "seed_sd": 1.0226158460738464,
+      "metrics": {
+       "de_score": 43.81666666666667,
+       "de_direction": 51.70333333333334,
+       "mmd_u": 49.65666666666666,
+       "variogram": 49.60333333333333,
+       "d2_shape": 50.28666666666667,
+       "occupancy_dice": 45.973333333333336,
+       "scale_log_ratio": 48.28333333333333,
+       "neighborhood_mmd": 49.86666666666667
+      }
+     },
+     {
+      "score": 49.45333333333334,
+      "seed_scores": [
+       48.75,
+       50.03,
+       49.58
+      ],
+      "seed_sd": 0.6493329911018951,
+      "metrics": {
+       "de_score": 44.093333333333334,
+       "de_direction": 52.126666666666665,
+       "mmd_u": 49.953333333333326,
+       "variogram": 49.74333333333334,
+       "d2_shape": 50.27333333333333,
+       "occupancy_dice": 48.89666666666667,
+       "scale_log_ratio": 48.20666666666667,
+       "neighborhood_mmd": 50.699999999999996
+      }
+     }
+    ]
+   },
+   "random_encoder": {
+    "headline": 49.40849166666666,
+    "metrics": {
+     "de_score": 47.045,
+     "de_direction": 50.53999999999999,
+     "mmd_u": 49.56833333333334,
+     "variogram": 50.435,
+     "d2_shape": 50.56666666666667,
+     "occupancy_dice": 48.00833333333334,
+     "scale_log_ratio": 48.72833333333333,
+     "neighborhood_mmd": 50.04833333333333
+    },
+    "prediction_draws": [
+     {
+      "score": 49.50643866666667,
+      "seed_scores": [
+       48.669316,
+       50.2,
+       49.65
+      ],
+      "seed_sd": 0.7753745993294683,
+      "metrics": {
+       "de_score": 47.92666666666667,
+       "de_direction": 51.06666666666666,
+       "mmd_u": 49.89333333333334,
+       "variogram": 50.51666666666667,
+       "d2_shape": 50.580000000000005,
+       "occupancy_dice": 46.70000000000001,
+       "scale_log_ratio": 48.73,
+       "neighborhood_mmd": 49.96
+      }
+     },
+     {
+      "score": 49.310544666666665,
+      "seed_scores": [
+       48.461634,
+       49.66,
+       49.81
+      ],
+      "seed_sd": 0.7389939038891566,
+      "metrics": {
+       "de_score": 46.16333333333333,
+       "de_direction": 50.01333333333333,
+       "mmd_u": 49.24333333333334,
+       "variogram": 50.35333333333333,
+       "d2_shape": 50.553333333333335,
+       "occupancy_dice": 49.31666666666666,
+       "scale_log_ratio": 48.72666666666667,
+       "neighborhood_mmd": 50.13666666666666
+      }
+     }
+    ]
+   }
+  }
+ },
+ "scgpt_minus_pca": {
+  "val_heart": {
+   "headline": 0.32766666666666566,
+   "prediction_seed_deltas": [
+    0.20070866666667087,
+    0.45462466666666046
+   ],
+   "metrics": {
+    "de_score": 1.4266666666666623,
+    "de_direction": 0.40166666666667084,
+    "mmd_u": 0.1566666666666663,
+    "variogram": 0.7383333333333439,
+    "d2_shape": 2.2133333333333383,
+    "occupancy_dice": 0.005000000000009663,
+    "scale_log_ratio": 0.8549999999999898,
+    "neighborhood_mmd": -0.49833333333332774
+   }
+  },
+  "ho_long": {
+   "headline": 0.3966666666666683,
+   "prediction_seed_deltas": [
+    0.39000000000000057,
+    0.4033333333333289
+   ],
+   "metrics": {
+    "de_score": 2.2849999999999966,
+    "de_direction": 0.4483333333333377,
+    "mmd_u": 0.08833333333334537,
+    "variogram": 0.4266666666666623,
+    "d2_shape": -1.6516666666666708,
+    "occupancy_dice": -0.17833333333332746,
+    "scale_log_ratio": 0.8149999999999977,
+    "neighborhood_mmd": 0.31833333333333513
+   }
+  },
+  "ho_heart": {
+   "headline": -0.724310999999993,
+   "prediction_seed_deltas": [
+    -1.3834606666666573,
+    -0.06516133333332874
+   ],
+   "metrics": {
+    "de_score": -1.8250000000000028,
+    "de_direction": -1.7683333333333309,
+    "mmd_u": -0.41500000000000625,
+    "variogram": -0.5366666666666617,
+    "d2_shape": 0.8366666666666589,
+    "occupancy_dice": -0.6899999999999977,
+    "scale_log_ratio": -0.375,
+    "neighborhood_mmd": -0.490000000000002
+   }
+  }
+ }
+}

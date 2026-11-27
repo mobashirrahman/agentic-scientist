@@ -1,0 +1,224 @@
+{
+  "run": "mglock_20261118_190445_smoke5",
+  "lock_id": "mglock_20261118_190445",
+  "program_id": "seed_538b483e",
+  "generation": null,
+  "run_combined_score": null,
+  "run_public_metrics": {
+    "lock_id": "mglock_20261118_190445",
+    "rule": "boardwise paired holdout lower bound over seed; dev-only winners subject to the configured veto",
+    "candidates": [
+      {
+        "id": "seed",
+        "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261118_190445_smoke5/seed_ws",
+        "proxy": 185.8398611111111,
+        "holdout": 59.373546708333336,
+        "holdout_pairs": [
+          59.0782515,
+          59.3975,
+          59.653333333333336,
+          59.36510199999999
+        ],
+        "holdout_boards": {
+          "heart": 52.50626008333333,
+          "embryo": 66.24083333333333
+        }
+      }
+    ],
+    "chosen": "seed",
+    "selected_sha256": "538b483eabc75aa738cbd872edbd7674c2027a673b389615465aa9caff78afbe",
+    "cost_usd": 0.5037207,
+    "agent_calls": 17
+  },
+  "program_sha256": "4ab7e1d54ebe4641b03d525e796118712d4daf989ab622809c3d6a3a58d499ee",
+  "seed": 42,
+  "n": 3000,
+  "boards": {
+    "T1:test": {
+      "file": "T1__test.h5ad",
+      "cells": 3000,
+      "genes": 32285,
+      "sha256": "e933f147580445a18ac96dde20c991f05cb2ccef29200d5d02050609e9ffa239",
+      "inputs": {
+        "T1/E8.5_RNA.h5ad": "8eab2d0ccaa89f92861b09816b76b6a731b8ed6b5995e4af196d9ed8ff76e504",
+        "T1/E9.5_RNA.h5ad": "0296e0043842f944a663f3c11ac1542d1bbee733c1cd657bd56f75af65958361",
+        "T1/E10.5_RNA.h5ad": "974e04e7fe64fb96142f17994a9678d4cebd4f1868dec4de034eda4245b7dd6c"
+      },
+      "target_time": 12.5,
+      "knockout": null,
+      "format_check": {
+        "file": "/scratch/user/virtual-embryo/submissions/agent/mglock_20261118_190445_smoke5/seed_538b483e/T1__test.h5ad",
+        "board": "T1:test",
+        "errors": [],
+        "warnings": [],
+        "info": {
+          "n_obs": 3000,
+          "n_vars": 32285,
+          "sha256": "e933f147580445a18ac96dde20c991f05cb2ccef29200d5d02050609e9ffa239",
+          "size_mb": 47.6,
+          "max_file_mb": 1200.0,
+          "X_format": "dense[float32]",
+          "X_min": 0.0,
+          "X_max": 8.9892,
+          "X_nonzero_frac": 0.088
+        },
+        "ok": true
+      },
+      "context_read": [
+        "external",
+        "fit_seed",
+        "n",
+        "params",
+        "sampling",
+        "seed"
+      ],
+      "external_data_read": [
+        {
+          "key": "external",
+          "source": "Qiu et al. 2024 JAX atlas anchors (data/external/qiu2024)",
+          "provided": true
+        }
+      ]
+    },
+    "T2:heart:test_extrap": {
+      "file": "T2__heart__test_extrap.h5ad",
+      "cells": 3000,
+      "genes": 500,
+      "sha256": "6fca8c6b57fa05463176dd4dee205c419159ac18ed0735b8d2512162af052a4e",
+      "inputs": {
+        "T2/E8.25_late.h5ad": "d56f94d3e2d719ed3074d86c03eae457ccf90b24145d33300f9958f0e8078593",
+        "T2/E8.5.h5ad": "41c76db18bfaa92c1d66f8220ec5fbb6d6acccb0a6b78241f40080a3096d37db",
+        "T2/E8.75.h5ad": "149ab6df7c99ad85046c8aebebcf0c43689b3720c59ffb7cc550edcf2f13a83c",
+        "T2/E9.5.h5ad": "371ca6530e084de2b6cd6703b49d95f4bb59546c9291659809575382a630ee9a",
+        "T2/E10.5.h5ad": "d6b37967f9cf3533091964cd07421c48a5c7c04628e9321123a426cb2a9c7e8b"
+      },
+      "target_time": 12.5,
+      "knockout": null,
+      "format_check": {
+        "file": "/scratch/user/virtual-embryo/submissions/agent/mglock_20261118_190445_smoke5/seed_538b483e/T2__heart__test_extrap.h5ad",
+        "board": "T2:heart:test_extrap",
+        "errors": [],
+        "warnings": [],
+        "info": {
+          "n_obs": 3000,
+          "n_vars": 500,
+          "sha256": "6fca8c6b57fa05463176dd4dee205c419159ac18ed0735b8d2512162af052a4e",
+          "size_mb": 0.6,
+          "max_file_mb": 1200.0,
+          "X_format": "dense[float32]",
+          "X_min": 0.0,
+          "X_max": 8.5948,
+          "X_nonzero_frac": 0.0641,
+          "spatial_3D_rms_radius": 608.16
+        },
+        "ok": true
+      },
+      "context_read": [
+        "external",
+        "fit_seed",
+        "n",
+        "sampling",
+        "seed"
+      ],
+      "external_data_read": [
+        {
+          "key": "external",
+          "source": "Feulner et al. 2024 perinatal heart (data/external/heart_anchor)",
+          "provided": true
+        }
+      ]
+    },
+    "T2:embryo:test_interp": {
+      "file": "T2__embryo__test_interp.h5ad",
+      "cells": 3000,
+      "genes": 497,
+      "sha256": "fabdc3073916332068a9720bedc0bec5a74b8d304b419f2e5767117baf863bb3",
+      "inputs": {
+        "T2/E7.5.h5ad": "e8e47255ddeca96d5604c7cd4923bbf27765c24bc6a3cd44e800cd6ea05a7d54",
+        "T2/E8.0.h5ad": "17530e23fbfa6a139ff68d0353a489d83790f5b60f036b7d2f58303a1ff8a810"
+      },
+      "target_time": 7.75,
+      "knockout": null,
+      "format_check": {
+        "file": "/scratch/user/virtual-embryo/submissions/agent/mglock_20261118_190445_smoke5/seed_538b483e/T2__embryo__test_interp.h5ad",
+        "board": "T2:embryo:test_interp",
+        "errors": [],
+        "warnings": [],
+        "info": {
+          "n_obs": 3000,
+          "n_vars": 497,
+          "sha256": "fabdc3073916332068a9720bedc0bec5a74b8d304b419f2e5767117baf863bb3",
+          "size_mb": 0.8,
+          "max_file_mb": 1200.0,
+          "X_format": "dense[float32]",
+          "X_min": 0.0,
+          "X_max": 8.8622,
+          "X_nonzero_frac": 0.1009,
+          "spatial_3D_rms_radius": 246.767
+        },
+        "ok": true
+      },
+      "context_read": [
+        "fit_seed",
+        "n",
+        "seed"
+      ],
+      "external_data_read": []
+    },
+    "T3:bcatenin": {
+      "file": "T3__bcatenin.h5ad",
+      "cells": 7449,
+      "genes": 500,
+      "sha256": "e6e7f0e27970e5d64a1c481c55287e9a4177191b2c166dc91f58b80a16914a82",
+      "inputs": {
+        "T2/E8.5.h5ad": "41c76db18bfaa92c1d66f8220ec5fbb6d6acccb0a6b78241f40080a3096d37db",
+        "T2/E8.75.h5ad": "149ab6df7c99ad85046c8aebebcf0c43689b3720c59ffb7cc550edcf2f13a83c"
+      },
+      "target_time": 8.75,
+      "knockout": "Ctnnb1",
+      "format_check": {
+        "file": "/scratch/user/virtual-embryo/submissions/agent/mglock_20261118_190445_smoke5/seed_538b483e/T3__bcatenin.h5ad",
+        "board": "T3:bcatenin",
+        "errors": [],
+        "warnings": [],
+        "info": {
+          "n_obs": 7449,
+          "n_vars": 500,
+          "sha256": "e6e7f0e27970e5d64a1c481c55287e9a4177191b2c166dc91f58b80a16914a82",
+          "size_mb": 2.5,
+          "max_file_mb": 1200.0,
+          "X_format": "dense[float32]",
+          "X_min": 0.0,
+          "X_max": 16.5644,
+          "X_nonzero_frac": 0.1106,
+          "spatial_3D_rms_radius": 224.834
+        },
+        "ok": true
+      },
+      "context_read": [
+        "expression_prior",
+        "knockout",
+        "n",
+        "params",
+        "seed"
+      ],
+      "external_data_read": [
+        {
+          "key": "expression_prior",
+          "source": "Qiu et al. 2024-derived expression prior (data/external/expression_prior)",
+          "provided": true
+        }
+      ]
+    }
+  },
+  "workspace_sha256": "538b483eabc75aa738cbd872edbd7674c2027a673b389615465aa9caff78afbe",
+  "tuned_params": {
+    "temporal": {
+      "ery_mass_budget": 0.12,
+      "ery_max_odds": 13.36468815618264
+    },
+    "perturbation": {
+      "rho": 0.34514799029566345
+    }
+  }
+}

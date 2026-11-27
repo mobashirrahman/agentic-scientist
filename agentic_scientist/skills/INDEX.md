@@ -1,0 +1,11 @@
+## Skills (read a skill's SKILL.md when its topic is relevant; paths under $MG_ROOT/agentic_scientist/skills/)
+- `metric-playbook/SKILL.md`: exactly how every metric is computed and weighted, the T2 gate, the cheapest points (T3 severity_slope!), scorer source locations. **Read before choosing a target.**
+- `leaderboard/SKILL.md`: `tools/leaderboard.py`: the public TEST leaderboard (frozen snapshot): weighted metric gaps vs the top 10 next to our dev values, recipe families and knob sweeps from model names. **Run `gaps <board>` before choosing a target.**
+- `diagnostics/SKILL.md`: `tools/diagnose.py <dev_split>` shows WHY a program scores what it does (composition, wrong-direction genes, the scorer's raw severity, spatial errors, PNG plots).
+- `bio-knowledge/SKILL.md`: `tools/bioknow.py`: gene facts, GO/Reactome, MGI knockout phenotypes, pathway gene sets.
+- `literature/SKILL.md`: `tools/lit.py`: Europe PMC (+bioRxiv) search and open-access full text, arXiv, Semantic Scholar.
+- `method-library/SKILL.md`: `recipes.py`: tested building blocks (OT, composition, response rescaling, spatial growth, patches).
+- `api-docs/SKILL.md`: `tools/apidoc.py`: exact signatures of installed libraries and src.v2 helpers.
+- `sc-analysis/SKILL.md`: `tools/sc_tool.py`: one-call analysis (markers, composition, compare/calibrate, cluster, spatial neighbourhoods, GO set scores) of released AND external data through the rule filters.
+- `data-atlas/SKILL.md`: `ATLAS.md`: facts about every allowed stage (types, fractions, emergence, spatial size).
+- Knowledge bank: `tools/kb.py`: every past experiment of this run.

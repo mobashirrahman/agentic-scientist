@@ -1,0 +1,206 @@
+{
+ "workers": 6,
+ "cycles_per_worker": 16,
+ "min_cycles_per_worker": 0,
+ "patience_cycles": 12,
+ "max_research_seconds": 100800,
+ "cycle_drain_seconds": 14400,
+ "max_debug_attempts": 2,
+ "shortlist": 2,
+ "ideator": {
+  "cli": "codex",
+  "model": "gpt-6.2-sol",
+  "effort": "medium",
+  "timeout_s": 2400
+ },
+ "ideator_cycle": [
+  {
+   "cli": "codex",
+   "model": "gpt-6.2-sol",
+   "effort": "medium",
+   "timeout_s": 2400
+  }
+ ],
+ "implementers": [
+  {
+   "cli": "codex",
+   "model": "gpt-6.2-sol",
+   "effort": "medium",
+   "timeout_s": 3600
+  }
+ ],
+ "distiller": {
+  "cli": "codex",
+  "model": "gpt-6.2-sol",
+  "effort": "low",
+  "timeout_s": 900
+ },
+ "max_agent_calls": 1500,
+ "holdout_forbidden": [
+  ".claude/projects",
+  "/T2/E10.5",
+  "/T2/E7.5.h5ad",
+  "E10.5.h5ad",
+  "E7.5.h5ad",
+  "T2/E10.5.h5ad",
+  "T2/E7.5.h5ad",
+  "holdout.enc/",
+  "ve-holdout-t3",
+  "T3__unseen",
+  "unseen_wt_a",
+  "unseen_wt_b",
+  "unseen_ko",
+  "unseen_spec",
+  ".codex/sessions",
+  ".codex/archived_sessions",
+  ".codex/history.jsonl",
+  ".codex/memories"
+ ],
+ "critic": {
+  "cli": "codex",
+  "model": "gpt-6.2-sol",
+  "effort": "high",
+  "timeout_s": 1800
+ },
+ "curator": {
+  "cli": "codex",
+  "model": "gpt-6.2-sol",
+  "effort": "medium",
+  "timeout_s": 1500
+ },
+ "kb_chars": 9000,
+ "acceptance": {
+  "alpha": 0.05,
+  "margin": 0.25,
+  "reject_z": -2.0,
+  "batches": [
+   8
+  ],
+  "board_drop": 0.5,
+  "rule": "screen one seed pair; confirm with all eight paired evaluations; accept when the proxy or changed board clears the margin with a one-sided 95% lower bound, subject to board and condition loss limits",
+  "board_margin": {
+   "heart": 0.5,
+   "embryo": 0.5
+  }
+ },
+ "condition_drop": 0.5,
+ "holdout_margin": 0.25,
+ "holdout_seed_pairs": [
+  [
+   202,
+   0
+  ],
+  [
+   313,
+   1
+  ],
+  [
+   424,
+   2
+  ],
+  [
+   535,
+   3
+  ]
+ ],
+ "merge": false,
+ "focus": {
+  "w0": "temporal",
+  "w1": "perturbation",
+  "w2": "heart",
+  "w3": "embryo",
+  "w4": "heart",
+  "w5": "embryo"
+ },
+ "critic_plan": false,
+ "critic_code": false,
+ "sanity": true,
+ "elites": 3,
+ "tune": {
+  "on_demand": true,
+  "boards": [
+   "heart",
+   "embryo",
+   "perturbation"
+  ],
+  "rounds": 2,
+  "parallel": "fleet",
+  "top": 3,
+  "max_tunes": 12,
+  "seed": 0
+ },
+ "max_slowdown": null,
+ "slow_floor_s": 240,
+ "max_cycles_factor": 1.5,
+ "monitor_late": false,
+ "initial_elites": {},
+ "claude_max_week_util": 0.92,
+ "claude_fallback": {
+  "cli": "codex",
+  "model": "gpt-6.2-sol",
+  "effort": "medium",
+  "timeout_s": 2400
+ },
+ "free_roam": false,
+ "directives": {
+  "w0": "Improve the E12.5 forecast as a whole population: keep real latest-stage cells, keep the chamber rule and the blood share, and move cells part of the way along the observed per-type trend (kNN-smoothed, damped with horizon) or reweight a few coarse compartments with a priori strengths. Use temporal_val and temporal_heartonly aggregate scores only.",
+  "w1": "Test one response mechanism that should transfer across knockout genes (Gata4, Mab21l2, Hand2, Mef2c, the unseen gene and Ctnnb1): response size and delay, realism of the resampled cells (mmd_u, variogram), or gene direction from the GO prior. Keep every dev gene level or better.",
+  "w2": "Under sampling='heart_dissected' build a heart-centric crop of the latest stage (organ-resident cell types and their spatial neighbourhood; drop surrounding tissue), then grow it to the forecast size; leave the with-surroundings path unchanged. Public test: heart-centric crops of E10.5 scored 62.8-66.4 vs our 48.6.",
+  "w3": "Geometry stays on one native embryo (native_occupancy gate). Improve expression and neighbourhoods: e.g. transfer later-bracket states onto native positions by expression-and-position matching, interpolate composition by fraction, keep whole real profiles.",
+  "w4": "The Codex heart's dissected weighting is soft (ORGAN_BLEND 0.45 blend). Make the dissected path a hard heart-centric crop, then test the top public family's per-type pseudobulk offset of real cells (20-30% of the damped trend). Isolate one change per cycle.",
+  "w5": "Geometry stays on one native embryo (native_occupancy gate). Improve the cell-state distribution: partial transport of earlier-bracket cells toward matched later states (whole profiles, not gene edits), or a better position assignment for later-bracket cells that preserves local neighbourhood composition."
+ },
+ "group_floor": 0.25,
+ "lineage_max": 2,
+ "planner_every": 0,
+ "ablation_tol": 0.25,
+ "planner": {
+  "cli": "codex",
+  "model": "gpt-6.2-sol",
+  "effort": "high",
+  "timeout_s": 2400
+ },
+ "require_calibrated_final": true,
+ "calibrated_t3_splits": [
+  "gata4_1",
+  "gata4_2",
+  "mab21l2_e95"
+ ],
+ "board_cycle_caps": {
+  "temporal": 16,
+  "perturbation": 24,
+  "heart": 24,
+  "embryo": 24
+ },
+ "local_evaluation_only": true,
+ "calibrated_t3_baseline_sha256": "23af4a1e3d963666bae2ef21e139a826694a9b208f922cb00110331b3d2583c4",
+ "calibrated_t3_baseline_workspace": "agentic_scientist/checks/enigma_t3",
+ "brief": "agentic_scientist/prompts/next_run.md",
+ "research_enabled": false,
+ "prompt_overrides": {
+  "ideator": "agentic_scientist/prompts/next_ideator.md",
+  "implementer": "agentic_scientist/prompts/next_implementer.md",
+  "debugger": "agentic_scientist/prompts/next_debugger.md"
+ },
+ "use_cross_run_history": false,
+ "worker_cycle_caps": {
+  "w0": 16,
+  "w1": 24,
+  "w2": 12,
+  "w3": 12,
+  "w4": 12,
+  "w5": 12
+ },
+ "worker_seed_sources": {
+  "w4": "humantrack/t2_heart/program.py"
+ },
+ "scope_quick_eval": true,
+ "t1_composition_veto": true,
+ "_models": "2026-11-19 user decision: every role runs GPT-6.2-Sol through codex exec (no DeepSeek, GLM or Claude). No overflow role: when the codex quota window closes, workers pause until it reopens.",
+ "fleet_research": true,
+ "t1_research_only": false,
+ "_selection": "T1 and T2 lines hill-climb on dev (paired acceptance, 3-day sanity gate for T1/heart); final keeps the scored seed for T1/T2 and lists their dev-best programs in final.json review_candidates. T3 is promoted only by a paired win over Enigma w1_c17 on the calibrated splits plus the unseen-gene veto. Research evaluations use the fleet; finalization is local.",
+ "_t1": "Seed: first-bundle sampler + heart-chamber donor rule (x0.05 non-cardiac) + blood at 0.8x its last-input share. t1_composition_veto = the T1 blood guard (agentic_scientist/composition.py): test-configuration forecast blood-like share <= the E10.5 input's; applied to every T1 candidate and to the seed at final. Agents see the verdict only.",
+ "_t2": "Heart: half the board on dissected targets (heart_organ_proxy, heart_e875_organ). Embryo: dev scored without shape metrics (they rank native geometry below overlays, opposite to the test); native single-embryo geometry is enforced by embryo_native_min on metrics.native_occupancy.",
+ "embryo_native_min": 0.85
+}

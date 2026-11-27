@@ -1,0 +1,9 @@
+anndata==0.13.4
+numpy==2.5.5
+pandas==3.1.1
+scipy==1.18.1
+scikit-learn==1.9.1
+requests==2.34.2
+optuna==4.1.0
+veckit @ git+https://github.com/aristoteleo/veckit.git@cc3859ab2a2305efc4544815d3f44f660efa77d4
+vec-community-kit @ git+https://github.com/xxx12e/vec-community-kit.git@0569db3233dd0729d8dd44adc18e5f33ca00436a

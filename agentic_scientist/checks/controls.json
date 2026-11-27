@@ -1,0 +1,340 @@
+{
+ "temporal_val": {
+  "floor_copy_last": {
+   "score": 47.39,
+   "metrics": {
+    "de_score": 36.4,
+    "de_direction": 53.3,
+    "mmd_u": 49.7,
+    "variogram": 50.3
+   }
+  },
+  "ctrl_scale_ref": {
+   "score": 28.75,
+   "metrics": {
+    "de_score": 34.5,
+    "de_direction": 53.6,
+    "mmd_u": 14.7,
+    "variogram": 11.6
+   }
+  },
+  "ctrl_shrink_ref": {
+   "score": 48.73,
+   "metrics": {
+    "de_score": 38.9,
+    "de_direction": 54.9,
+    "mmd_u": 50.2,
+    "variogram": 51.2
+   }
+  },
+  "ctrl_one_cell": {
+   "score": 31.05,
+   "metrics": {
+    "de_score": 36.4,
+    "de_direction": 53.3,
+    "mmd_u": 19.4,
+    "variogram": 14.0
+   }
+  }
+ },
+ "heart_early": {
+  "floor_copy_last": {
+   "score": 49.76,
+   "metrics": {
+    "de_score": 42.8,
+    "de_direction": 52.0,
+    "mmd_u": 49.8,
+    "variogram": 49.1,
+    "d2_shape": 50.8,
+    "occupancy_dice": 51.5,
+    "scale_log_ratio": 49.4,
+    "neighborhood_mmd": 51.6
+   }
+  },
+  "ctrl_scale_ref": {
+   "score": 36.37,
+   "metrics": {
+    "de_score": 36.3,
+    "de_direction": 53.0,
+    "mmd_u": 21.3,
+    "variogram": 25.2,
+    "d2_shape": 50.8,
+    "occupancy_dice": 51.5,
+    "scale_log_ratio": 49.4,
+    "neighborhood_mmd": 27.4
+   }
+  },
+  "ctrl_random_cube": {
+   "score": 48.08,
+   "metrics": {
+    "de_score": 42.8,
+    "de_direction": 52.0,
+    "mmd_u": 49.8,
+    "variogram": 49.1,
+    "d2_shape": 83.4,
+    "occupancy_dice": 53.4,
+    "scale_log_ratio": 65.2,
+    "neighborhood_mmd": 28.1
+   }
+  },
+  "ctrl_squashed_ref": {
+   "score": 45.87,
+   "metrics": {
+    "de_score": 42.8,
+    "de_direction": 52.0,
+    "mmd_u": 49.8,
+    "variogram": 49.1,
+    "d2_shape": 20.7,
+    "occupancy_dice": 25.8,
+    "scale_log_ratio": 58.7,
+    "neighborhood_mmd": 51.5
+   }
+  }
+ },
+ "heart_late": {
+  "floor_copy_last": {
+   "score": 49.76,
+   "metrics": {
+    "de_score": 42.8,
+    "de_direction": 52.0,
+    "mmd_u": 49.8,
+    "variogram": 49.1,
+    "d2_shape": 50.8,
+    "occupancy_dice": 51.5,
+    "scale_log_ratio": 49.4,
+    "neighborhood_mmd": 51.6
+   }
+  },
+  "ctrl_scale_ref": {
+   "score": 36.37,
+   "metrics": {
+    "de_score": 36.3,
+    "de_direction": 53.0,
+    "mmd_u": 21.3,
+    "variogram": 25.2,
+    "d2_shape": 50.8,
+    "occupancy_dice": 51.5,
+    "scale_log_ratio": 49.4,
+    "neighborhood_mmd": 27.4
+   }
+  },
+  "ctrl_random_cube": {
+   "score": 48.08,
+   "metrics": {
+    "de_score": 42.8,
+    "de_direction": 52.0,
+    "mmd_u": 49.8,
+    "variogram": 49.1,
+    "d2_shape": 83.4,
+    "occupancy_dice": 53.4,
+    "scale_log_ratio": 65.2,
+    "neighborhood_mmd": 28.1
+   }
+  },
+  "ctrl_squashed_ref": {
+   "score": 45.87,
+   "metrics": {
+    "de_score": 42.8,
+    "de_direction": 52.0,
+    "mmd_u": 49.8,
+    "variogram": 49.1,
+    "d2_shape": 20.7,
+    "occupancy_dice": 25.8,
+    "scale_log_ratio": 58.7,
+    "neighborhood_mmd": 51.5
+   }
+  }
+ },
+ "heart_long": {
+  "floor_copy_last": {
+   "score": 49.63,
+   "metrics": {
+    "de_score": 39.2,
+    "de_direction": 52.5,
+    "mmd_u": 49.6,
+    "variogram": 49.4,
+    "d2_shape": 47.7,
+    "occupancy_dice": 50.9,
+    "scale_log_ratio": 49.4,
+    "neighborhood_mmd": 53.8
+   }
+  },
+  "ctrl_scale_ref": {
+   "score": 38.45,
+   "metrics": {
+    "de_score": 31.3,
+    "de_direction": 52.6,
+    "mmd_u": 27.8,
+    "variogram": 25.8,
+    "d2_shape": 47.7,
+    "occupancy_dice": 50.9,
+    "scale_log_ratio": 49.4,
+    "neighborhood_mmd": 35.5
+   }
+  },
+  "ctrl_random_cube": {
+   "score": 45.49,
+   "metrics": {
+    "de_score": 39.2,
+    "de_direction": 52.5,
+    "mmd_u": 49.6,
+    "variogram": 49.4,
+    "d2_shape": 54.9,
+    "occupancy_dice": 49.7,
+    "scale_log_ratio": 51.2,
+    "neighborhood_mmd": 34.6
+   }
+  },
+  "ctrl_squashed_ref": {
+   "score": 42.68,
+   "metrics": {
+    "de_score": 39.2,
+    "de_direction": 52.5,
+    "mmd_u": 49.6,
+    "variogram": 49.4,
+    "d2_shape": 8.0,
+    "occupancy_dice": 24.4,
+    "scale_log_ratio": 36.4,
+    "neighborhood_mmd": 52.4
+   }
+  }
+ },
+ "embryo_early": {
+  "floor_copy_last": {
+   "score": 46.77,
+   "metrics": {
+    "de_score": 17.3,
+    "de_direction": 50.6,
+    "mmd_u": 50.3,
+    "variogram": 50.3,
+    "d2_shape": 51.9,
+    "occupancy_dice": 50.5,
+    "scale_log_ratio": 49.9,
+    "neighborhood_mmd": 52.0
+   }
+  },
+  "ctrl_scale_ref": {
+   "score": 35.59,
+   "metrics": {
+    "de_score": 9.6,
+    "de_direction": 50.7,
+    "mmd_u": 25.2,
+    "variogram": 29.2,
+    "d2_shape": 51.9,
+    "occupancy_dice": 50.5,
+    "scale_log_ratio": 49.9,
+    "neighborhood_mmd": 34.6
+   }
+  },
+  "ctrl_random_cube": {
+   "score": 48.7,
+   "metrics": {
+    "de_score": 17.3,
+    "de_direction": 50.6,
+    "mmd_u": 50.3,
+    "variogram": 50.3,
+    "d2_shape": 83.5,
+    "occupancy_dice": 59.3,
+    "scale_log_ratio": 85.4,
+    "neighborhood_mmd": 34.4
+   }
+  },
+  "ctrl_squashed_ref": {
+   "score": 39.56,
+   "metrics": {
+    "de_score": 17.3,
+    "de_direction": 50.6,
+    "mmd_u": 50.3,
+    "variogram": 50.3,
+    "d2_shape": 11.7,
+    "occupancy_dice": 25.6,
+    "scale_log_ratio": 30.4,
+    "neighborhood_mmd": 51.4
+   }
+  }
+ },
+ "gata4_1": {
+  "floor_wt_identity": {
+   "score": 46.77,
+   "metrics": {
+    "de_score": 37.4,
+    "de_direction": 52.2,
+    "severity_slope": 50.0,
+    "mmd_u": 50.4,
+    "variogram": 49.5
+   }
+  },
+  "ctrl_scale_wt": {
+   "score": 37.69,
+   "metrics": {
+    "de_score": 32.2,
+    "de_direction": 53.9,
+    "severity_slope": 50.0,
+    "mmd_u": 7.4,
+    "variogram": 14.5
+   }
+  },
+  "ctrl_shrink_wt": {
+   "score": 50.44,
+   "metrics": {
+    "de_score": 50.7,
+    "de_direction": 54.0,
+    "severity_slope": 50.0,
+    "mmd_u": 34.0,
+    "variogram": 64.4
+   }
+  },
+  "ctrl_random_dir": {
+   "score": 41.86,
+   "metrics": {
+    "de_score": 37.4,
+    "de_direction": 48.2,
+    "severity_slope": 50.0,
+    "mmd_u": 42.7,
+    "variogram": 12.1
+   }
+  }
+ },
+ "gata4_2": {
+  "floor_wt_identity": {
+   "score": 46.52,
+   "metrics": {
+    "de_score": 36.8,
+    "de_direction": 51.9,
+    "severity_slope": 50.0,
+    "mmd_u": 50.2,
+    "variogram": 50.0
+   }
+  },
+  "ctrl_scale_wt": {
+   "score": 38.13,
+   "metrics": {
+    "de_score": 31.6,
+    "de_direction": 53.0,
+    "severity_slope": 50.0,
+    "mmd_u": 12.1,
+    "variogram": 18.1
+   }
+  },
+  "ctrl_shrink_wt": {
+   "score": 51.11,
+   "metrics": {
+    "de_score": 50.6,
+    "de_direction": 53.2,
+    "severity_slope": 50.0,
+    "mmd_u": 42.0,
+    "variogram": 63.6
+   }
+  },
+  "ctrl_random_dir": {
+   "score": 42.75,
+   "metrics": {
+    "de_score": 39.5,
+    "de_direction": 48.5,
+    "severity_slope": 50.0,
+    "mmd_u": 42.8,
+    "variogram": 14.2
+   }
+  }
+ }
+}

@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")"
+python="$PWD/.venv/bin/python"
+
+case "${1:-}" in
+  pilot)
+    shift
+    cd focused/heart
+    exec "$python" -I fm/pilot.py "$@"
+    ;;
+  preflight)
+    shift
+    cd focused/heart
+    mkdir -p runs
+    exec "$python" -I fm/preflight.py --run heart_preflight "$@"
+    ;;
+  run)
+    shift
+    cd focused/heart
+    id=${1:-t2h_$(date -u +%Y%m%d_%H%M%S)}
+    if [[ ! $id =~ ^t2h_[A-Za-z0-9_-]+$ ]]; then
+      echo 'Run ID must begin with t2h_ and contain only letters, numbers, underscores or hyphens.' >&2
+      exit 2
+    fi
+    exec ./run.sh "$id"
+    ;;
+  dashboard)
+    shift
+    exec "$python" -I agentic_scientist/focused_dashboard.py "$@"
+    ;;
+  final-launch)
+    # ./agentic-scientist final-launch [lock.json]   (default: the newest lock) -> run "final" with config_final.json
+    shift
+    lock=${1:-$(ls -t agentic_scientist/locks/mglock_*.json | head -1)}
+    mkdir -p agentic_scientist/runs
+    setsid nohup agentic_scientist/supervise_final.sh "$lock" final agentic_scientist/config_final.json \
+      > agentic_scientist/runs/final.supervisor.log 2>&1 < /dev/null &
+    echo "launched run 'final' with lock $lock (supervisor log agentic_scientist/runs/final.supervisor.log)"
+    ;;
+  final-dashboard)
+    shift
+    exec "$python" -I agentic_scientist/dashboard.py "$@"
+    ;;
+  final-status)
+    d=$(ls -dt agentic_scientist/runs/mglock_*_final 2>/dev/null | head -1)
+    [[ -n $d ]] || { echo 'no final run yet'; exit 1; }
+    "$python" -I -c "import json,sys; s=json.load(open('$d/state.json')); print('$d'); print('phase', s.get('phase'), '| calls', s.get('calls'), '| accepted', len(s.get('accepted', [])), '| limited', s.get('limited_until'))"
+    tail -n 15 "$d/run.log"
+    ;;
+  *)
+    echo 'Usage: ./agentic-scientist {pilot|preflight|run|dashboard|final-launch|final-dashboard|final-status}'
+    exit 2
+    ;;
+esac

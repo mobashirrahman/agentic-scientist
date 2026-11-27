@@ -1,0 +1,133 @@
+% Provenance of the submitted files across the four locked runs (TikZ). Included by main.tex; colours are defined there.
+\begin{tikzpicture}[
+    font=\sffamily\fontsize{6.4}{7.7}\selectfont,
+    >={Stealth[length=4.2pt,width=3.6pt]},
+    cell/.style={draw=#1, line width=0.55pt, rounded corners=2.2pt, fill=white, align=left, minimum height=1.1cm,
+                 inner xsep=3pt, inner ysep=2.4pt, anchor=center,
+                 execute at begin node={\hyphenpenalty=10000 \exhyphenpenalty=10000 \raggedright}},
+    hum/.style={cell=asink, fill=asink!6},
+    agt/.style={cell=asblue, fill=asblue!9},
+    non/.style={cell=asrule, dashed, text=asinktwo},
+    tst/.style={font=\sffamily\bfseries\fontsize{8}{9}\selectfont, text=asink, anchor=center},
+    hdr/.style={font=\sffamily\bfseries\fontsize{6.9}{7.8}\selectfont, text=asink, anchor=south, align=center},
+    sub/.style={font=\sffamily\fontsize{6}{7}\selectfont, text=asinktwo, anchor=north, align=center},
+    brd/.style={font=\sffamily\bfseries\fontsize{6.9}{7.8}\selectfont, text=asink, anchor=west},
+    tag/.style={font=\sffamily\bfseries\fontsize{5.8}{6.5}\selectfont, text=asink, fill=white, inner sep=1.4pt, rounded corners=1pt}]
+  \newcommand{\id}[1]{{\bfseries\ttfamily\fontsize{6.1}{7.4}\selectfont #1}}
+  % column centres and widths
+  \def\xa{2.595}\def\cwa{1.85}   % seed 1
+  \def\xb{4.865}\def\cwb{2.05}   % run 1
+  \def\xc{6.910}\def\cwc{1.40}   % pre-lock edits
+  \def\xd{8.805}\def\cwd{1.75}   % run 2
+  \def\xe{10.95}\def\cwe{1.90}   % run 3
+  \def\xf{12.67}                 % test 1
+  \def\xg{14.58}\def\cwg{2.00}   % seed redesign
+  \def\xh{17.02}\def\cwh{2.25}   % run 4
+  \def\xj{18.89}                 % test 2
+  \def\ya{0}\def\yb{-1.28}\def\yc{-2.56}\def\yd{-3.84}\def\yt{-4.82}
+
+  % ------------------------------------------------------------------ backgrounds
+  \begin{scope}[on background layer]
+    \fill[aslane, rounded corners=4pt] (-0.12,1.92) rectangle (13.30,-5.18);
+    \fill[aslane, rounded corners=4pt] (13.42,1.92) rectangle (19.52,-5.18);
+    \fill[white, rounded corners=3pt] (12.10,1.08) rectangle (13.20,-5.08);
+    \fill[white, rounded corners=3pt] (18.32,1.08) rectangle (19.42,-5.08);
+  \end{scope}
+  \node[brd, anchor=west] at (0.02,1.64) {FIRST SUBMISSION};
+  \node[sub, anchor=west] at (2.95,1.765) {three locked runs, each seeded with the previous run's automatic selection};
+  \node[brd, anchor=west] at (13.56,1.64) {SECOND SUBMISSION};
+
+  % ------------------------------------------------------------------ column headers
+  \node[hdr] at (\xa,0.98) {Seed 1};            \node[sub] at (\xa,0.98) {people, before lock 1};
+  \node[hdr] at (\xb,0.98) {Run 1};             \node[sub] at (\xb,0.98) {agents, 10.6 h};
+  \node[hdr] at (\xc,0.98) {Edits};             \node[sub] at (\xc,0.98) {people, 15 lines};
+  \node[hdr] at (\xd,0.98) {Run 2};             \node[sub] at (\xd,0.98) {agents, 2.9 h};
+  \node[hdr] at (\xe,0.98) {Run 3 (D-Day)};     \node[sub] at (\xe,0.98) {agents, 14.3 h};
+  \node[hdr] at (\xf,0.98) {Test};              \node[sub] at (\xf,0.98) {hidden};
+  \node[hdr] at (\xg,0.98) {Seed redesign};     \node[sub] at (\xg,0.98) {people, from test feedback};
+  \node[hdr] at (\xh,0.98) {Run 4 (Normandy)};  \node[sub] at (\xh,0.98) {agents, 26.7 h};
+  \node[hdr] at (\xj,0.98) {Test};              \node[sub] at (\xj,0.98) {hidden};
+
+  % ------------------------------------------------------------------ row labels
+  \foreach \y/\c/\t/\s in {\ya/asblue/T1/temporal, \yb/asorange/T2/heart, \yc/asaqua/T2/embryo, \yd/asyellow/T3/knockout} {
+    \fill[\c, rounded corners=1.2pt] (0.04,\y-0.5) rectangle (0.16,\y+0.5);
+    \node[brd] at (0.24,\y+0.14) {\t};
+    \node[sub, anchor=west] at (0.24,\y-0.04) {\s};
+  }
+
+  % ------------------------------------------------------------------ T1
+  \node[hum, text width=\cwa cm] (a1) at (\xa,\ya) {real E10.5 nuclei; chamber sampling rule};
+  \node[agt, text width=\cwb cm] (b1) at (\xb,\ya) {maturity tilt, atlas late-anchor step \id{w0\_c10} (Dev only)};
+  \node[hum, text width=\cwc cm] (c1) at (\xc,\ya) {output size 5,000 cells};
+  \node[non, text width=\cwd cm] (d1) at (\xd,\ya) {no accepted change};
+  \node[non, text width=\cwe cm] (e1) at (\xe,\ya) {3 accepted; best +2.0, bound +0.09: seed kept};
+  \node[tst] at (\xf,\ya) {71.10};
+  \node[hum, text width=\cwg cm] (g1) at (\xg,\ya) {cardiomyocyte share restored, 6\% to 20\%};
+  \node[agt, text width=\cwh cm] (h1) at (\xh,\ya) {lineage-specific anchor directions \id{w3\_c02}\\holdout +3.8};
+  \node[tst] at (\xj,\ya) {73.10};
+
+  % ------------------------------------------------------------------ heart
+  \node[hum, text width=\cwa cm] (a2) at (\xa,\yb) {real E10.5 cells cropped to the heart region};
+  \node[agt, text width=\cwb cm] (b2) at (\xb,\yb) {growth, depth thinning, placement \id{w1\_c16} (Dev only)};
+  \node[hum, text width=\cwc cm] (c2) at (\xc,\yb) {output size 25,179 cells};
+  \node[agt, text width=\cwd cm] (d2) at (\xd,\yb) {bounded fetal maturation \id{w1\_c02}\\holdout +1.1};
+  \node[non, text width=\cwe cm] (e2) at (\xe,\yb) {5 accepted, \textminus0.2 to \textminus0.4 on holdout: seed kept};
+  \node[tst] at (\xf,\yb) {65.23};
+  \node[hum, text width=\cwg cm] (g2) at (\xg,\yb) {epicardium added; attached-tissue rule; radius capped};
+  \node[agt, text width=\cwh cm] (h2) at (\xh,\yb) {placement stack, Gompertz size \id{w1\_c38}\\holdout +2.6};
+  \node[tst] at (\xj,\yb) {69.04};
+
+  % ------------------------------------------------------------------ embryo
+  \node[hum, text width=\cwa cm] (a3) at (\xa,\yc) {native scaffold; local-field transplants};
+  \node[non, text width=\cwb cm] (b3) at (\xb,\yc) {10 accepted; 6 re-scored, \textminus5.1 to \textminus10.5: seed kept};
+  \node[hum, text width=\cwc cm] (c3) at (\xc,\yc) {nearer-bracket rule made symmetric};
+  \node[non, text width=\cwd cm] (d3) at (\xd,\yc) {2 accepted, \textminus1.0 and \textminus4.4: seed kept};
+  \node[non, text width=\cwe cm] (e3) at (\xe,\yc) {9 accepted, \textminus2.8 to \textminus8.1 on holdout: seed kept};
+  \node[tst] at (\xf,\yc) {68.43};
+  \node[hum, text width=\cwg cm] (g3) at (\xg,\yc) {midpoint geometry on the native imaging axes};
+  \node[non, text width=\cwh cm] (h3) at (\xh,\yc) {12 accepted, \textminus0.7 to \textminus4.9 on holdout: seed kept};
+  \node[tst] at (\xj,\yc) {68.43\rlap{$^{\ast}$}};
+
+  % ------------------------------------------------------------------ T3
+  \node[hum, text width=\cwa cm] (a4) at (\xa,\yd) {atlas-flow response program};
+  \node[agt, text width=\cwb cm] (b4) at (\xb,\yd) {GO-gated real-cell delay \id{w3\_c09} (Dev only)};
+  \node[hum, text width=\cwc cm] (c4) at (\xc,\yd) {one-line bug fix};
+  \node[non, text width=\cwd cm] (d4) at (\xd,\yd) {no accepted change};
+  \node[non, text width=\cwe cm] (e4) at (\xe,\yd) {\id{w3\_c05} taken on Dev; test file unchanged};
+  \node[tst] at (\xf,\yd) {69.02};
+  \node[hum, text width=\cwg cm] (g4) at (\xg,\yd) {delay deepened to 2.3 sampling intervals};
+  \node[non, text width=\cwh cm] (h4) at (\xh,\yd) {board frozen: no research};
+  \node[tst] at (\xj,\yd) {71.53};
+
+  % ------------------------------------------------------------------ flow arrows
+  \foreach \r in {1,2,3,4} {
+    \draw[->, line width=0.6pt, draw=asink!70] (a\r) -- (b\r);
+    \draw[->, line width=0.6pt, draw=asink!70] (b\r) -- (c\r);
+    \draw[->, line width=0.6pt, draw=asink!70] (c\r) -- (d\r);
+    \draw[->, line width=0.6pt, draw=asink!70] (d\r) -- (e\r);
+    \draw[->, line width=0.6pt, draw=asink!70] (g\r) -- (h\r);
+  }
+  \foreach \y in {\ya,\yb,\yc,\yd} {
+    \draw[->, line width=0.6pt, draw=asink!70] (\xe+0.5*\cwe+0.115,\y) -- (12.14,\y);
+    \draw[->, line width=0.6pt, draw=asink!70] (13.16,\y) -- (\xg-0.5*\cwg-0.115,\y);
+    \draw[->, line width=0.6pt, draw=asink!70] (\xh+0.5*\cwh+0.115,\y) -- (18.36,\y);
+  }
+
+  % ------------------------------------------------------------------ totals
+  \draw[asrule, line width=0.5pt] (12.2,-4.47) -- (13.1,-4.47);
+  \draw[asrule, line width=0.5pt] (18.42,-4.47) -- (19.32,-4.47);
+  \node[tst, font=\sffamily\bfseries\fontsize{8.6}{9.5}\selectfont] at (\xf,\yt) {206.95};
+  \node[tst, font=\sffamily\bfseries\fontsize{8.6}{9.5}\selectfont] at (\xj,\yt) {213.37};
+  \node[sub, anchor=east] at (11.95,\yt+0.09) {total = T1 + \textonehalf\,(heart + embryo) + T3};
+  \node[sub, anchor=east] at (18.17,\yt+0.09) {rank 24 of 97 agent teams};
+
+  % ------------------------------------------------------------------ legend
+  \begin{scope}[shift={(0.2,-5.55)}]
+    \node[hum, minimum height=0.30cm, text width=0.34cm, inner sep=0pt] at (0,0) {};
+    \node[anchor=west, text=asinktwo] at (0.27,0) {written by people before a lock};
+    \node[agt, minimum height=0.30cm, text width=0.34cm, inner sep=0pt] at (4.75,0) {};
+    \node[anchor=west, text=asinktwo] at (5.02,0) {agent change selected by the run's finalization};
+    \node[non, minimum height=0.30cm, text width=0.34cm, inner sep=0pt] at (11.1,0) {};
+    \node[anchor=west, text=asinktwo] at (11.37,0) {research ran, nothing selected: the board's seed files pass through unchanged};
+  \end{scope}
+\end{tikzpicture}

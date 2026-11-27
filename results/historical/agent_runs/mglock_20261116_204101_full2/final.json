@@ -1,0 +1,147 @@
+{
+ "lock_id": "mglock_20261116_204101",
+ "rule": "max holdout proxy among top-K dev, must beat seed on holdout",
+ "candidates": [
+  {
+   "id": "seed",
+   "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261116_204101_full2/seed_ws",
+   "proxy": 173.64055555555558,
+   "holdout": 163.67555555555558,
+   "holdout_sd": 1.4407119510596027,
+   "holdout_pairs": [
+    164.09500000000003,
+    164.86,
+    162.07166666666666
+   ],
+   "holdout_boards": {
+    "temporal": 55.52555555555556,
+    "heart": 52.57888888888888,
+    "embryo": 70.11222222222223,
+    "perturbation": 46.80444444444444
+   }
+  },
+  {
+   "id": "w2_c05",
+   "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261116_204101_full2/cycles/w2_c05/ws",
+   "proxy": 183.96118055555556,
+   "boards": {
+    "temporal": 60.05666666666667,
+    "heart": 54.66111111111112,
+    "embryo": 81.09666666666668,
+    "perturbation": 56.05333333333333
+   },
+   "holdout": 167.45000000000002,
+   "holdout_sd": 0.5634787780682903,
+   "holdout_pairs": [
+    167.99333333333334,
+    167.48833333333334,
+    166.86833333333334
+   ],
+   "holdout_boards": {
+    "temporal": 59.49777777777778,
+    "heart": 51.61888888888888,
+    "embryo": 70.11222222222223,
+    "perturbation": 47.086666666666666
+   }
+  },
+  {
+   "id": "w2_c04",
+   "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261116_204101_full2/cycles/w2_c04/ws",
+   "proxy": 182.09131944444445,
+   "boards": {
+    "temporal": 60.05666666666667,
+    "heart": 53.855555555555554,
+    "embryo": 81.09666666666668,
+    "perturbation": 56.05333333333333
+   },
+   "holdout": 166.58444444444444,
+   "holdout_sd": 0.37157447785415637,
+   "holdout_pairs": [
+    167.00833333333333,
+    166.43,
+    166.315
+   ],
+   "holdout_boards": {
+    "temporal": 59.49777777777778,
+    "heart": 49.88777777777778,
+    "embryo": 70.11222222222223,
+    "perturbation": 47.086666666666666
+   }
+  },
+  {
+   "id": "w2_c03",
+   "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261116_204101_full2/cycles/w2_c03/ws",
+   "proxy": 179.98777777777778,
+   "boards": {
+    "temporal": 60.05666666666667,
+    "heart": 53.855555555555554,
+    "embryo": 81.09666666666668,
+    "perturbation": 53.93666666666667
+   },
+   "holdout": 166.30222222222224,
+   "holdout_sd": 0.6255804711833038,
+   "holdout_pairs": [
+    166.61833333333334,
+    166.70666666666668,
+    165.58166666666668
+   ],
+   "holdout_boards": {
+    "temporal": 59.49777777777778,
+    "heart": 49.88777777777778,
+    "embryo": 70.11222222222223,
+    "perturbation": 46.80444444444444
+   }
+  },
+  {
+   "id": "w0_c02",
+   "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261116_204101_full2/cycles/w0_c02/ws",
+   "proxy": 179.3048611111111,
+   "boards": {
+    "temporal": 57.47666666666667,
+    "heart": 54.898888888888884,
+    "embryo": 81.09666666666668,
+    "perturbation": 53.93666666666667
+   },
+   "holdout": 164.32888888888888,
+   "holdout_sd": 0.334922600234958,
+   "holdout_pairs": [
+    164.06833333333336,
+    164.70666666666668,
+    164.21166666666667
+   ],
+   "holdout_boards": {
+    "temporal": 57.52444444444445,
+    "heart": 49.88777777777778,
+    "embryo": 70.11222222222223,
+    "perturbation": 46.80444444444444
+   }
+  },
+  {
+   "id": "w1_c04",
+   "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261116_204101_full2/cycles/w1_c04/ws",
+   "proxy": 177.31680555555556,
+   "boards": {
+    "temporal": 58.446666666666665,
+    "heart": 48.77111111111111,
+    "embryo": 81.09666666666668,
+    "perturbation": 53.93666666666667
+   },
+   "holdout": 167.49666666666667,
+   "holdout_sd": 0.2543018766042535,
+   "holdout_pairs": [
+    167.54500000000002,
+    167.72333333333333,
+    167.22166666666666
+   ],
+   "holdout_boards": {
+    "temporal": 59.346666666666664,
+    "heart": 52.57888888888888,
+    "embryo": 70.11222222222223,
+    "perturbation": 46.80444444444444
+   }
+  }
+ ],
+ "chosen": "w1_c04",
+ "cost_usd": 10.9455959,
+ "agent_calls": 125
+}

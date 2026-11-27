@@ -1,0 +1,88 @@
+{
+    "combined_score": 169.59625,
+    "public": {
+        "board_scores": {
+            "temporal": 53.115,
+            "heart": 50.9725,
+            "embryo": 74.815,
+            "perturbation": 53.5875
+        },
+        "total_proxy": 169.59625
+    },
+    "private": {
+        "split_scores": {
+            "temporal_10.5": 53.115,
+            "heart_early": 49.46,
+            "heart_late": 52.485,
+            "embryo_early": 80.975,
+            "embryo_late": 68.655,
+            "gata4_1": 53.515,
+            "gata4_2": 53.66
+        },
+        "split_metrics": {
+            "temporal_10.5": {
+                "de_score": 43.365,
+                "de_direction": 57.44499999999999,
+                "mmd_u": 57.78,
+                "variogram": 52.9
+            },
+            "heart_early": {
+                "de_score": 43.305,
+                "de_direction": 50.474999999999994,
+                "mmd_u": 50.305,
+                "variogram": 49.379999999999995,
+                "d2_shape": 48.635000000000005,
+                "occupancy_dice": 52.715,
+                "scale_log_ratio": 51.045,
+                "neighborhood_mmd": 50.215
+            },
+            "heart_late": {
+                "de_score": 47.15,
+                "de_direction": 51.575,
+                "mmd_u": 49.83,
+                "variogram": 49.57,
+                "d2_shape": 55.18,
+                "occupancy_dice": 49.84,
+                "scale_log_ratio": 74.84,
+                "neighborhood_mmd": 50.895
+            },
+            "embryo_early": {
+                "de_score": 75.0,
+                "de_direction": 82.64,
+                "mmd_u": 85.77000000000001,
+                "variogram": 87.28,
+                "d2_shape": 93.31,
+                "occupancy_dice": 55.21,
+                "scale_log_ratio": 83.14000000000001,
+                "neighborhood_mmd": 81.49000000000001
+            },
+            "embryo_late": {
+                "de_score": 59.63,
+                "de_direction": 65.96000000000001,
+                "mmd_u": 67.53999999999999,
+                "variogram": 79.21,
+                "d2_shape": 73.745,
+                "occupancy_dice": 68.03,
+                "scale_log_ratio": 87.085,
+                "neighborhood_mmd": 63.334999999999994
+            },
+            "gata4_1": {
+                "de_score": 49.69,
+                "de_direction": 52.400000000000006,
+                "severity_slope": 50.0,
+                "mmd_u": 63.730000000000004,
+                "variogram": 66.995
+            },
+            "gata4_2": {
+                "de_score": 49.43,
+                "de_direction": 54.040000000000006,
+                "severity_slope": 50.0,
+                "mmd_u": 62.945,
+                "variogram": 65.835
+            }
+        }
+    },
+    "text_feedback": "embryo: 74.81\nheart: 50.97\nperturbation: 53.59\ntemporal: 53.12\ntemporal_10.5: 53.12; weakest skills de_score=43.4, variogram=52.9, de_direction=57.4\nheart_early: 49.46; weakest skills de_score=43.3, d2_shape=48.6, variogram=49.4\nheart_late: 52.48; weakest skills de_score=47.1, variogram=49.6, mmd_u=49.8\nembryo_early: 80.97; weakest skills occupancy_dice=55.2, de_score=75.0, neighborhood_mmd=81.5\nembryo_late: 68.66; weakest skills de_score=59.6, neighborhood_mmd=63.3, de_direction=66.0\ngata4_1: 53.52; weakest skills de_score=49.7, severity_slope=50.0, de_direction=52.4\ngata4_2: 53.66; weakest skills de_score=49.4, severity_slope=50.0, de_direction=54.0",
+    "execution_time_mean": 66.25614503357376,
+    "execution_time_std": 47.754545967483466
+}

@@ -1,0 +1,416 @@
+{
+ "guard_heart_e85": {
+  "baseline": {
+   "42": {
+    "score": 49.37185133333333,
+    "metrics": {
+     "de_score": 46.51666666666667,
+     "de_direction": 49.97666666666667,
+     "mmd_u": 48.76333333333333,
+     "variogram": 50.449999999999996,
+     "d2_shape": 50.926666666666655,
+     "occupancy_dice": 48.77,
+     "scale_log_ratio": 49.76333333333333,
+     "neighborhood_mmd": 50.48000000000001
+    }
+   },
+   "101": {
+    "score": 48.64155733333333,
+    "metrics": {
+     "de_score": 46.5,
+     "de_direction": 47.49,
+     "mmd_u": 48.383333333333326,
+     "variogram": 50.89000000000001,
+     "d2_shape": 49.553333333333335,
+     "occupancy_dice": 53.166666666666664,
+     "scale_log_ratio": 49.19333333333333,
+     "neighborhood_mmd": 48.81333333333333
+    }
+   },
+   "211": {
+    "score": 50.5528,
+    "metrics": {
+     "de_score": 48.48333333333333,
+     "de_direction": 50.836666666666666,
+     "mmd_u": 51.71333333333333,
+     "variogram": 51.14666666666667,
+     "d2_shape": 53.776666666666664,
+     "occupancy_dice": 50.31,
+     "scale_log_ratio": 50.17666666666667,
+     "neighborhood_mmd": 50.28666666666666
+    }
+   }
+  },
+  "codex": {
+   "42": {
+    "score": 52.47,
+    "metrics": {
+     "de_score": 52.06666666666666,
+     "de_direction": 57.19,
+     "mmd_u": 52.86333333333334,
+     "variogram": 51.68000000000001,
+     "d2_shape": 52.61333333333334,
+     "occupancy_dice": 50.38,
+     "scale_log_ratio": 44.666666666666664,
+     "neighborhood_mmd": 53.66333333333333
+    }
+   },
+   "101": {
+    "score": 52.093333333333334,
+    "metrics": {
+     "de_score": 52.36000000000001,
+     "de_direction": 56.833333333333336,
+     "mmd_u": 52.45666666666667,
+     "variogram": 51.72666666666667,
+     "d2_shape": 52.88333333333333,
+     "occupancy_dice": 50.04666666666666,
+     "scale_log_ratio": 44.666666666666664,
+     "neighborhood_mmd": 52.406666666666666
+    }
+   },
+   "211": {
+    "score": 52.01908733333334,
+    "metrics": {
+     "de_score": 51.63333333333333,
+     "de_direction": 55.81666666666667,
+     "mmd_u": 53.333333333333336,
+     "variogram": 51.82333333333333,
+     "d2_shape": 51.00333333333333,
+     "occupancy_dice": 52.526666666666664,
+     "scale_log_ratio": 44.666666666666664,
+     "neighborhood_mmd": 52.25666666666667
+    }
+   }
+  },
+  "geometry": {
+   "42": {
+    "score": 49.69161,
+    "metrics": {
+     "de_score": 46.51666666666667,
+     "de_direction": 49.97666666666667,
+     "mmd_u": 48.76333333333333,
+     "variogram": 50.449999999999996,
+     "d2_shape": 58.11666666666667,
+     "occupancy_dice": 53.03,
+     "scale_log_ratio": 42.376666666666665,
+     "neighborhood_mmd": 50.43333333333334
+    }
+   },
+   "101": {
+    "score": 48.978806,
+    "metrics": {
+     "de_score": 46.5,
+     "de_direction": 47.49,
+     "mmd_u": 48.383333333333326,
+     "variogram": 50.89000000000001,
+     "d2_shape": 57.35666666666666,
+     "occupancy_dice": 56.01,
+     "scale_log_ratio": 41.96333333333333,
+     "neighborhood_mmd": 48.946666666666665
+    }
+   },
+   "211": {
+    "score": 50.87166,
+    "metrics": {
+     "de_score": 48.48333333333333,
+     "de_direction": 50.836666666666666,
+     "mmd_u": 51.71333333333333,
+     "variogram": 51.14666666666667,
+     "d2_shape": 61.45333333333334,
+     "occupancy_dice": 53.64333333333334,
+     "scale_log_ratio": 42.73333333333333,
+     "neighborhood_mmd": 50.35
+    }
+   }
+  },
+  "expression": {
+   "42": {
+    "score": 48.945113333333325,
+    "metrics": {
+     "de_score": 46.52,
+     "de_direction": 49.35999999999999,
+     "mmd_u": 47.79,
+     "variogram": 50.693333333333335,
+     "d2_shape": 50.926666666666655,
+     "occupancy_dice": 48.77,
+     "scale_log_ratio": 49.76333333333333,
+     "neighborhood_mmd": 49.78
+    }
+   },
+   "101": {
+    "score": 48.19333399999999,
+    "metrics": {
+     "de_score": 45.94,
+     "de_direction": 47.68,
+     "mmd_u": 47.54,
+     "variogram": 50.916666666666664,
+     "d2_shape": 49.553333333333335,
+     "occupancy_dice": 53.166666666666664,
+     "scale_log_ratio": 49.19333333333333,
+     "neighborhood_mmd": 48.24666666666667
+    }
+   },
+   "211": {
+    "score": 50.044459999999994,
+    "metrics": {
+     "de_score": 47.43,
+     "de_direction": 49.836666666666666,
+     "mmd_u": 50.93666666666667,
+     "variogram": 50.86333333333334,
+     "d2_shape": 53.776666666666664,
+     "occupancy_dice": 50.31,
+     "scale_log_ratio": 50.17666666666667,
+     "neighborhood_mmd": 49.919999999999995
+    }
+   }
+  },
+  "combined": {
+   "42": {
+    "score": 49.26179200000001,
+    "metrics": {
+     "de_score": 46.52,
+     "de_direction": 49.35999999999999,
+     "mmd_u": 47.79,
+     "variogram": 50.693333333333335,
+     "d2_shape": 58.11666666666667,
+     "occupancy_dice": 53.03,
+     "scale_log_ratio": 42.376666666666665,
+     "neighborhood_mmd": 49.72
+    }
+   },
+   "101": {
+    "score": 48.543766,
+    "metrics": {
+     "de_score": 45.94,
+     "de_direction": 47.68,
+     "mmd_u": 47.54,
+     "variogram": 50.916666666666664,
+     "d2_shape": 57.35666666666666,
+     "occupancy_dice": 56.01,
+     "scale_log_ratio": 41.96333333333333,
+     "neighborhood_mmd": 48.39000000000001
+    }
+   },
+   "211": {
+    "score": 50.38225333333333,
+    "metrics": {
+     "de_score": 47.43,
+     "de_direction": 49.836666666666666,
+     "mmd_u": 50.93666666666667,
+     "variogram": 50.86333333333334,
+     "d2_shape": 61.45333333333334,
+     "occupancy_dice": 53.64333333333334,
+     "scale_log_ratio": 42.73333333333333,
+     "neighborhood_mmd": 50.050000000000004
+    }
+   }
+  }
+ },
+ "guard_heart_e85_dis": {
+  "baseline": {
+   "42": {
+    "score": 49.98038866666667,
+    "metrics": {
+     "de_score": 49.153333333333336,
+     "de_direction": 50.876666666666665,
+     "mmd_u": 50.01000000000001,
+     "variogram": 50.61333333333332,
+     "d2_shape": 49.52333333333333,
+     "occupancy_dice": 51.800000000000004,
+     "scale_log_ratio": 49.87,
+     "neighborhood_mmd": 49.723333333333336
+    }
+   },
+   "101": {
+    "score": 51.529242,
+    "metrics": {
+     "de_score": 55.38666666666666,
+     "de_direction": 54.669999999999995,
+     "mmd_u": 50.64333333333334,
+     "variogram": 51.13333333333333,
+     "d2_shape": 49.21,
+     "occupancy_dice": 54.65333333333333,
+     "scale_log_ratio": 49.54,
+     "neighborhood_mmd": 49.593333333333334
+    }
+   },
+   "211": {
+    "score": 50.29392133333334,
+    "metrics": {
+     "de_score": 47.63666666666666,
+     "de_direction": 48.35666666666666,
+     "mmd_u": 50.053333333333335,
+     "variogram": 50.29,
+     "d2_shape": 52.38333333333333,
+     "occupancy_dice": 59.836666666666666,
+     "scale_log_ratio": 50.10666666666666,
+     "neighborhood_mmd": 49.53333333333333
+    }
+   }
+  },
+  "codex": {
+   "42": {
+    "score": 61.64333333333334,
+    "metrics": {
+     "de_score": 74.27,
+     "de_direction": 78.12666666666667,
+     "mmd_u": 58.19666666666666,
+     "variogram": 58.169999999999995,
+     "d2_shape": 62.16,
+     "occupancy_dice": 47.74000000000001,
+     "scale_log_ratio": 46.79666666666666,
+     "neighborhood_mmd": 59.96666666666667
+    }
+   },
+   "101": {
+    "score": 62.54,
+    "metrics": {
+     "de_score": 73.71999999999998,
+     "de_direction": 77.97333333333334,
+     "mmd_u": 59.166666666666664,
+     "variogram": 58.46666666666667,
+     "d2_shape": 63.50666666666666,
+     "occupancy_dice": 60.65,
+     "scale_log_ratio": 46.79666666666666,
+     "neighborhood_mmd": 58.446666666666665
+    }
+   },
+   "211": {
+    "score": 61.150000000000006,
+    "metrics": {
+     "de_score": 74.27,
+     "de_direction": 78.08666666666666,
+     "mmd_u": 58.69333333333333,
+     "variogram": 57.839999999999996,
+     "d2_shape": 63.18333333333334,
+     "occupancy_dice": 39.053333333333335,
+     "scale_log_ratio": 46.79666666666666,
+     "neighborhood_mmd": 60.38666666666666
+    }
+   }
+  },
+  "geometry": {
+   "42": {
+    "score": 50.71667399999999,
+    "metrics": {
+     "de_score": 49.153333333333336,
+     "de_direction": 50.876666666666665,
+     "mmd_u": 50.01000000000001,
+     "variogram": 50.61333333333332,
+     "d2_shape": 56.10333333333333,
+     "occupancy_dice": 59.00333333333333,
+     "scale_log_ratio": 45.31999999999999,
+     "neighborhood_mmd": 49.669999999999995
+    }
+   },
+   "101": {
+    "score": 52.611424666666665,
+    "metrics": {
+     "de_score": 55.38666666666666,
+     "de_direction": 54.669999999999995,
+     "mmd_u": 50.64333333333334,
+     "variogram": 51.13333333333333,
+     "d2_shape": 56.85333333333333,
+     "occupancy_dice": 64.53666666666668,
+     "scale_log_ratio": 45.04333333333333,
+     "neighborhood_mmd": 49.6
+    }
+   },
+   "211": {
+    "score": 50.83796,
+    "metrics": {
+     "de_score": 47.63666666666666,
+     "de_direction": 48.35666666666666,
+     "mmd_u": 50.053333333333335,
+     "variogram": 50.29,
+     "d2_shape": 59.73,
+     "occupancy_dice": 63.45333333333334,
+     "scale_log_ratio": 45.550000000000004,
+     "neighborhood_mmd": 49.55666666666667
+    }
+   }
+  },
+  "expression": {
+   "42": {
+    "score": 50.41170333333333,
+    "metrics": {
+     "de_score": 51.98,
+     "de_direction": 52.82,
+     "mmd_u": 49.90666666666667,
+     "variogram": 50.82666666666666,
+     "d2_shape": 49.52333333333333,
+     "occupancy_dice": 51.800000000000004,
+     "scale_log_ratio": 49.87,
+     "neighborhood_mmd": 49.300000000000004
+    }
+   },
+   "101": {
+    "score": 51.30727733333333,
+    "metrics": {
+     "de_score": 54.339999999999996,
+     "de_direction": 54.800000000000004,
+     "mmd_u": 50.449999999999996,
+     "variogram": 51.36000000000001,
+     "d2_shape": 49.21,
+     "occupancy_dice": 54.65333333333333,
+     "scale_log_ratio": 49.54,
+     "neighborhood_mmd": 49.356666666666676
+    }
+   },
+   "211": {
+    "score": 50.277894,
+    "metrics": {
+     "de_score": 48.87,
+     "de_direction": 48.416666666666664,
+     "mmd_u": 49.79333333333333,
+     "variogram": 50.443333333333335,
+     "d2_shape": 52.38333333333333,
+     "occupancy_dice": 59.836666666666666,
+     "scale_log_ratio": 50.10666666666666,
+     "neighborhood_mmd": 49.196666666666665
+    }
+   }
+  },
+  "combined": {
+   "42": {
+    "score": 51.15054533333333,
+    "metrics": {
+     "de_score": 51.98,
+     "de_direction": 52.82,
+     "mmd_u": 49.90666666666667,
+     "variogram": 50.82666666666666,
+     "d2_shape": 56.10333333333333,
+     "occupancy_dice": 59.00333333333333,
+     "scale_log_ratio": 45.31999999999999,
+     "neighborhood_mmd": 49.26
+    }
+   },
+   "101": {
+    "score": 52.394719333333335,
+    "metrics": {
+     "de_score": 54.339999999999996,
+     "de_direction": 54.800000000000004,
+     "mmd_u": 50.449999999999996,
+     "variogram": 51.36000000000001,
+     "d2_shape": 56.85333333333333,
+     "occupancy_dice": 64.53666666666668,
+     "scale_log_ratio": 45.04333333333333,
+     "neighborhood_mmd": 49.39000000000001
+    }
+   },
+   "211": {
+    "score": 50.826765333333334,
+    "metrics": {
+     "de_score": 48.87,
+     "de_direction": 48.416666666666664,
+     "mmd_u": 49.79333333333333,
+     "variogram": 50.443333333333335,
+     "d2_shape": 59.73,
+     "occupancy_dice": 63.45333333333334,
+     "scale_log_ratio": 45.550000000000004,
+     "neighborhood_mmd": 49.23333333333333
+    }
+   }
+  }
+ }
+}

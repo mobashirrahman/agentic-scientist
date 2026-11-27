@@ -1,0 +1,9 @@
+{
+  "program": "agentic_scientist_final_seed",
+  "parts": {
+    "temporal": "Empirical last-input sampler with damped composition growth + organiser heart-chamber donor rule (x0.05) + blood held at 0.8x its last-input share; no target-derived constants",
+    "perturbation": "T3 program from an earlier agent run (second distinct T3 program on the archived paired dev ranking)",
+    "heart": "Real cells of the latest input; heart-chamber crop at native size when the target is a dissected heart",
+    "embryo": "Expression mixture of both brackets placed one-to-one on a distinct subsample of the nearer bracket embryo (native coordinates, no stretch)"
+  }
+}

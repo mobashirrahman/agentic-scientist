@@ -1,0 +1,15 @@
+{
+ "program": "turing_final_selected_t3cap",
+ "from_run": "agentic_scientist/runs/mglock_20261118_023940_Turing",
+ "selected_sha256": "88c142630f8bd2d3d029276684548eeac7ea4e859f94350f6c4e025107d102eb",
+ "workspace_sha256": "538b483eabc75aa738cbd872edbd7674c2027a673b389615465aa9caff78afbe",
+ "parts": {
+  "temporal": "Turing w3_c06 (dev 59.3->69.1; dev-only board, passed 3-day plausibility)",
+  "perturbation": "Turing w0_c14 (dev 54.0->63.0; unseen Tal1 knockout +6.15 +- 0.22 vs seed)",
+  "heart": "previous seed (full6 w3_c01): Turing heart candidates lost on held-out E10.5 (52.6 -> 51.0-52.3)",
+  "embryo": "previous seed (full3): Turing embryo candidates lost on held-out E7.5 (70.1 -> 65.2-66.3)"
+ },
+ "human_edit": "T3 output size capped at the official 7449 cells (N_DEFAULT/N_CAP 12000/20000 -> 7449); pre-lock human development",
+ "previous_seed_archived": "agentic_scientist/seed_history/20261118_171956",
+ "holdout_note": "Turing final selection used E10.5 heart, E7.5 embryo, the Tal1 unseen knockout and fresh T1 seeds; these holdouts informed this seed, so the next run re-uses them as a regression check, not an unbiased estimate."
+}

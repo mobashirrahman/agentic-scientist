@@ -1,0 +1,625 @@
+{
+ "generated": "2026-11-17 18:52:26",
+ "repo_commit": "3871c651ca02ea82f5c28aa1190b5b73d82acc20",
+ "rules": "Rules s10 + organiser Slack answers (docs/SLACK_NOTES.md); disclosure text in docs/EXTERNAL_SOURCES.md",
+ "harness_checks": "shinka_ve/harness.py FORBIDDEN_DAYS + load_anchor (per-cell stage_days, manifest stages, perturbation flag)",
+ "sources": {
+  "qiu2024": {
+   "citation": "Qiu et al. 2024, Nature 626:1084, doi 10.1038/s41586-024-07069-w",
+   "boards": [
+    "temporal"
+   ],
+   "rule_filter": "Theiler 12-13 and 23-25 only; Theiler 14-22 (covers >E9.5..E13.5) never transferred; asserted per row.",
+   "raw_files": [],
+   "raw_note": "Fetched cell subsets from CELLxGENE Census 2025-11-08 (server-side stage filter); no raw files kept.",
+   "build_scripts": [
+    {
+     "path": "scripts/v2/fetch_qiu2024.py",
+     "git_blob": "82360cb30982c4d2412cb7457362454cb4537247"
+    },
+    {
+     "path": "scripts/v2/fetch_qiu2024_late.py",
+     "git_blob": "46c71f7af2d35be41c5b0e07b02e29ac8f0c0d71"
+    },
+    {
+     "path": "src/v2/anchor.py",
+     "git_blob": "d76369656991ebf07a401fde3bea58f27dd0243d"
+    }
+   ],
+   "processed_dir": "data/external/qiu2024",
+   "processed_files": {
+    "calibration_cardiomyocytes.h5ad": {
+     "manifest_sha256": "eeeec9011742ed23b969778ccd21efff68578d4a8e6786e99eed87d7c920543c",
+     "disk_sha256": "eeeec9011742ed23b969778ccd21efff68578d4a8e6786e99eed87d7c920543c",
+     "cells": 3408,
+     "stages": [
+      "Theiler stage 12",
+      "Theiler stage 13"
+     ],
+     "match": true
+    },
+    "calibration_endothelium.h5ad": {
+     "manifest_sha256": "96563f9858e4924bfa7f56c316cc586ade98b280207457328e688db739e830d9",
+     "disk_sha256": "96563f9858e4924bfa7f56c316cc586ade98b280207457328e688db739e830d9",
+     "cells": 7511,
+     "stages": [
+      "Theiler stage 12",
+      "Theiler stage 13"
+     ],
+     "match": true
+    },
+    "calibration_hepatocytes.h5ad": {
+     "manifest_sha256": "9e0b724103e2195a752dbb359418e47ef00350560ce7c98acf3baf8df4c3e6a4",
+     "disk_sha256": "9e0b724103e2195a752dbb359418e47ef00350560ce7c98acf3baf8df4c3e6a4",
+     "cells": 14,
+     "stages": [
+      "Theiler stage 13"
+     ],
+     "match": true
+    },
+    "calibration_mesoderm.h5ad": {
+     "manifest_sha256": "64ace6078fcfa89f4cd9fe66dc48a24753a66d7da25d5112f8ef03e93c3cc70e",
+     "disk_sha256": "64ace6078fcfa89f4cd9fe66dc48a24753a66d7da25d5112f8ef03e93c3cc70e",
+     "cells": 8001,
+     "stages": [
+      "Theiler stage 12",
+      "Theiler stage 13"
+     ],
+     "match": true
+    },
+    "calibration_epithelial.h5ad": {
+     "manifest_sha256": "2df1d6450d9af47258ecd323ba178742d9b1e3f81f66d809b72678a8d41411cd",
+     "disk_sha256": "2df1d6450d9af47258ecd323ba178742d9b1e3f81f66d809b72678a8d41411cd",
+     "cells": 15554,
+     "stages": [
+      "Theiler stage 12",
+      "Theiler stage 13"
+     ],
+     "match": true
+    },
+    "calibration_primitive_erythroid.h5ad": {
+     "manifest_sha256": "3d9f3292b64b5f51f24a7c1e4970ed505f73aacab4c52d6d1d0839c1652e787b",
+     "disk_sha256": "3d9f3292b64b5f51f24a7c1e4970ed505f73aacab4c52d6d1d0839c1652e787b",
+     "cells": 3602,
+     "stages": [
+      "Theiler stage 12",
+      "Theiler stage 13"
+     ],
+     "match": true
+    },
+    "anchor_cardiomyocytes.h5ad": {
+     "manifest_sha256": "6827228b903d875cb9e31a580dd2772f5cdf426b6b0dd1b575064c7d52168453",
+     "disk_sha256": "6827228b903d875cb9e31a580dd2772f5cdf426b6b0dd1b575064c7d52168453",
+     "cells": 380,
+     "stages": [
+      "Theiler stage 23"
+     ],
+     "match": true
+    },
+    "anchor_endothelium.h5ad": {
+     "manifest_sha256": "0675c2289aa96b0a0a874c27ceb65aa35539f9153c86944b6c1170f49c2a49c0",
+     "disk_sha256": "0675c2289aa96b0a0a874c27ceb65aa35539f9153c86944b6c1170f49c2a49c0",
+     "cells": 13726,
+     "stages": [
+      "Theiler stage 23"
+     ],
+     "match": true
+    },
+    "anchor_hepatocytes.h5ad": {
+     "manifest_sha256": "e1123be7541676c6114a8c22cee92d312bb01ec36b63ebeda520e2b600162f50",
+     "disk_sha256": "e1123be7541676c6114a8c22cee92d312bb01ec36b63ebeda520e2b600162f50",
+     "cells": 4000,
+     "stages": [
+      "Theiler stage 23"
+     ],
+     "match": true
+    },
+    "anchor_mesoderm.h5ad": {
+     "manifest_sha256": "81b6e1f650b24846dce7f914570e6c14abe414f62049e1eecb1baaa43e8a7f43",
+     "disk_sha256": "81b6e1f650b24846dce7f914570e6c14abe414f62049e1eecb1baaa43e8a7f43",
+     "cells": 20000,
+     "stages": [
+      "Theiler stage 23"
+     ],
+     "match": true
+    },
+    "anchor_epithelial.h5ad": {
+     "manifest_sha256": "39fbfeab11ca4342a01144978b938c12e277c0f9fc3da77debc2f99dfbcb8b60",
+     "disk_sha256": "39fbfeab11ca4342a01144978b938c12e277c0f9fc3da77debc2f99dfbcb8b60",
+     "cells": 20506,
+     "stages": [
+      "Theiler stage 23"
+     ],
+     "match": true
+    },
+    "anchor_primitive_erythroid.h5ad": {
+     "manifest_sha256": "9187d33c93583eb5ac77e279b0b23c2448698a2974dd86d7198aae67a51f73c5",
+     "disk_sha256": "9187d33c93583eb5ac77e279b0b23c2448698a2974dd86d7198aae67a51f73c5",
+     "cells": 20,
+     "stages": [
+      "Theiler stage 23"
+     ],
+     "match": true
+    },
+    "anchor_late_cardiomyocytes.h5ad": {
+     "manifest_sha256": "f67cfc086cb6fa1ed0a8706c823f07969709aeba04e136fec7388dd524060dba",
+     "disk_sha256": "f67cfc086cb6fa1ed0a8706c823f07969709aeba04e136fec7388dd524060dba",
+     "cells": 1708,
+     "stages": [
+      "Theiler stage 24",
+      "Theiler stage 25"
+     ],
+     "match": true
+    },
+    "anchor_late_endothelium.h5ad": {
+     "manifest_sha256": "b7540f4e1bbd18b6a0503eb7632a8b88fcdccda2b57a317d72819952955cdbfa",
+     "disk_sha256": "b7540f4e1bbd18b6a0503eb7632a8b88fcdccda2b57a317d72819952955cdbfa",
+     "cells": 28115,
+     "stages": [
+      "Theiler stage 24",
+      "Theiler stage 25"
+     ],
+     "match": true
+    },
+    "anchor_late_hepatocytes.h5ad": {
+     "manifest_sha256": "94590ee63e9cb11c95dbd7c3ef93647bb0f8f6269877084b7807ea1fbb715e6c",
+     "disk_sha256": "94590ee63e9cb11c95dbd7c3ef93647bb0f8f6269877084b7807ea1fbb715e6c",
+     "cells": 4000,
+     "stages": [
+      "Theiler stage 24",
+      "Theiler stage 25"
+     ],
+     "match": true
+    },
+    "anchor_late_mesoderm.h5ad": {
+     "manifest_sha256": "29f536507c22d25cb33aad49b6581b98ad9ae7224861f9980423f68acc17dfc2",
+     "disk_sha256": "29f536507c22d25cb33aad49b6581b98ad9ae7224861f9980423f68acc17dfc2",
+     "cells": 20000,
+     "stages": [
+      "Theiler stage 24",
+      "Theiler stage 25"
+     ],
+     "match": true
+    },
+    "anchor_late_epithelial.h5ad": {
+     "manifest_sha256": "5cd25398612a46eaf15f0a6158fa13e3edfa296e7a2610306a5e9c69edae3a62",
+     "disk_sha256": "5cd25398612a46eaf15f0a6158fa13e3edfa296e7a2610306a5e9c69edae3a62",
+     "cells": 30604,
+     "stages": [
+      "Theiler stage 24",
+      "Theiler stage 25"
+     ],
+     "match": true
+    },
+    "anchor_late_primitive_erythroid.h5ad": {
+     "manifest_sha256": "2d53c70f0a9d1496cb1186f0112b8aebfdde75164e6bc95cb1cb373d2672d248",
+     "disk_sha256": "2d53c70f0a9d1496cb1186f0112b8aebfdde75164e6bc95cb1cb373d2672d248",
+     "cells": 4,
+     "stages": [
+      "Theiler stage 24"
+     ],
+     "match": true
+    }
+   }
+  },
+  "feulner2024": {
+   "citation": "Feulner et al. 2024, bioRxiv 10.1101/2024.03.05.583423; GEO GSE150817",
+   "boards": [
+    "heart"
+   ],
+   "rule_filter": "Age in {E14.5, E16.5, E18.5} kept; P0/P4/P7 dropped. Per-cell stage_days checked by harness.load_anchor.",
+   "raw_files": [
+    {
+     "path": "data/external/feulner2024_raw/GSE150817_perinatheart.metadata.final_cells.tsv.gz",
+     "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE150nnn/GSE150817/suppl/GSE150817_perinatheart.metadata.final_cells.tsv.gz",
+     "exists": true,
+     "sha256": "c08546419875c77a9974bcadb8ec1d2b192356890d73af4e60cf3122ef7240ba",
+     "bytes": 3404321,
+     "downloaded": "2026-11-17"
+    },
+    {
+     "path": "data/external/feulner2024_raw/GSE150817_perinatheart.raw_umi_counts.final_cells.tsv.gz",
+     "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE150nnn/GSE150817/suppl/GSE150817_perinatheart.raw_umi_counts.final_cells.tsv.gz",
+     "exists": true,
+     "sha256": "039beccaeac2861efabdaf63da71665e2d87413521812d38997d78ea44bdbe6c",
+     "bytes": 106352908,
+     "downloaded": "2026-11-17"
+    }
+   ],
+   "raw_note": null,
+   "build_scripts": [
+    {
+     "path": "scripts/v2/build_heart_anchor_feulner.py",
+     "git_blob": "e19b2e1d08a54c459b36afd32912436773c37758"
+    }
+   ],
+   "processed_dir": "data/external/heart_anchor",
+   "processed_files": {
+    "feulner2024_heart_E14.5-E18.5.h5ad": {
+     "manifest_sha256": "c18bdabccbc13e150e793987c0eecf2feceb9701894d167de44450d701a85c43",
+     "disk_sha256": "c18bdabccbc13e150e793987c0eecf2feceb9701894d167de44450d701a85c43",
+     "cells": 34771,
+     "stages_days": [
+      14.5,
+      16.5,
+      18.5
+     ],
+     "match": true
+    }
+   }
+  },
+  "gse282547": {
+   "citation": "Developing mouse heart spatial atlas (2026 article, CC BY-NC-ND 4.0); GEO GSE282547",
+   "boards": [
+    "heart"
+   ],
+   "rule_filter": "Only pure E14.5/E15.5 Slide-seq pucks. Not downloaded: E10.5-E13.5 pucks, Wt1CreER-DTA mutant, Visium (incl. mixed E17/E11 and P2/E14 sections).",
+   "raw_files": [
+    {
+     "path": "data/external/gse282547_raw/GSM8645806_SlideSeq_e14_1_normalized.rds.gz",
+     "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8645nnn/GSM8645806/suppl/GSM8645806_SlideSeq_e14_1_normalized.rds.gz",
+     "exists": true,
+     "sha256": "586c627f872af358beee1d2f20687d9fd1a4ab8b2af4213a6dee31ae11aebcbf",
+     "bytes": 4402707103,
+     "downloaded": "2026-11-17"
+    },
+    {
+     "path": "data/external/gse282547_raw/GSM8645807_SlideSeq_e14_2_normalized.rds.gz",
+     "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM8645nnn/GSM8645807/suppl/GSM8645807_SlideSeq_e14_2_normalized.rds.gz",
+     "exists": true,
+     "sha256": "6fc0279036909270e2b974b3d946e7c6c5761b8b565261e223140a0fa408db64",
+     "bytes": 4862242230,
+     "downloaded": "2026-11-17"
+    },
+    {
+     "path": "data/external/gse282547_raw/GSM9065771_SlideSeq_e15.5_1_normalized.rds",
+     "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9065nnn/GSM9065771/suppl/GSM9065771_SlideSeq_e15.5_1_normalized.rds",
+     "exists": true,
+     "sha256": "f3f21d4152d2b393231a5b6a94cc1f21b8031764386ef31b26cdbeba99849713",
+     "bytes": 3774671497,
+     "downloaded": "2026-11-17"
+    },
+    {
+     "path": "data/external/gse282547_raw/GSM9065772_SlideSeq_e15.5_2_normalized.rds",
+     "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM9065nnn/GSM9065772/suppl/GSM9065772_SlideSeq_e15.5_2_normalized.rds",
+     "exists": true,
+     "sha256": "5ba147f86b7a8ae7a72b11922caa8be66e420c56247383ef97520493d7f6ace5",
+     "bytes": 2953928144,
+     "downloaded": "2026-11-17"
+    }
+   ],
+   "raw_note": null,
+   "build_scripts": [
+    {
+     "path": "scripts/v2/export_slideseq.R",
+     "git_blob": "4821c3b2e53144c66f1ff6e8513fb8445dd3cf25"
+    },
+    {
+     "path": "scripts/v2/build_heart_spatial.py",
+     "git_blob": "54cd66dff66386d745080a8f9a05e58337d5f857"
+    }
+   ],
+   "processed_dir": "data/external/heart_spatial",
+   "processed_files": {
+    "gse282547_slideseq_e14_1.h5ad": {
+     "manifest_sha256": "77ff0012ca89684846a43fa1d3f7bd18480aa9127639528ed95ab5f93153bac9",
+     "disk_sha256": "77ff0012ca89684846a43fa1d3f7bd18480aa9127639528ed95ab5f93153bac9",
+     "cells": 19780,
+     "stages_days": [
+      14.5
+     ],
+     "match": true
+    },
+    "gse282547_slideseq_e14_2.h5ad": {
+     "manifest_sha256": "047c54ff9082fecbc1c3da43802f96198772315520d5d19d624c2340d7e8ba47",
+     "disk_sha256": "047c54ff9082fecbc1c3da43802f96198772315520d5d19d624c2340d7e8ba47",
+     "cells": 21639,
+     "stages_days": [
+      14.5
+     ],
+     "match": true
+    },
+    "gse282547_slideseq_e15_1.h5ad": {
+     "manifest_sha256": "c8d6130b1e4c04a6e078962f2c56dbcc7c1626d31de553ba2e28b7a15f6ee413",
+     "disk_sha256": "c8d6130b1e4c04a6e078962f2c56dbcc7c1626d31de553ba2e28b7a15f6ee413",
+     "cells": 21975,
+     "stages_days": [
+      15.5
+     ],
+     "match": true
+    },
+    "gse282547_slideseq_e15_2.h5ad": {
+     "manifest_sha256": "529f847f9aa397b9733311e68930e25dc4a97e2a26fb3b702558c8208fbb5044",
+     "disk_sha256": "529f847f9aa397b9733311e68930e25dc4a97e2a26fb3b702558c8208fbb5044",
+     "cells": 18028,
+     "stages_days": [
+      15.5
+     ],
+     "match": true
+    }
+   }
+  },
+  "extended_mouse_atlas": {
+   "citation": "Imaz-Rosshandler et al. 2024 (Extended Mouse Atlas), marionilab.github.io/ExtendedMouseAtlas; E-MTAB-13645",
+   "boards": [
+    "embryo"
+   ],
+   "rule_filter": "Stages E6.5-E7.25 and E8.0-E9.5 kept; E7.5, E7.75 and Mixed gastrulation dropped (asserted). Author cell types/clusters/embeddings not kept. log2 values inverted and re-normalised on the panel.",
+   "raw_files": [
+    {
+     "path": "data/external/ema_raw/ExtendedMouseAtlas/embryo_complete.h5ad",
+     "url": "https://bioinformatics.stemcells.cam.ac.uk/rlh60/Supplemental/ExtendedMouseAtlas/ExtendedMouseAtlas.tar.gz (member)",
+     "exists": false,
+     "sha256": "74721cbbf31c9728a8853d51d0af0fecdb36ee6229b9ab8afd15b2e714a4923f",
+     "bytes": 11111572781,
+     "downloaded": "2023-03-29",
+     "deleted_after_build": true,
+     "deleted_reason": "Deleted after build: contains held-out-window cells (E7.5, E7.75 embryo; E8.5 heart). Re-download and verify by sha256 to rebuild."
+    },
+    {
+     "path": "data/external/ema_raw/ExtendedMouseAtlas/metadata_cells.csv",
+     "url": "same archive (member)",
+     "exists": false,
+     "sha256": "11adf9499ee31bc97088e43a4138ed387da5f6b06a49d119ae5177a7aadbdbad",
+     "bytes": 44340727,
+     "downloaded": "2023-03-10",
+     "deleted_after_build": true,
+     "deleted_reason": "Deleted after build: contains held-out-window cells (E7.5, E7.75 embryo; E8.5 heart). Re-download and verify by sha256 to rebuild."
+    }
+   ],
+   "raw_note": null,
+   "build_scripts": [
+    {
+     "path": "scripts/v2/build_embryo_anchor.py",
+     "git_blob": "3e6a04efc32044e039b2092a20cc7d4e539a04f7"
+    }
+   ],
+   "processed_dir": "data/external/embryo_anchor",
+   "processed_files": {
+    "extended_mouse_atlas_embryo.h5ad": {
+     "manifest_sha256": "43b94822b74482c5d3e817435dc57f12dd6549b0b60de9e75954645363fca034",
+     "disk_sha256": "43b94822b74482c5d3e817435dc57f12dd6549b0b60de9e75954645363fca034",
+     "cells": 59559,
+     "stages_days": [
+      6.5,
+      6.75,
+      7.0,
+      7.25,
+      8.0,
+      8.25,
+      8.5,
+      8.75,
+      9.0,
+      9.25,
+      9.5
+     ],
+     "genes": 495,
+     "match": true
+    }
+   }
+  },
+  "gene_ontology": {
+   "citation": "Gene Ontology Consortium, MOUSE-mod.gaf + go-basic.obo (CC BY 4.0)",
+   "boards": [
+    "perturbation"
+   ],
+   "rule_filter": "Evidence IMP/IGI/IEP/HMP/HGI/HEP dropped; annotations citing Ctnnb1/Gata4 (symbol or MGI id) dropped; NOT-qualified dropped.",
+   "raw_files": [
+    {
+     "path": "data/external/go_raw/MOUSE-mod.gaf.gz",
+     "url": "https://current.geneontology.org/annotations/gaf/MOUSE-mod.gaf.gz",
+     "exists": false,
+     "sha256": "6cbefce3a2efd9862f102a2732e923fde525c8fa59a3e5ce22e8178c3ebb0093",
+     "bytes": 10579993,
+     "downloaded": "2026-11-17",
+     "deleted_after_build": true,
+     "deleted_reason": "Deleted after build: contains mutant/expression-evidence annotations incl. Ctnnb1/Gata4. Re-download and verify by sha256 to rebuild."
+    },
+    {
+     "path": "data/external/go_raw/go-basic.obo",
+     "url": "https://current.geneontology.org/ontology/go-basic.obo",
+     "exists": false,
+     "sha256": "b08d45b268b8c24ccb2513dbbbc7d4df9f6521c099b413f79eb31e06e0fa3bcc",
+     "bytes": 32227785,
+     "downloaded": "2026-11-17",
+     "deleted_after_build": true,
+     "deleted_reason": "Deleted after build: contains mutant/expression-evidence annotations incl. Ctnnb1/Gata4. Re-download and verify by sha256 to rebuild."
+    }
+   ],
+   "raw_note": null,
+   "build_scripts": [
+    {
+     "path": "scripts/v2/prepare_go_prior.py",
+     "git_blob": "c938e77258f4001bdb140f15094cf6b08dee8041"
+    }
+   ],
+   "processed_dir": "data/external/go_prior",
+   "processed_files": {
+    "go_prior.json": {
+     "manifest_sha256": "cbb7e96854aa187a3b3bd68237cc31114a0768e7803d096fafc5b01c71444511",
+     "disk_sha256": "cbb7e96854aa187a3b3bd68237cc31114a0768e7803d096fafc5b01c71444511",
+     "genes": 28172,
+     "kept": 636973,
+     "dropped": 76971,
+     "release": "date-generated: 2026-08-04 15:07",
+     "match": true
+    }
+   }
+  },
+  "expression_prior": {
+   "citation": "Derived from the qiu2024 calibration cells (Qiu et al. 2024, Nature 626:1084)",
+   "boards": [
+    "perturbation"
+   ],
+   "rule_filter": "Per-gene fraction expressing and mean log1p CP10k, overall and per cell type (>=30 cells); Theiler 12-13 only.",
+   "raw_files": [],
+   "raw_note": "Built from data/external/qiu2024/calibration_*.h5ad (wild type, Theiler 12-13); no other input.",
+   "build_scripts": [
+    {
+     "path": "scripts/build_expression_prior.py",
+     "git_blob": "79d1da9d0a6557ecd1319a08a5291316d85d4261"
+    }
+   ],
+   "processed_dir": "data/external/expression_prior",
+   "processed_files": {
+    "expression_prior.npz": {
+     "manifest_sha256": "c6fe8a4fd0b068dff22ba21bbb6c9f2fb3fe9623bf0d52b08c4f15513ef7870f",
+     "disk_sha256": "c6fe8a4fd0b068dff22ba21bbb6c9f2fb3fe9623bf0d52b08c4f15513ef7870f",
+     "match": true
+    }
+   }
+  },
+  "de_soysa2019_hand2": {
+   "citation": "de Soysa et al. 2019, Nature 572:120, doi 10.1038/s41586-019-1414-x; GEO GSE126128",
+   "boards": [
+    "perturbation (validation only)"
+   ],
+   "rule_filter": "Dev splits hand2_e825/hand2_e925 only (wild type vs Hand2-null, same experiment; E7.75/E8.25/E9.25, all <= E9.5). Hand2 is neither a Gata4 allele nor a Wnt/beta-catenin pathway perturbation.",
+   "raw_files": [
+    {
+     "path": "data/external/ko_validation/raw/hand2/GSE126128_E775E825_WTKO_10X.csv.gz",
+     "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE126nnn/GSE126128/suppl/GSE126128_E775E825_WTKO_10X.csv.gz",
+     "exists": true,
+     "sha256": "1a004de6b6edf9476d98a6b52b63f7e91e915db59a3bc86bd8655c02a805dfb5",
+     "bytes": 1671218528,
+     "downloaded": "2026-11-17"
+    },
+    {
+     "path": "data/external/ko_validation/raw/hand2/GSE126128_E925_WTKO_10X.csv.gz",
+     "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE126nnn/GSE126128/suppl/GSE126128_E925_WTKO_10X.csv.gz",
+     "exists": true,
+     "sha256": "7d14a43cd6191a0d1be89e240cdbbec6f32bd8dabd9020ecd0227d8add6b1657",
+     "bytes": 1040933007,
+     "downloaded": "2026-11-17"
+    }
+   ],
+   "raw_note": null,
+   "build_scripts": [
+    {
+     "path": "scripts/build_ko_validation.py",
+     "git_blob": "36930f3ee9885a3e4b80a367d6f11fc8167e4431"
+    }
+   ],
+   "processed_dir": "data/external/ko_validation",
+   "processed_files": {
+    "hand2/ko_E7.75.h5ad": {
+     "manifest_sha256": "69e3308c25f69d54599c55c0adef3af7d87b2e674355f2718a7e3e129768ff96",
+     "disk_sha256": "69e3308c25f69d54599c55c0adef3af7d87b2e674355f2718a7e3e129768ff96",
+     "match": true
+    },
+    "hand2/ko_E8.25.h5ad": {
+     "manifest_sha256": "a219bf320715d092ada1cf09f2fd5192c91e0d8fcd23f2163a31be7653ade9e1",
+     "disk_sha256": "a219bf320715d092ada1cf09f2fd5192c91e0d8fcd23f2163a31be7653ade9e1",
+     "match": true
+    },
+    "hand2/ko_E9.25.h5ad": {
+     "manifest_sha256": "247f373da4ffc13a16cc51475b7d0211b7215c4a4ce033ffc75585d9386a2962",
+     "disk_sha256": "247f373da4ffc13a16cc51475b7d0211b7215c4a4ce033ffc75585d9386a2962",
+     "match": true
+    },
+    "hand2/wt_E7.75.h5ad": {
+     "manifest_sha256": "26684d3559dad2a4ccc6e827db0af773b7a4fd29a8529a9187c9195887d371db",
+     "disk_sha256": "26684d3559dad2a4ccc6e827db0af773b7a4fd29a8529a9187c9195887d371db",
+     "match": true
+    },
+    "hand2/wt_E8.25.h5ad": {
+     "manifest_sha256": "d7771f91f7ec9422954f75661217edb321b68502046617a70cd88236d238737a",
+     "disk_sha256": "d7771f91f7ec9422954f75661217edb321b68502046617a70cd88236d238737a",
+     "match": true
+    },
+    "hand2/wt_E9.25.h5ad": {
+     "manifest_sha256": "d8ac64fd2241b9542efa4c8724268b27be3e9a2951e51aeb38f5d7d6d5803d52",
+     "disk_sha256": "d8ac64fd2241b9542efa4c8724268b27be3e9a2951e51aeb38f5d7d6d5803d52",
+     "match": true
+    }
+   }
+  },
+  "coexpr_prior": {
+   "citation": "Derived from qiu2024 WT calibration cells (Qiu et al. 2024, Nature 626:1084)",
+   "boards": [
+    "perturbation"
+   ],
+   "rule_filter": "Signed global & within-lineage WT gene-to-panel Pearson correlation (<= E9.0, Theiler 12-13 only, zero mutant data).",
+   "build_scripts": [
+    {
+     "path": "scripts/build_coexpr_prior.py"
+    }
+   ],
+   "processed_dir": "data/external/coexpr_prior",
+   "processed_files": {
+    "coexpr_prior.npz": {
+     "manifest_sha256": "64aa39ef5f633efd1665bedc0368703d62a1acd1e05267f871f583611a31f5da",
+     "disk_sha256": "64aa39ef5f633efd1665bedc0368703d62a1acd1e05267f871f583611a31f5da",
+     "match": true
+    }
+   }
+  },
+  "muncie_vasic2025_mef2c": {
+   "citation": "Muncie-Vasic et al. 2025, Genes Dev; GEO GSE280543",
+   "boards": [
+    "perturbation (validation only)"
+   ],
+   "rule_filter": "Dev splits mef2c_e85 (E7.75+E8.5 -> E8.5) and mef2c_e90 (E8.5+E9.0 -> E9.0); all stages <= E9.5; non-Gata4/non-Wnt.",
+   "build_scripts": [
+    {
+     "path": "scripts/build_ko_validation.py"
+    }
+   ],
+   "processed_dir": "data/external/ko_validation",
+   "processed_files": {
+    "mef2c/ko_E8.5.h5ad": {
+     "manifest_sha256": "9cfba058839a48d6abac67db79b4724670576c55a16c9adb5c9d64e21437d23a",
+     "disk_sha256": "9cfba058839a48d6abac67db79b4724670576c55a16c9adb5c9d64e21437d23a",
+     "match": true
+    },
+    "mef2c/ko_E9.h5ad": {
+     "manifest_sha256": "59dc31d8bb8cb78fbf83a5b574407b4c615403329caf52a2b0fa686d020e9774",
+     "disk_sha256": "59dc31d8bb8cb78fbf83a5b574407b4c615403329caf52a2b0fa686d020e9774",
+     "match": true
+    },
+    "mef2c/wt_E7.75.h5ad": {
+     "manifest_sha256": "771046ff9524cb0c4d92077a54111bc5a6ccd28e8fc7c4cbe33b59459d5ec80a",
+     "disk_sha256": "771046ff9524cb0c4d92077a54111bc5a6ccd28e8fc7c4cbe33b59459d5ec80a",
+     "match": true
+    },
+    "mef2c/wt_E8.5.h5ad": {
+     "manifest_sha256": "2d3c99c21f9ad031f82f8b1117d6ad6a47a6e7ad61da55cf791b89f75f02dc0a",
+     "disk_sha256": "2d3c99c21f9ad031f82f8b1117d6ad6a47a6e7ad61da55cf791b89f75f02dc0a",
+     "match": true
+    },
+    "mef2c/wt_E9.h5ad": {
+     "manifest_sha256": "ad27f613233891aa6f439dc2aa54b60638ea43cf8dcc7940c3ff4e388773e20b",
+     "disk_sha256": "ad27f613233891aa6f439dc2aa54b60638ea43cf8dcc7940c3ff4e388773e20b",
+     "match": true
+    }
+   }
+  },
+  "tet_tko_unseen_veto": {
+   "citation": "Tet1/2/3 TKO mouse gastrulation scRNA-seq; GEO GSE204907",
+   "boards": [
+    "perturbation (Landlock-protected unseen-gene finalization veto only; never shown to agents)"
+   ],
+   "rule_filter": "Stages E7.5 and E8.5 only (all <= E9.5); Tet1/2/3 is non-Gata4 and non-Wnt/beta-catenin.",
+   "processed_dir": "data/raw/T3",
+   "processed_files": {
+    "unseen_wt_a.h5ad": {
+     "disk_sha256": "fed2ec852b1cc53ea04f88545beeb41f2819e9856d38dd3882680fd24be7ad0e",
+     "match": true
+    },
+    "unseen_wt_b.h5ad": {
+     "disk_sha256": "40f6ee79c5adabd647234e16aa4ddd53ba920fd0c7f696d2c6d716ba62c37904",
+     "match": true
+    },
+    "unseen_ko.h5ad": {
+     "disk_sha256": "92639e1781cfdd4b0a03fecfe4b38f434da5815ded261d2b52a7e0c71c19f5d1",
+     "match": true
+    },
+    "unseen_spec.json": {
+     "disk_sha256": "c91eec2275c236757d1bffd51ca6c83d1a581763b58e124fd6441e9c8644934d",
+     "match": true
+    }
+   }
+  }
+ },
+ "updated": "2026-11-24 00:24:03"
+}

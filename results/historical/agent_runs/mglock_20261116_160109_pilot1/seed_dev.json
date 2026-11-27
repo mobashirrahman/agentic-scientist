@@ -1,0 +1,94 @@
+{
+ "correct": true,
+ "error": null,
+ "set": "dev",
+ "proxy": 173.68,
+ "boards": {
+  "temporal": 54.77,
+  "heart": 48.85000000000001,
+  "embryo": 81.09666666666666,
+  "perturbation": 53.93666666666667
+ },
+ "splits": {
+  "temporal_val": {
+   "board": "temporal",
+   "score": 54.77,
+   "metrics": {
+    "de_score": 44.946666666666665,
+    "de_direction": 63.626666666666665,
+    "mmd_u": 58.78,
+    "variogram": 49.95666666666667
+   },
+   "seconds": 133.3
+  },
+  "heart_early": {
+   "board": "heart",
+   "score": 48.89000000000001,
+   "metrics": {
+    "de_score": 42.54666666666667,
+    "de_direction": 49.12,
+    "mmd_u": 49.36666666666667,
+    "variogram": 49.16,
+    "d2_shape": 48.61333333333334,
+    "occupancy_dice": 52.27,
+    "scale_log_ratio": 51.17333333333334,
+    "neighborhood_mmd": 49.75333333333333
+   },
+   "seconds": 32.6
+  },
+  "heart_late": {
+   "board": "heart",
+   "score": 48.81,
+   "metrics": {
+    "de_score": 42.54666666666667,
+    "de_direction": 49.12,
+    "mmd_u": 49.36666666666667,
+    "variogram": 49.16,
+    "d2_shape": 48.133333333333326,
+    "occupancy_dice": 51.45333333333334,
+    "scale_log_ratio": 51.75,
+    "neighborhood_mmd": 49.68666666666667
+   },
+   "seconds": 32.8
+  },
+  "embryo_early": {
+   "board": "embryo",
+   "score": 81.09666666666666,
+   "metrics": {
+    "de_score": 73.57666666666667,
+    "de_direction": 82.57333333333334,
+    "mmd_u": 86.04666666666667,
+    "variogram": 87.06333333333333,
+    "d2_shape": 93.36333333333334,
+    "occupancy_dice": 56.45333333333334,
+    "scale_log_ratio": 82.90666666666668,
+    "neighborhood_mmd": 82.29333333333334
+   },
+   "seconds": 15.1
+  },
+  "gata4_1": {
+   "board": "perturbation",
+   "score": 54.120000000000005,
+   "metrics": {
+    "de_score": 50.803333333333335,
+    "de_direction": 53.42666666666667,
+    "severity_slope": 50.0,
+    "mmd_u": 63.803333333333335,
+    "variogram": 67.06333333333333
+   },
+   "seconds": 31.5
+  },
+  "gata4_2": {
+   "board": "perturbation",
+   "score": 53.75333333333333,
+   "metrics": {
+    "de_score": 50.04666666666666,
+    "de_direction": 54.03666666666667,
+    "severity_slope": 50.0,
+    "mmd_u": 62.56333333333333,
+    "variogram": 65.27999999999999
+   },
+   "seconds": 27.1
+  }
+ }
+}

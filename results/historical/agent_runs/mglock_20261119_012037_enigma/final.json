@@ -1,0 +1,54 @@
+{
+ "lock_id": "mglock_20261119_012037",
+ "rule": "boardwise paired holdout lower bound over seed; dev-only winners subject to the configured veto",
+ "candidates": [
+  {
+   "id": "seed",
+   "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261119_012037_enigma/seed_ws",
+   "proxy": 185.28680555555553,
+   "holdout": 59.373546708333336,
+   "holdout_pairs": [
+    59.0782515,
+    59.3975,
+    59.653333333333336,
+    59.36510199999999
+   ],
+   "holdout_boards": {
+    "heart": 52.50626008333333,
+    "embryo": 66.24083333333333
+   }
+  },
+  {
+   "id": "composed",
+   "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261119_012037_enigma/final/final_ws",
+   "proxy": null,
+   "parts": {},
+   "dev_only_parts": {
+    "perturbation": {
+     "id": "w1_c17",
+     "score": 61.194583333333334
+    },
+    "temporal": {
+     "id": "w3_c05",
+     "score": 70.30520833333333
+    }
+   },
+   "holdout": 59.373546708333336,
+   "holdout_pairs": [
+    59.0782515,
+    59.3975,
+    59.653333333333336,
+    59.36510199999999
+   ],
+   "holdout_boards": {
+    "heart": 52.50626008333333,
+    "embryo": 66.24083333333333
+   },
+   "dev_proxy": 187.8838888888889
+  }
+ ],
+ "chosen": "composed",
+ "selected_sha256": "c4aebeed90f9234d859322dbe5f791329d5bd5f883e31c694d9334006e0cad80",
+ "cost_usd": 15.7044984,
+ "agent_calls": 253
+}

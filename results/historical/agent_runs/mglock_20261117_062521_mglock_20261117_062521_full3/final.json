@@ -1,0 +1,203 @@
+{
+ "lock_id": "mglock_20261117_062521",
+ "rule": "max holdout proxy among top-K dev + dev combiner, must beat seed on holdout; boards dropping >2SE revert to seed",
+ "candidates": [
+  {
+   "id": "seed",
+   "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261117_062521_mglock_20261117_062521_full3/seed_ws",
+   "proxy": 176.31958333333336,
+   "dev_mean": 177.69078125,
+   "holdout": 165.22458333333333,
+   "holdout_sd": 1.0332743038695218,
+   "holdout_pairs": [
+    165.91666666666669,
+    165.72,
+    165.5725,
+    163.68916666666667
+   ],
+   "holdout_boards": {
+    "temporal": 58.18833333333333,
+    "heart": 50.53333333333333,
+    "embryo": 70.05583333333334,
+    "perturbation": 46.74166666666667
+   }
+  },
+  {
+   "id": "w1_c00",
+   "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261117_062521_mglock_20261117_062521_full3/cycles/w1_c00/ws",
+   "proxy": 177.62062500000002,
+   "boards": {
+    "temporal": 58.98166666666667,
+    "heart": 48.91916666666667,
+    "embryo": 81.09666666666668,
+    "perturbation": 53.93666666666667
+   },
+   "dev_mean": 178.99182291666668,
+   "holdout": 166.27166666666668,
+   "holdout_sd": 0.8662009966899457,
+   "holdout_pairs": [
+    166.69,
+    167.03,
+    166.31916666666666,
+    165.0475
+   ],
+   "holdout_boards": {
+    "temporal": 59.235416666666666,
+    "heart": 50.53333333333333,
+    "embryo": 70.05583333333334,
+    "perturbation": 46.74166666666667
+   },
+   "transfer_dev": {
+    "distribution": 0.453,
+    "de_based": 1.154,
+    "size": 0.0
+   },
+   "transfer_holdout": {
+    "distribution": 0.293,
+    "de_based": 0.753,
+    "size": 0.0
+   }
+  },
+  {
+   "id": "w2_c00",
+   "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261117_062521_mglock_20261117_062521_full3/cycles/w2_c00/ws",
+   "proxy": 177.34802083333335,
+   "boards": {
+    "temporal": 57.375,
+    "heart": 52.090833333333336,
+    "embryo": 81.09666666666668,
+    "perturbation": 53.93666666666667
+   },
+   "dev_mean": 178.71921874999998,
+   "holdout": 165.59604166666668,
+   "holdout_sd": 0.7108095199215582,
+   "holdout_pairs": [
+    165.98583333333335,
+    165.95666666666668,
+    165.91083333333333,
+    164.53083333333333
+   ],
+   "holdout_boards": {
+    "temporal": 58.18833333333333,
+    "heart": 51.276250000000005,
+    "embryo": 70.05583333333334,
+    "perturbation": 46.74166666666667
+   },
+   "transfer_dev": {
+    "distribution": 1.259,
+    "de_based": 1.889,
+    "size": 0.024
+   },
+   "transfer_holdout": {
+    "distribution": 0.416,
+    "de_based": 0.316,
+    "size": 0.012
+   }
+  },
+  {
+   "id": "w0_c02",
+   "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261117_062521_mglock_20261117_062521_full3/cycles/w0_c02/ws",
+   "proxy": 176.89416666666668,
+   "boards": {
+    "temporal": 57.375,
+    "heart": 48.91916666666667,
+    "embryo": 81.09666666666668,
+    "perturbation": 55.23833333333333
+   },
+   "dev_mean": 178.26536458333334,
+   "holdout": 165.01958333333334,
+   "holdout_sd": 1.2284144591030195,
+   "holdout_pairs": [
+    165.60333333333335,
+    165.85333333333335,
+    165.42583333333334,
+    163.19583333333333
+   ],
+   "holdout_boards": {
+    "temporal": 58.18833333333333,
+    "heart": 50.53333333333333,
+    "embryo": 70.05583333333334,
+    "perturbation": 46.53666666666667
+   },
+   "transfer_dev": {
+    "distribution": 0.318,
+    "de_based": 0.983,
+    "size": 0.0
+   },
+   "transfer_holdout": {
+    "distribution": -0.082,
+    "de_based": -0.122,
+    "size": 0.0
+   }
+  },
+  {
+   "id": "w3_c01",
+   "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261117_062521_mglock_20261117_062521_full3/cycles/w3_c01/ws",
+   "proxy": 176.4304166666667,
+   "boards": {
+    "temporal": 57.375,
+    "heart": 48.91916666666667,
+    "embryo": 81.15333333333334,
+    "perturbation": 53.93666666666667
+   },
+   "dev_mean": 177.80161458333333,
+   "holdout": 165.1875,
+   "holdout_sd": 1.0625730911678792,
+   "holdout_pairs": [
+    165.87,
+    165.74166666666667,
+    165.53083333333333,
+    163.60750000000002
+   ],
+   "holdout_boards": {
+    "temporal": 58.18833333333333,
+    "heart": 50.53333333333333,
+    "embryo": 69.98166666666667,
+    "perturbation": 46.74166666666667
+   },
+   "transfer_dev": {
+    "distribution": 0.066,
+    "de_based": 0.0,
+    "size": -0.01
+   },
+   "transfer_holdout": {
+    "distribution": -0.096,
+    "de_based": 0.0,
+    "size": 0.023
+   }
+  },
+  {
+   "id": "combo",
+   "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261117_062521_mglock_20261117_062521_full3/final/combo_ws",
+   "proxy": 180.84208333333333,
+   "parts": {
+    "embryo": "w3_c01",
+    "temporal": "w1_c00",
+    "heart": "w2_c00",
+    "perturbation": "w0_c02"
+   },
+   "holdout": 166.40104166666669,
+   "holdout_sd": 0.8617070630440549,
+   "holdout_pairs": [
+    166.39916666666667,
+    167.42166666666668,
+    166.46916666666667,
+    165.31416666666667
+   ],
+   "holdout_boards": {
+    "temporal": 59.235416666666666,
+    "heart": 51.276250000000005,
+    "embryo": 69.98166666666667,
+    "perturbation": 46.53666666666667
+   },
+   "transfer_holdout": {
+    "distribution": 0.53,
+    "de_based": 0.947,
+    "size": 0.035
+   }
+  }
+ ],
+ "chosen": "combo",
+ "cost_usd": 4.523797999999999,
+ "agent_calls": 66
+}

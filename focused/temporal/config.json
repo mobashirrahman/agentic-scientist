@@ -1,0 +1,37 @@
+{
+ "builder": {
+  "cli": "cmd",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "effort": "max",
+  "max_turns": 500
+ },
+ "improver": {
+  "cli": "cmd",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "effort": "max",
+  "max_turns": 500
+ },
+ "improve_rounds": 2,
+ "round_seconds": [
+  10800,
+  7200
+ ],
+ "max_evals": [
+  20,
+  14
+ ],
+ "max_testchecks": 6,
+ "continue_if_remaining_s": 1800,
+ "max_continuations": 4,
+ "deadline": "2026-11-25T08:00:00+01:00",
+ "final_reserve_s": 7200,
+ "fallback": {
+  "cli": "cmd",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "effort": "max",
+  "max_turns": 500
+ },
+ "retry_wait_s": 600,
+ "tune_trials": 0,
+ "fleet_hosts": []
+}

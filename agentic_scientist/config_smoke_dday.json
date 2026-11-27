@@ -1,0 +1,240 @@
+{
+ "_about": "SMOKE TEST of the D-Day harness (fake agents, no quota): seed_dday dev evaluation on the fleet, the researcher time-limit prompt, research_timeout_s for one fake researcher, and the no-hypothesis rescue path (w0).",
+ "workers": 4,
+ "cycles_per_worker": 1,
+ "max_cycles_factor": 1.0,
+ "min_cycles_per_worker": 0,
+ "patience_cycles": 1000,
+ "max_research_seconds": null,
+ "cycle_drain_seconds": 0,
+ "no_new_cycles_at": null,
+ "research_kill_at": null,
+ "hard_stop_at": null,
+ "max_debug_attempts": 2,
+ "debug_timeout_s": 1800,
+ "review_timeout_s": 1500,
+ "shortlist": 2,
+ "researcher_implements": true,
+ "evidence_retry": false,
+ "promotion_review": true,
+ "ideator": {
+  "cli": "fake",
+  "model": "fake",
+  "timeout_s": 600
+ },
+ "ideator_cycle": [
+  {
+   "cli": "fake",
+   "model": "fake",
+   "timeout_s": 600
+  },
+  {
+   "cli": "fake",
+   "model": "fake2",
+   "timeout_s": 600
+  }
+ ],
+ "implementers": [
+  {
+   "cli": "fake",
+   "model": "fake-impl",
+   "timeout_s": 600
+  }
+ ],
+ "distiller": {
+  "cli": "fake",
+  "model": "fake-distiller",
+  "timeout_s": 600
+ },
+ "curator": {
+  "cli": "fake",
+  "model": "fake-curator",
+  "timeout_s": 600
+ },
+ "planner": {
+  "cli": "fake",
+  "model": "fake-planner",
+  "timeout_s": 600
+ },
+ "planner_every": 1000,
+ "overflow": {
+  "cli": "fake",
+  "model": "fake-overflow",
+  "timeout_s": 600
+ },
+ "critic": {
+  "cli": "fake",
+  "model": "fake-critic",
+  "timeout_s": 600
+ },
+ "critic_plan": false,
+ "critic_code": false,
+ "claude_max_week_util": 0.99,
+ "claude_fallback": {
+  "cli": "fake",
+  "model": "fake-claude_fallback",
+  "timeout_s": 600
+ },
+ "provider_concurrency": {
+  "fake": 8
+ },
+ "max_agent_calls": 200,
+ "holdout_forbidden": [
+  ".claude/projects",
+  "/T2/E10.5",
+  "/T2/E7.5.h5ad",
+  "E10.5.h5ad",
+  "E7.5.h5ad",
+  "T2/E10.5.h5ad",
+  "T2/E7.5.h5ad",
+  "guard_E14.5",
+  "guard_E16.5",
+  "guard_E18.5",
+  "holdout.enc/",
+  "ve-holdout-t3",
+  "T3__unseen",
+  "unseen_wt_a",
+  "unseen_wt_b",
+  "unseen_ko",
+  "unseen_spec"
+ ],
+ "kb_chars": 10000,
+ "acceptance": {
+  "alpha": 0.05,
+  "margin": 0.25,
+  "reject_z": -2.0,
+  "batches": [
+   2
+  ],
+  "board_drop": 0.5,
+  "rule": "screen one seed pair; confirm with all eight paired evaluations; accept when the proxy or changed board clears the margin with a one-sided 95% lower bound, subject to board and condition loss limits",
+  "board_margin": {
+   "heart": 0.25,
+   "embryo": 0.25
+  }
+ },
+ "condition_drop": 0.5,
+ "holdout_margin": 0.25,
+ "holdout_seed_pairs": [
+  [
+   202,
+   0
+  ]
+ ],
+ "holdout_select_boards": [
+  "temporal",
+  "heart",
+  "embryo"
+ ],
+ "merge": false,
+ "sanity": true,
+ "elites": 4,
+ "lineage_max": 6,
+ "tune": {
+  "on_demand": true,
+  "boards": [
+   "temporal",
+   "heart",
+   "embryo",
+   "perturbation"
+  ],
+  "rounds": 2,
+  "parallel": "fleet",
+  "top": 3,
+  "max_tunes": 0,
+  "seed": 0
+ },
+ "max_slowdown": null,
+ "slow_floor_s": 240,
+ "monitor_late": true,
+ "initial_elites": {},
+ "free_roam": false,
+ "group_floor": 0.25,
+ "ablation_tol": 0.25,
+ "guard": {
+  "pairs": [
+   [
+    301,
+    0
+   ],
+   [
+    302,
+    1
+   ],
+   [
+    303,
+    2
+   ],
+   [
+    304,
+    3
+   ]
+  ],
+  "mean": 0.25,
+  "lb": 0.5,
+  "boards": [],
+  "_note": "guard_embryo_e80 is now directly in Embryo Dev (weight 0.65) alongside embryo_early (0.35), and heart/temporal/embryo all select via test-aligned holdouts."
+ },
+ "scope_quick_eval": true,
+ "focus": {
+  "w0": "temporal",
+  "w1": "heart",
+  "w2": "embryo",
+  "w3": "perturbation"
+ },
+ "directives": {
+  "w0": "Smoke test. SMOKE-NO-HYPOTHESIS (the fake researcher ends without hypothesis.json; the harness must rescue).",
+  "w1": "Smoke test.",
+  "w2": "Smoke test.",
+  "w3": "Smoke test."
+ },
+ "seed_dir": "agentic_scientist/seed_dday",
+ "brief": "agentic_scientist/prompts/brief_dday.md",
+ "prompt_overrides": {},
+ "local_evaluation_only": true,
+ "fleet_research": true,
+ "research_enabled": true,
+ "require_calibrated_final": false,
+ "t1_composition_veto": true,
+ "embryo_native_min": 0.92,
+ "sandbox": true,
+ "session_root": "/scratch/user/as_sessions",
+ "private_root": "/scratch/user/as_private",
+ "private_monitor": false,
+ "checkpoint_hours": 0,
+ "leaderboard_refresh_minutes": 0,
+ "separate_final": true,
+ "auto_final": false,
+ "final_export": false,
+ "survive_cycle_errors": true,
+ "quota_fallback": [
+  {
+   "cli": "fake",
+   "model": "fake-agy",
+   "timeout_s": 600
+  },
+  {
+   "cli": "fake",
+   "model": "fake-ds",
+   "timeout_s": 600
+  }
+ ],
+ "cheap_fallback": [
+  {
+   "cli": "fake",
+   "model": "fake-cc",
+   "timeout_s": 600
+  }
+ ],
+ "research_timeout_s": {
+  "fake:fake2": 1200
+ },
+ "rescue": {
+  "enabled": true,
+  "timeout_s": 1500,
+  "digest_chars": 60000,
+  "inline_chars": 12000,
+  "diff_chars": 12000,
+  "min_digest_chars": 400
+ }
+}

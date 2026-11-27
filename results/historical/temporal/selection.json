@@ -1,0 +1,175 @@
+{
+ "time": "2026-11-21 10:15:05",
+ "rule": "Use one nominated checkpoint per round. Rank by the independent late whole-heart guard after a paired win of at least one mean point with no prediction-seed loss and no more than one point of DE direction loss. Require the composition veto and valid output for two test-configuration draws. Fall back to the original empirical seed. The validation target supplies diagnostics only.",
+ "ranking": [
+  "rounds/r00/snapshots/s026",
+  "rounds/r01/snapshots/s017",
+  "rounds/r02/snapshots/s015",
+  "final/seed"
+ ],
+ "checkpoints": [
+  {
+   "round": -1,
+   "rounds": [],
+   "snapshot": "final/seed",
+   "hash": "c378c44c18ecbc70",
+   "model": "empirical seed",
+   "guard": {
+    "score": 54.351666666666674,
+    "pred_seed_scores": [
+     55.55666666666667,
+     53.14666666666667
+    ],
+    "seed_sd": null,
+    "n_cells": 3000,
+    "seconds": 2.0,
+    "metrics": {
+     "de_score": 50.76333333333333,
+     "de_direction": 72.49499999999999,
+     "mmd_u": 46.391666666666666,
+     "variogram": 48.095
+    }
+   }
+  },
+  {
+   "round": 0,
+   "snapshot": "rounds/r00/snapshots/s026",
+   "hash": "bf1ba62226406fcd",
+   "validation": 51.6,
+   "splits": {
+    "val": {
+     "score": 51.6,
+     "metrics": {
+      "de_score": 45.589999999999996,
+      "de_direction": 58.24,
+      "mmd_u": 52.86333333333334,
+      "variogram": 48.923333333333325
+     }
+    }
+   },
+   "model": "deepseek/deepseek-v4.1-flash",
+   "gate": {
+    "shape": {
+     "ok": true,
+     "error_type": null,
+     "seconds": 6.6,
+     "n_cells": 3000
+    }
+   },
+   "rounds": [
+    0
+   ],
+   "guard": {
+    "score": 66.495,
+    "pred_seed_scores": [
+     67.62333333333333,
+     65.36666666666666
+    ],
+    "seed_sd": null,
+    "n_cells": 3000,
+    "seconds": 3.9,
+    "metrics": {
+     "de_score": 58.108333333333334,
+     "de_direction": 79.20833333333334,
+     "mmd_u": 71.05833333333334,
+     "variogram": 54.23500000000001
+    }
+   }
+  },
+  {
+   "round": 1,
+   "snapshot": "rounds/r01/snapshots/s017",
+   "hash": "20567f29e29e2852",
+   "validation": 52.13999999999999,
+   "splits": {
+    "val": {
+     "score": 52.13999999999999,
+     "metrics": {
+      "de_score": 45.92666666666667,
+      "de_direction": 58.576666666666675,
+      "mmd_u": 53.81333333333333,
+      "variogram": 49.34
+     }
+    }
+   },
+   "model": "deepseek/deepseek-v4.1-flash",
+   "gate": {
+    "shape": {
+     "ok": true,
+     "error_type": null,
+     "seconds": 7.0,
+     "n_cells": 3000
+    }
+   },
+   "rounds": [
+    1
+   ],
+   "guard": {
+    "score": 66.44833333333334,
+    "pred_seed_scores": [
+     67.72666666666667,
+     65.17
+    ],
+    "seed_sd": null,
+    "n_cells": 3000,
+    "seconds": 4.0,
+    "metrics": {
+     "de_score": 58.35166666666667,
+     "de_direction": 78.16,
+     "mmd_u": 71.44,
+     "variogram": 54.43333333333334
+    }
+   }
+  },
+  {
+   "round": 2,
+   "snapshot": "rounds/r02/snapshots/s015",
+   "hash": "1e39745abcfa867f",
+   "validation": 52.25333333333333,
+   "splits": {
+    "val": {
+     "score": 52.25333333333333,
+     "metrics": {
+      "de_score": 45.89666666666667,
+      "de_direction": 58.60333333333333,
+      "mmd_u": 54.15,
+      "variogram": 49.42666666666667
+     }
+    }
+   },
+   "model": "deepseek/deepseek-v4.1-flash",
+   "gate": {
+    "shape": {
+     "ok": true,
+     "error_type": null,
+     "seconds": 8.4,
+     "n_cells": 3000
+    }
+   },
+   "rounds": [
+    2
+   ],
+   "guard": {
+    "score": 65.88333333333334,
+    "pred_seed_scores": [
+     67.22000000000001,
+     64.54666666666667
+    ],
+    "seed_sd": null,
+    "n_cells": 3000,
+    "seconds": 5.4,
+    "metrics": {
+     "de_score": 59.21166666666667,
+     "de_direction": 78.51666666666665,
+     "mmd_u": 69.15333333333334,
+     "variogram": 53.51833333333333
+    }
+   }
+  }
+ ],
+ "shortlisted": [
+  "rounds/r00/snapshots/s026",
+  "rounds/r01/snapshots/s017",
+  "rounds/r02/snapshots/s015"
+ ]
+}

@@ -1,0 +1,39 @@
+{
+  "phase": "frozen confirmation",
+  "candidates": {
+    "heart": {
+      "state": 0.0,
+      "growth": 0.0,
+      "deformation": 0.25,
+      "scale": 0.5
+    },
+    "embryo": {
+      "mode": "transport",
+      "deformation": 0.5
+    }
+  },
+  "confirmation_runs": [
+    {
+      "fit_seed": 3,
+      "prediction_seed": 201
+    },
+    {
+      "fit_seed": 4,
+      "prediction_seed": 202
+    }
+  ],
+  "confirmation_scoring_seeds": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210
+  ],
+  "decision": "Assess fixed geometry candidates on both earlier and later backtests; retain raw neighborhood metrics and conservative stress totals. No alternative reranking.",
+  "limitations": "Repeated biological holdouts already used in development; final heart horizon is longer."
+}

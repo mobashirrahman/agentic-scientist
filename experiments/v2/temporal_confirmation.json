@@ -1,0 +1,13 @@
+{
+  "phase": "frozen confirmation",
+  "candidate": "unbalanced latent flow with empirical residual decoder",
+  "parameters": {"state": 0.35, "growth": 0.25, "horizon": 1.0},
+  "control": "first-submission composition model: state 0, composition 0.5",
+  "development_fit_seeds": [0, 1, 2],
+  "development_prediction_seeds": [101, 102, 103],
+  "development_scoring_seeds": [101, 102, 103, 104, 105],
+  "confirmation_runs": [{"fit_seed": 3, "prediction_seed": 201}, {"fit_seed": 4, "prediction_seed": 202}],
+  "confirmation_scoring_seeds": [201, 202, 203, 204, 205, 206, 207, 208, 209, 210],
+  "biological_holdout": "T1 E10.5; already used in development; new draws do not create a new biological holdout",
+  "decision": "Confirm this frozen candidate against its paired control; do not rerank alternatives using these draws"
+}

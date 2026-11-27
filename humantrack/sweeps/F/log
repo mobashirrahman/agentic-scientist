@@ -1,0 +1,61 @@
+/scratch/user/ve-next/src/v2/anchor.py:61: UserWarning: Observation names are not unique. To make them unique, call `.obs_names_make_unique`.
+  out = ad.concat(parts, join='outer', fill_value=0)
+/scratch/user/ve-next/src/v2/anchor.py:61: UserWarning: Observation names are not unique. To make them unique, call `.obs_names_make_unique`.
+  out = ad.concat(parts, join='outer', fill_value=0)
+/scratch/user/ve-next/src/v2/anchor.py:63: UserWarning: Observation names are not unique. To make them unique, call `.obs_names_make_unique`.
+  return out[:, [g for g in genes if g in have]].copy()
+/scratch/user/ve-next/src/v2/anchor.py:63: UserWarning: Observation names are not unique. To make them unique, call `.obs_names_make_unique`.
+  return out[:, [g for g in genes if g in have]].copy()
+{
+ "boards": {
+  "temporal": 49.675000000000004
+ },
+ "proxy": 49.675000000000004,
+ "board_se": {
+  "temporal": 0.2211460050635226
+ },
+ "proxy_se": 0.2211460050635226,
+ "correct": true,
+ "error": null,
+ "set": "dev",
+ "pred_seed": 101,
+ "fit_seed": 0,
+ "splits": {
+  "temporal_val": {
+   "board": "temporal",
+   "score": 47.51666666666667,
+   "metrics": {
+    "de_score": 40.57,
+    "de_direction": 54.03,
+    "mmd_u": 48.65,
+    "variogram": 46.36333333333334
+   },
+   "seed_scores": [
+    46.69,
+    48.16,
+    47.7
+   ],
+   "seed_sd": 0.751953012716442,
+   "seconds": 178.5,
+   "cpu_seconds": 168.2
+  },
+  "temporal_heartonly": {
+   "board": "temporal",
+   "score": 51.833333333333336,
+   "metrics": {
+    "de_score": 45.5,
+    "de_direction": 60.92000000000001,
+    "mmd_u": 53.666666666666664,
+    "variogram": 45.63333333333333
+   },
+   "seed_scores": [
+    51.81,
+    51.99,
+    51.7
+   ],
+   "seed_sd": 0.1464012750399846,
+   "seconds": 154.4,
+   "cpu_seconds": 143.9
+  }
+ }
+}

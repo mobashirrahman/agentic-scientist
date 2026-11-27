@@ -1,0 +1,812 @@
+[
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/heart_complexity.py",
+    "source_sha256": "6c12abdb76c212eabe3012065c7dc2e9455e22713bca701276671a9f1140d966",
+    "port_sha256": "6c12abdb76c212eabe3012065c7dc2e9455e22713bca701276671a9f1140d966"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/heart_transport.py",
+    "source_sha256": "655456d5d3c5fdfb6e26e284789d8fe64b7957dce4c1dd92ef020a4e95800361",
+    "port_sha256": "655456d5d3c5fdfb6e26e284789d8fe64b7957dce4c1dd92ef020a4e95800361"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/heart_anchor.py",
+    "source_sha256": "d9066d0a71b9a432f29d16d77eee691ef8be0250af108401c19f8354be7ba1ae",
+    "port_sha256": "d9066d0a71b9a432f29d16d77eee691ef8be0250af108401c19f8354be7ba1ae"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/perturbation_knobs.json",
+    "source_sha256": "1e17938489b472be349577ecbaa8cb4166205e76ea6e3049ed894419e1bc4302",
+    "port_sha256": "1e17938489b472be349577ecbaa8cb4166205e76ea6e3049ed894419e1bc4302"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/heart_domain_sampling.py",
+    "source_sha256": "544ee26ec90c0a26fb4f5eb4f7b8c5ebf7eb2abe5fb35dba24bf35f7cc8bd13b",
+    "port_sha256": "544ee26ec90c0a26fb4f5eb4f7b8c5ebf7eb2abe5fb35dba24bf35f7cc8bd13b"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/embryo_transport.py",
+    "source_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7",
+    "port_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/embryo.py",
+    "source_sha256": "1a3dc26972c3406ff155d680a8b6019777bd8ec4da963ea43904ff0be50d6b02",
+    "port_sha256": "0f993634a75490cc4b3ee478e8da30c21d563b623bd7a382a3d21b90a340bedf"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/CHANGES.md",
+    "source_sha256": "9cdecfcc90afd98f629968d0861b757df9ffa581a63eec464e349c49a416c931",
+    "port_sha256": "8a8453287d99c8faa2a1f6370e7c83572e6653db80283fc35be0fead3069d590"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/heart_niche_sampling.py",
+    "source_sha256": "4a6ae65a427b2621ef06f4ffd3c1979739c724bc1cb4c8ba15bf11fdbe79e768",
+    "port_sha256": "4a6ae65a427b2621ef06f4ffd3c1979739c724bc1cb4c8ba15bf11fdbe79e768"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/temporal_transport.py",
+    "source_sha256": "f7f33f7d88d31ed3759f9718517c5afde8741f415ebb9bcf173552b12f4f6f13",
+    "port_sha256": "f7f33f7d88d31ed3759f9718517c5afde8741f415ebb9bcf173552b12f4f6f13"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/perturbation_temporal_sampling.py",
+    "source_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996",
+    "port_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/perturbation_prior_composition.py",
+    "source_sha256": "e643f944a1c303cc93e075ffa19d5ddc36c1287e4504b1294478dee21a8e6bf8",
+    "port_sha256": "e643f944a1c303cc93e075ffa19d5ddc36c1287e4504b1294478dee21a8e6bf8"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/embryo_metabolic_sampling.py",
+    "source_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c",
+    "port_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/heart_metabolic_sampling.py",
+    "source_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c",
+    "port_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/perturbation_lineage_transport.py",
+    "source_sha256": "b7bd837797bef8e92c8982ee47a6945deacc543bb9c1f19604d264b371c7b476",
+    "port_sha256": "b7bd837797bef8e92c8982ee47a6945deacc543bb9c1f19604d264b371c7b476"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/temporal_ambient.py",
+    "source_sha256": "b34a55707d06f8c4b2cbfda95627bfbbe778aa3b3498caa1595847726499d5ca",
+    "port_sha256": "b34a55707d06f8c4b2cbfda95627bfbbe778aa3b3498caa1595847726499d5ca"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/perturbation_complexity.py",
+    "source_sha256": "4400e04aba305426c609013edec93dc035c2160bd9d85b1e39f55494d643a543",
+    "port_sha256": "4400e04aba305426c609013edec93dc035c2160bd9d85b1e39f55494d643a543"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/temporal_knobs.json",
+    "source_sha256": "0439245a9e18866b6dac2562e2375c768c92d86dac1d35191dd98d0fe62e3364",
+    "port_sha256": "0439245a9e18866b6dac2562e2375c768c92d86dac1d35191dd98d0fe62e3364"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/perturbation_local_rollback.py",
+    "source_sha256": "73eca3abb2b51f9cfe8d813882cefc2ee892a9c088dbd0e8d935b38122a2b330",
+    "port_sha256": "73eca3abb2b51f9cfe8d813882cefc2ee892a9c088dbd0e8d935b38122a2b330"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/temporal_complexity.py",
+    "source_sha256": "c5a08edc6161db6b2524148f4a640cfadf5278635779f34f0c8709dc1a3442fd",
+    "port_sha256": "c5a08edc6161db6b2524148f4a640cfadf5278635779f34f0c8709dc1a3442fd"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/heart_mitotic_replacement.py",
+    "source_sha256": "478f51b3b385fc34f44381d2e13f51671ba1e032b76b1600b51794e2d75bd9e3",
+    "port_sha256": "478f51b3b385fc34f44381d2e13f51671ba1e032b76b1600b51794e2d75bd9e3"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/heart_sparse_anchor.py",
+    "source_sha256": "7eccbcd09cc9cf0878c14cbb6f3989d50acbe51327405846616e41b9b4a354c7",
+    "port_sha256": "7eccbcd09cc9cf0878c14cbb6f3989d50acbe51327405846616e41b9b4a354c7"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/embryo_sparse_anchor.py",
+    "source_sha256": "c30e4c9ea976fc4ddd091da2c2cacd7327f7476b1a2e4942378a71c247196c54",
+    "port_sha256": "c30e4c9ea976fc4ddd091da2c2cacd7327f7476b1a2e4942378a71c247196c54"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/heart_growth.py",
+    "source_sha256": "58814a78629af92ada474cc49f0ef6785ee509dd1f4e2b5144bfad679f96636b",
+    "port_sha256": "58814a78629af92ada474cc49f0ef6785ee509dd1f4e2b5144bfad679f96636b"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/embryo_anchor.py",
+    "source_sha256": "a4872c321d2875b4429a347be19616f80e21ab60acddf248c98c33a9dca24604",
+    "port_sha256": "a4872c321d2875b4429a347be19616f80e21ab60acddf248c98c33a9dca24604"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/perturbation_transport.py",
+    "source_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7",
+    "port_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/temporal_valve_sampling.py",
+    "source_sha256": "4e56abaa9833db6ef8fa4413b1b728b6c3b0ce86c40a296357c298d1abff0e99",
+    "port_sha256": "4e56abaa9833db6ef8fa4413b1b728b6c3b0ce86c40a296357c298d1abff0e99"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/temporal_metabolic_sampling.py",
+    "source_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c",
+    "port_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/temporal_tuned.json",
+    "source_sha256": "9c8477c7c20cf1689f4dfed630a5c2fd19415523358ec54b63237545bb5956b2",
+    "port_sha256": "9c8477c7c20cf1689f4dfed630a5c2fd19415523358ec54b63237545bb5956b2"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/temporal_temporal_sampling.py",
+    "source_sha256": "34070e1153773468e86460fb9123274fd2a7838881a9da3f2c22395a1cfde864",
+    "port_sha256": "34070e1153773468e86460fb9123274fd2a7838881a9da3f2c22395a1cfde864"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/embryo_temporal_sampling.py",
+    "source_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996",
+    "port_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/PROVENANCE.json",
+    "source_sha256": "1e91bd9badb2bcacfa33638546a08ba1de0da468b19fa986aaf22f01b928b464",
+    "port_sha256": "473b26e88418ba773d1f70f3e351fa1290e26f1bccd34b1a31d6982fb82b1efa"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/perturbation.py",
+    "source_sha256": "881d5a6b146b29f536d31391b9c44f14e93a5d8a6254053ee6bcd035adacbc20",
+    "port_sha256": "de9368b599811719ee147813a35356ccadcb8e8eb33eb936eebe415a9347aa18"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/temporal_state_gain.py",
+    "source_sha256": "92ff5bb0b2367c67987378fe6b66a4445ea2310c309e751d365a9dd647b71bef",
+    "port_sha256": "92ff5bb0b2367c67987378fe6b66a4445ea2310c309e751d365a9dd647b71bef"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/perturbation_sparse_anchor.py",
+    "source_sha256": "59d2f960eabcbae808ff8700d96109b1cc437a08a7725bc86d462f4482c92d30",
+    "port_sha256": "59d2f960eabcbae808ff8700d96109b1cc437a08a7725bc86d462f4482c92d30"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/perturbation_metabolic_sampling.py",
+    "source_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c",
+    "port_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/perturbation_anchor.py",
+    "source_sha256": "1ffd3b9a8c18571292c0e9dab97c3eadc7d1879e0b7f6942aef495511f358b2e",
+    "port_sha256": "1ffd3b9a8c18571292c0e9dab97c3eadc7d1879e0b7f6942aef495511f358b2e"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/temporal.py",
+    "source_sha256": "3b3e1158db6e1c49a28216d4dd02b15ab86de12d04dc3dc55b00009dc3b7b023",
+    "port_sha256": "296a60ff4b54bbe2e3bfd669987be100e75f1af573b4fa3caeb0c83773261dd0"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/program.py",
+    "source_sha256": "4ab7e1d54ebe4641b03d525e796118712d4daf989ab622809c3d6a3a58d499ee",
+    "port_sha256": "4ab7e1d54ebe4641b03d525e796118712d4daf989ab622809c3d6a3a58d499ee"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/perturbation_tuned.json",
+    "source_sha256": "8e644962e3fd048d8ca4956cd89969ab2d67ac10c9b414a773c295ada60305a8",
+    "port_sha256": "8e644962e3fd048d8ca4956cd89969ab2d67ac10c9b414a773c295ada60305a8"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/embryo_complexity.py",
+    "source_sha256": "8639cf95759e191f49fdbf13ff36aa8bb8f619b90ee3f67c3d65e58ca445fd08",
+    "port_sha256": "8639cf95759e191f49fdbf13ff36aa8bb8f619b90ee3f67c3d65e58ca445fd08"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/perturbation_response_calibration.py",
+    "source_sha256": "cce4b0c5c613f20ece3215a8ad8d169f0a32276cfb1a513ebd7e609677486bba",
+    "port_sha256": "cce4b0c5c613f20ece3215a8ad8d169f0a32276cfb1a513ebd7e609677486bba"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/temporal_anchor.py",
+    "source_sha256": "a3c1a25d7747a1f517c6ee5360c5417cafc9d2e49968b4008948202b30d8518d",
+    "port_sha256": "a3c1a25d7747a1f517c6ee5360c5417cafc9d2e49968b4008948202b30d8518d"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/heart_temporal_sampling.py",
+    "source_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996",
+    "port_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/heart.py",
+    "source_sha256": "10f308d8857070708351eb9a6458af65ebfe466b272fe4b4792caeab199820ac",
+    "port_sha256": "ee2c9e1a951dd58159de5cd41e01119beaffd8d25c8bada82255c39579b6ae30"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_012037_enigma/composed_c4aebeed/ws/temporal_sparse_anchor.py",
+    "source_sha256": "cdfda8d1e2a0ffc2fec96ecfafc64793f7ba8cceca68ca4c283a46f44a0d462c",
+    "port_sha256": "cdfda8d1e2a0ffc2fec96ecfafc64793f7ba8cceca68ca4c283a46f44a0d462c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/heart_complexity.py",
+    "source_sha256": "6c12abdb76c212eabe3012065c7dc2e9455e22713bca701276671a9f1140d966",
+    "port_sha256": "6c12abdb76c212eabe3012065c7dc2e9455e22713bca701276671a9f1140d966"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/heart_transport.py",
+    "source_sha256": "655456d5d3c5fdfb6e26e284789d8fe64b7957dce4c1dd92ef020a4e95800361",
+    "port_sha256": "655456d5d3c5fdfb6e26e284789d8fe64b7957dce4c1dd92ef020a4e95800361"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/heart_anchor.py",
+    "source_sha256": "d9066d0a71b9a432f29d16d77eee691ef8be0250af108401c19f8354be7ba1ae",
+    "port_sha256": "d9066d0a71b9a432f29d16d77eee691ef8be0250af108401c19f8354be7ba1ae"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/perturbation_knobs.json",
+    "source_sha256": "1e17938489b472be349577ecbaa8cb4166205e76ea6e3049ed894419e1bc4302",
+    "port_sha256": "1e17938489b472be349577ecbaa8cb4166205e76ea6e3049ed894419e1bc4302"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/heart_domain_sampling.py",
+    "source_sha256": "544ee26ec90c0a26fb4f5eb4f7b8c5ebf7eb2abe5fb35dba24bf35f7cc8bd13b",
+    "port_sha256": "544ee26ec90c0a26fb4f5eb4f7b8c5ebf7eb2abe5fb35dba24bf35f7cc8bd13b"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/embryo_transport.py",
+    "source_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7",
+    "port_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/embryo.py",
+    "source_sha256": "1a3dc26972c3406ff155d680a8b6019777bd8ec4da963ea43904ff0be50d6b02",
+    "port_sha256": "0f993634a75490cc4b3ee478e8da30c21d563b623bd7a382a3d21b90a340bedf"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/CHANGES.md",
+    "source_sha256": "9cdecfcc90afd98f629968d0861b757df9ffa581a63eec464e349c49a416c931",
+    "port_sha256": "8a8453287d99c8faa2a1f6370e7c83572e6653db80283fc35be0fead3069d590"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/heart_niche_sampling.py",
+    "source_sha256": "4a6ae65a427b2621ef06f4ffd3c1979739c724bc1cb4c8ba15bf11fdbe79e768",
+    "port_sha256": "4a6ae65a427b2621ef06f4ffd3c1979739c724bc1cb4c8ba15bf11fdbe79e768"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/temporal_transport.py",
+    "source_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7",
+    "port_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/perturbation_temporal_sampling.py",
+    "source_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996",
+    "port_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/perturbation_prior_composition.py",
+    "source_sha256": "834971405e1d185cf9a0afe8195de2972b8dc2bbcdc2f467dd233026ed360c16",
+    "port_sha256": "834971405e1d185cf9a0afe8195de2972b8dc2bbcdc2f467dd233026ed360c16"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/embryo_metabolic_sampling.py",
+    "source_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c",
+    "port_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/heart_metabolic_sampling.py",
+    "source_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c",
+    "port_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/temporal_ambient.py",
+    "source_sha256": "b34a55707d06f8c4b2cbfda95627bfbbe778aa3b3498caa1595847726499d5ca",
+    "port_sha256": "b34a55707d06f8c4b2cbfda95627bfbbe778aa3b3498caa1595847726499d5ca"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/perturbation_complexity.py",
+    "source_sha256": "4400e04aba305426c609013edec93dc035c2160bd9d85b1e39f55494d643a543",
+    "port_sha256": "4400e04aba305426c609013edec93dc035c2160bd9d85b1e39f55494d643a543"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/temporal_knobs.json",
+    "source_sha256": "0bda6d7a8f113077f641fa1e638bc43281b5142eec3acae968d2f64cce9f3fba",
+    "port_sha256": "0bda6d7a8f113077f641fa1e638bc43281b5142eec3acae968d2f64cce9f3fba"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/perturbation_local_rollback.py",
+    "source_sha256": "73eca3abb2b51f9cfe8d813882cefc2ee892a9c088dbd0e8d935b38122a2b330",
+    "port_sha256": "73eca3abb2b51f9cfe8d813882cefc2ee892a9c088dbd0e8d935b38122a2b330"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/temporal_complexity.py",
+    "source_sha256": "c5a08edc6161db6b2524148f4a640cfadf5278635779f34f0c8709dc1a3442fd",
+    "port_sha256": "c5a08edc6161db6b2524148f4a640cfadf5278635779f34f0c8709dc1a3442fd"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/heart_mitotic_replacement.py",
+    "source_sha256": "478f51b3b385fc34f44381d2e13f51671ba1e032b76b1600b51794e2d75bd9e3",
+    "port_sha256": "478f51b3b385fc34f44381d2e13f51671ba1e032b76b1600b51794e2d75bd9e3"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/heart_sparse_anchor.py",
+    "source_sha256": "7eccbcd09cc9cf0878c14cbb6f3989d50acbe51327405846616e41b9b4a354c7",
+    "port_sha256": "7eccbcd09cc9cf0878c14cbb6f3989d50acbe51327405846616e41b9b4a354c7"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/embryo_sparse_anchor.py",
+    "source_sha256": "c30e4c9ea976fc4ddd091da2c2cacd7327f7476b1a2e4942378a71c247196c54",
+    "port_sha256": "c30e4c9ea976fc4ddd091da2c2cacd7327f7476b1a2e4942378a71c247196c54"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/heart_growth.py",
+    "source_sha256": "58814a78629af92ada474cc49f0ef6785ee509dd1f4e2b5144bfad679f96636b",
+    "port_sha256": "58814a78629af92ada474cc49f0ef6785ee509dd1f4e2b5144bfad679f96636b"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/embryo_anchor.py",
+    "source_sha256": "a4872c321d2875b4429a347be19616f80e21ab60acddf248c98c33a9dca24604",
+    "port_sha256": "a4872c321d2875b4429a347be19616f80e21ab60acddf248c98c33a9dca24604"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/perturbation_transport.py",
+    "source_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7",
+    "port_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/temporal_valve_sampling.py",
+    "source_sha256": "4e56abaa9833db6ef8fa4413b1b728b6c3b0ce86c40a296357c298d1abff0e99",
+    "port_sha256": "4e56abaa9833db6ef8fa4413b1b728b6c3b0ce86c40a296357c298d1abff0e99"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/temporal_metabolic_sampling.py",
+    "source_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c",
+    "port_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/temporal_tuned.json",
+    "source_sha256": "afb5ba79a0d464008c866f97af95165570553a0587e059d09938fc26bae38fa5",
+    "port_sha256": "afb5ba79a0d464008c866f97af95165570553a0587e059d09938fc26bae38fa5"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/temporal_temporal_sampling.py",
+    "source_sha256": "34070e1153773468e86460fb9123274fd2a7838881a9da3f2c22395a1cfde864",
+    "port_sha256": "34070e1153773468e86460fb9123274fd2a7838881a9da3f2c22395a1cfde864"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/embryo_temporal_sampling.py",
+    "source_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996",
+    "port_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/PROVENANCE.json",
+    "source_sha256": "6861e886b94a4e615d72b8061537c02bb2591a1ea20611d010e491f29184f242",
+    "port_sha256": "6241d2ae152aa1bd66cc2332cda9819cde0479f105f3465bb18970b0d8a5c08f"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/perturbation.py",
+    "source_sha256": "881d5a6b146b29f536d31391b9c44f14e93a5d8a6254053ee6bcd035adacbc20",
+    "port_sha256": "de9368b599811719ee147813a35356ccadcb8e8eb33eb936eebe415a9347aa18"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/perturbation_sparse_anchor.py",
+    "source_sha256": "59d2f960eabcbae808ff8700d96109b1cc437a08a7725bc86d462f4482c92d30",
+    "port_sha256": "59d2f960eabcbae808ff8700d96109b1cc437a08a7725bc86d462f4482c92d30"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/perturbation_metabolic_sampling.py",
+    "source_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c",
+    "port_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/perturbation_anchor.py",
+    "source_sha256": "1ffd3b9a8c18571292c0e9dab97c3eadc7d1879e0b7f6942aef495511f358b2e",
+    "port_sha256": "1ffd3b9a8c18571292c0e9dab97c3eadc7d1879e0b7f6942aef495511f358b2e"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/temporal.py",
+    "source_sha256": "de0a11a10784e2760a55e39a880278c737ea23bc46f355ab8c3cc28cdb8d221f",
+    "port_sha256": "a136ccac48ab567b56c40955e92d52af991d58c83a12e1349bbcc5d72aa253f2"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/program.py",
+    "source_sha256": "4ab7e1d54ebe4641b03d525e796118712d4daf989ab622809c3d6a3a58d499ee",
+    "port_sha256": "4ab7e1d54ebe4641b03d525e796118712d4daf989ab622809c3d6a3a58d499ee"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/perturbation_tuned.json",
+    "source_sha256": "8e644962e3fd048d8ca4956cd89969ab2d67ac10c9b414a773c295ada60305a8",
+    "port_sha256": "8e644962e3fd048d8ca4956cd89969ab2d67ac10c9b414a773c295ada60305a8"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/embryo_complexity.py",
+    "source_sha256": "8639cf95759e191f49fdbf13ff36aa8bb8f619b90ee3f67c3d65e58ca445fd08",
+    "port_sha256": "8639cf95759e191f49fdbf13ff36aa8bb8f619b90ee3f67c3d65e58ca445fd08"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/perturbation_response_calibration.py",
+    "source_sha256": "cce4b0c5c613f20ece3215a8ad8d169f0a32276cfb1a513ebd7e609677486bba",
+    "port_sha256": "cce4b0c5c613f20ece3215a8ad8d169f0a32276cfb1a513ebd7e609677486bba"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/temporal_anchor.py",
+    "source_sha256": "ddd03b085f835924ac696b7686f325e09a9dd7eafe39ccbb78a91b4024b067d6",
+    "port_sha256": "ddd03b085f835924ac696b7686f325e09a9dd7eafe39ccbb78a91b4024b067d6"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/heart_temporal_sampling.py",
+    "source_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996",
+    "port_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/heart.py",
+    "source_sha256": "10f308d8857070708351eb9a6458af65ebfe466b272fe4b4792caeab199820ac",
+    "port_sha256": "ee2c9e1a951dd58159de5cd41e01119beaffd8d25c8bada82255c39579b6ae30"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_023940_Turing/composed_88c14263/ws/temporal_sparse_anchor.py",
+    "source_sha256": "cdfda8d1e2a0ffc2fec96ecfafc64793f7ba8cceca68ca4c283a46f44a0d462c",
+    "port_sha256": "cdfda8d1e2a0ffc2fec96ecfafc64793f7ba8cceca68ca4c283a46f44a0d462c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/heart_complexity.py",
+    "source_sha256": "6c12abdb76c212eabe3012065c7dc2e9455e22713bca701276671a9f1140d966",
+    "port_sha256": "6c12abdb76c212eabe3012065c7dc2e9455e22713bca701276671a9f1140d966"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/heart_transport.py",
+    "source_sha256": "655456d5d3c5fdfb6e26e284789d8fe64b7957dce4c1dd92ef020a4e95800361",
+    "port_sha256": "655456d5d3c5fdfb6e26e284789d8fe64b7957dce4c1dd92ef020a4e95800361"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/heart_anchor.py",
+    "source_sha256": "d9066d0a71b9a432f29d16d77eee691ef8be0250af108401c19f8354be7ba1ae",
+    "port_sha256": "d9066d0a71b9a432f29d16d77eee691ef8be0250af108401c19f8354be7ba1ae"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/perturbation_knobs.json",
+    "source_sha256": "1e17938489b472be349577ecbaa8cb4166205e76ea6e3049ed894419e1bc4302",
+    "port_sha256": "1e17938489b472be349577ecbaa8cb4166205e76ea6e3049ed894419e1bc4302"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/heart_domain_sampling.py",
+    "source_sha256": "544ee26ec90c0a26fb4f5eb4f7b8c5ebf7eb2abe5fb35dba24bf35f7cc8bd13b",
+    "port_sha256": "544ee26ec90c0a26fb4f5eb4f7b8c5ebf7eb2abe5fb35dba24bf35f7cc8bd13b"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/embryo_transport.py",
+    "source_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7",
+    "port_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/embryo.py",
+    "source_sha256": "1a3dc26972c3406ff155d680a8b6019777bd8ec4da963ea43904ff0be50d6b02",
+    "port_sha256": "0f993634a75490cc4b3ee478e8da30c21d563b623bd7a382a3d21b90a340bedf"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/CHANGES.md",
+    "source_sha256": "9cdecfcc90afd98f629968d0861b757df9ffa581a63eec464e349c49a416c931",
+    "port_sha256": "8a8453287d99c8faa2a1f6370e7c83572e6653db80283fc35be0fead3069d590"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/heart_niche_sampling.py",
+    "source_sha256": "4a6ae65a427b2621ef06f4ffd3c1979739c724bc1cb4c8ba15bf11fdbe79e768",
+    "port_sha256": "4a6ae65a427b2621ef06f4ffd3c1979739c724bc1cb4c8ba15bf11fdbe79e768"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/temporal_transport.py",
+    "source_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7",
+    "port_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/perturbation_temporal_sampling.py",
+    "source_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996",
+    "port_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/perturbation_prior_composition.py",
+    "source_sha256": "a8a6044ad4d6b06e232d6d7477f9c52cb417badf8a72118f96d35cf33e73530e",
+    "port_sha256": "a8a6044ad4d6b06e232d6d7477f9c52cb417badf8a72118f96d35cf33e73530e"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/embryo_metabolic_sampling.py",
+    "source_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c",
+    "port_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/heart_metabolic_sampling.py",
+    "source_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c",
+    "port_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/temporal_ambient.py",
+    "source_sha256": "b34a55707d06f8c4b2cbfda95627bfbbe778aa3b3498caa1595847726499d5ca",
+    "port_sha256": "b34a55707d06f8c4b2cbfda95627bfbbe778aa3b3498caa1595847726499d5ca"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/perturbation_complexity.py",
+    "source_sha256": "4400e04aba305426c609013edec93dc035c2160bd9d85b1e39f55494d643a543",
+    "port_sha256": "4400e04aba305426c609013edec93dc035c2160bd9d85b1e39f55494d643a543"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/temporal_knobs.json",
+    "source_sha256": "0bda6d7a8f113077f641fa1e638bc43281b5142eec3acae968d2f64cce9f3fba",
+    "port_sha256": "0bda6d7a8f113077f641fa1e638bc43281b5142eec3acae968d2f64cce9f3fba"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/perturbation_local_rollback.py",
+    "source_sha256": "73eca3abb2b51f9cfe8d813882cefc2ee892a9c088dbd0e8d935b38122a2b330",
+    "port_sha256": "73eca3abb2b51f9cfe8d813882cefc2ee892a9c088dbd0e8d935b38122a2b330"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/temporal_complexity.py",
+    "source_sha256": "c5a08edc6161db6b2524148f4a640cfadf5278635779f34f0c8709dc1a3442fd",
+    "port_sha256": "c5a08edc6161db6b2524148f4a640cfadf5278635779f34f0c8709dc1a3442fd"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/heart_mitotic_replacement.py",
+    "source_sha256": "478f51b3b385fc34f44381d2e13f51671ba1e032b76b1600b51794e2d75bd9e3",
+    "port_sha256": "478f51b3b385fc34f44381d2e13f51671ba1e032b76b1600b51794e2d75bd9e3"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/heart_sparse_anchor.py",
+    "source_sha256": "7eccbcd09cc9cf0878c14cbb6f3989d50acbe51327405846616e41b9b4a354c7",
+    "port_sha256": "7eccbcd09cc9cf0878c14cbb6f3989d50acbe51327405846616e41b9b4a354c7"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/embryo_sparse_anchor.py",
+    "source_sha256": "c30e4c9ea976fc4ddd091da2c2cacd7327f7476b1a2e4942378a71c247196c54",
+    "port_sha256": "c30e4c9ea976fc4ddd091da2c2cacd7327f7476b1a2e4942378a71c247196c54"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/heart_growth.py",
+    "source_sha256": "58814a78629af92ada474cc49f0ef6785ee509dd1f4e2b5144bfad679f96636b",
+    "port_sha256": "58814a78629af92ada474cc49f0ef6785ee509dd1f4e2b5144bfad679f96636b"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/embryo_anchor.py",
+    "source_sha256": "a4872c321d2875b4429a347be19616f80e21ab60acddf248c98c33a9dca24604",
+    "port_sha256": "a4872c321d2875b4429a347be19616f80e21ab60acddf248c98c33a9dca24604"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/perturbation_transport.py",
+    "source_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7",
+    "port_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/temporal_valve_sampling.py",
+    "source_sha256": "4e56abaa9833db6ef8fa4413b1b728b6c3b0ce86c40a296357c298d1abff0e99",
+    "port_sha256": "4e56abaa9833db6ef8fa4413b1b728b6c3b0ce86c40a296357c298d1abff0e99"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/temporal_metabolic_sampling.py",
+    "source_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c",
+    "port_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/temporal_tuned.json",
+    "source_sha256": "afb5ba79a0d464008c866f97af95165570553a0587e059d09938fc26bae38fa5",
+    "port_sha256": "afb5ba79a0d464008c866f97af95165570553a0587e059d09938fc26bae38fa5"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/temporal_temporal_sampling.py",
+    "source_sha256": "34070e1153773468e86460fb9123274fd2a7838881a9da3f2c22395a1cfde864",
+    "port_sha256": "34070e1153773468e86460fb9123274fd2a7838881a9da3f2c22395a1cfde864"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/embryo_temporal_sampling.py",
+    "source_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996",
+    "port_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/PROVENANCE.json",
+    "source_sha256": "1e91bd9badb2bcacfa33638546a08ba1de0da468b19fa986aaf22f01b928b464",
+    "port_sha256": "473b26e88418ba773d1f70f3e351fa1290e26f1bccd34b1a31d6982fb82b1efa"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/perturbation.py",
+    "source_sha256": "881d5a6b146b29f536d31391b9c44f14e93a5d8a6254053ee6bcd035adacbc20",
+    "port_sha256": "de9368b599811719ee147813a35356ccadcb8e8eb33eb936eebe415a9347aa18"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/perturbation_sparse_anchor.py",
+    "source_sha256": "59d2f960eabcbae808ff8700d96109b1cc437a08a7725bc86d462f4482c92d30",
+    "port_sha256": "59d2f960eabcbae808ff8700d96109b1cc437a08a7725bc86d462f4482c92d30"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/perturbation_metabolic_sampling.py",
+    "source_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c",
+    "port_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/perturbation_anchor.py",
+    "source_sha256": "1ffd3b9a8c18571292c0e9dab97c3eadc7d1879e0b7f6942aef495511f358b2e",
+    "port_sha256": "1ffd3b9a8c18571292c0e9dab97c3eadc7d1879e0b7f6942aef495511f358b2e"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/temporal.py",
+    "source_sha256": "de0a11a10784e2760a55e39a880278c737ea23bc46f355ab8c3cc28cdb8d221f",
+    "port_sha256": "a136ccac48ab567b56c40955e92d52af991d58c83a12e1349bbcc5d72aa253f2"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/program.py",
+    "source_sha256": "4ab7e1d54ebe4641b03d525e796118712d4daf989ab622809c3d6a3a58d499ee",
+    "port_sha256": "4ab7e1d54ebe4641b03d525e796118712d4daf989ab622809c3d6a3a58d499ee"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/perturbation_tuned.json",
+    "source_sha256": "8e644962e3fd048d8ca4956cd89969ab2d67ac10c9b414a773c295ada60305a8",
+    "port_sha256": "8e644962e3fd048d8ca4956cd89969ab2d67ac10c9b414a773c295ada60305a8"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/embryo_complexity.py",
+    "source_sha256": "8639cf95759e191f49fdbf13ff36aa8bb8f619b90ee3f67c3d65e58ca445fd08",
+    "port_sha256": "8639cf95759e191f49fdbf13ff36aa8bb8f619b90ee3f67c3d65e58ca445fd08"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/perturbation_response_calibration.py",
+    "source_sha256": "cce4b0c5c613f20ece3215a8ad8d169f0a32276cfb1a513ebd7e609677486bba",
+    "port_sha256": "cce4b0c5c613f20ece3215a8ad8d169f0a32276cfb1a513ebd7e609677486bba"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/temporal_anchor.py",
+    "source_sha256": "ddd03b085f835924ac696b7686f325e09a9dd7eafe39ccbb78a91b4024b067d6",
+    "port_sha256": "ddd03b085f835924ac696b7686f325e09a9dd7eafe39ccbb78a91b4024b067d6"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/heart_temporal_sampling.py",
+    "source_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996",
+    "port_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/heart.py",
+    "source_sha256": "10f308d8857070708351eb9a6458af65ebfe466b272fe4b4792caeab199820ac",
+    "port_sha256": "ee2c9e1a951dd58159de5cd41e01119beaffd8d25c8bada82255c39579b6ae30"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261118_190445_smoke5/seed_538b483e/ws/temporal_sparse_anchor.py",
+    "source_sha256": "cdfda8d1e2a0ffc2fec96ecfafc64793f7ba8cceca68ca4c283a46f44a0d462c",
+    "port_sha256": "cdfda8d1e2a0ffc2fec96ecfafc64793f7ba8cceca68ca4c283a46f44a0d462c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261116_204101_full2/w1_c04_57b20988/ws/CHANGES.md",
+    "source_sha256": "4ddfd4958d84f0d817518afaac67f816dbf5e75dfdcbf49fc5e73e34c8f6e4c3",
+    "port_sha256": "4ddfd4958d84f0d817518afaac67f816dbf5e75dfdcbf49fc5e73e34c8f6e4c3"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261116_204101_full2/w1_c04_57b20988/ws/temporal_sampling.py",
+    "source_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996",
+    "port_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261116_204101_full2/w1_c04_57b20988/ws/metabolic_sampling.py",
+    "source_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c",
+    "port_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261116_204101_full2/w1_c04_57b20988/ws/sparse_anchor.py",
+    "source_sha256": "366617d3faa19ebfcbfdb998bb3e8cf7c61fc6fb6c338ba5c77a4b4881042318",
+    "port_sha256": "366617d3faa19ebfcbfdb998bb3e8cf7c61fc6fb6c338ba5c77a4b4881042318"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261116_204101_full2/w1_c04_57b20988/ws/program.py",
+    "source_sha256": "57b20988d0560c51350f9b3b9fc87acf370850f270fa1954784d378d78acd039",
+    "port_sha256": "46d484f8fdd1c6bedd1bb8fc7092a6c7807192bad38127a6b674b321a615ed5c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261116_204101_full2/w1_c04_57b20988/ws/diag_w1c02/report.json",
+    "source_sha256": "14815e8109c653d8198ea55b53764ecb42bb5e915bebefecaf26afd78337cf1a",
+    "port_sha256": "14815e8109c653d8198ea55b53764ecb42bb5e915bebefecaf26afd78337cf1a"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261116_204101_full2/w1_c04_57b20988/ws/diag_cand/report.json",
+    "source_sha256": "39abfd8767b7346bc893723ce7f4c103ee084d8c26a4845d7c3dff46c40cff98",
+    "port_sha256": "39abfd8767b7346bc893723ce7f4c103ee084d8c26a4845d7c3dff46c40cff98"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/perturbation_knobs.json",
+    "source_sha256": "1e17938489b472be349577ecbaa8cb4166205e76ea6e3049ed894419e1bc4302",
+    "port_sha256": "1e17938489b472be349577ecbaa8cb4166205e76ea6e3049ed894419e1bc4302"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/embryo.py",
+    "source_sha256": "c5e54b1734f3b65428e2900c4f559a78b696b927fb4995a41b967c60a9616d40",
+    "port_sha256": "b67b3049a1bc35babd8b324490c4cb70638312f6d660b58cfc5f14219615f19d"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/CHANGES.md",
+    "source_sha256": "9cdecfcc90afd98f629968d0861b757df9ffa581a63eec464e349c49a416c931",
+    "port_sha256": "8a8453287d99c8faa2a1f6370e7c83572e6653db80283fc35be0fead3069d590"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/perturbation_temporal_sampling.py",
+    "source_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996",
+    "port_sha256": "b674f720668a8e14d0995594af1e1be1fa6726e2f04e8bb903f00de1dcdfc996"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/perturbation_prior_composition.py",
+    "source_sha256": "432f680a0a55d7a0069e376975240f713d6cfb8d2bbf80569e3379d4020c0394",
+    "port_sha256": "432f680a0a55d7a0069e376975240f713d6cfb8d2bbf80569e3379d4020c0394"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/perturbation_complexity.py",
+    "source_sha256": "4400e04aba305426c609013edec93dc035c2160bd9d85b1e39f55494d643a543",
+    "port_sha256": "4400e04aba305426c609013edec93dc035c2160bd9d85b1e39f55494d643a543"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/perturbation_local_rollback.py",
+    "source_sha256": "73eca3abb2b51f9cfe8d813882cefc2ee892a9c088dbd0e8d935b38122a2b330",
+    "port_sha256": "73eca3abb2b51f9cfe8d813882cefc2ee892a9c088dbd0e8d935b38122a2b330"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/perturbation_wt_neighbours.py",
+    "source_sha256": "0a6c8de261bb213c2ef1d1d0f464814fc8cc3f5b78cb3c1262d80fed46adf89a",
+    "port_sha256": "0a6c8de261bb213c2ef1d1d0f464814fc8cc3f5b78cb3c1262d80fed46adf89a"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/perturbation_transport.py",
+    "source_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7",
+    "port_sha256": "dcdc15eaa43e2fb1cae0bf1ed80d13f3ea4f96e439feb7758a228ff84d5ceaa7"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/PROVENANCE.json",
+    "source_sha256": "2a42dc38d32ec8567f329633c8ff3373aad6e24d2217c5b69e2e3a79bb0d74a6",
+    "port_sha256": "0c42b77535b6bc180c2d8581d1fc2a2637587972e6955f6d931b2cec4ab77266"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/perturbation.py",
+    "source_sha256": "f286d525a1a983b1ec9dc48ea1cefb7f7c895f7d9a65870afa60d11bec682d89",
+    "port_sha256": "06ba8f49b06404af1e10e478a76160908d61dac459d2c25544b2fd3ccbcd129a"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/perturbation_sparse_anchor.py",
+    "source_sha256": "59d2f960eabcbae808ff8700d96109b1cc437a08a7725bc86d462f4482c92d30",
+    "port_sha256": "59d2f960eabcbae808ff8700d96109b1cc437a08a7725bc86d462f4482c92d30"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/perturbation_transport_order.py",
+    "source_sha256": "39ecb45a977bfc49c2881953cca48f58da8370f343079508819cddead2465482",
+    "port_sha256": "39ecb45a977bfc49c2881953cca48f58da8370f343079508819cddead2465482"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/perturbation_metabolic_sampling.py",
+    "source_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c",
+    "port_sha256": "879a8ff536a912c5ec9a76953302c795622094045e727d2a07c54e2ab9c7745c"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/perturbation_anchor.py",
+    "source_sha256": "1ffd3b9a8c18571292c0e9dab97c3eadc7d1879e0b7f6942aef495511f358b2e",
+    "port_sha256": "1ffd3b9a8c18571292c0e9dab97c3eadc7d1879e0b7f6942aef495511f358b2e"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/temporal.py",
+    "source_sha256": "4104e54a0a23ddf9dfbd42cc5c20a05449fa054f077f7cd1598cf9e1781dfac5",
+    "port_sha256": "ee66757310b42d1ef300dbdcf42997d6f94570011c348fb29c780563da09d40a"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/program.py",
+    "source_sha256": "4ab7e1d54ebe4641b03d525e796118712d4daf989ab622809c3d6a3a58d499ee",
+    "port_sha256": "4ab7e1d54ebe4641b03d525e796118712d4daf989ab622809c3d6a3a58d499ee"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/perturbation_tuned.json",
+    "source_sha256": "8e644962e3fd048d8ca4956cd89969ab2d67ac10c9b414a773c295ada60305a8",
+    "port_sha256": "8e644962e3fd048d8ca4956cd89969ab2d67ac10c9b414a773c295ada60305a8"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/perturbation_response_calibration.py",
+    "source_sha256": "cce4b0c5c613f20ece3215a8ad8d169f0a32276cfb1a513ebd7e609677486bba",
+    "port_sha256": "cce4b0c5c613f20ece3215a8ad8d169f0a32276cfb1a513ebd7e609677486bba"
+  },
+  {
+    "file": "models/historical/compositions/mglock_20261119_202237_Waddington/selected/heart.py",
+    "source_sha256": "335c28e79d6ee2ba7ddc90c40f85b57ac822fd8c6a53c73cc46fe07b8586ee3d",
+    "port_sha256": "e163cc1dac73323b549db87f7b2685a5f2ed4ae78a813b9ff897cd23c44f2a27"
+  },
+  {
+    "file": "models/historical/temporal/sampling_shift.py",
+    "source_sha256": "bb209564256ba775960446fd0403b69456f313da50304f017bee763577598018",
+    "port_sha256": "bb209564256ba775960446fd0403b69456f313da50304f017bee763577598018"
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "source": "https://github.com/bowang-lab/scGPT",
+  "checkpoint": "whole-human",
+  "scope": "research probe; corpus review required before competition use",
+  "files": {
+    "args.json": {
+      "bytes": 1300,
+      "sha256": "c18e075e018140cb8b2d9029387b9de26607a5ce6a8ccabd6ead70cd76b95d60",
+      "url": "https://drive.usercontent.google.com/download?id=1hh2zGKyWAx3DyovD30GStZ3QlzmSqdk1&export=download&confirm=t"
+    },
+    "vocab.json": {
+      "bytes": 1317639,
+      "sha256": "acca93d114ca62c3f0f50debbd23e8c87f0714f4737764454f6b2b13f2e8580f",
+      "url": "https://drive.usercontent.google.com/download?id=1H3E_MJ-Dl36AQV6jLbna2EdvgPaqvqcC&export=download&confirm=t"
+    },
+    "best_model.pt": {
+      "bytes": 205385258,
+      "sha256": "6cb5d451ab5c4b33eb673adbe4fddc61d2389df1b89b7651a9fe2e557572b922",
+      "url": "https://drive.usercontent.google.com/download?id=14AebJfGOUF047Eg40hk57HCtrb0fyDTm&export=download&confirm=t"
+    }
+  }
+}

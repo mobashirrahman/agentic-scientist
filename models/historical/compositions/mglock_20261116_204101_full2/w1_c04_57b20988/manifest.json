@@ -1,0 +1,286 @@
+{
+  "run": "mglock_20261116_204101_full2",
+  "lock_id": "mglock_20261116_204101",
+  "program_id": "w1_c04_57b20988",
+  "generation": null,
+  "run_combined_score": null,
+  "run_public_metrics": {
+    "lock_id": "mglock_20261116_204101",
+    "rule": "max holdout proxy among top-K dev, must beat seed on holdout",
+    "candidates": [
+      {
+        "id": "seed",
+        "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261116_204101_full2/seed_ws",
+        "proxy": 173.64055555555558,
+        "holdout": 163.67555555555558,
+        "holdout_sd": 1.4407119510596027,
+        "holdout_pairs": [
+          164.09500000000003,
+          164.86,
+          162.07166666666666
+        ],
+        "holdout_boards": {
+          "temporal": 55.52555555555556,
+          "heart": 52.57888888888888,
+          "embryo": 70.11222222222223,
+          "perturbation": 46.80444444444444
+        }
+      },
+      {
+        "id": "w2_c05",
+        "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261116_204101_full2/cycles/w2_c05/ws",
+        "proxy": 183.96118055555556,
+        "boards": {
+          "temporal": 60.05666666666667,
+          "heart": 54.66111111111112,
+          "embryo": 81.09666666666668,
+          "perturbation": 56.05333333333333
+        },
+        "holdout": 167.45000000000002,
+        "holdout_sd": 0.5634787780682903,
+        "holdout_pairs": [
+          167.99333333333334,
+          167.48833333333334,
+          166.86833333333334
+        ],
+        "holdout_boards": {
+          "temporal": 59.49777777777778,
+          "heart": 51.61888888888888,
+          "embryo": 70.11222222222223,
+          "perturbation": 47.086666666666666
+        }
+      },
+      {
+        "id": "w2_c04",
+        "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261116_204101_full2/cycles/w2_c04/ws",
+        "proxy": 182.09131944444445,
+        "boards": {
+          "temporal": 60.05666666666667,
+          "heart": 53.855555555555554,
+          "embryo": 81.09666666666668,
+          "perturbation": 56.05333333333333
+        },
+        "holdout": 166.58444444444444,
+        "holdout_sd": 0.37157447785415637,
+        "holdout_pairs": [
+          167.00833333333333,
+          166.43,
+          166.315
+        ],
+        "holdout_boards": {
+          "temporal": 59.49777777777778,
+          "heart": 49.88777777777778,
+          "embryo": 70.11222222222223,
+          "perturbation": 47.086666666666666
+        }
+      },
+      {
+        "id": "w2_c03",
+        "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261116_204101_full2/cycles/w2_c03/ws",
+        "proxy": 179.98777777777778,
+        "boards": {
+          "temporal": 60.05666666666667,
+          "heart": 53.855555555555554,
+          "embryo": 81.09666666666668,
+          "perturbation": 53.93666666666667
+        },
+        "holdout": 166.30222222222224,
+        "holdout_sd": 0.6255804711833038,
+        "holdout_pairs": [
+          166.61833333333334,
+          166.70666666666668,
+          165.58166666666668
+        ],
+        "holdout_boards": {
+          "temporal": 59.49777777777778,
+          "heart": 49.88777777777778,
+          "embryo": 70.11222222222223,
+          "perturbation": 46.80444444444444
+        }
+      },
+      {
+        "id": "w0_c02",
+        "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261116_204101_full2/cycles/w0_c02/ws",
+        "proxy": 179.3048611111111,
+        "boards": {
+          "temporal": 57.47666666666667,
+          "heart": 54.898888888888884,
+          "embryo": 81.09666666666668,
+          "perturbation": 53.93666666666667
+        },
+        "holdout": 164.32888888888888,
+        "holdout_sd": 0.334922600234958,
+        "holdout_pairs": [
+          164.06833333333336,
+          164.70666666666668,
+          164.21166666666667
+        ],
+        "holdout_boards": {
+          "temporal": 57.52444444444445,
+          "heart": 49.88777777777778,
+          "embryo": 70.11222222222223,
+          "perturbation": 46.80444444444444
+        }
+      },
+      {
+        "id": "w1_c04",
+        "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261116_204101_full2/cycles/w1_c04/ws",
+        "proxy": 177.31680555555556,
+        "boards": {
+          "temporal": 58.446666666666665,
+          "heart": 48.77111111111111,
+          "embryo": 81.09666666666668,
+          "perturbation": 53.93666666666667
+        },
+        "holdout": 167.49666666666667,
+        "holdout_sd": 0.2543018766042535,
+        "holdout_pairs": [
+          167.54500000000002,
+          167.72333333333333,
+          167.22166666666666
+        ],
+        "holdout_boards": {
+          "temporal": 59.346666666666664,
+          "heart": 52.57888888888888,
+          "embryo": 70.11222222222223,
+          "perturbation": 46.80444444444444
+        }
+      }
+    ],
+    "chosen": "w1_c04",
+    "cost_usd": 10.9455959,
+    "agent_calls": 125
+  },
+  "program_sha256": "57b20988d0560c51350f9b3b9fc87acf370850f270fa1954784d378d78acd039",
+  "seed": 42,
+  "n": 3000,
+  "boards": {
+    "T1:test": {
+      "file": "T1__test.h5ad",
+      "cells": 3000,
+      "genes": 32285,
+      "sha256": "f75262c5eed299264a93fdc9543f23413388a533e9095ad22b2a8b450edac3cc",
+      "inputs": {
+        "T1/E8.5_RNA.h5ad": "8eab2d0ccaa89f92861b09816b76b6a731b8ed6b5995e4af196d9ed8ff76e504",
+        "T1/E9.5_RNA.h5ad": "0296e0043842f944a663f3c11ac1542d1bbee733c1cd657bd56f75af65958361",
+        "T1/E10.5_RNA.h5ad": "974e04e7fe64fb96142f17994a9678d4cebd4f1868dec4de034eda4245b7dd6c"
+      },
+      "target_time": 12.5,
+      "knockout": null,
+      "format_check": {
+        "file": "/scratch/user/virtual-embryo/submissions/agent/mglock_20261116_204101_full2/w1_c04_57b20988/T1__test.h5ad",
+        "board": "T1:test",
+        "errors": [],
+        "warnings": [],
+        "info": {
+          "n_obs": 3000,
+          "n_vars": 32285,
+          "sha256": "f75262c5eed299264a93fdc9543f23413388a533e9095ad22b2a8b450edac3cc",
+          "size_mb": 50.7,
+          "max_file_mb": 1200.0,
+          "X_format": "dense[float32]",
+          "X_min": 0.0,
+          "X_max": 8.872,
+          "X_nonzero_frac": 0.0944
+        },
+        "ok": true
+      }
+    },
+    "T2:heart:test_extrap": {
+      "file": "T2__heart__test_extrap.h5ad",
+      "cells": 3000,
+      "genes": 500,
+      "sha256": "08d80162809d7944d2f45e58126ea63b55ada95ffd41f2c428bdbfe7d33ed9f4",
+      "inputs": {
+        "T2/E8.25_late.h5ad": "d56f94d3e2d719ed3074d86c03eae457ccf90b24145d33300f9958f0e8078593",
+        "T2/E8.5.h5ad": "41c76db18bfaa92c1d66f8220ec5fbb6d6acccb0a6b78241f40080a3096d37db",
+        "T2/E8.75.h5ad": "149ab6df7c99ad85046c8aebebcf0c43689b3720c59ffb7cc550edcf2f13a83c",
+        "T2/E9.5.h5ad": "371ca6530e084de2b6cd6703b49d95f4bb59546c9291659809575382a630ee9a",
+        "T2/E10.5.h5ad": "d6b37967f9cf3533091964cd07421c48a5c7c04628e9321123a426cb2a9c7e8b"
+      },
+      "target_time": 12.5,
+      "knockout": null,
+      "format_check": {
+        "file": "/scratch/user/virtual-embryo/submissions/agent/mglock_20261116_204101_full2/w1_c04_57b20988/T2__heart__test_extrap.h5ad",
+        "board": "T2:heart:test_extrap",
+        "errors": [],
+        "warnings": [],
+        "info": {
+          "n_obs": 3000,
+          "n_vars": 500,
+          "sha256": "08d80162809d7944d2f45e58126ea63b55ada95ffd41f2c428bdbfe7d33ed9f4",
+          "size_mb": 0.6,
+          "max_file_mb": 1200.0,
+          "X_format": "dense[float32]",
+          "X_min": 0.0,
+          "X_max": 8.5948,
+          "X_nonzero_frac": 0.0644,
+          "spatial_3D_rms_radius": 606.003
+        },
+        "ok": true
+      }
+    },
+    "T2:embryo:test_interp": {
+      "file": "T2__embryo__test_interp.h5ad",
+      "cells": 3000,
+      "genes": 497,
+      "sha256": "fabdc3073916332068a9720bedc0bec5a74b8d304b419f2e5767117baf863bb3",
+      "inputs": {
+        "T2/E7.5.h5ad": "e8e47255ddeca96d5604c7cd4923bbf27765c24bc6a3cd44e800cd6ea05a7d54",
+        "T2/E8.0.h5ad": "17530e23fbfa6a139ff68d0353a489d83790f5b60f036b7d2f58303a1ff8a810"
+      },
+      "target_time": 7.75,
+      "knockout": null,
+      "format_check": {
+        "file": "/scratch/user/virtual-embryo/submissions/agent/mglock_20261116_204101_full2/w1_c04_57b20988/T2__embryo__test_interp.h5ad",
+        "board": "T2:embryo:test_interp",
+        "errors": [],
+        "warnings": [],
+        "info": {
+          "n_obs": 3000,
+          "n_vars": 497,
+          "sha256": "fabdc3073916332068a9720bedc0bec5a74b8d304b419f2e5767117baf863bb3",
+          "size_mb": 0.8,
+          "max_file_mb": 1200.0,
+          "X_format": "dense[float32]",
+          "X_min": 0.0,
+          "X_max": 8.8622,
+          "X_nonzero_frac": 0.1009,
+          "spatial_3D_rms_radius": 246.767
+        },
+        "ok": true
+      }
+    },
+    "T3:bcatenin": {
+      "file": "T3__bcatenin.h5ad",
+      "cells": 3000,
+      "genes": 500,
+      "sha256": "ba50ae279955f8ff2d3f8a97965cec69d8dd793c333d1b4424932066c14c4979",
+      "inputs": {
+        "T2/E8.5.h5ad": "41c76db18bfaa92c1d66f8220ec5fbb6d6acccb0a6b78241f40080a3096d37db",
+        "T2/E8.75.h5ad": "149ab6df7c99ad85046c8aebebcf0c43689b3720c59ffb7cc550edcf2f13a83c"
+      },
+      "target_time": 8.75,
+      "knockout": "Ctnnb1",
+      "format_check": {
+        "file": "/scratch/user/virtual-embryo/submissions/agent/mglock_20261116_204101_full2/w1_c04_57b20988/T3__bcatenin.h5ad",
+        "board": "T3:bcatenin",
+        "errors": [],
+        "warnings": [],
+        "info": {
+          "n_obs": 3000,
+          "n_vars": 500,
+          "sha256": "ba50ae279955f8ff2d3f8a97965cec69d8dd793c333d1b4424932066c14c4979",
+          "size_mb": 0.7,
+          "max_file_mb": 1200.0,
+          "X_format": "dense[float32]",
+          "X_min": 0.0,
+          "X_max": 9.2104,
+          "X_nonzero_frac": 0.0861,
+          "spatial_3D_rms_radius": 218.29
+        },
+        "ok": true
+      }
+    }
+  }
+}

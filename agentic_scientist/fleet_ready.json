@@ -1,0 +1,58 @@
+{
+ "bio01.cluster.example": {
+  "ok": true,
+  "note": "13 stage files hashed; protected present: 0"
+ },
+ "bio02.cluster.example": {
+  "ok": true,
+  "note": "13 stage files hashed; protected present: 0"
+ },
+ "bio07.cluster.example": {
+  "ok": true,
+  "note": "13 stage files hashed; protected present: 0"
+ },
+ "bio08.cluster.example": {
+  "ok": true,
+  "note": "13 stage files hashed; protected present: 0"
+ },
+ "bio09.cluster.example": {
+  "ok": true,
+  "note": "13 stage files hashed; protected present: 0"
+ },
+ "bio11.cluster.example": {
+  "ok": false,
+  "note": "no venv: sss_ssh_knownhostsproxy: connect to host bio11.cluster.example port 22: No route to host\nConnection closed by UNKNOWN port 65535\n"
+ },
+ "bio12.cluster.example": {
+  "ok": true,
+  "note": "13 stage files hashed; protected present: 0"
+ },
+ "bio13.cluster.example": {
+  "ok": true,
+  "note": "13 stage files hashed; protected present: 0"
+ },
+ "bio14.cluster.example": {
+  "ok": true,
+  "note": "13 stage files hashed; protected present: 0"
+ },
+ "bio15.cluster.example": {
+  "ok": true,
+  "note": "13 stage files hashed; protected present: 0"
+ },
+ "bio16.cluster.example": {
+  "ok": true,
+  "note": "13 stage files hashed; protected present: 0"
+ },
+ "bio18.cluster.example": {
+  "ok": true,
+  "note": "13 stage files hashed; protected present: 0"
+ },
+ "bio19.cluster.example": {
+  "ok": false,
+  "note": "no venv: sss_ssh_knownhostsproxy: connect to host bio19.cluster.example port 22: No route to host\nConnection closed by UNKNOWN port 65535\n"
+ },
+ "bio21.cluster.example": {
+  "ok": true,
+  "note": "13 stage files hashed; protected present: 0"
+ }
+}

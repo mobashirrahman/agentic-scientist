@@ -1,0 +1,200 @@
+{
+ "workers": 4,
+ "cycles_per_worker": 25,
+ "min_cycles_per_worker": 16,
+ "patience_cycles": 12,
+ "max_research_seconds": 100800,
+ "cycle_drain_seconds": 14400,
+ "_wall_budget": "36 hours assuming prompt passphrase entry: admit cycles through hour 24, finish research by hour 28, reserve 8 hours for final selection, export and evidence.",
+ "max_debug_attempts": 2,
+ "shortlist": 2,
+ "ideator": {
+  "cli": "codex",
+  "model": "gpt-6.2-sol",
+  "effort": "medium",
+  "timeout_s": 2400
+ },
+ "ideator_cycle": [
+  {
+   "cli": "codex",
+   "model": "gpt-6.2-sol",
+   "effort": "medium",
+   "timeout_s": 2400
+  },
+  {
+   "cli": "claude",
+   "model": "claude-sonnet-5-5",
+   "timeout_s": 2400
+  }
+ ],
+ "implementers": [
+  {
+   "cli": "opencode",
+   "model": "opencode-go/deepseek-v4.1-flash#max",
+   "timeout_s": 3600
+  }
+ ],
+ "distiller": {
+  "cli": "opencode",
+  "model": "opencode-go/glm-5.3#max",
+  "timeout_s": 600
+ },
+ "max_agent_calls": 1500,
+ "holdout_forbidden": [
+  ".claude/projects",
+  "/T2/E10.5",
+  "/T2/E7.5.h5ad",
+  "E10.5.h5ad",
+  "E7.5.h5ad",
+  "T2/E10.5.h5ad",
+  "T2/E7.5.h5ad",
+  "holdout.enc/",
+  "ve-holdout-t3",
+  "T3__unseen",
+  "unseen_wt_a",
+  "unseen_wt_b",
+  "unseen_ko",
+  "unseen_spec"
+ ],
+ "critic": {
+  "cli": "claude",
+  "model": "opus",
+  "timeout_s": 1800
+ },
+ "curator": {
+  "cli": "opencode",
+  "model": "opencode-go/deepseek-v4.1-flash#max",
+  "timeout_s": 1500
+ },
+ "kb_chars": 9000,
+ "acceptance": {
+  "alpha": 0.05,
+  "margin": 0.25,
+  "reject_z": -2.0,
+  "batches": [
+   8
+  ],
+  "board_drop": 0.5,
+  "rule": "screen one seed pair; confirm with all eight paired evaluations; accept when the proxy or changed board clears the margin with a one-sided 95% lower bound, subject to board and condition loss limits",
+  "board_margin": {
+   "heart": 0.5,
+   "embryo": 0.5
+  }
+ },
+ "condition_drop": 0.5,
+ "holdout_margin": 0.25,
+ "holdout_seed_pairs": [
+  [
+   202,
+   0
+  ],
+  [
+   313,
+   1
+  ],
+  [
+   424,
+   2
+  ],
+  [
+   535,
+   3
+  ]
+ ],
+ "merge": false,
+ "focus": {
+  "w0": "perturbation",
+  "w1": "perturbation",
+  "w2": "heart",
+  "w3": [
+   "embryo",
+   "embryo",
+   "temporal"
+  ]
+ },
+ "critic_plan": false,
+ "critic_code": false,
+ "sanity": true,
+ "_flags": "critic_plan / critic_code: false = off, a role dict = that model, absent = \"critic\". sanity: 3-day plausibility gate for T1/heart changes. elites: per-worker pool of top-K accepted programs used as alternative parents (every 3rd cycle or after 2 fails); 1 = best only. tune: on demand (agentic_scientist/tune.py): when a candidate adds or changes <board>_knobs.json, the harness tunes the knobs before the race on the whole fleet (Sobol batch, then GP-BO batches with constant liar, finalists re-scored on fresh seed pairs, paired LCB vs the current values), writes <board>_tuned.json, re-screens, and the paired race decides; max_tunes caps the run. free_roam false = a worker never leaves its task.",
+ "elites": 3,
+ "tune": {
+  "on_demand": true,
+  "boards": [
+   "temporal",
+   "heart",
+   "embryo",
+   "perturbation"
+  ],
+  "rounds": 2,
+  "parallel": "fleet",
+  "top": 3,
+  "max_tunes": 12,
+  "seed": 0
+ },
+ "max_slowdown": null,
+ "slow_floor_s": 240,
+ "max_cycles_factor": 1.5,
+ "monitor_late": true,
+ "initial_elites": {},
+ "claude_max_week_util": 0.92,
+ "claude_fallback": {
+  "cli": "codex",
+  "model": "gpt-6.2-sol",
+  "effort": "medium",
+  "timeout_s": 2400
+ },
+ "free_roam": false,
+ "directives": {
+  "w0": "T3 response magnitude with REAL WT donor cells: calibrate how far each lineage moves from expression breadth and the WT interval; keep every output cell a resampled real cell, then shift it.",
+  "w1": "T3 lineage-composition transport: use the WT time interval to move mass among lineages and resample intact donor profiles. Compare with a gene-blind transport baseline using the same donors and budget. Leave one whole knockout gene, including every replicate, out of fitting and tuning in each fold. Report the paired gain against baseline for each omitted gene.",
+  "w2": "Heart test gap = expression state and neighbourhoods (leaderboard: BULKO pseudobulk offset, neighbourhood MMD). Work on neighbourhood-preserving tissue patches (move whole local patches, not single cells) and damped within-cell-type expression shifts. No new dissection masks, retention rules or size laws: those fitted the dev hearts and lost on E10.5 last run.",
+  "w3": {
+   "embryo": "Embryo, ONE preregistered experiment: build the output on a single native embryo scaffold (the EARLIER bracket's coordinates only, never an overlay of both brackets), fixed 3000 cells, expression and donor counts as in the seed. Prove in CHANGES.md that every coordinate comes from that scaffold. Do not tune time warps, thinning or density (they overfit E7.25 last run).",
+   "temporal": "T1 test gap = whole-population realism (mmd and variogram), not single lineages: whole-population transport of the E9.5 cells toward the target horizon, calibrated so the full cell-state distribution moves, not only erythroid or cardiac budgets."
+  }
+ },
+ "group_floor": 0.25,
+ "lineage_max": 2,
+ "guard": {
+  "pairs": [
+   [
+    301,
+    0
+   ],
+   [
+    302,
+    1
+   ],
+   [
+    303,
+    2
+   ],
+   [
+    304,
+    3
+   ]
+  ],
+  "mean": 0.25,
+  "lb": 0.5,
+  "boards": [
+   "embryo"
+  ],
+  "_note": "Validated 2026-11-18 on Turing: the embryo guard scored the holdout loser w2_c04 -2.9 below the seed; the heart guard scored both heart holdout losers +5 to +6 ABOVE the seed (E10.5 losses are horizon-specific), so heart is judged by its E10.5 holdout only."
+ },
+ "_generalisation": "2026-11-18 plan (docs/plans/2026-11-18_generalisation_fixes.md, Astra review): official T2 structure gate and embryo copy_last reference in the scorer; heart stage-balanced; T2 board margin 0.5; every target group of a touched board mean >= -0.25; lineage_max 2 then restart; hidden guard judges T2 picks at final selection only (mean >= -0.25, 90% lb >= -0.5 vs seed).",
+ "planner_every": 8,
+ "ablation_tol": 0.25,
+ "planner": {
+  "cli": "codex",
+  "model": "gpt-6.2-sol",
+  "effort": "high",
+  "timeout_s": 2400
+ },
+ "overflow": {
+  "cli": "opencode",
+  "model": "opencode-go/deepseek-v4.1-flash#max",
+  "timeout_s": 3600
+ },
+ "_models": "Ideation alternates gpt-6.2-sol (medium) and Claude Sonnet 5.5 (Turing: 57-58% accepted vs 29% for DeepSeek); the planner is gpt-6.2-sol high (~10 calls/run); implementer, curator = DeepSeek, distiller = GLM; when every quota-limited CLI is out, 'overflow' (DeepSeek) takes the call instead of pausing.",
+ "research_enabled": false
+}

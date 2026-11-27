@@ -1,0 +1,4 @@
+{
+  "ery_mass_budget": {"low": 0.04, "high": 0.16, "default": 0.12},
+  "ery_max_odds": {"low": 6.0, "high": 18.0, "default": 14.0}
+}

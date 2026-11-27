@@ -1,0 +1,290 @@
+{
+ "_about": "AgenticScientist FINAL Run #2 (2026-11-24 -> deadline 25 Nov 23:59 AoE = Thu 26 Nov 12:59 CET). Upgrades over Run #1: (1) 3-way premium researcher cycle (GPT-6.2 Sol, Claude Opus 5.5, Gemini 4 Neon High); (2) quota-resilient cheap fallback chain (opencode DeepSeek V4.1 Flash -> commandcode DeepSeek V4.1 Flash -> Sonnet -> Luna -> Hydrogen); (3) upgraded seed_final_v2 carrying Run #1 winners + official-max row counts; (4) test-aligned dev & holdout splits across ALL 4 boards (T1 80% heartonly + 2d E14.5/16.5->E18.5 holdout; Heart 75% dissected + heart_long_organ + E10.5 organ holdout; Embryo guard_embryo_e80 + scale/native_occupancy >= 0.97; T3 fixed forward-time mef2c_e85 + unseen Tet-TKO veto); (5) diff-only promotion review and full Run #1 cross-run library.",
+ "workers": 4,
+ "cycles_per_worker": 200,
+ "max_cycles_factor": 1.0,
+ "min_cycles_per_worker": 0,
+ "patience_cycles": 1000,
+ "max_research_seconds": null,
+ "cycle_drain_seconds": 0,
+ "no_new_cycles_at": "2026-11-26T05:59:00+01:00",
+ "research_kill_at": "2026-11-26T06:59:00+01:00",
+ "hard_stop_at": "2026-11-26T09:59:00+01:00",
+ "max_debug_attempts": 2,
+ "debug_timeout_s": 1800,
+ "review_timeout_s": 1500,
+ "shortlist": 3,
+ "researcher_implements": true,
+ "evidence_retry": false,
+ "promotion_review": true,
+ "ideator": {
+  "cli": "codex",
+  "model": "gpt-6.2-sol",
+  "effort": "high",
+  "timeout_s": 3600
+ },
+ "ideator_cycle": [
+  {
+   "cli": "codex",
+   "model": "gpt-6.2-sol",
+   "effort": "high",
+   "timeout_s": 3600
+  },
+  {
+   "cli": "claude",
+   "model": "claude-opus-5-5",
+   "effort": "high",
+   "timeout_s": 3600
+  },
+  {
+   "cli": "agy",
+   "model": "gemini-4-neon-high",
+   "timeout_s": 3600
+  }
+ ],
+ "implementers": [
+  {
+   "cli": "opencode",
+   "model": "opencode/deepseek-v4.1-flash-free",
+   "timeout_s": 3600
+  }
+ ],
+ "distiller": {
+  "cli": "opencode",
+  "model": "opencode/deepseek-v4.1-flash-free",
+  "timeout_s": 1200
+ },
+ "curator": {
+  "cli": "opencode",
+  "model": "opencode/deepseek-v4.1-flash-free",
+  "timeout_s": 1500
+ },
+ "planner": {
+  "cli": "opencode",
+  "model": "opencode/deepseek-v4.1-flash-free",
+  "timeout_s": 1800
+ },
+ "planner_every": 8,
+ "overflow": {
+  "cli": "commandcode",
+  "model": "deepseek/deepseek-v4.1-flash",
+  "effort": "max",
+  "timeout_s": 3600
+ },
+ "critic": {
+  "cli": "claude",
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "timeout_s": 3600
+ },
+ "critic_plan": false,
+ "critic_code": false,
+ "claude_max_week_util": 0.95,
+ "claude_fallback": {
+  "cli": "agy",
+  "model": "claude-opus-5-5-high",
+  "timeout_s": 3600
+ },
+ "provider_concurrency": {
+  "codex": 3,
+  "claude": 2,
+  "agy": 3,
+  "opencode": 4,
+  "commandcode": 3
+ },
+ "max_agent_calls": 4000,
+ "holdout_forbidden": [
+  ".claude/projects",
+  "/T2/E10.5",
+  "/T2/E7.5.h5ad",
+  "E10.5.h5ad",
+  "E7.5.h5ad",
+  "T2/E10.5.h5ad",
+  "T2/E7.5.h5ad",
+  "guard_E14.5",
+  "guard_E16.5",
+  "guard_E18.5",
+  "holdout.enc/",
+  "ve-holdout-t3",
+  "T3__unseen",
+  "unseen_wt_a",
+  "unseen_wt_b",
+  "unseen_ko",
+  "unseen_spec"
+ ],
+ "kb_chars": 10000,
+ "acceptance": {
+  "alpha": 0.05,
+  "margin": 0.25,
+  "reject_z": -2.0,
+  "batches": [
+   8
+  ],
+  "board_drop": 0.5,
+  "rule": "screen one seed pair; confirm with all eight paired evaluations; accept when the proxy or changed board clears the margin with a one-sided 95% lower bound, subject to board and condition loss limits",
+  "board_margin": {
+   "heart": 0.25,
+   "embryo": 0.25
+  }
+ },
+ "condition_drop": 0.5,
+ "holdout_margin": 0.25,
+ "holdout_seed_pairs": [
+  [
+   202,
+   0
+  ],
+  [
+   313,
+   1
+  ],
+  [
+   424,
+   2
+  ]
+ ],
+ "holdout_select_boards": [
+  "temporal",
+  "heart",
+  "embryo"
+ ],
+ "merge": false,
+ "sanity": true,
+ "elites": 4,
+ "lineage_max": 6,
+ "tune": {
+  "on_demand": true,
+  "boards": [
+   "temporal",
+   "heart",
+   "embryo",
+   "perturbation"
+  ],
+  "rounds": 2,
+  "parallel": "fleet",
+  "top": 3,
+  "max_tunes": 16,
+  "seed": 0
+ },
+ "max_slowdown": null,
+ "slow_floor_s": 240,
+ "monitor_late": true,
+ "initial_elites": {},
+ "free_roam": false,
+ "group_floor": 0.25,
+ "ablation_tol": 0.25,
+ "guard": {
+  "pairs": [
+   [
+    301,
+    0
+   ],
+   [
+    302,
+    1
+   ],
+   [
+    303,
+    2
+   ],
+   [
+    304,
+    3
+   ]
+  ],
+  "mean": 0.25,
+  "lb": 0.5,
+  "boards": [],
+  "_note": "guard_embryo_e80 is now directly in Embryo Dev (weight 0.65) alongside embryo_early (0.35), and heart/temporal/embryo all select via test-aligned holdouts."
+ },
+ "scope_quick_eval": true,
+ "focus": {
+  "w0": "temporal",
+  "w1": "heart",
+  "w2": "embryo",
+  "w3": "perturbation"
+ },
+ "directives": {
+  "w0": "The Run #2 seed already has 5000 real cells, heart-chamber conditioning, coarse 3-lineage maturity selection, and prevalence-calibrated Qiu late-anchor pseudobulk continuation. Push toward the 82-84 T1 leaders: (1) lineage-specific (not just global) Qiu late-anchor maturation direction on cardiomyocytes/endocardium/other-cardiac; (2) unbalanced partial OT / kNN-transport donor reweighting (OT50U / CT3_k150); (3) covariance/variogram-preserving expression refinement and principled heart-chamber composition growth (especially cardiomyocyte maturation without hurting mmd_u or variogram).",
+  "w1": "The Run #2 seed already exports 25,179 organ-resident real cells with detached-vessel relocation (fixed d2_shape), bounded organ growth, and saturating detection-depth thinning. Push toward the 75-77 Heart leaders (PeacyBlose25 CXB_KBULKO30_N25179_R5105): (1) bounded pseudobulk expression extrapolation (BULKO20/KBULKO30) on detected panel entries using both the input trend and context['external'] (Feulner E14.5/E16.5 dissected hearts, calibrated per gene); (2) late-stage neighbourhood/composition refinement using context['external_spatial'] (Slide-seq E14.5/E15.5) and kNN-coupled local expression; (3) exact organ size/growth calibration targeting the E12.5 dissected heart envelope without hurting d2_shape or neighborhood_mmd.",
+  "w2": "The Run #2 seed keeps the clean unstretched native nearer-bracket scaffold (5000 rows, occupancy ~100 on test) and local-field one-to-one donor matching. Both guard_embryo_e80 (E7.25+E8.25_late -> E8.0) and embryo_early are now in Dev with scale and native_occupancy >= 0.92 in Dev (>= 0.97 on E7.75 test) enforced. Push toward the 80-81 Embryo leaders: (1) Nyström / multi-scale spectral neighbourhood matching and optimal transport coupling (keeping native_occupancy >= 0.97 on E7.75 and preserving interpolated RMS radius); (2) calibrated CP10k-log midpoint pseudobulk + spread correction without over-thinning deep stages; (3) bracket-informed cell-state weighting using context['external'] (Extended Mouse Atlas E6.5-E7.25 and E8.0-E9.5).",
+  "w3": "The Run #2 seed already ships the verified GO-weighted d230 developmental-delay mixer (fires cleanly on broad signalling regulators like Ctnnb1 and narrow GO modules like Mab21l2) plus the DNA-TF exposure-calibrated model. Forward-time mef2c_e85 (E7.75+E8.5 -> E8.5) is now fixed in Dev, and finalization checks an unseen non-cardiac knockout veto. Push toward the 77-80 T3 leaders: (1) use context['coexpr_prior'] (NEW: 100% WT Qiu 2024 <=E9.0 signed gene-to-panel correlation, both global corr_all and within-lineage corr_within!) and context['gene_embeddings'] (Geneformer-V2-104M, unused in Run #1!) + vetted GO topology to predict signed gene-specific DE direction and affected-module scores for off-panel knockouts; (2) refine real-cell developmental delay + lineage-specific response direction so DE recovery, direction, mmd_u, and variogram rise together across ALL knockout genes without hurting any gene group or non-cardiac knockouts."
+ },
+ "seed_dir": "agentic_scientist/seed_final_v2",
+ "brief": "agentic_scientist/prompts/brief_final_v2.md",
+ "prompt_overrides": {},
+ "local_evaluation_only": true,
+ "fleet_research": true,
+ "research_enabled": true,
+ "require_calibrated_final": false,
+ "t1_composition_veto": true,
+ "embryo_native_min": 0.92,
+ "sandbox": true,
+ "session_root": "/scratch/user/as_sessions",
+ "private_root": "/scratch/user/as_private",
+ "private_monitor": true,
+ "checkpoint_hours": 6,
+ "leaderboard_refresh_minutes": 60,
+ "separate_final": true,
+ "auto_final": true,
+ "final_export": true,
+ "survive_cycle_errors": true,
+ "quota_fallback": [
+  {
+   "cli": "agy",
+   "model": "claude-opus-5-5-high",
+   "timeout_s": 3600
+  },
+  {
+   "cli": "agy",
+   "model": "gemini-4-neon-high",
+   "timeout_s": 3600
+  },
+  {
+   "cli": "opencode",
+   "model": "opencode/deepseek-v4.1-flash-free",
+   "timeout_s": 3600
+  },
+  {
+   "cli": "commandcode",
+   "model": "deepseek/deepseek-v4.1-flash",
+   "effort": "max",
+   "timeout_s": 3600
+  },
+  {
+   "cli": "codex",
+   "model": "gpt-6-luna",
+   "effort": "medium",
+   "timeout_s": 3600
+  }
+ ],
+ "cheap_fallback": [
+  {
+   "cli": "commandcode",
+   "model": "deepseek/deepseek-v4.1-flash",
+   "effort": "max",
+   "timeout_s": 3600
+  },
+  {
+   "cli": "agy",
+   "model": "claude-sonnet-5-5-medium",
+   "timeout_s": 3600
+  },
+  {
+   "cli": "claude",
+   "model": "claude-sonnet-5-5",
+   "timeout_s": 3600
+  },
+  {
+   "cli": "codex",
+   "model": "gpt-6-luna",
+   "effort": "medium",
+   "timeout_s": 3600
+  },
+  {
+   "cli": "agy",
+   "model": "gemini-4-hydrogen-medium",
+   "timeout_s": 3600
+  }
+ ]
+}

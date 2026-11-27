@@ -1,0 +1,102 @@
+{
+ "workers": 2,
+ "cycles_per_worker": 4,
+ "patience_cycles": 8,
+ "max_debug_attempts": 1,
+ "shortlist": 2,
+ "ideator": {
+  "cli": "claude",
+  "model": "opus",
+  "timeout_s": 1500
+ },
+ "implementers": [
+  {
+   "cli": "opencode",
+   "model": "opencode-go/deepseek-v4.1-flash",
+   "timeout_s": 2400
+  }
+ ],
+ "distiller": {
+  "cli": "opencode",
+  "model": "opencode-go/deepseek-v4.1-flash",
+  "timeout_s": 600
+ },
+ "max_agent_calls": 70,
+ "holdout_forbidden": [
+  ".claude/projects",
+  "/T2/E10.5",
+  "/T2/E7.5.h5ad",
+  "E10.5.h5ad",
+  "E7.5.h5ad",
+  "E9.5_mab21l2_ko",
+  "T2/E10.5.h5ad",
+  "T2/E7.5.h5ad",
+  "holdout.enc/",
+  "sample_mab21l2_ko"
+ ],
+ "critic": {
+  "cli": "codex",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "timeout_s": 1800
+ },
+ "curator": {
+  "cli": "claude",
+  "model": "sonnet",
+  "timeout_s": 900
+ },
+ "kb_chars": 9000,
+ "acceptance": {
+  "alpha": 0.05,
+  "margin": 0.0,
+  "reject_z": -2.0,
+  "batches": [
+   8
+  ],
+  "board_drop": 0.5,
+  "rule": "paired test: screen 1 seed pair; clear loss (z<=-2) or no change rejects; else all 8 (pred,fit) seed pairs at once, only the changed splits re-run (parent cached and prefetched); accept if proxy one-sided 95% lower bound > margin, or a board's lower bound > 0 with proxy mean >= 0; reject on significant board drop"
+ },
+ "holdout_seed_pairs": [
+  [
+   202,
+   0
+  ],
+  [
+   313,
+   1
+  ],
+  [
+   424,
+   2
+  ]
+ ],
+ "arms": {
+  "w0": {
+   "ideator": {
+    "cli": "claude",
+    "model": "opus",
+    "timeout_s": 2400
+   },
+   "critic": {
+    "cli": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "high",
+    "timeout_s": 1800
+   }
+  },
+  "w1": {
+   "ideator": {
+    "cli": "codex",
+    "model": "gpt-6.1-sol",
+    "effort": "high",
+    "timeout_s": 2400
+   },
+   "critic": {
+    "cli": "claude",
+    "model": "opus",
+    "timeout_s": 1800
+   }
+  }
+ },
+ "research_enabled": false
+}

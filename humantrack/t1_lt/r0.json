@@ -1,0 +1,53 @@
+{
+ "boards": {
+  "temporal": 49.91833333333334
+ },
+ "proxy": 49.91833333333334,
+ "board_se": {
+  "temporal": 0.39978466426037135
+ },
+ "proxy_se": 0.39978466426037135,
+ "correct": true,
+ "error": null,
+ "set": "dev",
+ "pred_seed": 101,
+ "fit_seed": 0,
+ "splits": {
+  "temporal_val": {
+   "board": "temporal",
+   "score": 49.28666666666667,
+   "metrics": {
+    "de_score": 41.28666666666667,
+    "de_direction": 56.49333333333334,
+    "mmd_u": 50.943333333333335,
+    "variogram": 47.78
+   },
+   "seed_scores": [
+    48.07,
+    49.12,
+    50.67
+   ],
+   "seed_sd": 1.3079882772155627,
+   "seconds": 214.0,
+   "cpu_seconds": 245.7
+  },
+  "temporal_heartonly": {
+   "board": "temporal",
+   "score": 50.550000000000004,
+   "metrics": {
+    "de_score": 45.04333333333333,
+    "de_direction": 59.78,
+    "mmd_u": 51.42666666666667,
+    "variogram": 44.589999999999996
+   },
+   "seed_scores": [
+    50.56,
+    50.09,
+    51.0
+   ],
+   "seed_sd": 0.45508241011930844,
+   "seconds": 196.7,
+   "cpu_seconds": 209.7
+  }
+ }
+}

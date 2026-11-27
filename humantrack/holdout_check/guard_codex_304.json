@@ -1,0 +1,39 @@
+{
+ "boards": {
+  "embryo": 69.10000000000001
+ },
+ "proxy": 34.550000000000004,
+ "board_se": {
+  "embryo": 0.12662279942148186
+ },
+ "proxy_se": 0.06331139971074093,
+ "correct": true,
+ "error": null,
+ "set": "guard",
+ "pred_seed": 304,
+ "fit_seed": 3,
+ "splits": {
+  "guard_embryo_e80": {
+   "board": "embryo",
+   "score": 69.10000000000001,
+   "metrics": {
+    "de_score": 75.15333333333332,
+    "de_direction": 89.27666666666666,
+    "mmd_u": 72.34333333333333,
+    "variogram": 69.22333333333333,
+    "d2_shape": 50.843333333333334,
+    "occupancy_dice": 51.0,
+    "scale_log_ratio": 72.12666666666667,
+    "neighborhood_mmd": 65.10000000000001
+   },
+   "seed_scores": [
+    69.35,
+    69.01,
+    68.94
+   ],
+   "seed_sd": 0.21931712199460962,
+   "seconds": 52.6,
+   "cpu_seconds": 53.2
+  }
+ }
+}

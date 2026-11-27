@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgenticScientist Monitor</title>
+<style>
+  :root {
+    --bg: #0c0e14; --card: #13161f; --hover: #1a1e2a; --border: #1e2333;
+    --fg: #c8cdd8; --dim: #7b8394; --bright: #e8ecf4; --accent: #6d9cff;
+    --green: #4ade80; --red: #f87171; --amber: #fbbf24; --violet: #c084fc; --code: #0a0c12;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --grid: #232838;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f5f6f8; --card: #fff; --hover: #f0f1f4; --border: #dde0e7;
+      --fg: #374151; --dim: #6b7280; --bright: #111827; --accent: #3b6fd9;
+      --green: #16a34a; --red: #dc2626; --amber: #d97706; --violet: #9333ea; --code: #f0f1f4;
+      --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --grid: #e6e8ee;
+      color-scheme: light;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f5f6f8; --card: #fff; --hover: #f0f1f4; --border: #dde0e7;
+    --fg: #374151; --dim: #6b7280; --bright: #111827; --accent: #3b6fd9;
+    --green: #16a34a; --red: #dc2626; --amber: #d97706; --violet: #9333ea; --code: #f0f1f4;
+    --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --grid: #e6e8ee;
+    color-scheme: light;
+  }
+  .sw { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+  .sw.hollow { background: transparent !important; border: 2px solid currentColor; width: 10px; height: 10px; }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--fg); margin-bottom: 10px; }
+  .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+  .mini h3 { font-size: 12px; font-weight: 600; color: var(--bright); margin-bottom: 4px; }
+  .mini .sub { font-size: 11px; color: var(--dim); margin-bottom: 6px; }
+  #tip { position: fixed; z-index: 30; pointer-events: none; background: var(--card); color: var(--fg); border: 1px solid var(--border);
+         border-radius: 8px; padding: 6px 10px; font-size: 12px; max-width: 340px; box-shadow: 0 4px 16px rgba(0,0,0,.25); }
+  .ci { position: relative; height: 8px; width: 120px; background: var(--hover); border-radius: 4px; display: inline-block; vertical-align: middle; margin-left: 8px; }
+  .ci i { position: absolute; top: 3px; height: 2px; background: var(--fg); }
+  .ci b { position: absolute; top: 0; width: 8px; height: 8px; border-radius: 50%; margin-left: -4px; }
+  .gapbar { height: 8px; border-radius: 0 4px 4px 0; background: var(--accent); display: inline-block; vertical-align: middle; }
+  .cd .v { font-size: 20px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body { background: var(--bg); color: var(--fg); font: 14px/1.5 system-ui, -apple-system, 'Segoe UI', sans-serif; }
+  .mono, code, pre { font-family: ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace; }
+  a { color: var(--accent); }
+  .layout { display: flex; min-height: 100vh; }
+  nav { width: 210px; flex-shrink: 0; border-right: 1px solid var(--border); padding: 20px 12px;
+        position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; gap: 2px; }
+  nav h1 { font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: var(--accent);
+           margin: 0 8px 16px; letter-spacing: .04em; display: flex; align-items: center; gap: 8px; }
+  nav button { background: none; border: 0; color: var(--dim); font: inherit; padding: 7px 12px;
+               border-radius: 6px; cursor: pointer; text-align: left; display: flex; justify-content: space-between; }
+  nav button:hover { background: var(--card); color: var(--fg); }
+  nav button.active { background: var(--card); color: var(--accent); font-weight: 600; }
+  nav .badge { font-size: 11px; color: var(--dim); }
+  .foot { margin-top: auto; font-size: 11px; color: var(--dim); padding: 0 8px; display: grid; gap: 6px; }
+  .foot select, .foot button, .ctl { font: inherit; font-size: 12px; background: var(--card); color: var(--fg);
+        border: 1px solid var(--border); border-radius: 6px; padding: 4px 6px; cursor: pointer; }
+  .foot select, .foot button { width: 100%; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--dim); display: inline-block; flex-shrink: 0; }
+  .dot.alive { background: var(--green); box-shadow: 0 0 6px var(--green); animation: pulse 2s infinite; }
+  .dot.dead { background: var(--red); }
+  @keyframes pulse { 50% { opacity: .45; } }
+  main { flex: 1; min-width: 0; padding: 22px 28px 60px; }
+  h2 { font-size: 12px; font-weight: 600; color: var(--dim); text-transform: uppercase; letter-spacing: .08em; margin: 0 0 12px;
+       display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  section.block { margin-bottom: 26px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 26px; }
+  .stat, .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; min-width: 0; }
+  .stat .l { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: .06em; }
+  .stat .v { font-size: 22px; font-weight: 600; color: var(--bright); font-variant-numeric: tabular-nums; }
+  .stat .s { font-size: 12px; color: var(--dim); }
+  .boards { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+  .bar { height: 6px; background: var(--hover); border-radius: 3px; margin-top: 8px; overflow: hidden; position: relative; }
+  .bar i { display: block; height: 100%; background: var(--accent); }
+  .bar b { position: absolute; top: -2px; width: 2px; height: 10px; background: var(--amber); }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  th, td { padding: 7px 10px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; font-size: 13px; }
+  th { color: var(--dim); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; position: sticky; top: 0; background: var(--card); }
+  tr.click { cursor: pointer; } tr.click:hover td { background: var(--hover); }
+  .wrap { overflow-x: auto; }
+  .alerts { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+  .alert { border-radius: 8px; padding: 7px 12px; font-size: 13px; border: 1px solid var(--border); background: var(--card); }
+  .alert.error { border-color: var(--red); color: var(--red); } .alert.warn { border-color: var(--amber); color: var(--amber); }
+  .alert.info { color: var(--dim); }
+  .progress { height: 8px; border-radius: 999px; background: var(--border); overflow: hidden; margin: 6px 0 2px; }
+  .progress i { display: block; height: 100%; background: var(--green); }
+  .gate { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+  .gate.open { background: var(--green); } .gate.shut { background: var(--red); }
+  .lineage td:first-child { white-space: nowrap; }
+  .tag { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 11px; border: 1px solid var(--border); white-space: nowrap; }
+  .accepted, .go, .pass, .ok { color: var(--green); border-color: var(--green); }
+  .rejected, .reject, .vetoed, .disqualified, .fix, .bad { color: var(--red); border-color: var(--red); }
+  .revise, .skipped, .warn { color: var(--amber); border-color: var(--amber); }
+  .running { color: var(--accent); border-color: var(--accent); }
+  .pos { color: var(--green); } .neg { color: var(--red); } .dim { color: var(--dim); }
+  pre { background: var(--code); border: 1px solid var(--border); border-radius: 8px; padding: 12px; overflow: auto;
+        font-size: 12px; line-height: 1.45; white-space: pre-wrap; word-break: break-word; max-height: 70vh; }
+  pre.nowrap { white-space: pre; }
+  .diff .a { color: var(--green); } .diff .d { color: var(--red); } .diff .h { color: var(--accent); }
+  .ev { border-left: 3px solid var(--border); padding: 4px 10px; margin: 4px 0; font-size: 12.5px; white-space: pre-wrap; word-break: break-word; }
+  .ev.say { border-color: var(--bright); color: var(--bright); }
+  .ev.tool { border-color: var(--accent); } .ev.tool .n { color: var(--accent); font-weight: 600; }
+  .ev.result { border-color: var(--border); color: var(--dim); font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; }
+  .ev.result.err { border-color: var(--red); color: var(--red); }
+  .ev.think { border-color: var(--violet); color: var(--dim); font-style: italic; }
+  .ev.done { border-color: var(--green); color: var(--green); font-size: 11.5px; }
+  .ev.sys, .ev.raw { color: var(--dim); font-size: 11.5px; }
+  .tabs { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 12px; }
+  .tabs button { background: var(--card); border: 1px solid var(--border); color: var(--dim); padding: 4px 10px; border-radius: 6px; cursor: pointer; font: inherit; font-size: 12px; }
+  .tabs button.active { color: var(--accent); border-color: var(--accent); }
+  .modal { position: fixed; inset: 0; background: rgba(0,0,0,.55); display: flex; justify-content: center; align-items: flex-start; padding: 4vh 2vw; z-index: 10; }
+  .modal .box { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; width: min(1200px, 100%); max-height: 92vh; overflow: auto; padding: 20px 22px; }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 14px; }
+  .kv { display: grid; grid-template-columns: 160px 1fr; gap: 4px 12px; font-size: 13px; }
+  .kv div:nth-child(odd) { color: var(--dim); }
+  svg text { fill: var(--dim); font-size: 11px; }
+  .pill { font-size: 11px; color: var(--dim); }
+  input.ctl { cursor: text; min-width: 200px; }
+  ul.ev-list { padding-left: 18px; } ul.ev-list li { margin: 3px 0; }
+  .host { display: grid; gap: 4px; }
+  @media (max-width: 760px) { .layout { display: block; } nav { position: static; width: auto; height: auto; flex-direction: row; flex-wrap: wrap; border-right: 0; border-bottom: 1px solid var(--border); }
+    .foot { margin: 0; width: 100%; } main { padding: 16px; } .grid2 { grid-template-columns: 1fr; } .kv { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div id="holdoutBanner" hidden style="position:sticky;top:0;z-index:20;background:#b45309;color:#fff;padding:10px 16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+  <strong>🔒 Holdout passphrase needed</strong><span id="hbText"></span>
+  <span style="flex:1"></span>
+  <select id="hbRun"></select><select id="hbCfg"></select>
+  <label style="display:flex;gap:4px;align-items:center"><input type="checkbox" id="hbExport">export test bundle</label>
+  <input type="password" id="hbPass" placeholder="passphrase" autocomplete="off" style="padding:4px 8px;border-radius:6px;border:0">
+  <button id="hbGo" style="padding:4px 12px;border-radius:6px;border:0;cursor:pointer">Run holdout selection</button>
+  <span id="hbMsg"></span>
+</div>
+<div class="layout">
+<nav>
+  <h1><span class="dot" id="dot"></span>agentic_scientist</h1>
+  <button data-p="final">Final run <span class="badge" id="finalBadge"></span></button>
+  <button data-p="overview" class="active">Overview <span class="badge" id="healthBadge"></span></button>
+  <button data-p="tasks">Per task <span class="badge" id="taskBadge"></span></button>
+  <button data-p="live">Live agents <span class="badge" id="liveBadge"></span></button>
+  <button data-p="cycles">Cycles <span class="badge" id="cycBadge"></span></button>
+  <button data-p="tuning">Knob tuning <span class="badge" id="tuneBadge"></span></button>
+  <button data-p="best">Best program</button>
+  <button data-p="holdout">Holdout selection</button>
+  <button data-p="notebook">Knowledge bank <span class="badge" id="kbBadge"></span></button>
+  <button data-p="fleet">Fleet <span class="badge" id="fleetBadge"></span></button>
+  <button data-p="activity">Repo activity</button>
+  <button data-p="logs">Logs</button>
+  <button data-p="limits">Rate limits <span class="badge" id="limBadge"></span></button>
+  <button data-p="config">Config &amp; lock</button>
+  <div class="foot">
+    <select id="runSel" aria-label="run"></select>
+    <label><select id="refresh" aria-label="refresh"><option value="5">refresh 5s</option><option value="10" selected>refresh 10s</option><option value="30">refresh 30s</option><option value="0">paused</option></select></label>
+    <button id="themeBtn">theme</button>
+    <span id="refreshInfo"></span>
+    <a href="http://localhost:8477" target="_blank">Shinka monitor :8477</a>
+  </div>
+</nav>
+<main>
+  <div id="p-final" hidden></div>
+  <div id="p-overview"></div>
+  <div id="p-tasks" hidden></div>
+  <div id="p-tuning" hidden></div>
+  <div id="p-live" hidden></div>
+  <div id="p-cycles" hidden></div>
+  <div id="p-best" hidden></div>
+  <div id="p-holdout" hidden></div>
+  <div id="p-notebook" hidden></div>
+  <div id="p-fleet" hidden></div>
+  <div id="p-activity" hidden></div>
+  <div id="p-logs" hidden></div>
+  <div id="p-limits" hidden></div>
+  <div id="p-config" hidden></div>
+</main>
+</div>
+<div id="tip" hidden></div>
+<div class="modal" id="modal" hidden><div class="box"><div class="row" style="justify-content:space-between;margin-bottom:10px">
+  <h2 id="mTitle" style="margin:0">Cycle</h2><button class="ctl" id="mClose">close ✕</button></div>
+  <div class="tabs" id="mTabs"></div><div id="mBody"></div></div></div>
+<script>
+const B = [['temporal','T1 · temporal',1],['heart','T2 · heart',.5],['embryo','T2 · embryo',.5],['perturbation','T3 · knockout',1]];
+const $ = id => document.getElementById(id);
+const f = (x, d=2) => x == null || isNaN(x) ? '–' : Number(x).toFixed(d);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const t2 = b => b && b.heart != null && b.embryo != null ? (b.heart + b.embryo) / 2 : null;
+const ago = t => { if (!t) return '–'; const s = Date.now()/1000 - t; return s < 60 ? Math.round(s)+'s ago' : s < 3600 ? Math.round(s/60)+'m ago' : (s/3600).toFixed(1)+'h ago'; };
+const tag = (v, cls) => v ? `<span class="tag ${cls || v}">${esc(v)}</span>` : '';
+const delta = (v, r) => v == null || r == null ? '' : `<span class="${v - r >= 0 ? 'pos' : 'neg'}"> ${v - r >= 0 ? '+' : ''}${f(v - r)}</span>`;
+const store = { get: k => { try { return localStorage.getItem('mg.' + k) } catch (e) { return null } },
+                set: (k, v) => { try { localStorage.setItem('mg.' + k, v) } catch (e) {} } };
+let RUN = null, D = null, PAGE = store.get('page') || 'overview', timer = null, metric = store.get('metric') || 'proxy';
+let LOGW = 'run', LOGF = '', FOLLOW = true, LIVEFOLLOW = true;
+const api = async (p, q = {}) => { const u = new URLSearchParams({ name: RUN || '', ...q }); const r = await fetch(p + '?' + u); return r.ok ? r.json() : null; };
+
+// ---------- theme ----------
+function theme(t) { if (t) document.documentElement.dataset.theme = t; else delete document.documentElement.dataset.theme; store.set('theme', t || ''); }
+theme(store.get('theme') || '');
+$('themeBtn').onclick = () => theme(({'': 'light', light: 'dark', dark: ''})[document.documentElement.dataset.theme || '']);
+
+// ---------- navigation ----------
+document.querySelectorAll('nav button[data-p]').forEach(b => b.onclick = () => show(b.dataset.p));
+function show(p) { PAGE = p; store.set('page', p);
+  document.querySelectorAll('nav button[data-p]').forEach(b => b.classList.toggle('active', b.dataset.p === p));
+  document.querySelectorAll('main > div').forEach(d => d.hidden = d.id !== 'p-' + p); render(); }
+
+// ---------- chart (inline SVG) ----------
+function chart(d) {
+  const seed = d.seed || {}, val = c => metric === 'proxy' ? c.proxy : metric === 't2' ? t2(c.boards) : c.boards?.[metric];
+  const base = metric === 'proxy' ? seed.proxy : metric === 't2' ? t2(seed.boards) : seed.boards?.[metric];
+  const pts = d.cycles.filter(c => c.outcome && val(c) != null).sort((a, b) => a.updated - b.updated);
+  const W = 900, H = 260, L = 46, R = 12, T = 12, Bm = 28;
+  const ys = pts.map(val).concat(base != null ? [base] : []);
+  if (!ys.length) return '<div class="dim">No evaluated cycles yet.</div>';
+  let lo = Math.min(...ys), hi = Math.max(...ys); const pad = Math.max(.5, (hi - lo) * .15); lo -= pad; hi += pad;
+  const X = i => L + (pts.length < 2 ? (W - L - R) / 2 : i * (W - L - R) / (pts.length - 1)), Y = v => T + (hi - v) / (hi - lo) * (H - T - Bm);
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="score per cycle">`;
+  for (let k = 0; k <= 4; k++) { const v = lo + (hi - lo) * k / 4; s += `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--border)"/><text x="${L - 6}" y="${Y(v) + 4}" text-anchor="end">${f(v, 1)}</text>`; }
+  if (base != null) s += `<line x1="${L}" x2="${W - R}" y1="${Y(base)}" y2="${Y(base)}" stroke="var(--amber)" stroke-dasharray="5 4"/><text x="${W - R}" y="${Y(base) - 5}" text-anchor="end" style="fill:var(--amber)">seed ${f(base)}</text>`;
+  let best = base ?? -1e9, path = '';
+  pts.forEach((c, i) => { if (c.outcome.verdict === 'accepted' && val(c) > best) best = val(c); path += `${i ? 'L' : 'M'}${X(i)},${Y(Math.max(best, lo))}`; });
+  if (pts.length) s += `<path d="${path}" fill="none" stroke="var(--green)" stroke-width="2"/>`;
+  pts.forEach((c, i) => { const col = c.outcome.verdict === 'accepted' ? 'var(--green)' : 'var(--red)';
+    s += `<circle cx="${X(i)}" cy="${Y(val(c))}" r="5" fill="${col}" style="cursor:pointer" onclick="openCycle('${c.id}')"><title>${esc(c.id)} · ${esc(c.title)} · ${f(val(c))} (${c.outcome.verdict})</title></circle>`; });
+  pts.forEach((c, i) => { if (pts.length < 25 || i % Math.ceil(pts.length / 12) === 0) s += `<text x="${X(i)}" y="${H - 8}" text-anchor="middle">${esc(c.id)}</text>`; });
+  return s + '</svg><div class="pill">dots = evaluated cycles (green accepted, red rejected; click to open) · green line = best accepted · dashed = seed</div>';
+}
+
+// ---------- pages ----------
+function overview(d) {
+  const seed = d.seed || {}, bestB = d.best?.boards || seed.boards || {};
+  const done = d.cycles.filter(c => c.outcome).length, act = d.cycles.filter(c => c.active);
+  const latest = d.cycles.filter(c => c.outcome).sort((a, b) => b.updated - a.updated)[0];
+  const mopt = [['proxy','Proxy (T1+T3+½heart+½embryo)'],['temporal','T1'],['t2','T2 mean'],['heart','T2 heart'],['embryo','T2 embryo'],['perturbation','T3']];
+  return `<div class="stats">
+   <div class="stat"><div class="l">Status</div><div class="v">${d.alive ? '<span class="pos">running</span>' : d.final ? 'finished' : '<span class="dim">stopped</span>'}</div><div class="s">${d.alive && !d.seed ? 'Scoring the seed' : act.length ? 'now: ' + esc(act.map(a => a.id + ' · ' + a.current).join(', ')) : ''}</div></div>
+   <div class="stat"><div class="l">Seed dev proxy</div><div class="v">${f(seed.proxy)}</div><div class="s">v2 human model</div></div>
+   <div class="stat"><div class="l">Best dev proxy</div><div class="v">${f(d.global_best)}</div><div class="s">${delta(d.global_best, seed.proxy)} vs seed</div></div>
+   <div class="stat"><div class="l">Cycles</div><div class="v">${done}<span class="dim">/${d.config ? d.config.workers * d.config.cycles_per_worker : '?'}</span></div><div class="s">${d.accepted.length} accepted · ${d.stale ?? 0} since new best</div></div>
+   <div class="stat"><div class="l">Agent calls</div><div class="v">${d.calls ?? 0}<span class="dim">/${d.config?.max_agent_calls ?? '?'}</span></div><div class="s">Claude cost $${f(d.cost_usd)}</div></div>
+   <div class="stat"><div class="l">Holdout pick</div><div class="v">${d.final ? esc(d.final.chosen) : '–'}</div><div class="s">${d.final ? 'holdout ' + f(d.final.candidates.find(c => c.id === d.final.chosen)?.holdout) : 'after the run'}</div></div>
+  </div>
+  <section class="block"><h2>Boards — best accepted program (${esc(d.best?.id || 'seed')}) vs seed</h2><div class="boards">
+   ${[['T1 · temporal', bestB.temporal, seed.boards?.temporal, '×1'], ['T2 · mean', t2(bestB), t2(seed.boards), '×1'], ['T2 · heart', bestB.heart, seed.boards?.heart, '×½'],
+      ['T2 · embryo', bestB.embryo, seed.boards?.embryo, '×½'], ['T3 · knockout', bestB.perturbation, seed.boards?.perturbation, '×1']].map(([n, v, r, w]) =>
+     `<div class="card"><div class="stat"><div class="l">${n} <span class="dim">${w}</span></div></div><div class="v" style="font-size:20px;font-weight:600;color:var(--bright)">${f(v)}${delta(v, r)}</div>
+      <div class="bar"><i style="width:${Math.max(0, Math.min(100, v || 0))}%"></i><b style="left:50%" title="copy floor 50"></b></div><div class="pill">50 = copy floor · 100 = ceiling</div></div>`).join('')}
+  </div></section>
+  <section class="block"><h2>Score per cycle <select class="ctl" id="metricSel">${mopt.map(([k, n]) => `<option value="${k}" ${k === metric ? 'selected' : ''}>${n}</option>`).join('')}</select></h2><div class="card">${chart(d)}</div></section>
+  <div class="grid2">
+   <section class="block"><h2>Workers</h2><div class="card wrap"><table><tr><th>Worker</th><th>Cycle</th><th>Fails</th><th>Best</th><th>Proxy</th><th>T1</th><th>T2</th><th>T3</th></tr>
+    ${Object.entries(d.workers).map(([w, s]) => `<tr><td>${w}</td><td>${s.cycle}</td><td>${s.fails}</td><td>${esc(s.best_id)}</td><td>${f(s.best_proxy)}</td><td>${f(s.best_boards?.temporal)}</td><td>${f(t2(s.best_boards))}</td><td>${f(s.best_boards?.perturbation)}</td></tr>`).join('')}</table></div></section>
+   <section class="block"><h2>Latest evaluated feedback</h2><div class="card">${latest ? `<div class="row">${tag(latest.outcome.verdict)}<b>${esc(latest.id)}</b> ${esc(latest.title)}</div>
+     <div class="pill" style="margin:6px 0">${esc(latest.outcome.reason)}</div><table><tr>${B.map(b => `<th>${b[1]}</th>`).join('')}</tr><tr>${B.map(([k]) => `<td>${f(latest.boards?.[k])}${delta(latest.boards?.[k], seed.boards?.[k])}</td>`).join('')}</tr></table>
+     <button class="ctl" style="margin-top:8px" onclick="openCycle('${latest.id}')">open cycle</button>` : '<span class="dim">none yet</span>'}</div></section>
+  </div>
+  <section class="block"><h2>Implementer stats (UCB)</h2><div class="card wrap"><table><tr><th>Model</th><th>Tries</th><th>Accepted</th></tr>
+   ${Object.entries(d.impl_stats || {}).map(([k, [n, w]]) => `<tr><td class="mono">${esc(k)}</td><td>${n}</td><td>${w}</td></tr>`).join('') || '<tr><td colspan=3 class="dim">none yet</td></tr>'}</table></div></section>`;
+}
+
+function cyclesTable(d) {
+  const seed = d.seed?.boards;
+  return `<section class="block"><h2>All cycles — click a row for hypothesis, critique, diff, code, evaluation and transcripts</h2><div class="card wrap"><table>
+   <tr><th>Cycle</th><th>Step</th><th>Hypothesis</th><th>Critic</th><th>Review</th><th>Verdict</th><th>Proxy</th>${B.map(b => `<th>${b[1].split(' · ')[0]}${b[0] === 'heart' ? ' heart' : b[0] === 'embryo' ? ' embryo' : ''}</th>`).join('')}<th>T2</th><th>Updated</th></tr>
+   ${d.cycles.slice().sort((a, b) => b.updated - a.updated).map(c => `<tr class="click" onclick="openCycle('${c.id}')"><td class="mono">${esc(c.id)}</td>
+    <td>${c.active ? tag(c.current, 'running') : esc(c.step)}</td><td>${esc(c.title || '…')}${c.error ? `<div class="neg pill">${esc(c.error).slice(0, 160)}</div>` : ''}</td>
+    <td>${tag(c.critic)}</td><td>${tag(c.review)}</td><td>${c.outcome ? tag(c.outcome.verdict) + `<div class="pill">${esc(c.outcome.reason)}</div>` : ''}</td>
+    <td>${f(c.proxy)}</td>${B.map(([k]) => `<td>${f(c.boards?.[k])}${delta(c.boards?.[k], seed?.[k])}</td>`).join('')}<td>${f(t2(c.boards))}</td><td class="pill">${ago(c.updated)}</td></tr>`).join('') || '<tr><td colspan=12 class="dim">no cycles yet</td></tr>'}
+  </table></div></section>`;
+}
+
+function evs(list) {
+  return list.map(e => e.k === 'tool' ? `<div class="ev tool"><span class="n">${esc(e.n)}</span> ${esc(e.t)}</div>`
+    : `<div class="ev ${e.k}${e.err ? ' err' : ''}">${esc(e.t)}</div>`).join('');
+}
+
+async function livePage() {
+  const L = await api('/api/live'); if (!L) return '';
+  $('liveBadge').textContent = L.filter(x => x.age < 90).length || '';
+  return `<section class="block"><h2>Live agent transcripts (most recent first) <label class="pill"><input type="checkbox" id="liveFollow" ${LIVEFOLLOW ? 'checked' : ''}> follow</label></h2>
+   ${L.map(x => `<div class="card" style="margin-bottom:14px"><div class="row" style="margin-bottom:8px">${x.age < 90 ? tag('live', 'running') : tag('idle', 'skipped')}
+     <b>${esc(x.role)}</b><span class="mono pill">${esc(x.cycle)}/${esc(x.file)}</span><span class="pill">updated ${Math.round(x.age)}s ago</span>
+     <button class="ctl" onclick="openCycle('${x.cycle}','transcripts')">open cycle</button></div>
+     <div class="livebox" style="max-height:55vh;overflow:auto">${evs(x.events)}</div></div>`).join('') || '<div class="dim">No agent activity yet.</div>'}</section>`;
+}
+
+async function bestPage(d) {
+  const b = await api('/api/best'); if (!b) return '';
+  const files = Object.keys(b.files);
+  return `<section class="block"><h2>Best program: ${esc(b.id)} ${d.best ? '· dev proxy ' + f(d.best.proxy) : '(seed)'}</h2>
+   ${files.map(n => `<div class="card" style="margin-bottom:12px"><div class="mono pill" style="margin-bottom:6px">${esc(n)}</div><pre class="nowrap">${esc(b.files[n])}</pre></div>`).join('')}</section>`;
+}
+
+function holdoutPage(d) {
+  const fin = d.final;
+  const rule = 'Top-K accepted programs by mean dev proxy over 8 seed pairs (+ the seed, + the dev per-task combination) are scored on held-out splits the agents never saw: heart E10.5 (1-day and 2-day jumps, chambers; nearest to the E12.5 test), embryo E7.5 and T1 with fresh seeds; each candidate runs only the tasks whose code differs from the seed. Tasks are separate code, so "perboard" takes each held-out task from the candidate with the largest paired gain over the seed (> 2 SE). The highest holdout proxy wins and must beat the seed. T3 has no held-out split (Mab21l2 is in dev): it takes the dev-best paired-tested T3 code.';
+  if (!fin) return `<section class="block"><h2>Holdout selection</h2><div class="card">${rule}<p class="dim" style="margin-top:8px">Runs after all cycles finish.</p></div></section>`;
+  const s = fin.candidates[0].holdout_boards;
+  return `<section class="block"><h2>Holdout selection · chosen ${esc(fin.chosen)}</h2><div class="card"><p class="pill" style="margin-bottom:8px">${rule}</p><div class="wrap"><table>
+   <tr><th>Candidate</th><th>Dev (8-pair mean)</th><th>Holdout proxy</th>${B.map(b => `<th>${b[1]}</th>`).join('')}<th>T2</th><th title="Gain over the seed by metric kind: distribution (transfers) / DE-based (target-specific) / size">Gain kinds dev → holdout<br><small>dist / DE / size</small></th></tr>
+   ${fin.candidates.map(c => `<tr ${c.id !== 'seed' ? `class="click" onclick="openCycle('${c.id}')"` : ''}><td>${c.id === fin.chosen ? '★ ' : ''}${esc(c.id)}</td><td>${f(c.dev_mean ?? c.proxy)}</td><td>${f(c.holdout)}${c.id !== 'seed' ? delta(c.holdout, fin.candidates[0].holdout) : ''}</td>
+     ${B.map(([k]) => `<td>${f(c.holdout_boards?.[k])}${c.id !== 'seed' ? delta(c.holdout_boards?.[k], s?.[k]) : ''}</td>`).join('')}<td>${f(t2(c.holdout_boards))}</td><td>${kinds(c.transfer_dev)} → ${kinds(c.transfer_holdout)}</td></tr>`).join('')}</table></div>
+   <div class="pill" style="margin-top:8px">cost $${f(fin.cost_usd)} · ${fin.agent_calls} agent calls</div></div></section>`;
+}
+
+function md(s) { return esc(s).replace(/^## (.*)$/gm, '<h3 style="margin:14px 0 4px;color:var(--bright);font-size:14px">$1</h3>').replace(/^# (.*)$/gm, '<h2>$1</h2>')
+  .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/`([^`]+)`/g, '<code>$1</code>').replace(/^- (.*)$/gm, '• $1').replace(/\n/g, '<br>'); }
+
+let KBF = { board: '', status: '', q: '' }, KBV = 'synthesis';
+const ST = { confirmed: 'ok', promising: 'warn', inconclusive: '', negative: 'bad', vetoed: 'bad', crashed: 'bad', disqualified: 'bad', skipped: 'warn' };
+async function notebookPage() {
+  const K = await api('/api/knowledge'); if (!K) return '';
+  $('kbBadge').textContent = K.entries.length || '';
+  const es = K.entries.filter(e => (!KBF.board || (e.tags?.boards || []).includes(KBF.board)) && (!KBF.status || e.status === KBF.status)
+    && (!KBF.q || JSON.stringify(e).toLowerCase().includes(KBF.q.toLowerCase())));
+  const cnt = {}; K.entries.forEach(e => (e.tags?.boards || ['?']).forEach(b => { cnt[b] = cnt[b] || {}; cnt[b][e.status] = (cnt[b][e.status] || 0) + 1; }));
+  const sts = ['confirmed', 'promising', 'inconclusive', 'negative', 'vetoed', 'crashed', 'disqualified'];
+  return `<section class="block"><h2>Knowledge bank — what worked, what did not, and why (read by every agent)</h2>
+   <div class="card pill" style="margin-bottom:12px">Every finished cycle becomes a structured record (all outcomes, never truncated). Evidence class comes from the paired dev comparison against scoring-seed noise: <b class="pos">confirmed</b> = accepted · <b style="color:var(--amber)">promising</b> = real gain (z ≥ 2) below the bar · inconclusive = within noise (not disproven) · <b class="neg">negative</b> = significantly worse. A curator rewrites the synthesis after every record; agents also query the full bank with <code>agentic_scientist/tools/kb.py</code>.</div>
+   <div class="card wrap" style="margin-bottom:14px"><table><tr><th>Board</th>${sts.map(x => `<th>${x}</th>`).join('')}</tr>
+    ${B.map(([b, n]) => `<tr><td>${n}</td>${sts.map(x => `<td>${cnt[b]?.[x] ? `<span class="tag ${ST[x]}">${cnt[b][x]}</span>` : '<span class="dim">·</span>'}</td>`).join('')}</tr>`).join('')}</table></div>
+   <div class="tabs">${['synthesis', 'records', 'changes', 'raw log'].map(v => `<button class="${v === KBV ? 'active' : ''}" onclick="KBV='${v}';render()">${v}${v === 'synthesis' ? ' (v' + K.versions + ')' : v === 'records' ? ' (' + K.entries.length + ')' : ''}</button>`).join('')}</div>
+   ${KBV === 'synthesis' ? `<div class="card">${md(K.synthesis)}</div>`
+   : KBV === 'changes' ? `<div class="pill" style="margin-bottom:6px">What the curator changed in its last rewrite</div><pre class="diff">${diffHtml(lineDiff(K.previous, K.synthesis))}</pre>`
+   : KBV === 'raw log' ? `<div class="card">${md(K.raw)}</div>`
+   : `<div class="row" style="margin-bottom:10px"><select class="ctl" id="kbBoard"><option value="">all boards</option>${B.map(([b, n]) => `<option value="${b}" ${KBF.board === b ? 'selected' : ''}>${n}</option>`).join('')}</select>
+      <select class="ctl" id="kbStatus"><option value="">all classes</option>${sts.map(x => `<option ${KBF.status === x ? 'selected' : ''}>${x}</option>`).join('')}</select>
+      <input class="ctl" id="kbQ" placeholder="search records…" value="${esc(KBF.q)}"><span class="pill">${es.length} shown</span></div>
+     <div class="card wrap"><table><tr><th>Cycle</th><th>Class</th><th>Boards · family</th><th>Title &amp; lesson</th><th>Δproxy</th><th>z</th>${B.map(b => `<th>Δ ${b[1].split(' · ')[1] || b[1]}</th>`).join('')}</tr>
+     ${es.slice().reverse().map(e => `<tr class="click" onclick="openCycle('${e.id}')"><td class="mono">${esc(e.id)}</td><td>${tag(e.status, ST[e.status])}</td>
+       <td class="pill">${esc((e.tags?.boards || []).join(', '))}<br>${esc((e.tags?.family || []).join(', '))}</td>
+       <td><b>${esc(e.title)}</b><div class="pill">${esc(e.lesson)}</div>${e.retry_condition && e.status !== 'confirmed' ? `<div class="pill">retry if: ${esc(e.retry_condition)}</div>` : ''}
+       ${(e.impl_pitfalls || []).length ? `<div class="pill neg">pitfalls: ${esc(e.impl_pitfalls.join(' · '))}</div>` : ''}</td>
+       <td class="${e.delta_proxy >= 0 ? 'pos' : 'neg'}">${f(e.delta_proxy)}</td><td>${f(e.z, 1)}</td>${B.map(([b]) => `<td class="${(e.deltas?.[b] || 0) >= 0 ? 'pos' : 'neg'}">${e.deltas?.[b] != null ? f(e.deltas[b]) : '–'}</td>`).join('')}</tr>`).join('') || '<tr><td colspan=10 class="dim">no records yet</td></tr>'}</table></div>`}
+  </section>`;
+}
+function lineDiff(a, b) { // tiny LCS line diff for the curator's rewrite
+  const x = (a || '').split('\n'), y = (b || '').split('\n'), n = x.length, m = y.length;
+  if (n * m > 4e6) return y.map(l => '+' + l).join('\n');
+  const L = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
+  for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--) L[i][j] = x[i] === y[j] ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
+  const out = []; let i = 0, j = 0;
+  while (i < n && j < m) { if (x[i] === y[j]) { out.push(' ' + x[i]); i++; j++; } else if (L[i + 1][j] >= L[i][j + 1]) out.push('-' + x[i++]); else out.push('+' + y[j++]); }
+  while (i < n) out.push('-' + x[i++]); while (j < m) out.push('+' + y[j++]); return out.join('\n');
+}
+
+async function fleetPage() {
+  const F = await (await fetch('/api/fleet')).json(); const busy = F.hosts.filter(h => h.busy).length;
+  $('fleetBadge').textContent = busy + '/' + F.hosts.length;
+  return `<section class="block"><h2>Fleet hosts (shared with Shinka) · ${busy} busy</h2><div class="card wrap"><table><tr><th>Host</th><th>Status</th><th>Job</th><th>Done</th><th>Fail</th><th>Mean eval</th><th>Last event</th></tr>
+   ${F.hosts.map(h => `<tr><td class="mono">${esc(h.host)}</td><td>${h.cooldown ? tag('cooldown', 'bad') : h.busy ? tag('busy · ' + h.busy.kind, 'running') : tag('idle', 'ok')}</td>
+     <td class="mono pill">${h.busy ? esc(h.busy.what) + ' · since ' + esc(h.busy.since.slice(11)) : ''}</td><td>${h.done}</td><td class="${h.fail ? 'neg' : ''}">${h.fail}</td><td>${h.mean_s ? h.mean_s + ' s' : '–'}</td><td class="pill">${esc(h.last || '–')}</td></tr>`).join('')}</table></div></section>
+   <section class="block"><h2>Dispatch log</h2><pre>${esc(F.log.slice().reverse().join('\n'))}</pre></section>`;
+}
+
+async function activityPage() {
+  const A = await api('/api/activity'); if (!A) return '';
+  return `<div class="grid2"><section class="block"><h2>Recent file changes (run + agentic_scientist code)</h2><div class="card wrap"><table><tr><th>When</th><th>File</th><th>Size</th></tr>
+   ${A.files.map(x => `<tr><td class="pill">${ago(x.mtime)}</td><td class="mono" style="font-size:12px">${esc(x.path)}</td><td class="pill">${x.size > 1e6 ? f(x.size / 1e6, 1) + ' MB' : x.size > 1e3 ? f(x.size / 1e3, 1) + ' kB' : x.size + ' B'}</td></tr>`).join('')}</table></div></section>
+   <section class="block"><h2>git status (agentic_scientist, docs, scripts, src)</h2><pre>${esc(A.git.join('\n') || 'clean')}</pre></section></div>`;
+}
+
+async function logsPage() {
+  const L = await api('/api/log', { which: LOGW }); const lines = (L?.lines || []).filter(l => !LOGF || l.toLowerCase().includes(LOGF.toLowerCase()));
+  return `<section class="block"><h2>Log <select class="ctl" id="logWhich">${['run', 'stdout', 'supervisor', 'fleet'].map(w => `<option ${w === LOGW ? 'selected' : ''}>${w}</option>`).join('')}</select>
+   <input class="ctl" id="logFilter" placeholder="filter…" value="${esc(LOGF)}"><label class="pill"><input type="checkbox" id="follow" ${FOLLOW ? 'checked' : ''}> follow</label>
+   <span class="pill mono">${esc(L?.path || '')} · ${lines.length} lines</span></h2><pre id="logBox" class="nowrap">${esc(lines.join('\n'))}</pre></section>`;
+}
+
+async function limitsPage() {
+  const L = await api('/api/limits') || []; $('limBadge').textContent = L.length || '';
+  return `<section class="block"><h2>Rate limit events · ${L.length}</h2><div class="card wrap"><table><tr><th>When</th><th>Where</th><th>Line</th></tr>
+   ${L.map(x => `<tr><td class="pill">${ago(x.mtime)}</td><td class="mono pill">${esc(x.file)}</td><td class="mono" style="font-size:11.5px">${esc(x.line)}</td></tr>`).join('') || '<tr><td colspan=3 class="dim">none</td></tr>'}</table></div></section>`;
+}
+
+function configPage(d) {
+  const c = d.config || {};
+  const role = r => r ? `<span class="mono">${esc(r.cli)} · ${esc(r.model)}${r.effort ? ' · ' + esc(r.effort) : ''}</span>` : '–';
+  return `<section class="block"><h2>Run lock</h2><div class="card kv"><div>Lock</div><div class="mono">${esc(d.lock_id)}</div><div>Note</div><div>${esc(d.lock_note)}</div>
+   <div>Run started</div><div>${new Date(d.started * 1000).toLocaleString()}</div></div></section>
+   <section class="block"><h2>Roles</h2><div class="card kv"><div>Researcher</div><div>${role(c.ideator)}</div><div>Critic</div><div>${role(c.critic)}</div>
+   <div>Workers</div><div>${(c.implementers || []).map(role).join('<br>')}</div><div>Distiller</div><div>${role(c.distiller)}</div></div></section>
+   <section class="block"><h2>Rules</h2><div class="card kv"><div>Workers × cycles</div><div>${c.workers} × ${c.cycles_per_worker}</div><div>Acceptance</div><div>${esc(c.acceptance?.rule || '')}</div><div>α · margin · batches</div><div>${c.acceptance ? `${c.acceptance.alpha} · ${c.acceptance.margin} · ${c.acceptance.batches.join(' → ')} seed pairs` : '–'}</div>
+   <div>Early stop</div><div>${c.patience_cycles} cycles without a new best</div><div>Shortlist</div><div>top ${c.shortlist} by dev → holdout</div><div>Debug attempts</div><div>${c.max_debug_attempts}</div>
+   <div>Agent call cap</div><div>${c.max_agent_calls}</div><div>Forbidden (audit)</div><div class="mono">${esc((c.holdout_forbidden || []).join(', '))}</div></div></section>`;
+}
+
+// ---------- cycle modal ----------
+let MC = null, MT = 'summary';
+function diffHtml(s) { return s.split('\n').map(l => `<span class="${l.startsWith('+') && !l.startsWith('+++') ? 'a' : l.startsWith('-') && !l.startsWith('---') ? 'd' : l.startsWith('@@') ? 'h' : ''}">${esc(l)}</span>`).join('\n'); }
+function kinds(t) { return t ? ['distribution', 'de_based', 'size'].map(k => (t[k] >= 0 ? '+' : '') + Number(t[k]).toFixed(1)).join(' / ') : '–'; }
+async function openCycle(id, tab) { MC = await api('/api/cycle', { id }); if (!MC) return; MT = tab || 'summary'; $('modal').hidden = false; $('mTitle').textContent = 'Cycle ' + id; mrender(); }
+$('mClose').onclick = () => $('modal').hidden = true;
+$('modal').onclick = e => { if (e.target.id === 'modal') $('modal').hidden = true; };
+document.addEventListener('keydown', e => { if (e.key === 'Escape') $('modal').hidden = true; });
+async function mrender() {
+  const c = MC, h = c.hypothesis || {}, tabs = ['summary', 'hypothesis', 'critique', 'diff', 'code', 'evaluation', 'transcripts', 'analysis'];
+  $('mTabs').innerHTML = tabs.map(t => `<button class="${t === MT ? 'active' : ''}" onclick="MT='${t}';mrender()">${t}</button>`).join('');
+  let b = '';
+  if (MT === 'summary') {
+    const o = c.outcome || {};
+    b = `<div class="kv"><div>Title</div><div><b>${esc(h.title)}</b></div><div>Verdict</div><div>${tag(o.verdict) || '<span class="dim">in progress</span>'} ${esc(o.reason || '')}</div>
+     <div>Dev proxy</div><div>${f(o.proxy ?? c.eval?.proxy)} (parent ${f(o.parent_proxy)})</div><div>Parent</div><div class="mono">${esc(c.parent)}</div>
+     <div>Critic (plan)</div><div>${tag(c.critique?.verdict)}</div><div>Critic (code)</div><div>${tag(c.review?.verdict)}</div><div>Implementer</div><div class="mono">${esc(o.implementer || '')}</div>
+     <div>Claim</div><div>${esc(h.claim)}</div><div>Generalisation</div><div>${esc(h.generalisation_argument)}</div></div>
+     ${o.stats ? `<h2 style="margin-top:14px">Paired repeated test (candidate − parent, ${o.stats.proxy.n} seed pairs, one-sided 95% bounds)</h2>
+      <table><tr><th></th><th>mean Δ</th><th>lower</th><th>upper</th><th>z</th><th>per-pair Δ</th></tr>${Object.entries(o.stats).map(([k, v]) =>
+       `<tr><td>${esc(k)}</td><td class="${v.mean >= 0 ? 'pos' : 'neg'}">${f(v.mean)}</td><td class="${v.lb > 0 ? 'pos' : ''}">${f(v.lb)}</td><td class="${v.ub < 0 ? 'neg' : ''}">${f(v.ub)}</td><td>${f(v.z, 1)}</td><td class="mono pill">${(v.diffs || []).map(x => f(x)).join(', ')}</td></tr>`).join('')}</table>` : ''}
+     ${c.eval?.boards ? `<table style="margin-top:12px"><tr>${B.map(x => `<th>${x[1]}</th>`).join('')}<th>T2</th></tr><tr>${B.map(([k]) => `<td>${f(c.eval.boards[k])}</td>`).join('')}<td>${f(t2(c.eval.boards))}</td></tr></table>` : ''}`;
+  } else if (MT === 'hypothesis') {
+    b = `<div class="kv">${['title', 'claim', 'mechanism', 'change_plan', 'target_boards', 'expected_gain', 'risk', 'complexity', 'generalisation_argument'].map(k => `<div>${k}</div><div>${esc(Array.isArray(h[k]) ? h[k].join(', ') : h[k])}</div>`).join('')}</div>
+     <h2 style="margin-top:16px">Evidence</h2><ul class="ev-list">${(h.evidence || []).map(e => `<li>${/^https?:/.test(e.source || '') ? `<a href="${esc(e.source)}" target="_blank" rel="noopener">${esc(e.source)}</a>` : `<b>${esc(e.source)}</b>`}<br><span class="dim">${esc(e.finding)}</span></li>`).join('')}</ul>
+     ${h.critic_issues ? `<h2 style="margin-top:16px">Revised by critic — issues addressed</h2><ul class="ev-list">${h.critic_issues.map(i => `<li>${esc(typeof i === 'string' ? i : JSON.stringify(i))}</li>`).join('')}</ul>` : ''}`;
+  } else if (MT === 'critique') {
+    const issues = x => (x?.issues || []).map(i => `<li>${esc(typeof i === 'string' ? i : (i.file ? i.file + ': ' : '') + (i.problem || '') + (i.required_fix ? ' → ' + i.required_fix : JSON.stringify(i)))}</li>`).join('');
+    b = `<h2>Design review ${tag(c.critique?.verdict)}</h2><ul class="ev-list">${issues(c.critique) || '<li class="dim">none</li>'}</ul>
+     ${c.critique?.hypothesis ? `<details style="margin-top:8px"><summary>revised hypothesis</summary><pre>${esc(JSON.stringify(c.critique.hypothesis, null, 1))}</pre></details>` : ''}
+     <h2 style="margin-top:16px">Code review ${tag(c.review?.verdict)}</h2><ul class="ev-list">${issues(c.review) || '<li class="dim">none</li>'}</ul>`;
+  } else if (MT === 'diff') b = c.diff ? `<pre class="diff nowrap">${diffHtml(c.diff)}</pre>` : '<div class="dim">no changes yet</div>';
+  else if (MT === 'code') b = Object.entries(c.files).map(([n, s]) => `<div class="mono pill" style="margin:8px 0 4px">${esc(n)}</div><pre class="nowrap">${esc(s)}</pre>`).join('') || '<div class="dim">no workspace yet</div>';
+  else if (MT === 'evaluation') {
+    const e = c.eval;
+    b = !e ? '<div class="dim">not evaluated yet</div>' : `${e.error ? `<pre class="neg">${esc(e.error)}</pre>` : ''}<div class="wrap"><table><tr><th>Split</th><th>Board</th><th>Score</th><th>Time</th><th>Metric skills (50 = copy, 100 = ceiling)</th></tr>
+     ${Object.entries(e.splits || {}).map(([n, r]) => `<tr><td class="mono">${esc(n)}</td><td>${esc(r.board)}</td><td>${f(r.score)}</td><td class="pill">${r.seconds ?? ''}s</td>
+       <td>${r.error ? `<span class="neg">${esc(r.error)}</span>` : Object.entries(r.metrics || {}).sort((a, b) => a[1] - b[1]).map(([k, v]) => `<span class="tag ${v < 50 ? 'bad' : v > 60 ? 'ok' : ''}" style="margin:1px">${esc(k)} ${f(v, 1)}</span>`).join(' ')}</td></tr>`).join('')}</table></div>
+     ${c.eval_log ? `<details style="margin-top:10px"><summary>evaluation log</summary><pre>${esc(c.eval_log)}</pre></details>` : ''}`;
+  } else if (MT === 'transcripts') {
+    b = c.transcripts.map(t => `<details class="card" style="margin-bottom:8px" data-f="${esc(t.file)}"><summary><b>${esc(t.role)}</b> <span class="mono pill">${esc(t.file)} · ${f(t.size / 1e3, 1)} kB · ${ago(t.mtime)}</span></summary><div class="tbody">loading…</div></details>`).join('') || '<div class="dim">none yet</div>';
+  } else if (MT === 'analysis') b = Object.entries(c.analysis).map(([n, s]) => `<div class="mono pill" style="margin:8px 0 4px">${esc(n)}</div><pre class="nowrap">${esc(s)}</pre>`).join('') || '<div class="dim">the researcher wrote no analysis scripts</div>';
+  $('mBody').innerHTML = b;
+  if (MT === 'transcripts') document.querySelectorAll('#mBody details').forEach(el => el.ontoggle = async () => {
+    if (!el.open) return; const r = await api('/api/transcript', { id: c.id, file: el.dataset.f }); el.querySelector('.tbody').innerHTML = evs(r?.events || []); });
+}
+
+// ---------- render loop ----------
+async function loadRuns() {
+  const rs = await (await fetch('/api/runs')).json(); const s = $('runSel');
+  const keep = RUN || new URLSearchParams(location.search).get('run') || store.get('run');
+  s.innerHTML = rs.map(r => `<option>${esc(r.name)}</option>`).join('');
+  if (keep && rs.some(r => r.name === keep)) s.value = keep; RUN = s.value;
+}
+$('runSel').onchange = e => { RUN = e.target.value; store.set('run', RUN); render(); };
+// ---------- final-run monitoring: health, per task, tuning ----------
+let HL = null;
+const when = t => t ? new Date(t * 1000).toLocaleString([], { weekday: 'short', hour: '2-digit', minute: '2-digit' }) : '–';
+function updateBadges() {
+  if (!HL || !D) return;
+  const bad = HL.alerts.filter(a => a.level !== 'info').length;
+  $('healthBadge').innerHTML = bad ? `<span class="${HL.alerts.some(a => a.level === 'error') ? 'neg' : ''}" style="color:var(--amber)">⚠ ${bad}</span>` : '';
+  const key = 'seenAcc.' + RUN, seen = +(store.get(key) ?? HL.accepted);
+  if (store.get(key) == null || PAGE === 'overview' || PAGE === 'tasks') store.set(key, HL.accepted);
+  const fresh = Math.max(0, HL.accepted - (PAGE === 'overview' || PAGE === 'tasks' ? HL.accepted : seen));
+  const lockp = document.title.startsWith('🔒 ') ? '🔒 ' : '';
+  document.title = lockp + (fresh ? `(+${fresh}) ` : '') + (bad ? '⚠ ' : '') + 'AgenticScientist Monitor';
+  $('taskBadge').textContent = fresh ? `+${fresh}` : '';
+}
+function healthStrip(h) {
+  if (!h) return '';
+  const pct = h.total ? Math.min(100, 100 * h.done / h.total) : 0;
+  const al = h.alerts.length ? `<div class="alerts">${h.alerts.map(a => `<div class="alert ${a.level}">${a.level === 'error' ? '⛔' : a.level === 'warn' ? '⚠' : 'ℹ'} ${esc(a.text)}</div>`).join('')}</div>` : '';
+  return al + `<div class="stats">
+   <div class="stat" style="grid-column: span 2"><div class="l">Run progress</div><div class="v">${h.done}<span class="dim">/${h.total || '?'} cycles</span></div>
+     <div class="progress"><i style="width:${pct}%"></i></div>
+     <div class="s">${h.rate ? f(h.rate, 1) + ' cycles/h (last 12)' : 'rate after 3 cycles'} · ${h.eta ? 'ETA research end ' + when(h.eta) : h.final ? 'final selection done' : '–'}</div></div>
+   <div class="stat"><div class="l">Health</div><div class="v">${h.alerts.filter(a => a.level !== 'info').length ? '<span style="color:var(--amber)">check</span>' : '<span class="pos">ok</span>'}</div>
+     <div class="s">log ${h.log_age != null ? ago(Date.now() / 1000 - h.log_age) : '–'} · fleet ${h.fleet_busy}/${h.fleet_hosts} busy</div></div>
+   <div class="stat"><div class="l">Schedule · ${esc(h.phase || '–')}</div><div class="v">${h.sched ? when(h.sched.research_until) : '–'}</div>
+     <div class="s">${h.sched ? 'new cycles until ' + when(h.sched.admit_until) + ' · research ends ' + when(h.sched.research_until) + ' · final reserve to ' + when(h.sched.final_by) : 'starts with research'}</div></div>
+   <div class="stat"><div class="l">Models</div><div class="v">${h.overflow}<span class="dim"> overflow</span></div>
+     <div class="s">${Object.entries(h.ideators || {}).map(([k, v]) => esc(k) + ' ' + v).join(' · ') || 'no ideation yet'}</div></div>
+   <div class="stat"><div class="l">Head node</div><div class="v">${h.mem_avail_gb != null ? f(h.mem_avail_gb, 1) : '–'}<span class="dim"> GB free</span></div><div class="s">disk ${h.disk_free_gb} GB free</div></div>
+  </div>` + (h.planner && h.planner.text ? `<details class="card" style="margin:10px 0"><summary><b>Planner</b> · ${h.planner.n} plan(s) · updated ${ago(h.planner.updated)}</summary><pre>${esc(h.planner.text)}</pre></details>` : '');
+}
+const BN = Object.fromEntries(B.map(([k, n]) => [k, n]));
+const pm = (m, se) => m == null ? '–' : `<span class="${m >= 0 ? 'pos' : 'neg'}">${m >= 0 ? '+' : ''}${f(m)}</span>${se != null ? `<span class="dim"> ± ${f(se)}</span>` : ''}`;
+const sevCell = s => s ? `<span class="gate ${s.gate_open ? 'open' : 'shut'}"></span>β ${f(s.beta, 3)} · R² ${f(s.r2, 3)}` : '–';
+async function tasksPage() {
+  const T = await api('/api/tasks'); if (!T) return '<div class="dim">no data</div>';
+  const owner = b => Object.entries(T.focus || {}).filter(([w, f]) => f === b).map(([w]) => w);
+  const sec = B.map(([b, name]) => {
+    const rows = T.per_board[b] || [], ws = owner(b), base = ws.map(w => T.best_ids[w]).filter(Boolean);
+    return `<section class="block"><h2>${name} <span class="pill">${ws.length ? 'worker ' + ws.join(', ') : 'no dedicated worker'} · seed ${f(T.seed_boards?.[b])} · baseline now: ${esc(base.join(', ') || 'seed')}</span></h2>
+     <div class="card wrap"><table class="lineage"><tr><th>Accepted</th><th>Parent</th><th>Idea</th><th>Paired Δproxy (8 seed pairs)</th><th>Δ${esc(name.split(' ')[0])}</th><th>Dev ${esc(name.split(' ')[0])}</th><th>Tuned</th><th>When</th></tr>
+     ${rows.map(r => `<tr style="cursor:pointer" onclick="openCycle('${r.id}')"><td>${base.includes(r.id) ? '★ ' : ''}<b>${esc(r.id)}</b></td><td>${esc(r.parent || '')}</td><td>${esc(r.title || '')}</td>
+       <td>${pm(r.gain, r.se)}</td><td>${pm(r.board_gain)}</td><td>${f(r.board_score)}</td><td>${r.tune ? (r.tune.improved ? 'yes ' + esc(JSON.stringify(r.tune.chosen)) : 'kept') : ''}</td><td>${r.time ? ago(r.time) : ''}</td></tr>`).join('')
+       || '<tr><td colspan=8 class="dim">no accepted change yet</td></tr>'}</table><div class="pill">★ = the worker\'s current baseline (parent of its next cycles) · click a row to open the cycle</div></div></section>`;
+  }).join('');
+  const gate = `<section class="block"><h2>T3 severity gate per dev split · seed vs current T3 baseline (${esc(T.t3_best || 'seed')})</h2>
+   <div class="card wrap"><table><tr><th>Split</th><th>Seed score</th><th>Seed gate</th><th>Baseline score</th><th>Baseline gate</th></tr>
+   ${T.gate.map(g => `<tr><td class="mono">${esc(g.split)}</td><td>${f(g.seed)}</td><td>${sevCell(g.seed_sev)}</td><td>${f(g.best)}${delta(g.best, g.seed)}</td><td>${sevCell(g.best_sev)}</td></tr>`).join('')}</table>
+   <div class="pill">severity_slope is 50 unless β &gt; 0 and R² &gt; 0.01 (green dot = gate open)</div></div></section>`;
+  const genes = T.per_gene.length ? `<section class="block"><h2>T3 per-gene consistency · paired gain over the seed per knockout gene (pairs with cached results)</h2>
+   <div class="card wrap"><table><tr><th>Accepted T3 program</th>${T.genes.map(g => `<th>${esc(g)}</th>`).join('')}<th>Idea</th></tr>
+   ${T.per_gene.map(r => `<tr style="cursor:pointer" onclick="openCycle('${r.id}')"><td><b>${esc(r.id)}</b></td>${T.genes.map(g => `<td>${pm(r.genes[g]?.mean, r.genes[g]?.se)} <span class="dim">n=${r.genes[g]?.n ?? 0}</span></td>`).join('')}<td>${esc(r.title || '')}</td></tr>`).join('')}</table>
+   <div class="pill">a program that gains on one gene and loses on another fits the dev genes, not the knockout response; the final T3 pick is also vetoed on an unseen gene</div></div></section>` : '';
+  return (await normandyBlock()) + gate + genes + sec;
+}
+async function normandyBlock() {
+  const N = await api('/api/normandy'); if (!N || !N.test) return '';
+  const col = {agrees: 'pos', fails: 'neg', diagnostic: 'dim', untestable: 'dim', weak: 'dim', coarse: 'dim', untested: 'dim'};
+  return `<section class="block"><h2>Normandy · what is new in this run <span class="pill">previous seed on TEST: ${f(N.total)}</span>
+    <span class="pill">frozen boards (seed file is exported): ${esc((N.frozen || []).join(', ') || 'none')}</span>
+    <span class="pill">ideators: ${esc((N.ideators || []).join(' → '))}</span></h2>
+   <div class="card wrap"><table><tr><th>Board</th><th>Previous seed (TEST)</th><th>Public top</th><th>Changed in the Normandy seed</th></tr>
+   ${N.test.map(r => `<tr><td><b>${esc(r.board)}</b></td><td>${f(r.score)}</td><td>${esc(r.top)}</td><td>${esc(r.change)}</td></tr>`).join('')}</table></div>
+   <div class="card wrap"><table><tr><th>Worker</th><th>Board</th><th>Cycles done</th><th>Phase of next cycle</th><th>Baseline</th></tr>
+   ${N.workers.map(w => `<tr><td><b>${esc(w.worker)}</b></td><td>${esc(w.board)}</td><td>${w.done}</td><td>${esc(w.phase)}</td><td>${esc(w.best || 'seed')}</td></tr>`).join('')}</table>
+   <div class="pill">stops: no new cycles ${esc(N.stops.no_new_cycles_at || '–')} · research kill ${esc(N.stops.research_kill_at || '–')} · hard stop ${esc(N.stops.hard_stop_at || '–')}</div></div>
+   <div class="card wrap"><table><tr><th>Fold</th><th>Board</th><th>Set</th><th>Weight</th><th>Seed score</th><th>Calibration ladder</th><th>Note</th></tr>
+   ${N.folds.map(r => `<tr><td class="mono">${esc(r.split)}</td><td>${esc(r.board || '')}</td><td>${esc(r.set)}</td><td>${r.weight == null ? '–' : f(r.weight, 2)}</td><td>${f(r.seed)}</td>
+     <td class="${col[r.verdict] || ''}"><b>${esc(r.verdict)}</b></td><td class="dim">${esc(r.note)}</td></tr>`).join('')}</table>
+   <div class="pill">ladder = public recipes and the previous seed, whose TEST scores are known, scored on each local fold; "agrees" = the fold ranks them like the test</div></div></section>`;
+}
+function convChart(tr) {
+  const pts = tr.filter(t => t.score != null); if (pts.length < 2) return '<div class="dim">waiting for scores…</div>';
+  const W = 520, H = 150, L = 40, R = 8, T = 8, Bm = 20, ys = pts.map(t => t.score);
+  let lo = Math.min(...ys), hi = Math.max(...ys); const pad = Math.max(.2, (hi - lo) * .1); lo -= pad; hi += pad;
+  const X = i => L + i * (W - L - R) / Math.max(1, tr.length - 1), Y = v => T + (hi - v) / (hi - lo) * (H - T - Bm);
+  const cols = ['var(--dim)', 'var(--violet)', 'var(--green)', 'var(--amber)', 'var(--red)'];
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:560px">`, best = -1e9, path = '';
+  for (let k = 0; k <= 2; k++) { const v = lo + (hi - lo) * k / 2; s += `<text x="${L - 5}" y="${Y(v) + 4}" text-anchor="end">${f(v, 1)}</text><line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--border)"/>`; }
+  tr.forEach((t, i) => { if (t.score != null) { best = Math.max(best, t.score); s += `<circle cx="${X(i)}" cy="${Y(t.score)}" r="3" fill="${cols[(t.round ?? 0) % cols.length]}"><title>trial ${t.trial} round ${t.round ?? '?'}: ${f(t.score)} ${esc(JSON.stringify(t.params))}</title></circle>`; }
+    if (best > -1e9) path += `${path ? 'L' : 'M'}${X(i)},${Y(best)}`; });
+  return s + `<path d="${path}" fill="none" stroke="var(--green)" stroke-width="1.5"/></svg><div class="pill">dots = settings by round (grey Sobol start, then GP batches) · line = best so far · search seed pair only</div>`;
+}
+async function tuningPage() {
+  const T = await api('/api/tuning') || []; $('tuneBadge').textContent = T.filter(t => !t.done).length ? '● ' + T.filter(t => !t.done).length : (T.length || '');
+  const cap = D?.config?.tune;
+  const head = `<section class="block"><h2>On-demand knob tuning ${cap ? `<span class="pill">${cap.on_demand ? 'on demand' : 'end of run'} · ${cap.rounds} GP rounds · ${esc(String(cap.parallel))} settings per round · ${T.length}/${cap.max_tunes ?? '∞'} used</span>` : ''}</h2>
+   <div class="card">When a candidate adds or changes <span class="mono">&lt;board&gt;_knobs.json</span>, the harness tunes those knobs before the race, deterministically, on the whole fleet. The chosen values must beat the current ones on fresh seed pairs, then the ordinary paired race against the parent decides.</div></section>`;
+  if (!T.length) return head + '<div class="dim">No tuning yet.</div>';
+  return head + T.map(t => `<section class="block"><h2>${esc(t.cycle)} · ${esc(BN[t.board] || t.board || '')} ${t.done ? (t.improved ? tag('adopted', 'accepted') : tag('kept current', 'rejected')) : tag('running', 'running')}
+     <button class="ctl" onclick="openCycle('${t.cycle}')">open cycle</button></h2><div class="grid2"><div class="card">${convChart(t.trials)}</div>
+     <div class="card kv"><div>Knobs</div><div class="mono">${esc(Object.entries(t.knobs || {}).map(([k, v]) => `${k} ∈ [${v.low}, ${v.high}] (default ${v.default})`).join('; ') || '…')}</div>
+       <div>Settings scored</div><div>${t.trials.filter(x => x.score != null).length} / ${t.trials.length}</div>
+       <div>Current values</div><div class="mono">${esc(JSON.stringify(t.current || ''))}</div>
+       <div>Chosen</div><div class="mono">${esc(JSON.stringify(t.chosen || ''))}</div>
+       <div>Paired gain</div><div>${t.gain != null ? pm(t.gain, t.gain_se) + ' on fresh seed pairs' : esc(t.reason || '–')}</div>
+       ${(t.finalists || []).length ? `<div>Finalists</div><div>${t.finalists.map(x => `<div class="mono">#${x.trial} ${esc(JSON.stringify(x.params))} → ${pm(x.gain, x.gain_se)}</div>`).join('')}</div>` : ''}</div></div></section>`).join('');
+}
+
+// ---------- final run page ----------
+const LBB = { temporal: 'T1', heart: 'heart', embryo: 'embryo', perturbation: 'T3' };
+const CLI_SLOT = { codex: 1, claude: 2, agy: 3, opencode: 4, commandcode: 5 };
+const mcol = k => { const n = CLI_SLOT[String(k || '').split(':')[0]]; return n ? `var(--s${n})` : 'var(--dim)'; };
+const mname = k => ({ 'codex:gpt-6.2-sol': 'GPT-6.2 Sol', 'codex:gpt-6-luna': 'GPT-6 Luna',
+  'claude:claude-opus-5-5': 'Opus 5.5', 'claude:claude-sonnet-5-5': 'Sonnet 5.5 (claude)',
+  'agy:gemini-4-neon-high': 'Gemini 4 Neon', 'agy:claude-opus-5-5-high': 'Opus 5.5 (agy)',
+  'agy:claude-sonnet-5-5-medium': 'Sonnet 5.5 (agy)', 'agy:gemini-4-hydrogen-medium': 'Hydrogen (agy)',
+  'agy:claude-opus-4-6-thinking': 'Opus 4.6 (agy)',
+  'opencode:opencode/deepseek-v4.1-flash-free': 'DeepSeek V4.1 Flash (opencode)',
+  'opencode:opencode-go/deepseek-v4.1-flash#max': 'DeepSeek V4.1 Flash (opencode-go)',
+  'commandcode:deepseek/deepseek-v4.1-flash': 'DeepSeek V4.1 Flash (cmd)' })[k] || k || '–';
+const left = t => { if (!t) return '–'; let s = t - Date.now() / 1000; if (s <= 0) return 'passed';
+  const d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60); return (d ? d + 'd ' : '') + h + 'h ' + String(m).padStart(2, '0') + 'm'; };
+const cet = t => t ? new Date(t * 1000).toLocaleString('en-GB', { timeZone: 'Europe/Berlin', weekday: 'short', hour: '2-digit', minute: '2-digit' }) + ' CET' : '–';
+const sgn = (x, d = 2) => x == null ? '–' : `<span class="${x > 0 ? 'pos' : x < 0 ? 'neg' : 'dim'}">${x > 0 ? '+' : ''}${f(x, d)}</span>`;
+function tipOn(root) {
+  const tip = $('tip');
+  root.querySelectorAll('[data-tip]').forEach(el => {
+    el.onmouseenter = e => { tip.innerHTML = el.dataset.tip; tip.hidden = false; };
+    el.onmousemove = e => { const w = tip.offsetWidth; tip.style.left = Math.min(e.clientX + 14, innerWidth - w - 8) + 'px'; tip.style.top = (e.clientY + 14) + 'px'; };
+    el.onmouseleave = () => tip.hidden = true;
+  });
+}
+function mini(pts, ref, step, nx) { // pts: [{x, y, col, filled, tip}]; ref: seed level; step: running best [[x,y]]; nx: cycles on the axis
+  const W = 440, H = 190, L = 38, R = 10, T = 10, Bm = 22;
+  const ys = pts.map(p => p.y).concat(ref != null ? [ref] : []).concat((step || []).map(s => s[1]));
+  if (!pts.length) return '<div class="dim" style="font-size:12px;padding:30px 0">No cycles yet.</div>';
+  let lo = Math.min(...ys), hi = Math.max(...ys); const pad = Math.max(0.5, (hi - lo) * 0.12); lo -= pad; hi += pad;
+  const n = Math.max(nx || 0, ...pts.map(p => p.x + 1)), X = x => L + (W - L - R) * (n <= 1 ? .5 : x / (n - 1)), Y = y => T + (H - T - Bm) * (1 - (y - lo) / (hi - lo));
+  const ticks = [0, .5, 1].map(q => lo + (hi - lo) * q);
+  let g = ticks.map(v => `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--grid)"/><text x="${L - 6}" y="${Y(v) + 4}" text-anchor="end">${f(v, 1)}</text>`).join('');
+  g += `<text x="${L}" y="${H - 6}">cycle 1</text><text x="${W - R}" y="${H - 6}" text-anchor="end">cycle ${n}</text>`;
+  if (ref != null) g += `<line x1="${L}" x2="${W - R}" y1="${Y(ref)}" y2="${Y(ref)}" stroke="var(--dim)" stroke-dasharray="4 4"/><text x="${L + 4}" y="${Y(ref) - 4}">seed ${f(ref, 1)}</text>`;
+  if (step && step.length > 1) g += `<path d="${step.map((s, i) => (i ? `H${X(s[0])}V${Y(s[1])}` : `M${X(s[0])},${Y(s[1])}`)).join('')}" fill="none" stroke="var(--fg)" stroke-width="2" opacity=".55"/>`;
+  g += pts.map(p => `<g data-tip="${esc(p.tip)}"><circle cx="${X(p.x)}" cy="${Y(p.y)}" r="10" fill="transparent"/>
+     <circle cx="${X(p.x)}" cy="${Y(p.y)}" r="4.5" fill="${p.filled ? p.col : 'var(--card)'}" stroke="${p.filled ? 'var(--card)' : p.col}" stroke-width="2"/></g>`).join('');
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img">${g}</svg>`;
+}
+async function finalPage() {
+  const F = await api('/api/final'); if (!F) return '<div class="dim">No data.</div>';
+  $('finalBadge').textContent = F.alerts.length ? '⚠ ' + F.alerts.length : '';
+  const tiles = `<div class="stats">${F.times.map(([l, t]) => `<div class="stat cd"><div class="l">${esc(l)}</div><div class="v">${left(t)}</div><div class="s">${cet(t)}</div></div>`).join('')}
+     <div class="stat cd"><div class="l">phase</div><div class="v" style="font-size:16px">${esc(F.phase || 'research')}</div><div class="s">${F.cycles.length} cycles finished</div></div></div>`;
+  const alerts = F.alerts.length ? `<div class="alerts">${F.alerts.map(a => `<div class="alert ${a.level}">${a.level === 'error' ? '✖' : '⚠'} ${esc(a.msg)}</div>`).join('')}</div>` : '';
+  const brow = B.map(([b, name, w]) => { const x = F.boards[b] || {}, g = F.gaps[LBB[b]] || {};
+    return `<tr><td><b>${name}</b> <span class="dim">×${w}</span></td><td>${x.accepted ?? 0} / ${x.cycles ?? 0}</td>
+      <td>${f(x.seed_dev)} → ${f(x.best_dev ?? x.seed_dev)} ${x.best_dev != null ? sgn(x.best_dev - x.seed_dev) : ''}</td>
+      <td>${x.seed_hold == null ? '<span class="dim">no local target</span>' : `${f(x.seed_hold)} → ${f(x.best_acc_hold ?? x.seed_hold)} ${x.best_acc_hold != null ? sgn(x.best_acc_hold - x.seed_hold) : ''}`}</td>
+      <td>${f(g.ours)} <span class="dim">(${esc(g.ours_entry || '')})</span></td><td>${f(g.top10)}</td><td>${f(g.leader)}</td></tr>`; }).join('');
+  const boards = `<section class="block"><h2>Boards: dev score agents see · private held-out (humans only) · public test</h2><div class="card wrap"><table>
+     <tr><th>Board</th><th>Accepted / cycles</th><th>Dev: seed → best accepted</th><th>Private held-out: seed → best accepted</th><th>Our best test entry</th><th>Public top-10</th><th>Leader</th></tr>${brow}</table></div></section>`;
+  const models = [...new Set(F.cycles.map(c => c.researcher).filter(Boolean))];
+  const legend = `<div class="legend">${models.map(m => `<span><span class="sw" style="background:${mcol(m)}"></span>${esc(mname(m))}</span>`).join('')}
+     <span><span class="sw" style="background:var(--fg)"></span>accepted</span><span style="color:var(--fg)"><span class="sw hollow"></span>not accepted</span>
+     <span class="dim">line: current parent (best accepted) · dashed: seed</span></div>`;
+  const devCharts = B.map(([b, name]) => { const cs = F.cycles.filter(c => c.board === b && c.dev != null); let best = F.boards[b]?.seed_dev, step = [];
+    const pts = cs.map((c, i) => { if (c.verdict === 'accepted' && (best == null || c.dev > best)) best = c.dev; step.push([i, best]);
+      return { x: i, y: c.dev, col: mcol(c.researcher), filled: c.verdict === 'accepted',
+        tip: `<b>${esc(c.id)}</b> · ${esc(c.verdict)}<br>${esc(mname(c.researcher))}${c.substitute ? ' (for ' + esc(mname(c.intended)) + ')' : ''}<br>dev ${f(c.dev)} (${c.parent_dev != null ? (c.dev - c.parent_dev >= 0 ? '+' : '') + f(c.dev - c.parent_dev) : '–'} vs parent) · ${f(c.minutes, 0)} min<br><span class="dim">${esc((c.title || '').slice(0, 140))}</span>` }; });
+    return `<div class="card mini"><h3>${name}</h3><div class="sub">dev board score per cycle</div>${mini(pts, F.boards[b]?.seed_dev, step)}</div>`; }).join('');
+  const holdCharts = ['temporal', 'heart', 'embryo', 'perturbation'].map(b => { const name = B.find(x => x[0] === b)[1];
+    const idx = Object.fromEntries(F.cycles.filter(c => c.board === b && c.dev != null).map((c, i) => [c.id, i]));
+    const hs = F.holdout.filter(h => h.board === b && h.id in idx);
+    const pts = hs.map(h => ({ x: idx[h.id], y: h.score, col: mcol(h.researcher), filled: h.verdict === 'accepted',
+      tip: `<b>${esc(h.id)}</b> · ${esc(h.verdict)}<br>${esc(mname(h.researcher))}<br>held-out ${f(h.score)} (${h.parent_score != null ? (h.score - h.parent_score >= 0 ? '+' : '') + f(h.score - h.parent_score) : '–'} vs parent)` }));
+    return `<div class="card mini"><h3>${name}</h3><div class="sub">${esc(F.held_targets?.[b] || '')}</div>${mini(pts, F.boards[b]?.seed_hold, null, Object.keys(idx).length)}</div>`; }).join('');
+  const charts = `<section class="block"><h2>Dev score per cycle (what the agents see)</h2>${legend}<div class="grid3">${devCharts}</div></section>
+     <section class="block"><h2>Private held-out score per cycle (humans only, never shown to agents)</h2><div class="grid3">${holdCharts}</div></section>`;
+  const hcell = c => c.held_status === 'ok' ? `${f(c.held)} ${c.held_parent != null ? sgn(c.held - c.held_parent) : ''}`
+    : c.held_status === 'scoring' ? '<span class="dim">scoring…</span>' : c.held_status === 'none' ? '<span class="dim">none (T3)</span>'
+    : c.held_status === 'error' ? `<span class="neg" data-tip="${esc(c.held_error || '')}">error</span>` : '<span class="dim">–</span>';
+  const ctab = `<section class="block"><h2>Every cycle: dev and private held-out score (Δ vs its parent)</h2><div class="card wrap" style="max-height:520px;overflow:auto"><table>
+     <tr><th>Cycle</th><th>Board</th><th>Model</th><th>Verdict</th><th>Dev (Δ parent)</th><th>Held-out (Δ parent)</th><th>Min</th><th>Hypothesis</th></tr>
+     ${F.cycles.slice().reverse().map(c => `<tr class="click" onclick="openCycle('${esc(c.id)}')"><td class="mono">${esc(c.id)}</td><td>${esc((B.find(x => x[0] === c.board) || [, c.board])[1])}</td>
+       <td><span class="sw" style="background:${mcol(c.researcher)}"></span>${esc(mname(c.researcher))}${c.substitute ? ` <span class="dim">(for ${esc(mname(c.intended))})</span>` : ''}</td>
+       <td>${tag(c.verdict)}</td><td>${f(c.dev)} ${c.parent_dev != null && c.dev != null ? sgn(c.dev - c.parent_dev) : ''}</td><td>${hcell(c)}</td>
+       <td>${f(c.minutes, 0)}</td><td class="dim" style="max-width:420px">${esc((c.title || '').slice(0, 120))}</td></tr>`).join('') || '<tr><td colspan="8" class="dim">no finished cycles yet</td></tr>'}</table></div></section>`;
+  const rrow = F.researchers.map(r => `<tr><td><span class="sw" style="background:${mcol(r.model)}"></span>${esc(mname(r.model))}</td><td>${r.n}</td><td>${r.accepted}</td>
+     <td>${r.rate == null ? '–' : (100 * r.rate).toFixed(0) + '%'} <span class="dim">[${r.lo == null ? '–' : (100 * r.lo).toFixed(0)}–${r.hi == null ? '–' : (100 * r.hi).toFixed(0)}%]</span>
+       <span class="ci"><i style="left:${100 * (r.lo || 0)}%;width:${100 * ((r.hi || 0) - (r.lo || 0))}%"></i><b style="left:${100 * (r.rate || 0)}%;background:${mcol(r.model)}"></b></span></td>
+     <td>${sgn(r.mean_gain)}</td><td>${sgn(r.mean_acc_gain)}</td><td>${sgn(r.mean_hold)}</td><td>${f(r.med_min, 0)}</td><td>${r.substitute}</td><td>${r.skipped}</td><td>${r.vetoed}</td></tr>`).join('');
+  const gvo = `<section class="block"><h2>Researcher models: GPT-6.2 Sol vs Opus 5.5 vs Gemini 4 Neon (plus quota substitutes)</h2><div class="card wrap"><table>
+     <tr><th>Model (ran the cycle)</th><th>Cycles</th><th>Accepted</th><th>Acceptance [95% Wilson]</th><th>Mean dev Δ</th><th>Mean Δ accepted</th><th>Mean held-out Δ (humans)</th><th>Median min</th><th>As substitute</th><th>Skipped/err</th><th>Vetoed</th></tr>
+     ${rrow || '<tr><td colspan="11" class="dim">no finished cycles</td></tr>'}</table></div></section>`;
+  const prow = F.providers.map(p => `<tr><td><span class="sw" style="background:${mcol(p.cli + ':')}"></span><b>${esc(p.cli)}</b></td>
+     <td>${p.limited_until ? `<span class="tag warn">⚠ limited until ${esc(cet(p.limited_until))}</span>` : '<span class="tag ok">✓ available</span>'}</td>
+     <td>${p.active}${p.cap ? ' / ' + p.cap : ''}</td><td>${p.calls} <span class="dim">(${p.last24} in 24h)</span></td><td>${p.fails}</td><td>${p.limited}</td><td>${p.served_as_sub}</td>
+     <td>${p.mean_s == null ? '–' : f(p.mean_s / 60, 1) + ' min'}</td><td>${ago(p.last)}</td><td class="dim" style="font-size:12px">${esc(p.models.join(', '))}</td></tr>`).join('');
+  const quota = `<section class="block"><h2>Providers &amp; quota ${F.claude_week_util != null ? `<span class="pill">Claude 7-day utilisation ${(100 * F.claude_week_util).toFixed(0)}%</span>` : ''}
+     <span class="pill">cheap fallback: DeepSeek (opencode) → DeepSeek (cmd) → Sonnet → Luna → Hydrogen</span></h2><div class="card wrap"><table>
+     <tr><th>CLI</th><th>Status</th><th>Active / cap</th><th>Calls</th><th>Failed</th><th>Limit hits</th><th>Ran as substitute</th><th>Mean call</th><th>Last call</th><th>Models</th></tr>${prow}</table></div></section>`;
+  const gap = `<section class="block"><h2>Metric gaps on the public test board · weight × (top-10 mean − our best entry) · snapshot ${esc(Object.values(F.gaps)[0]?.snapshot || '–')}</h2><div class="grid3">${
+    B.map(([b, name]) => { const g = F.gaps[LBB[b]]; if (!g) return ''; const mx = Math.max(1e-9, ...g.metrics.map(m => m.gap || 0));
+      return `<div class="card"><h3 style="font-size:12px;color:var(--bright);margin-bottom:8px">${name} <span class="dim">· ours ${f(g.ours)} vs top-10 ${f(g.top10)}</span></h3><table>${g.metrics.map(m =>
+        `<tr data-tip="${esc(`${m.metric}: top-10 ${f(m.top10)} · ours ${f(m.ours)} · weight ${f(m.weight, 3)}`)}"><td style="width:38%">${esc(m.metric)}</td><td>${(m.gap || 0) > 0 ? `<span class="gapbar" style="width:${Math.max(2, 70 * m.gap / mx)}%"></span>` : ''} ${f(m.gap)}</td></tr>`).join('')}</table></div>`; }).join('')}</div></section>`;
+  const crow = F.checkpoints.slice().reverse().map(c => `<tr><td class="mono">${esc(c.stamp)}</td><td>${esc(cet(c.t))}</td><td>${c.ok ? '<span class="tag ok">✓ gates pass</span>' : '<span class="tag bad">✖ failed</span>'}</td>
+     <td class="mono" style="font-size:12px">${esc(Object.entries(c.parts || {}).map(([b, id]) => `${b}:${id}`).join('  ') || 'seed (all boards)')}</td></tr>`).join('');
+  const fin = F.final || {};
+  const exp = `<section class="block"><h2>Exports: automated checkpoints &amp; final submission</h2><div class="grid2"><div class="card wrap"><table><tr><th>Checkpoint</th><th>Time</th><th>Export</th><th>Program per board</th></tr>
+     ${crow || '<tr><td colspan="4" class="dim">none yet (every 6 h, and at research end)</td></tr>'}</table></div>
+     <div class="card">${fin.submission ? `<p>${fin.submission.ok ? '<span class="tag ok">✓ final submission ready</span>' : '<span class="tag bad">✖ final export failed</span>'} <span class="dim">final/submission · ${esc((fin.evidence || []).join(', '))}</span></p><pre>${esc(fin.summary || '')}</pre>`
+       : fin.fallback ? `<p><span class="tag warn">⚠ hard-stop fallback used</span></p><pre>${esc(fin.fallback)}</pre>` : '<div class="dim">Final selection and export run automatically after research stops.</div>'}</div></div></section>`;
+  setTimeout(() => tipOn($('p-final')), 0);
+  return tiles + alerts + boards + ctab + charts + gvo + quota + gap + exp;
+}
+
+async function render() {
+  try {
+    if (!RUN) await loadRuns(); if (!RUN) { $('p-overview').innerHTML = '<div class="dim">No runs yet.</div>'; return; }
+    D = await api('/api/run'); if (!D) return;
+    HL = await api('/api/health'); updateBadges();
+    $('dot').className = 'dot ' + (D.alive ? 'alive' : 'dead'); $('cycBadge').textContent = D.cycles.length || '';
+    const el = $('p-' + PAGE), sc = PAGE === 'logs' ? null : window.scrollY;
+    const openDetails = [...el.querySelectorAll('details[open]')].map(x => x.dataset.f);
+    let h = '';
+    if (PAGE === 'final') h = await finalPage();
+    else if (PAGE === 'overview') h = healthStrip(HL) + overview(D); else if (PAGE === 'cycles') h = cyclesTable(D); else if (PAGE === 'live') h = await livePage();
+    else if (PAGE === 'best') h = await bestPage(D); else if (PAGE === 'holdout') h = holdoutPage(D); else if (PAGE === 'notebook') h = await notebookPage();
+    else if (PAGE === 'fleet') h = await fleetPage(); else if (PAGE === 'activity') h = await activityPage(); else if (PAGE === 'logs') h = await logsPage();
+    else if (PAGE === 'limits') h = await limitsPage(); else if (PAGE === 'config') h = configPage(D);
+    else if (PAGE === 'tasks') h = await tasksPage(); else if (PAGE === 'tuning') h = await tuningPage();
+    if (PAGE === 'logs' && document.activeElement?.id === 'logFilter') { const lb = $('logBox'); if (lb) lb.outerHTML = h.match(/<pre id="logBox"[\s\S]*<\/pre>/)[0]; }
+    else el.innerHTML = h;
+    if (PAGE === 'overview') $('metricSel').onchange = e => { metric = e.target.value; store.set('metric', metric); render(); };
+    if (PAGE === 'logs') { $('logWhich').onchange = e => { LOGW = e.target.value; render(); }; $('logFilter').oninput = e => { LOGF = e.target.value; render(); };
+      $('follow').onchange = e => FOLLOW = e.target.checked; if (FOLLOW) { const lb = $('logBox'); lb.scrollTop = lb.scrollHeight; } }
+    if (PAGE === 'notebook' && KBV === 'records') { $('kbBoard').onchange = e => { KBF.board = e.target.value; render(); }; $('kbStatus').onchange = e => { KBF.status = e.target.value; render(); };
+      $('kbQ').onchange = e => { KBF.q = e.target.value; render(); }; }
+    if (PAGE === 'live') { $('liveFollow').onchange = e => LIVEFOLLOW = e.target.checked; if (LIVEFOLLOW) document.querySelectorAll('.livebox').forEach(b => b.scrollTop = b.scrollHeight); }
+    if (sc != null) window.scrollTo(0, sc);
+    $('refreshInfo').textContent = 'updated ' + new Date().toLocaleTimeString();
+  } catch (e) { $('refreshInfo').textContent = 'error: ' + e.message; }
+}
+async function checkHoldout() {
+  let r; try { r = await (await fetch('/api/pending')).json(); } catch { return; }
+  const b = $('holdoutBanner'), wait = r.pending.filter(p => p.phase === 'awaiting_holdout' && p.status !== 'running');
+  const jobs = r.pending.filter(p => p.status);
+  b.hidden = !r.pending.length;
+  if (!r.pending.length) return;
+  $('hbText').textContent = wait.length ? `${wait.length} run(s) finished research and wait for the holdout step` :
+    jobs.map(j => `${j.run}: holdout step ${j.status} (log ${j.log})`).join(' · ');
+  for (const el of ['hbRun', 'hbCfg', 'hbPass', 'hbGo', 'hbExport']) $(el).hidden = !wait.length;
+  const sel = $('hbRun'), cur = sel.value;
+  sel.innerHTML = wait.map(p => `<option>${esc(p.run)}</option>`).join(''); if (cur) sel.value = cur;
+  if (!$('hbCfg').options.length) $('hbCfg').innerHTML = r.configs.map(c => `<option ${c === 'config.json' ? 'selected' : ''}>${esc(c)}</option>`).join('');
+  if (r.locked_out) $('hbMsg').textContent = 'locked for 10 min after 3 wrong passphrases';
+  if (wait.length && document.title.indexOf('🔒') < 0) document.title = '🔒 ' + document.title;
+  if (!wait.length) document.title = document.title.replace('🔒 ', '');
+}
+document.addEventListener('DOMContentLoaded', () => {
+  $('hbGo').onclick = async () => {
+    const pw = $('hbPass').value; if (!pw) return;
+    $('hbMsg').textContent = 'checking…';
+    const r = await fetch('/api/final', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-MG': '1' },
+      body: JSON.stringify({ run: $('hbRun').value, config: $('hbCfg').value, export: $('hbExport').checked, passphrase: pw }) });
+    $('hbPass').value = '';
+    $('hbMsg').textContent = (await r.json()).message;
+    checkHoldout();
+  };
+  checkHoldout(); setInterval(checkHoldout, 20000);
+});
+function schedule() { clearInterval(timer); const s = +$('refresh').value; if (s) timer = setInterval(async () => { await loadRuns(); if ($('modal').hidden) render(); }, s * 1000); }
+$('refresh').onchange = schedule;
+(async () => { await loadRuns(); show(PAGE); schedule(); })();
+</script>
+</body>
+</html>

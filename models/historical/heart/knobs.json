@@ -1,0 +1,6 @@
+{
+  "expression": {"low": 0.12, "high": 0.52, "default": 0.32},
+  "maturation": {"low": 0.70, "high": 1.30, "default": 1.00},
+  "depth_tilt": {"low": 0.30, "high": 0.95, "default": 0.65},
+  "spatial_growth": {"low": 0.45, "high": 0.95, "default": 0.70}
+}

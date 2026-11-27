@@ -1,0 +1,235 @@
+{
+ "gata4_1": {
+  "board": "perturbation",
+  "set": "dev",
+  "rows": {
+   "first": {
+    "score": 47.69,
+    "seed_scores": [
+     46.5,
+     48.12,
+     48.45
+    ]
+   },
+   "enigma": {
+    "score": 63.36333333333334,
+    "seed_scores": [
+     62.61,
+     63.86,
+     63.62
+    ]
+   }
+  },
+  "ordering": "passes"
+ },
+ "gata4_2": {
+  "board": "perturbation",
+  "set": "dev",
+  "rows": {
+   "first": {
+    "score": 46.51666666666667,
+    "seed_scores": [
+     46.33,
+     46.36,
+     46.86
+    ]
+   },
+   "enigma": {
+    "score": 66.29666666666667,
+    "seed_scores": [
+     66.54,
+     66.97,
+     65.38
+    ]
+   }
+  },
+  "ordering": "passes"
+ },
+ "mab21l2_e95": {
+  "board": "perturbation",
+  "set": "dev",
+  "rows": {
+   "first": {
+    "score": 49.583333333333336,
+    "seed_scores": [
+     49.62,
+     49.52,
+     49.61
+    ]
+   },
+   "enigma": {
+    "score": 59.580000000000005,
+    "seed_scores": [
+     61.56,
+     61.47,
+     55.71
+    ]
+   }
+  },
+  "ordering": "passes"
+ },
+ "temporal_test_composition": {
+  "board": "temporal",
+  "set": "composition",
+  "rows": {
+   "first": {
+    "composition": {
+     "prediction": {
+      "blood": 0.13566666666666666,
+      "cardiomyocyte": 0.098,
+      "endothelial": 0.14433333333333334,
+      "epicardial": 0.13
+     },
+     "reference": {
+      "blood": 0.1125745626326114,
+      "cardiomyocyte": 0.11333520156931823,
+      "endothelial": 0.132951679410705,
+      "epicardial": 0.1076103927298931
+     },
+     "blood_limit": 0.17505935274272147,
+     "failures": []
+    },
+    "artifact_sha256": "11edf0562a3db2d06e6dcefa884ff7011f55fcded4124079c141b0a5f24bf00a"
+   },
+   "enigma": {
+    "composition": {
+     "prediction": {
+      "blood": 0.21966666666666668,
+      "cardiomyocyte": 0.07766666666666666,
+      "endothelial": 0.12233333333333334,
+      "epicardial": 0.09466666666666666
+     },
+     "reference": {
+      "blood": 0.1125745626326114,
+      "cardiomyocyte": 0.11333520156931823,
+      "endothelial": 0.132951679410705,
+      "epicardial": 0.1076103927298931
+     },
+     "blood_limit": 0.17505935274272147,
+     "failures": [
+      "blood"
+     ]
+    },
+    "artifact_sha256": "dabf23f0fe84d7459a1fe149bd86ff25cfcf0f3e9cdf9cf0775a0d1f77f57bf3"
+   }
+  },
+  "ordering": "veto_only",
+  "calibration": "passes"
+ },
+ "guard_embryo_e80": {
+  "board": "embryo",
+  "set": "guard",
+  "rows": {
+   "first": {
+    "score": 82.87333333333333,
+    "seed_scores": [
+     83.71000000000001,
+     82.22,
+     82.69
+    ]
+   },
+   "enigma": {
+    "score": 83.22,
+    "seed_scores": [
+     84.06,
+     82.52,
+     83.08
+    ]
+   },
+   "codex": {
+    "score": 69.83999999999999,
+    "seed_scores": [
+     69.74,
+     69.92,
+     69.86
+    ]
+   }
+  },
+  "ordering": "reversed_or_tied"
+ },
+ "temporal_val": {
+  "board": "temporal",
+  "set": "dev",
+  "rows": {
+   "first": {
+    "score": 48.43,
+    "seed_scores": [
+     47.24,
+     48.39,
+     49.66
+    ]
+   },
+   "enigma": {
+    "score": 70.42333333333333,
+    "seed_scores": [
+     69.89,
+     70.43,
+     70.95
+    ]
+   }
+  },
+  "ordering": "reversed_or_tied"
+ },
+ "guard_heart_e85": {
+  "board": "heart",
+  "set": "guard",
+  "rows": {
+   "first": {
+    "score": 49.248195333333335,
+    "seed_scores": [
+     48.164586,
+     50.35,
+     49.230000000000004
+    ]
+   },
+   "enigma": {
+    "score": 49.305036666666666,
+    "seed_scores": [
+     48.46511,
+     50.43,
+     49.019999999999996
+    ]
+   },
+   "codex": {
+    "score": 51.700986666666665,
+    "seed_scores": [
+     50.89296,
+     52.379999999999995,
+     51.83
+    ]
+   }
+  },
+  "ordering": "passes"
+ },
+ "guard_heart_e85_dis": {
+  "board": "heart",
+  "set": "guard",
+  "rows": {
+   "first": {
+    "score": 50.809518,
+    "seed_scores": [
+     51.99348,
+     49.695074,
+     50.74
+    ]
+   },
+   "enigma": {
+    "score": 50.78574533333333,
+    "seed_scores": [
+     51.036699999999996,
+     50.710536000000005,
+     50.61
+    ]
+   },
+   "codex": {
+    "score": 62.1,
+    "seed_scores": [
+     61.33,
+     61.67,
+     63.3
+    ]
+   }
+  },
+  "ordering": "reversed_or_tied"
+ }
+}

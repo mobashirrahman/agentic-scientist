@@ -1,0 +1,58 @@
+{
+ "temporal_val": {
+  "board": "temporal",
+  "ceiling": 99.58,
+  "halves": [
+   99.64,
+   99.52
+  ]
+ },
+ "heart_early": {
+  "board": "heart",
+  "ceiling": 98.41,
+  "halves": [
+   98.92,
+   97.91
+  ]
+ },
+ "heart_late": {
+  "board": "heart",
+  "ceiling": 98.41,
+  "halves": [
+   98.92,
+   97.91
+  ]
+ },
+ "heart_long": {
+  "board": "heart",
+  "ceiling": 99.93,
+  "halves": [
+   99.92,
+   99.94
+  ]
+ },
+ "embryo_early": {
+  "board": "embryo",
+  "ceiling": 99.66,
+  "halves": [
+   99.37,
+   99.96
+  ]
+ },
+ "gata4_1": {
+  "board": "perturbation",
+  "ceiling": 99.84,
+  "halves": [
+   99.79,
+   99.88
+  ]
+ },
+ "gata4_2": {
+  "board": "perturbation",
+  "ceiling": 99.98,
+  "halves": [
+   100.0,
+   99.97
+  ]
+ }
+}

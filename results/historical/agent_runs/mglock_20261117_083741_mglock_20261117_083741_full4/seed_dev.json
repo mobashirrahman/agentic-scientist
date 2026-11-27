@@ -1,0 +1,198 @@
+{
+ "correct": true,
+ "error": null,
+ "set": "dev",
+ "pred_seed": 101,
+ "fit_seed": 0,
+ "proxy": 180.84208333333333,
+ "boards": {
+  "temporal": 58.98166666666667,
+  "heart": 52.090833333333336,
+  "embryo": 81.15333333333334,
+  "perturbation": 55.23833333333333
+ },
+ "board_se": {
+  "temporal": 0.283499951009205,
+  "heart": 0.42590345150045467,
+  "embryo": 0.30672100967781235,
+  "perturbation": 0.23224149308663908
+ },
+ "proxy_se": 0.45075072410122347,
+ "splits": {
+  "temporal_val": {
+   "board": "temporal",
+   "score": 58.446666666666665,
+   "metrics": {
+    "de_score": 49.68,
+    "de_direction": 66.44333333333333,
+    "mmd_u": 60.81666666666666,
+    "variogram": 55.85333333333333
+   },
+   "seed_scores": [
+    57.84,
+    58.13,
+    59.37
+   ],
+   "seed_sd": 0.8126704949321885,
+   "seconds": 221.3
+  },
+  "temporal_heartonly": {
+   "board": "temporal",
+   "score": 59.51666666666667,
+   "metrics": {
+    "de_score": 54.53,
+    "de_direction": 67.13,
+    "mmd_u": 61.31333333333333,
+    "variogram": 53.546666666666674
+   },
+   "seed_scores": [
+    59.42,
+    59.02,
+    60.11
+   ],
+   "seed_sd": 0.5513921774321171,
+   "seconds": 195.6
+  },
+  "heart_early": {
+   "board": "heart",
+   "score": 52.68,
+   "metrics": {
+    "de_score": 52.080000000000005,
+    "de_direction": 58.11000000000001,
+    "mmd_u": 52.72333333333333,
+    "variogram": 51.156666666666666,
+    "d2_shape": 47.5,
+    "occupancy_dice": 52.00666666666666,
+    "scale_log_ratio": 51.40333333333333,
+    "neighborhood_mmd": 53.22
+   },
+   "seed_scores": [
+    52.38,
+    54.3,
+    51.36
+   ],
+   "seed_sd": 1.492782636554966,
+   "seconds": 58.9
+  },
+  "heart_late": {
+   "board": "heart",
+   "score": 53.11333333333334,
+   "metrics": {
+    "de_score": 55.26,
+    "de_direction": 58.74666666666667,
+    "mmd_u": 52.673333333333325,
+    "variogram": 53.04,
+    "d2_shape": 47.26666666666667,
+    "occupancy_dice": 53.10999999999999,
+    "scale_log_ratio": 51.53333333333334,
+    "neighborhood_mmd": 51.99
+   },
+   "seed_scores": [
+    52.95,
+    54.42,
+    51.97
+   ],
+   "seed_sd": 1.233139624427557,
+   "seconds": 58.2
+  },
+  "heart_long": {
+   "board": "heart",
+   "score": 51.75333333333333,
+   "metrics": {
+    "de_score": 46.71666666666667,
+    "de_direction": 55.70333333333334,
+    "mmd_u": 51.910000000000004,
+    "variogram": 51.22,
+    "d2_shape": 55.51,
+    "occupancy_dice": 47.949999999999996,
+    "scale_log_ratio": 51.78666666666667,
+    "neighborhood_mmd": 52.43333333333334
+   },
+   "seed_scores": [
+    51.08,
+    54.17,
+    50.01
+   ],
+   "seed_sd": 2.160192892621708,
+   "seconds": 50.5
+  },
+  "heart_e875": {
+   "board": "heart",
+   "score": 50.81666666666666,
+   "metrics": {
+    "de_score": 48.156666666666666,
+    "de_direction": 52.64666666666667,
+    "mmd_u": 51.28666666666667,
+    "variogram": 51.02333333333333,
+    "d2_shape": 49.54333333333333,
+    "occupancy_dice": 50.96666666666666,
+    "scale_log_ratio": 46.39000000000001,
+    "neighborhood_mmd": 52.72
+   },
+   "seed_scores": [
+    51.44,
+    50.5,
+    50.51
+   ],
+   "seed_sd": 0.5398456569551454,
+   "seconds": 42.3
+  },
+  "embryo_early": {
+   "board": "embryo",
+   "score": 81.15333333333334,
+   "metrics": {
+    "de_score": 73.57666666666667,
+    "de_direction": 82.57333333333334,
+    "mmd_u": 86.04666666666667,
+    "variogram": 87.06333333333333,
+    "d2_shape": 93.69666666666667,
+    "occupancy_dice": 56.85666666666666,
+    "scale_log_ratio": 82.79,
+    "neighborhood_mmd": 82.31333333333333
+   },
+   "seed_scores": [
+    81.45,
+    80.54,
+    81.47
+   ],
+   "seed_sd": 0.5312563725107963,
+   "seconds": 13.6
+  },
+  "gata4_1": {
+   "board": "perturbation",
+   "score": 55.56,
+   "metrics": {
+    "de_score": 52.48333333333333,
+    "de_direction": 55.48666666666666,
+    "severity_slope": 50.0,
+    "mmd_u": 66.07333333333334,
+    "variogram": 68.95333333333333
+   },
+   "seed_scores": [
+    54.91,
+    55.35,
+    56.42
+   ],
+   "seed_sd": 0.7765951326141591,
+   "seconds": 28.1
+  },
+  "gata4_2": {
+   "board": "perturbation",
+   "score": 54.916666666666664,
+   "metrics": {
+    "de_score": 52.669999999999995,
+    "de_direction": 54.673333333333325,
+    "severity_slope": 50.0,
+    "mmd_u": 63.586666666666666,
+    "variogram": 66.39999999999999
+   },
+   "seed_scores": [
+    54.91,
+    55.13,
+    54.71
+   ],
+   "seed_sd": 0.21007935008785067,
+   "seconds": 30.1
+  }
+ }
+}

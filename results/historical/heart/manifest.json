@@ -1,0 +1,26 @@
+{
+ "board": "T2:heart:test_extrap",
+ "file": "T2__heart__test_extrap.h5ad",
+ "sha256": "685ea4fea1fc91dbcaf4c86b47984a85e84682ebcbbacd0d1e60b78a6f4f5c04",
+ "n_cells": 34641,
+ "n_genes": 500,
+ "selected_snapshot": "rounds/r02/snapshots/s055",
+ "selected_round": 2,
+ "rounds": [
+  2
+ ],
+ "model": "claude-opus-5-5",
+ "validation": 64.88,
+ "heldout": 60.59166666666667,
+ "fallback_used": false,
+ "configuration": "inputs E8.25,E8.5,E8.75,E9.5,E10.5 -> 12.5, dissection heart_chambers_only, seed 0",
+ "tried": [
+  {
+   "snapshot": "rounds/r02/snapshots/s055",
+   "ok": true,
+   "error_type": null,
+   "error": null
+  }
+ ],
+ "time": "2026-11-21 22:34:35"
+}

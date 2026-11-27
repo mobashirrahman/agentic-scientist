@@ -1,0 +1,277 @@
+{
+ "time": "2026-11-21 05:10:19",
+ "rule": "highest validation (2 prediction seeds x 3 scoring seeds) among checkpoints that (a) pass the native-occupancy gate >= 0.9, and (b) lose <= 1.0 to the round-0 starting model on the guard split; ties -> later round; if none qualifies, highest validation among checkpoints that completed the guard",
+ "ranking": [
+  "rounds/r00/snapshots/s065"
+ ],
+ "checkpoints": [
+  {
+   "round": 0,
+   "snapshot": "rounds/r00/snapshots/s065",
+   "hash": "4c31d2f42bffd829",
+   "validation": 73.52,
+   "splits": {
+    "val": {
+     "score": 73.52,
+     "metrics": {
+      "de_score": 60.13666666666666,
+      "de_direction": 67.95666666666666,
+      "mmd_u": 71.54666666666667,
+      "variogram": 79.76666666666667,
+      "d2_shape": 56.379999999999995,
+      "occupancy_dice": 91.38333333333333,
+      "scale_log_ratio": 99.63,
+      "neighborhood_mmd": 72.77666666666666
+     },
+     "native_occupancy": 0.9503916449086162
+    }
+   },
+   "model": "deepseek/deepseek-v4.1-flash",
+   "gate": {
+    "guard": {
+     "ok": true,
+     "error_type": null,
+     "seconds": 2.9,
+     "n_cells": 5000
+    },
+    "test": {
+     "ok": true,
+     "error_type": null,
+     "seconds": 3.5,
+     "n_cells": 5000
+    }
+   },
+   "rounds": [
+    0
+   ],
+   "heldout": 75.85833333333332,
+   "heldout_splits": {
+    "guard": {
+     "score": 75.85833333333332,
+     "pred_seed_scores": [
+      76.57,
+      75.14666666666666
+     ],
+     "seed_sd": null,
+     "n_cells": 5000,
+     "seconds": 3.9,
+     "metrics": {
+      "de_score": 68.72666666666666,
+      "de_direction": 78.62166666666667,
+      "mmd_u": 80.195,
+      "variogram": 79.47999999999999,
+      "d2_shape": 52.39999999999999,
+      "occupancy_dice": 79.61500000000001,
+      "scale_log_ratio": 77.55666666666666,
+      "neighborhood_mmd": 80.01833333333333
+     },
+     "native_occupancy": 0.9247399106270073
+    }
+   },
+   "validation_2seeds": 72.945,
+   "validation_splits_2seeds": {
+    "val": {
+     "score": 72.945,
+     "pred_seed_scores": [
+      73.52,
+      72.37
+     ],
+     "seed_sd": null,
+     "n_cells": 5000,
+     "seconds": 4.7,
+     "metrics": {
+      "de_score": 60.13666666666666,
+      "de_direction": 67.97666666666666,
+      "mmd_u": 71.28666666666666,
+      "variogram": 79.69666666666666,
+      "d2_shape": 55.91166666666666,
+      "occupancy_dice": 85.30333333333334,
+      "scale_log_ratio": 99.63,
+      "neighborhood_mmd": 72.815
+     },
+     "native_occupancy": 0.9428960808522409
+    }
+   },
+   "native_occupancy": 0.9428960808522409
+  },
+  {
+   "round": 1,
+   "snapshot": "rounds/r01/snapshots/s051",
+   "hash": "fa0e233dfc82a424",
+   "validation": 76.53333333333333,
+   "splits": {
+    "val": {
+     "score": 76.53333333333333,
+     "metrics": {
+      "de_score": 61.84333333333333,
+      "de_direction": 69.61,
+      "mmd_u": 72.74666666666667,
+      "variogram": 79.96666666666668,
+      "d2_shape": 80.07,
+      "occupancy_dice": 98.14999999999999,
+      "scale_log_ratio": 99.62333333333333,
+      "neighborhood_mmd": 72.19666666666667
+     },
+     "native_occupancy": 0.9
+    }
+   },
+   "model": "deepseek/deepseek-v4.1-flash",
+   "gate": {
+    "guard": {
+     "ok": true,
+     "error_type": null,
+     "seconds": 2.4,
+     "n_cells": 5000
+    },
+    "test": {
+     "ok": true,
+     "error_type": null,
+     "seconds": 2.9,
+     "n_cells": 5000
+    }
+   },
+   "rounds": [
+    1
+   ],
+   "heldout": 71.57666666666667,
+   "heldout_splits": {
+    "guard": {
+     "score": 71.57666666666667,
+     "pred_seed_scores": [
+      71.84,
+      71.31333333333333
+     ],
+     "seed_sd": null,
+     "n_cells": 5000,
+     "seconds": 3.3,
+     "metrics": {
+      "de_score": 64.52833333333334,
+      "de_direction": 80.67833333333334,
+      "mmd_u": 78.89333333333333,
+      "variogram": 81.75,
+      "d2_shape": 38.75333333333334,
+      "occupancy_dice": 53.25166666666667,
+      "scale_log_ratio": 77.56,
+      "neighborhood_mmd": 77.16166666666666
+     },
+     "native_occupancy": 0.8214004163160459
+    }
+   },
+   "validation_2seeds": 76.145,
+   "validation_splits_2seeds": {
+    "val": {
+     "score": 76.145,
+     "pred_seed_scores": [
+      76.53333333333333,
+      75.75666666666666
+     ],
+     "seed_sd": null,
+     "n_cells": 5000,
+     "seconds": 3.8,
+     "metrics": {
+      "de_score": 62.10666666666667,
+      "de_direction": 69.6,
+      "mmd_u": 72.77000000000001,
+      "variogram": 79.85333333333335,
+      "d2_shape": 80.16,
+      "occupancy_dice": 92.65333333333334,
+      "scale_log_ratio": 99.62333333333333,
+      "neighborhood_mmd": 72.35000000000001
+     },
+     "native_occupancy": 0.9020547945205479
+    }
+   },
+   "native_occupancy": 0.9020547945205479
+  },
+  {
+   "round": 2,
+   "snapshot": "rounds/r02/snapshots/s056",
+   "hash": "9a8a2ffdd9d41b77",
+   "validation": 78.98,
+   "splits": {
+    "val": {
+     "score": 78.98,
+     "metrics": {
+      "de_score": 62.339999999999996,
+      "de_direction": 68.33,
+      "mmd_u": 76.87,
+      "variogram": 80.53333333333333,
+      "d2_shape": 87.11666666666667,
+      "occupancy_dice": 99.15666666666668,
+      "scale_log_ratio": 99.62333333333333,
+      "neighborhood_mmd": 76.98
+     },
+     "native_occupancy": 0.9343434343434344
+    }
+   },
+   "model": "deepseek/deepseek-v4.1-flash",
+   "gate": {
+    "guard": {
+     "ok": true,
+     "error_type": null,
+     "seconds": 2.8,
+     "n_cells": 5000
+    },
+    "test": {
+     "ok": true,
+     "error_type": null,
+     "seconds": 3.5,
+     "n_cells": 5000
+    }
+   },
+   "rounds": [
+    2
+   ],
+   "heldout": 72.43166666666667,
+   "heldout_splits": {
+    "guard": {
+     "score": 72.43166666666667,
+     "pred_seed_scores": [
+      72.90666666666668,
+      71.95666666666666
+     ],
+     "seed_sd": null,
+     "n_cells": 5000,
+     "seconds": 3.4,
+     "metrics": {
+      "de_score": 54.91,
+      "de_direction": 75.00333333333333,
+      "mmd_u": 82.655,
+      "variogram": 83.42333333333333,
+      "d2_shape": 51.16333333333333,
+      "occupancy_dice": 63.29333333333334,
+      "scale_log_ratio": 77.55833333333334,
+      "neighborhood_mmd": 77.81166666666667
+     },
+     "native_occupancy": 0.9284994885514202
+    }
+   },
+   "validation_2seeds": 78.665,
+   "validation_splits_2seeds": {
+    "val": {
+     "score": 78.665,
+     "pred_seed_scores": [
+      78.98,
+      78.35000000000001
+     ],
+     "seed_sd": null,
+     "n_cells": 5000,
+     "seconds": 4.1,
+     "metrics": {
+      "de_score": 62.68,
+      "de_direction": 68.24333333333333,
+      "mmd_u": 76.64166666666667,
+      "variogram": 80.38666666666667,
+      "d2_shape": 87.83333333333334,
+      "occupancy_dice": 94.94833333333334,
+      "scale_log_ratio": 99.62333333333333,
+      "neighborhood_mmd": 76.94666666666666
+     },
+     "native_occupancy": 0.9382044627636568
+    }
+   },
+   "native_occupancy": 0.9382044627636568
+  }
+ ],
+ "selected": "rounds/r00/snapshots/s065"
+}

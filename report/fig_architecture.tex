@@ -1,0 +1,128 @@
+% Architecture of the AgenticScientist harness (TikZ). Included by main.tex; colours are defined there.
+\begin{tikzpicture}[
+    font=\sffamily\fontsize{6.3}{7.5}\selectfont,
+    >={Stealth[length=4.2pt,width=3.6pt]},
+    blk/.style={draw=#1, line width=0.55pt, rounded corners=2.2pt, fill=white, align=left,
+                text width=2.82cm, minimum height=1.36cm, inner xsep=3.2pt, inner ysep=2.6pt,
+                execute at begin node={\hyphenpenalty=10000 \exhyphenpenalty=10000 }},
+    det/.style={blk=asmuted},
+    llm/.style={blk=asblue, fill=asblue!9},
+    prot/.style={blk=asorange, fill=asorange!10},
+    hum/.style={blk=asink, fill=asink!6},
+    svc/.style={blk=asmuted, dashed, fill=white},
+    flow/.style={->, line width=0.7pt, draw=asink!78},
+    feed/.style={->, line width=0.7pt, draw=asblue},
+    lane/.style={fill=#1, rounded corners=4pt, draw=none},
+    lanetitle/.style={font=\sffamily\bfseries\fontsize{7.2}{8}\selectfont, text=asink, anchor=west},
+    lanenote/.style={font=\sffamily\fontsize{6.2}{7}\selectfont, text=asinktwo, anchor=east},
+    tag/.style={font=\sffamily\bfseries\fontsize{5.8}{6.5}\selectfont, text=asink, fill=white, inner sep=1.4pt, rounded corners=1pt},
+    num/.style={circle, fill=asink, text=white, font=\sffamily\bfseries\fontsize{6.5}{7}\selectfont, inner sep=1.3pt, minimum size=9.5pt}]
+  \newcommand{\hd}[1]{{\bfseries\fontsize{6.9}{7.8}\selectfont #1}\\[0.6pt]}
+  \def\xa{1.65}\def\xb{5.20}\def\xc{8.75}\def\xd{12.30}\def\xe{15.85}
+  \def\yA{0}\def\yK{-2.75}\def\yR{-4.72}\def\yS{-6.72}\def\yC{-9.45}
+
+  % ------------------------------------------------------------------ lane backgrounds
+  \begin{scope}[on background layer]
+    \fill[lane=aslane] (-0.62,1.28) rectangle (17.62,-0.92);
+    \fill[lane=aslane] (-0.62,-1.42) rectangle (17.62,-7.66);
+    \fill[lane=aslane] (-0.62,-8.16) rectangle (17.62,-10.37);
+  \end{scope}
+  \node[num] at (-0.30,1.00) {1};
+  \node[lanetitle] at (-0.10,1.00) {LOCK};
+  \node[lanenote] at (17.45,1.00) {prepared by people \emph{before} the run; hashed; nothing may change afterwards};
+  \node[num] at (-0.30,-1.70) {2};
+  \node[lanetitle] at (-0.10,-1.70) {AUTONOMOUS RESEARCH};
+  \node[lanenote] at (17.45,-1.70) {four board workers in parallel $\cdot$ every step resumable $\cdot$ no input changes after the lock};
+  \node[num] at (-0.30,-8.44) {3};
+  \node[lanetitle] at (-0.10,-8.44) {PRIVATE FINALIZATION};
+  \node[lanenote] at (17.45,-8.44) {no agent process alive $\cdot$ protected stages readable by the orchestrator only};
+
+  % ------------------------------------------------------------------ lane 1: lock
+  \node[hum]  (seed) at (\xa,\yA) {\hd{Seed program}one module per board behind a frozen \texttt{predict()} dispatcher};
+  \node[det]  (eval) at (\xb,\yA) {\hd{Frozen evaluator}official scorer, 18 Dev splits, fixed seed pairs, external priors};
+  \node[hum]  (brief) at (\xc,\yA) {\hd{Brief, prompts, config}role prompts, model schedule, budgets, gate thresholds};
+  \node[det]  (tools) at (\xd,\yA) {\hd{Tools and skills}literature search, public leaderboard, diagnostics, quick-eval, KB};
+  \node[det, fill=asink!6, draw=asink] (lock) at (\xe,\yA) {\hd{Run lock}SHA-256 of 368 files plus evaluator fingerprint; re-verified every cycle};
+  \draw[flow] (seed) -- (eval);
+  \draw[flow] (eval) -- (brief);
+  \draw[flow] (brief) -- (tools);
+  \draw[flow] (tools) -- (lock);
+
+  % ------------------------------------------------------------------ lane 2, row K: memory and services
+  \node[llm]  (dist) at (\xa,\yK) {\hd{Distiller}one structured record per finished cycle: claim, outcome, lesson};
+  \node[det]  (kb)   at (\xb,\yK) {\hd{Knowledge bank}all records plus a bounded synthesis; cross-run library of dead ends};
+  \node[llm]  (cur)  at (\xc,\yK) {\hd{Curator and planner}rewrite the synthesis; run priorities every 8 cycles};
+  \node[svc]  (chk)  at (\xd,\yK) {\hd{Checkpoint export}every 6 h the current best files are exported and gated};
+  \node[svc]  (stop) at (\xe,\yK) {\hd{Hard-stop watchdog}fixed wall-clock stop; falls back to the last checkpoint};
+  \draw[feed] (dist) -- (kb);
+  \draw[feed, <->] (kb) -- (cur);
+
+  % ------------------------------------------------------------------ lane 2, row R: propose and measure
+  \node[det]  (par)  at (\xa,\yR) {\hd{Cycle context}parent = board elite or seed; sibling history; planner priorities};
+  \node[llm, minimum height=1.5cm]  (res)  at (\xb,\yR) {\hd{\mbox{\fontsize{6.5}{7.5}\selectfont Researcher--implementer}}diagnose $\rightarrow$ evidence $\rightarrow$ \texttt{hypothesis.json} $\rightarrow$ code diff; model rotates every cycle};
+  \node[det]  (aud)  at (\xc,\yR) {\hd{Static audit and scope}no file, network or process access; own board's files only};
+  \node[det]  (dev)  at (\xd,\yR) {\hd{Dev evaluation}14-host CPU fleet; at most two debug rounds on failure};
+  \node[det]  (tune) at (\xe,\yR) {\hd{Knob tuning}on demand: Sobol + GP Bayesian optimisation, up to 4 knobs};
+  \draw[flow] (par) -- (res);
+  \draw[flow] (res) -- (aud);
+  \draw[flow] (aud) -- (dev);
+  \draw[flow] (dev) -- (tune);
+  \draw[feed] (kb) -- (res);
+  % sandbox boundary around the researcher
+  \node[draw=asblue, dashed, line width=0.5pt, rounded corners=3pt, inner xsep=3.2pt, inner ysep=3.6pt, fit=(res)] (sbx) {};
+  \node[tag, text=asblue] at ([yshift=0.3pt]sbx.south) {Landlock sandbox};
+
+  % ------------------------------------------------------------------ lane 2, row S: decide
+  \node[det]  (gate) at (\xe,\yS) {\hd{Plausibility gates}3-day forecast sanity; T1 composition guard; embryo geometry};
+  \node[det]  (race) at (\xd,\yS) {\hd{Paired Dev race}8 seed pairs vs.\ the parent; accept if the 95\% lower bound $>$ 0.25};
+  \node[det]  (exp)  at (\xc,\yS) {\hd{Test-file export gates}the exact test file: format, row limits, guards};
+  \node[llm]  (rev)  at (\xb,\yS) {\hd{Promotion review}a second model audits the diff only; may veto with file:line evidence};
+  \node[det, fill=asink!6, draw=asink] (dec) at (\xa,\yS) {\hd{Decision}accept $\rightarrow$ new board elite\\reject $\rightarrow$ recorded dead end};
+  \draw[flow] (tune) -- (gate);
+  \draw[flow] (gate) -- (race);
+  \draw[flow] (race) -- (exp);
+  \draw[flow] (exp) -- (rev);
+  \draw[flow] (rev) -- (dec);
+  \draw[flow] (dec) -- node[tag, pos=0.5] {elites} (par);
+  % every outcome -> distiller (outer left channel)
+  \draw[feed, rounded corners=3pt] (dec.west) -- ++(-0.26,0) |- (dist.west);
+  \node[tag, text=asblue, rotate=90] at (-0.29,-4.72) {every outcome};
+
+  % ------------------------------------------------------------------ lane 3: finalization
+  \node[det]  (short) at (\xa,\yC) {\hd{Shortlist}three best distinct programs per board plus their accepted ancestors};
+  \node[prot] (hold)  at (\xb,\yC) {\hd{Paired holdout}protected stages; 3 seed pairs; candidate vs.\ seed per board};
+  \node[det]  (sel)   at (\xc,\yC) {\hd{Board-wise selection}95\% lower bound $>$ 0.25; ancestor ablation; frozen boards keep the seed};
+  \node[det]  (comp)  at (\xd,\yC) {\hd{Compose and export}one program per board on the seed; four gated test files};
+  \node[hum]  (evi)   at (\xe,\yC) {\hd{Evidence, submission}trajectory, prompts, harness, manifest; a person uploads};
+  \draw[flow] (short) -- (hold);
+  \draw[flow] (hold) -- (sel);
+  \draw[flow] (sel) -- (comp);
+  \draw[flow] (comp) -- (evi);
+
+  % ------------------------------------------------------------------ lane-to-lane arrows with counts
+  \draw[flow, line width=0.9pt] (lock.south) -- (\xe,-1.42);
+  \node[tag, anchor=west] at (\xe+0.12,-1.17) {locked run};
+  \draw[flow, line width=0.9pt] (dec.south) -- (\xa,-8.16);
+  \node[tag, anchor=west] at (\xa+0.12,-7.91) {36 accepted candidates};
+
+  % counts along the research loop (Normandy run)
+  \node[tag] at ($(par.east)!0.5!(res.west)+(0,0.19)$) {139};
+  \node[tag] at ($(res.east)!0.5!(aud.west)+(0,0.19)$) {81};
+  \node[tag] at ($(exp.west)!0.5!(rev.east)+(0,0.19)$) {36};
+  \node[tag] at ($(short.east)!0.5!(hold.west)+(0,0.19)$) {20};
+  \node[tag] at ($(sel.east)!0.5!(comp.west)+(0,0.19)$) {2};
+
+  % ------------------------------------------------------------------ legend
+  \begin{scope}[shift={(0,-10.83)}]
+    \node[llm, minimum height=0.30cm, text width=0.34cm, inner sep=0pt] (l1) at (0.0,0) {};
+    \node[anchor=west, text=asinktwo] at (0.27,0) {LLM agent role (sandboxed)};
+    \node[det, minimum height=0.30cm, text width=0.34cm, inner sep=0pt] at (4.05,0) {};
+    \node[anchor=west, text=asinktwo] at (4.32,0) {deterministic harness code};
+    \node[prot, minimum height=0.30cm, text width=0.34cm, inner sep=0pt] at (7.95,0) {};
+    \node[anchor=west, text=asinktwo] at (8.22,0) {uses protected holdout data};
+    \node[hum, minimum height=0.30cm, text width=0.34cm, inner sep=0pt] at (11.9,0) {};
+    \node[anchor=west, text=asinktwo] at (12.17,0) {human input or action};
+    \node[tag] at (15.25,0) {81};
+    \node[anchor=west, text=asinktwo] at (15.47,0) {candidate count in run~4};
+  \end{scope}
+\end{tikzpicture}

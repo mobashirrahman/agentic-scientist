@@ -1,0 +1,43 @@
+{
+ "program": "prelock_best_holdout",
+ "workspace_sha256": "62bdb7d33d481464730e339420f5bf0c3f7d9b8d247c99347b93df19a2736331",
+ "parts": {
+  "heart": {
+   "name": "full6_w3_c01",
+   "mean": 52.6075
+  },
+  "embryo": {
+   "name": "full3_seed",
+   "mean": 70.05583333333334
+  },
+  "perturbation": {
+   "name": "full6_w1_c00",
+   "mean": 75.2975
+  },
+  "temporal": {
+   "name": "previous_seed",
+   "reason": "no separate holdout"
+  }
+ },
+ "ranking": "agentic_scientist/runs/prelock_20261118/best_holdout/ranking.json",
+ "previous_stage": {
+  "previous_seed": {
+   "from_run": "mglock_20261117_192730_mglock_20261117_192730_full6",
+   "program": "seed+dev",
+   "holdout": 120.06236111111112,
+   "previous_seed_holdout": 120.06236111111112,
+   "previous_seed_archived": "agentic_scientist/seed_history/20261118_001243",
+   "promoted_at": "2026-11-18 00:12:43"
+  },
+  "program": "prelock_20261118",
+  "selection": "agentic_scientist/runs/prelock_20261118/selection.json",
+  "workspace_sha256": "39381be2c77f3aff9d7958dd49e52ab9595e9b716ee9e170ee90430e26ff8320",
+  "parts": {
+   "perturbation": "seed",
+   "heart": "model",
+   "temporal": "seed",
+   "embryo": "seed"
+  }
+ },
+ "validation_role": "These local holdouts were used for pre-lock seed selection."
+}

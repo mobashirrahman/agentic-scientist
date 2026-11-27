@@ -1,0 +1,31 @@
+{
+  "phase": "frozen confirmation",
+  "parameters": {
+    "strength": 0.5,
+    "delay": 0.0
+  },
+  "confirmation_runs": [
+    {
+      "fit_seed": 3,
+      "prediction_seed": 201
+    },
+    {
+      "fit_seed": 4,
+      "prediction_seed": 202
+    }
+  ],
+  "confirmation_scoring_seeds": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210
+  ],
+  "biological_holdout": "Gata4 replicates already used in development; fresh draws are not new biological holdouts",
+  "decision": "Confirm medium complexity against paired WT control without reranking strengths; transfer to beta-catenin remains unvalidated"
+}

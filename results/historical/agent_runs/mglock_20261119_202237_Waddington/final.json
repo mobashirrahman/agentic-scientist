@@ -1,0 +1,63 @@
+{
+ "lock_id": "mglock_20261119_202237",
+ "chosen": "seed",
+ "rule": "T3 paired win over the test-scored reference and unseen-gene veto",
+ "t3_promotion": null,
+ "eligible_for_export": false,
+ "review_candidates": {
+  "temporal": [
+   {
+    "id": "w0_c03",
+    "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261119_202237_Waddington/cycles/w0_c03/ws",
+    "dev_board_mean": 53.3198
+   },
+   {
+    "id": "w0_c05",
+    "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261119_202237_Waddington/cycles/w0_c05/ws",
+    "dev_board_mean": 53.3156
+   },
+   {
+    "id": "w0_c00",
+    "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261119_202237_Waddington/cycles/w0_c00/ws",
+    "dev_board_mean": 53.3056
+   }
+  ],
+  "heart": [
+   {
+    "id": "w4_c05",
+    "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261119_202237_Waddington/cycles/w4_c05/ws",
+    "dev_board_mean": 63.1251
+   },
+   {
+    "id": "w4_c02",
+    "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261119_202237_Waddington/cycles/w4_c02/ws",
+    "dev_board_mean": 62.7538
+   },
+   {
+    "id": "w4_c00",
+    "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261119_202237_Waddington/cycles/w4_c00/ws",
+    "dev_board_mean": 62.7231
+   }
+  ],
+  "embryo": [
+   {
+    "id": "w3_c06",
+    "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261119_202237_Waddington/cycles/w3_c06/ws",
+    "dev_board_mean": 59.1272
+   },
+   {
+    "id": "w3_c02",
+    "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261119_202237_Waddington/cycles/w3_c02/ws",
+    "dev_board_mean": 58.2678
+   },
+   {
+    "id": "w3_c01",
+    "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261119_202237_Waddington/cycles/w3_c01/ws",
+    "dev_board_mean": 58.1156
+   }
+  ]
+ },
+ "selected_sha256": "3f219b880184eacdda9e79e8c6ecb809d5fb6959a98606569d51023e28332e18",
+ "agent_calls": 431,
+ "cost_usd": 0.0
+}

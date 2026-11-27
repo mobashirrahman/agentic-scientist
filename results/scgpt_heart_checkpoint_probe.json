@@ -1,0 +1,62 @@
+{
+  "scope": "Cell-type retrieval from observed E10.5 expression. This is a representation diagnostic.",
+  "labels": [
+    "A-CM",
+    "BEC",
+    "Branch Arch",
+    "Chamber-Endo",
+    "Cush-EndoMT-Endo",
+    "DMP",
+    "Dorsal-PAM",
+    "Great Artery Endoth",
+    "Hepatocytes",
+    "NCC",
+    "OFT-CM",
+    "Peri",
+    "SE",
+    "SV-CM",
+    "V-CM",
+    "early-VEC"
+  ],
+  "genes": 474,
+  "seed": 42,
+  "train_cells": 1600,
+  "test_cells": 1600,
+  "sources": {
+    "data/raw/T2/E9.5.h5ad": "371ca6530e084de2b6cd6703b49d95f4bb59546c9291659809575382a630ee9a",
+    "data/raw/T2/E10.5.h5ad": "d6b37967f9cf3533091964cd07421c48a5c7c04628e9321123a426cb2a9c7e8b"
+  },
+  "vocabulary_sha256": "acca93d114ca62c3f0f50debbd23e8c87f0714f4737764454f6b2b13f2e8580f",
+  "checkpoint": {
+    "vocab.json": "acca93d114ca62c3f0f50debbd23e8c87f0714f4737764454f6b2b13f2e8580f",
+    "args.json": "c18e075e018140cb8b2d9029387b9de26607a5ce6a8ccabd6ead70cd76b95d60",
+    "best_model.pt": "6cb5d451ab5c4b33eb673adbe4fddc61d2389df1b89b7651a9fe2e557572b922",
+    "loaded_encoder_tensors": 153,
+    "source_files": {
+      "scgpt/data_collator.py": "4543e16e5fd162ba935c8e7687059953503db1878189dfd33c0ecda3375428e9",
+      "scgpt/model/dsbn.py": "666e443b530b8f4c7a26759c18b2c3125d96bb8ae55b7d91f26599ae7f84fb9b",
+      "scgpt/model/flash_attn_compat.py": "5a37a9a172c83c286cd45d9387051d7cc09634bc7f635e11e7615da636860251",
+      "scgpt/model/grad_reverse.py": "506b0adb351b1dc50f5778434b6c4a553cd18d23a6100add62fdbf2791764ad6",
+      "scgpt/model/model.py": "4ae77618cc6f12a7d1f6d946fee3f7bd5c56f3e9e103073394a590ceba5a35ed",
+      "scgpt/preprocess.py": "e0928ef5cbbdbe5012869cf890740d972c4faa6852e22006ac8dc52846fd5c84"
+    }
+  },
+  "metrics": {
+    "log_expression": {
+      "macro_f1": 0.6142985364413756,
+      "balanced_accuracy": 0.63125
+    },
+    "pca32": {
+      "macro_f1": 0.6244072084013345,
+      "balanced_accuracy": 0.630625
+    },
+    "scgpt": {
+      "macro_f1": 0.4456283604110205,
+      "balanced_accuracy": 0.4425
+    },
+    "scgpt_random_weights": {
+      "macro_f1": 0.25759893086744834,
+      "balanced_accuracy": 0.27312499999999995
+    }
+  }
+}

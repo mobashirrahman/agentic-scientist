@@ -1,0 +1,47 @@
+{
+ "board": "T1:test",
+ "file": "T1__test.h5ad",
+ "sha256": "b54f9af8afebda54eb618d48cd3ca09b4a2a8271e6c90ccb5421e699732e4bff",
+ "n_cells": 3000,
+ "n_genes": 32285,
+ "selected_snapshot": "rounds/r00/snapshots/s026",
+ "selected_round": 0,
+ "rounds": [
+  0
+ ],
+ "model": "deepseek/deepseek-v4.1-flash",
+ "framework": "Command Code CLI (headless cmd -p)",
+ "harness": "focused AgenticScientist",
+ "validation": 51.6,
+ "late_guard": 66.495,
+ "blood_like_limit": 0.17505935274272147,
+ "research_candidate": true,
+ "input_stages": [
+  "E8.5",
+  "E9.5",
+  "E10.5"
+ ],
+ "target_stage": "E12.5",
+ "sampling": "heart_chambers",
+ "seed": 42,
+ "tried": [
+  {
+   "snapshot": "rounds/r00/snapshots/s026",
+   "checks": [
+    {
+     "seed": 42,
+     "ok": true,
+     "error_type": null,
+     "blood_like": 0.14
+    },
+    {
+     "seed": 101,
+     "ok": true,
+     "error_type": null,
+     "blood_like": 0.12933333333333333
+    }
+   ]
+  }
+ ],
+ "time": "2026-11-21 10:15:26"
+}

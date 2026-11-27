@@ -1,0 +1,18 @@
+{
+ "lock_id": "mglock_20261116_164958",
+ "rule": "max holdout proxy among top-K dev, must beat seed on holdout",
+ "candidates": [
+  {
+   "id": "seed",
+   "ws": "/scratch/user/virtual-embryo/agentic_scientist/runs/mglock_20261116_164958_pilot2/seed_ws",
+   "proxy": 173.68,
+   "holdout": null,
+   "holdout_boards": {
+    "temporal": 56.01666666666667
+   }
+  }
+ ],
+ "chosen": "seed",
+ "cost_usd": 1.2640166000000002,
+ "agent_calls": 12
+}

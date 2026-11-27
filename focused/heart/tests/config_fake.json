@@ -1,0 +1,37 @@
+{
+ "builder": {
+  "cli": "fake",
+  "model": "builder",
+  "effort": "low"
+ },
+ "improver": {
+  "cli": "fake",
+  "model": "improver",
+  "effort": "low"
+ },
+ "improve_rounds": 2,
+ "round_seconds": [
+  600,
+  600
+ ],
+ "max_evals": [
+  5,
+  5
+ ],
+ "max_testchecks": 3,
+ "continue_if_remaining_s": 99999,
+ "max_continuations": 0,
+ "deadline": "2026-12-31T00:00:00+01:00",
+ "final_reserve_s": 0,
+ "fallback": {
+  "cli": "fake",
+  "model": "fallback",
+  "effort": "low"
+ },
+ "retry_wait_s": 5,
+ "tune_trials": 4,
+ "fleet_hosts": [
+  "bio02.cluster.example",
+  "bio07.cluster.example"
+ ]
+}

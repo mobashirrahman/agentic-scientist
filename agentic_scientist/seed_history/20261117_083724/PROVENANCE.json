@@ -1,0 +1,11 @@
+{
+ "from_run": "mglock_20261116_204101_full2",
+ "program": "w1_c04",
+ "holdout": 167.49666666666667,
+ "previous_seed_holdout": 163.67555555555558,
+ "previous_seed_archived": "agentic_scientist/seed_history/20261117_002939",
+ "promoted_at": "2026-11-17 00:29:39",
+ "forked_from": "agentic_scientist/seed_history/20261117_002948_prefork",
+ "forked_at": 1794871788.5301607,
+ "fork_note": "per-task fork (option C); dev scores identical"
+}

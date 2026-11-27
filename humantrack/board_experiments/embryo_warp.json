@@ -1,0 +1,88 @@
+{
+ "guard_embryo_e80": {
+  "warp": {
+   "42": {
+    "score": 82.78333333333335,
+    "metrics": {
+     "de_score": 83.01,
+     "de_direction": 95.03333333333335,
+     "mmd_u": 93.13,
+     "variogram": 94.06666666666666,
+     "d2_shape": 44.550000000000004,
+     "occupancy_dice": 36.876666666666665,
+     "scale_log_ratio": 83.35666666666667,
+     "neighborhood_mmd": 93.68333333333332
+    }
+   },
+   "101": {
+    "score": 82.89,
+    "metrics": {
+     "de_score": 82.45333333333333,
+     "de_direction": 95.30333333333333,
+     "mmd_u": 93.05333333333333,
+     "variogram": 94.02,
+     "d2_shape": 45.123333333333335,
+     "occupancy_dice": 38.156666666666666,
+     "scale_log_ratio": 83.52666666666666,
+     "neighborhood_mmd": 93.61666666666666
+    }
+   },
+   "211": {
+    "score": 82.59333333333333,
+    "metrics": {
+     "de_score": 82.49333333333333,
+     "de_direction": 95.33333333333333,
+     "mmd_u": 93.17666666666666,
+     "variogram": 94.14666666666666,
+     "d2_shape": 43.78666666666667,
+     "occupancy_dice": 36.22333333333333,
+     "scale_log_ratio": 83.65999999999998,
+     "neighborhood_mmd": 93.33666666666666
+    }
+   }
+  }
+ },
+ "embryo_early": {
+  "warp": {
+   "42": {
+    "score": 56.80666666666667,
+    "metrics": {
+     "de_score": 58.98,
+     "de_direction": 69.00999999999999,
+     "mmd_u": 55.85333333333333,
+     "variogram": 23.35666666666667,
+     "d2_shape": 79.16333333333334,
+     "occupancy_dice": 39.13666666666666,
+     "scale_log_ratio": 58.10666666666666,
+     "neighborhood_mmd": 61.56999999999999
+    }
+   },
+   "101": {
+    "score": 57.20666666666667,
+    "metrics": {
+     "de_score": 59.576666666666675,
+     "de_direction": 68.76333333333334,
+     "mmd_u": 56.69666666666666,
+     "variogram": 23.95,
+     "d2_shape": 78.75,
+     "occupancy_dice": 38.67666666666667,
+     "scale_log_ratio": 57.97333333333333,
+     "neighborhood_mmd": 62.56999999999999
+    }
+   },
+   "211": {
+    "score": 56.64666666666667,
+    "metrics": {
+     "de_score": 57.72666666666667,
+     "de_direction": 68.54,
+     "mmd_u": 55.14000000000001,
+     "variogram": 22.896666666666665,
+     "d2_shape": 80.93333333333334,
+     "occupancy_dice": 39.38666666666667,
+     "scale_log_ratio": 59.00333333333333,
+     "neighborhood_mmd": 61.42666666666667
+    }
+   }
+  }
+ }
+}

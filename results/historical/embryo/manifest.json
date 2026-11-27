@@ -1,0 +1,30 @@
+{
+ "board": "T2:embryo:test_interp",
+ "file": "T2__embryo__test_interp.h5ad",
+ "sha256": "27001e42e160958fa00f1ebd2b04b216da270f712dc554c6aad4f3e29c039ed1",
+ "n_cells": 5000,
+ "n_genes": 497,
+ "selected_snapshot": "rounds/r00/snapshots/s065",
+ "selected_round": 0,
+ "rounds": [
+  0
+ ],
+ "model": "deepseek/deepseek-v4.1-flash",
+ "framework": "Command Code CLI (headless cmd -p)",
+ "harness": "focused AgenticScientist",
+ "effort": "max",
+ "validation": 72.945,
+ "heldout": 75.85833333333332,
+ "native_occupancy": 0.9428960808522409,
+ "fallback_used": false,
+ "configuration": "inputs E7.5,E8.0 -> 7.75, seed 0",
+ "tried": [
+  {
+   "snapshot": "rounds/r00/snapshots/s065",
+   "ok": true,
+   "error_type": null,
+   "error": null
+  }
+ ],
+ "time": "2026-11-21 05:10:23"
+}

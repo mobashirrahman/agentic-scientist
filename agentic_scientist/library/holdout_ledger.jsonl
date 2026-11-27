@@ -1,0 +1,6 @@
+{"t": 1795433135.1037188, "run": "mglock_20261123_120831_smoke_final2", "candidates": 1, "chosen": "seed", "seed_holdout": 33.68333333333334, "chosen_holdout": 33.68333333333334}
+{"t": 1795475418.198441, "run": "mglock_20261123_131906_final", "candidates": 8, "chosen": "composed", "seed_holdout": 33.945, "chosen_holdout": 33.945}
+{"t": 1795489603.2407331, "run": "mglock_20261124_004757_final_v2", "candidates": 5, "chosen": "composed", "seed_holdout": 127.6389175, "chosen_holdout": 128.21049630000002}
+{"t": 1795545979.972274, "run": "mglock_20261124_042523_dday", "candidates": 14, "chosen": "composed", "seed_holdout": 128.21049630000002, "chosen_holdout": 128.21049630000002}
+{"t": 1795675604.7246704, "run": "mglock_20261125_033537_normandy", "candidates": 22, "chosen": "composed", "seed_holdout": 131.28253891111112, "chosen_holdout": 136.40565584222222}
+{"t": 1795688958.0758395, "run": "mglock_20261126_104631_overlord", "candidates": 2, "chosen": "seed", "seed_holdout": 130.1449732288889, "chosen_holdout": 130.1449732288889}

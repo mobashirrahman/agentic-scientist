@@ -1,0 +1,259 @@
+{
+ "_about": "AgenticScientist final run 'Normandy'. Seed, brief and gates are described in prompts/brief_normandy.md.",
+ "workers": 4,
+ "cycles_per_worker": 1,
+ "max_cycles_factor": 1.0,
+ "min_cycles_per_worker": 0,
+ "patience_cycles": 1000,
+ "max_research_seconds": null,
+ "cycle_drain_seconds": 0,
+ "no_new_cycles_at": null,
+ "research_kill_at": null,
+ "hard_stop_at": null,
+ "max_debug_attempts": 2,
+ "debug_timeout_s": 1800,
+ "review_timeout_s": 1500,
+ "shortlist": 2,
+ "researcher_implements": true,
+ "evidence_retry": false,
+ "promotion_review": true,
+ "ideator": {
+  "cli": "fake",
+  "model": "fake",
+  "timeout_s": 600
+ },
+ "ideator_cycle": [
+  {
+   "cli": "fake",
+   "model": "fake",
+   "timeout_s": 600
+  },
+  {
+   "cli": "fake",
+   "model": "fake2",
+   "timeout_s": 600
+  }
+ ],
+ "implementers": [
+  {
+   "cli": "fake",
+   "model": "fake-impl",
+   "timeout_s": 600
+  }
+ ],
+ "distiller": {
+  "cli": "fake",
+  "model": "fake-distiller",
+  "timeout_s": 600
+ },
+ "curator": {
+  "cli": "fake",
+  "model": "fake-curator",
+  "timeout_s": 600
+ },
+ "planner": {
+  "cli": "fake",
+  "model": "fake-planner",
+  "timeout_s": 600
+ },
+ "planner_every": 1000,
+ "overflow": {
+  "cli": "fake",
+  "model": "fake-overflow",
+  "timeout_s": 600
+ },
+ "critic": {
+  "cli": "fake",
+  "model": "fake-critic",
+  "timeout_s": 600
+ },
+ "critic_plan": false,
+ "critic_code": false,
+ "claude_max_week_util": 0.99,
+ "claude_fallback": {
+  "cli": "fake",
+  "model": "fake-claude_fallback",
+  "timeout_s": 600
+ },
+ "provider_concurrency": {
+  "fake": 8
+ },
+ "max_agent_calls": 200,
+ "holdout_forbidden": [
+  ".claude/projects",
+  "/T2/E10.5",
+  "/T2/E7.5.h5ad",
+  "E10.5.h5ad",
+  "E7.5.h5ad",
+  "T2/E10.5.h5ad",
+  "T2/E7.5.h5ad",
+  "guard_E14.5",
+  "guard_E16.5",
+  "guard_E18.5",
+  "holdout.enc/",
+  "ve-holdout-t3",
+  "T3__unseen",
+  "unseen_wt_a",
+  "unseen_wt_b",
+  "unseen_ko",
+  "unseen_spec"
+ ],
+ "kb_chars": 10000,
+ "acceptance": {
+  "alpha": 0.05,
+  "margin": 0.25,
+  "reject_z": -2.0,
+  "batches": [
+   2
+  ],
+  "board_drop": 0.5,
+  "rule": "screen one seed pair; confirm with all eight paired evaluations; accept when the proxy or changed board clears the margin with a one-sided 95% lower bound, subject to board and condition loss limits",
+  "board_margin": {
+   "heart": 0.25,
+   "embryo": 0.25
+  }
+ },
+ "condition_drop": 0.5,
+ "holdout_margin": 0.25,
+ "holdout_seed_pairs": [
+  [
+   202,
+   0
+  ]
+ ],
+ "holdout_select_boards": [
+  "temporal",
+  "heart",
+  "embryo"
+ ],
+ "merge": false,
+ "sanity": true,
+ "elites": 4,
+ "lineage_max": 6,
+ "tune": {
+  "on_demand": true,
+  "boards": [
+   "temporal",
+   "heart",
+   "embryo",
+   "perturbation"
+  ],
+  "rounds": 2,
+  "parallel": "fleet",
+  "top": 3,
+  "max_tunes": 0,
+  "seed": 0
+ },
+ "max_slowdown": null,
+ "slow_floor_s": 240,
+ "monitor_late": true,
+ "initial_elites": {},
+ "free_roam": false,
+ "group_floor": 0.25,
+ "ablation_tol": 0.25,
+ "guard": {
+  "pairs": [
+   [
+    301,
+    0
+   ],
+   [
+    302,
+    1
+   ],
+   [
+    303,
+    2
+   ],
+   [
+    304,
+    3
+   ]
+  ],
+  "mean": 0.25,
+  "lb": 0.5,
+  "boards": [],
+  "_note": "Normandy: embryo geometry gates reference midpoint geometry (agentic_scientist/native.py); T1 composition veto adds a cardiomyocyte floor."
+ },
+ "scope_quick_eval": true,
+ "focus": {
+  "w0": "temporal",
+  "w1": "heart",
+  "w2": "embryo",
+  "w3": "temporal"
+ },
+ "directives": {
+  "w0": [
+   "BUILD CYCLE 1 (replicate, do not invent): implement the strongest decodable public T1 recipe on top of the seed. 'Two-skeleton real-cell extrapolation + maturity-tilted selection' (80.6-81.7) and 'P3LT ... CT3 k150 w100 pt' lineage transport (83.6): per coarse lineage, fit the mean+covariance step between the two latest stages, then SELECT real latest-stage cells by kNN / partial transport toward the stepped state (lineage masses unchanged, cardiomyocyte guard). Run `leaderboard.py --live recipes T1` first.",
+   "BUILD CYCLE 2 (replicate): 'P3MIX ... D50_OT50U_CB' (84.2): a 50/50 MIXTURE of two real-cell populations, plain heart-proper donors and unbalanced-OT-selected donors, with composition balance. Build the mixture on the current best program; keep every row a measured nucleus.",
+   "RESEARCH CYCLES (metric by metric; take the metric with the largest gap to the public top entries in the brief's TEST table that the previous cycles on this board have not yet moved, state it in the hypothesis, and show with quick_eval which metric moved). The Normandy seed keeps the LATEST stage's cardiac lineage masses (cardiomyocytes ~20% of the chamber forecast; the D-Day file had 6% and scored mmd_u 66), heart-proper donors, blood x0.8, maturity tilt 0.75 and the Qiu late-anchor continuation. Dev (E8.5+E9.5 -> E10.5) REWARDS continuing the E9.5->E10.5 lineage trend because that trend is a sampling difference between two dissections; the TEST punished it and the composition veto now rejects cardiomyocyte-depleted forecasts. Do not re-add lineage-trend extrapolation. Push toward the 82-84 leaders with what they name: (1) WHICH real cells are emitted inside each lineage (maturity-tilted selection, lineage transport / unbalanced partial OT, two-skeleton mean+covariance step); (2) lineage-specific late-anchor maturation direction with variogram-preserving realisation; (3) a principled, bounded cardiomyocyte ENRICHMENT for the chamber protocol (never depletion)."
+  ],
+  "w1": [
+   "BUILD CYCLE 1 (replicate, do not invent): 'CXB_KBULKO30 D2 XJ15 PK1 N25179 R5105' (77.1) vs 'CXB_BULKO20 N11547' (73.7). The seed has the crop, N, R and a bulk offset; replicate the missing parts: K-scaled (per-compartment) bulk offset and a cardiomyocyte-rich chamber composition (public cm 0.44-0.50) with profiles placed in their own compartment. Run `leaderboard.py --live recipes heart` first.",
+   "BUILD CYCLE 2 (replicate): neighbourhood terms of the 75+ entries (neighbourhood 75-78): coordinate jitter / local mixing scale (XJ15) and kNN-coupled local expression so local composition matches a later, more compact myocardium.",
+   "RESEARCH CYCLES (metric by metric; take the metric with the largest gap to the public top entries in the brief's TEST table that the previous cycles on this board have not yet moved, state it in the hypothesis, and show with quick_eval which metric moved). The Normandy seed draws 25,179 real organ-resident cells with the epicardium label 'Epi' now included (detached 'Peri'/vessel rows are still relocated; drawing ATTACHED cells only, switch DROP_DETACHED, gives 41% cardiomyocytes and +1 to +3 on the short dissected folds but -1.4 to -2.7 on the 2-day E10.5 folds, mostly scale and mmd_u: a candidate to fix, not a default) (D-Day file: 37% with 21% 'Peri'; TEST mmd_u 59.5, neighbourhood 64.0, scale 87.2 at RMS 551), RMS capped at the public 510.5 envelope, bulk offset 0.30. The dissected Dev/holdout targets use the same attached-organ rule. Push toward the 75-77 leaders (mmd_u 72-75, neighbourhood 72-78, variogram 80-83): (1) chamber composition of the later heart (public cardiomyocyte-rich recipes: cm 0.44-0.50) with profiles placed where their compartment lives; (2) per-compartment pseudobulk offset toward the fetal atlases (K-scaled BULKO) that keeps detection structure; (3) neighbourhood composition from context['external_spatial']. Keep N=25,179 and the RMS envelope."
+  ],
+  "w2": [
+   "BUILD CYCLE 1 (replicate, do not invent): the seed has 'E7.5 skeleton, midpoint geometry'. Replicate what separates 76.9 from 79-81 on shape: d2_shape 72 -> 94-100. Candidates named on the board: RMS-matched radius ('m369_rms'), density / footprint matching ('DENSITY_B_BLOCK', 'rpc-footprint-mid'). Change coordinates only, keep the midpoint-geometry gate green, check the E7.5 holdout-like behaviour with quick_eval.",
+   "BUILD CYCLE 2 (replicate): 'residual nystrom binding' / 'consensus niche' (79.7 / 77.1): place transplanted profiles by multi-scale neighbourhood embedding so neighbourhood_mmd and variogram rise; coordinates untouched.",
+   "RESEARCH CYCLES (metric by metric; take the metric with the largest gap to the public top entries in the brief's TEST table that the previous cycles on this board have not yet moved, state it in the hypothesis, and show with quick_eval which metric moved). The Normandy seed uses MIDPOINT GEOMETRY: the nearer bracket's own cells and positions, each NATIVE axis rescaled to the brackets' log-interpolated spread, exact interpolated RMS radius. TEST facts: unstretched native E7.5 scaffold = occupancy 3.7 (it IS the floor), overlay 5.7, stretch along sorted PCA axes 2.8, public 'E7.5 skeleton, midpoint geom' = 100. The geometry gates now reference midpoint geometry; Dev shape terms do NOT reproduce the test (Dev->holdout correlation of embryo changes is negative), so judge geometry by the mechanism and the E7.5 holdout fold, and spend cycles on expression: variogram (59 on test vs 68 leaders), DE (65), neighbourhoods (78 vs 81). Never thin depth or shrink radius to win embryo_early."
+  ],
+  "w3": [
+   "BUILD CYCLE 1 (replicate): 'P3MIX ... D50_OT50U_CB' (84.2): a 50/50 MIXTURE of two real-cell populations, plain heart-proper donors and unbalanced-OT-selected donors, with composition balance. Build the mixture on the current best program; keep every row a measured nucleus.",
+   "BUILD CYCLE 2 (replicate, do not invent): implement the strongest decodable public T1 recipe on top of the seed. 'Two-skeleton real-cell extrapolation + maturity-tilted selection' (80.6-81.7) and 'P3LT ... CT3 k150 w100 pt' lineage transport (83.6): per coarse lineage, fit the mean+covariance step between the two latest stages, then SELECT real latest-stage cells by kNN / partial transport toward the stepped state (lineage masses unchanged, cardiomyocyte guard). Run `leaderboard.py --live recipes T1` first.",
+   "RESEARCH CYCLES (metric by metric; take the metric with the largest gap to the public top entries in the brief's TEST table that the previous cycles on this board have not yet moved, state it in the hypothesis, and show with quick_eval which metric moved). The Normandy seed keeps the LATEST stage's cardiac lineage masses (cardiomyocytes ~20% of the chamber forecast; the D-Day file had 6% and scored mmd_u 66), heart-proper donors, blood x0.8, maturity tilt 0.75 and the Qiu late-anchor continuation. Dev (E8.5+E9.5 -> E10.5) REWARDS continuing the E9.5->E10.5 lineage trend because that trend is a sampling difference between two dissections; the TEST punished it and the composition veto now rejects cardiomyocyte-depleted forecasts. Do not re-add lineage-trend extrapolation. Push toward the 82-84 leaders with what they name: (1) WHICH real cells are emitted inside each lineage (maturity-tilted selection, lineage transport / unbalanced partial OT, two-skeleton mean+covariance step); (2) lineage-specific late-anchor maturation direction with variogram-preserving realisation; (3) a principled, bounded cardiomyocyte ENRICHMENT for the chamber protocol (never depletion). You are the SECOND T1 worker: prefer the expression side (DE 68, direction 78.5 on test: lineage-specific late-anchor direction, variogram-preserving realisation) and leave donor-selection mechanics to the first."
+  ]
+ },
+ "seed_dir": "agentic_scientist/seed_normandy",
+ "brief": "agentic_scientist/prompts/brief_normandy.md",
+ "prompt_overrides": {},
+ "local_evaluation_only": true,
+ "fleet_research": true,
+ "research_enabled": true,
+ "require_calibrated_final": false,
+ "t1_composition_veto": true,
+ "embryo_native_min": 0.92,
+ "sandbox": true,
+ "session_root": "/scratch/user/as_sessions",
+ "private_root": "/scratch/user/as_private",
+ "private_monitor": false,
+ "checkpoint_hours": 0,
+ "leaderboard_refresh_minutes": 0,
+ "separate_final": true,
+ "auto_final": false,
+ "final_export": false,
+ "survive_cycle_errors": true,
+ "quota_fallback": [
+  {
+   "cli": "fake",
+   "model": "fake-agy",
+   "timeout_s": 600
+  },
+  {
+   "cli": "fake",
+   "model": "fake-ds",
+   "timeout_s": 600
+  }
+ ],
+ "cheap_fallback": [
+  {
+   "cli": "fake",
+   "model": "fake-cc",
+   "timeout_s": 600
+  }
+ ],
+ "research_timeout_s": {
+  "fake:fake2": 1200
+ },
+ "rescue": {
+  "enabled": true,
+  "timeout_s": 1500,
+  "digest_chars": 60000,
+  "inline_chars": 12000,
+  "diff_chars": 12000,
+  "min_digest_chars": 400
+ },
+ "freeze_boards": [
+  "perturbation"
+ ]
+}

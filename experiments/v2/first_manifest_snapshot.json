@@ -1,0 +1,113 @@
+{
+  "T1:test": {
+    "file": "submissions/ready/T1__test.h5ad",
+    "method": "composition",
+    "group": "temporal",
+    "config": {
+      "state": 0.0,
+      "composition": 0.5,
+      "geometry": 0.0
+    },
+    "cells": 3000,
+    "genes": 32285,
+    "seed": 42,
+    "sha256": "11edf0562a3db2d06e6dcefa884ff7011f55fcded4124079c141b0a5f24bf00a",
+    "source_sha256": {
+      "T1/E9.5_RNA.h5ad": "0296e0043842f944a663f3c11ac1542d1bbee733c1cd657bd56f75af65958361",
+      "T1/E10.5_RNA.h5ad": "974e04e7fe64fb96142f17994a9678d4cebd4f1868dec4de034eda4245b7dd6c"
+    },
+    "removed_duplicates": {
+      "T1/E9.5_RNA.h5ad": 0,
+      "T1/E10.5_RNA.h5ad": 0
+    },
+    "selection_sha256": "6362be820e82ee3568d7c9694fd9c8d8170d6a4f928219ba96d7c20d08b742fa",
+    "code_sha256": {
+      "src/data.py": "8eb1d26ae57d104a13a6c81d41a1aac979eff90e1fa1d077f62fc27f571b9908",
+      "src/models.py": "ec6e91fb879fd733a7a86e2ca464e45c3a1357490ec3509d8372b9a4097f0e42",
+      "scripts/prepare_submission.py": "43191386dcd6c75f9ab7fbed967508b09d79acc36b5ea7fe6968632277f16d05"
+    }
+  },
+  "T2:heart:test_extrap": {
+    "file": "submissions/ready/T2__heart__test_extrap.h5ad",
+    "method": "copy",
+    "group": "heart",
+    "config": {
+      "state": 0.0,
+      "composition": 0.0,
+      "geometry": 0.0
+    },
+    "cells": 3000,
+    "genes": 500,
+    "seed": 42,
+    "sha256": "ded9979cbf30882c325d875b60e0958fb1665561492565c88e7ca3c445cb1223",
+    "source_sha256": {
+      "T2/E8.25_late.h5ad": "d56f94d3e2d719ed3074d86c03eae457ccf90b24145d33300f9958f0e8078593",
+      "T2/E8.5.h5ad": "41c76db18bfaa92c1d66f8220ec5fbb6d6acccb0a6b78241f40080a3096d37db",
+      "T2/E8.75.h5ad": "149ab6df7c99ad85046c8aebebcf0c43689b3720c59ffb7cc550edcf2f13a83c",
+      "T2/E9.5.h5ad": "371ca6530e084de2b6cd6703b49d95f4bb59546c9291659809575382a630ee9a",
+      "T2/E10.5.h5ad": "d6b37967f9cf3533091964cd07421c48a5c7c04628e9321123a426cb2a9c7e8b"
+    },
+    "removed_duplicates": {
+      "T2/E8.25_late.h5ad": 1728,
+      "T2/E8.5.h5ad": 0,
+      "T2/E8.75.h5ad": 868,
+      "T2/E9.5.h5ad": 0,
+      "T2/E10.5.h5ad": 0
+    },
+    "selection_sha256": "6362be820e82ee3568d7c9694fd9c8d8170d6a4f928219ba96d7c20d08b742fa",
+    "code_sha256": {
+      "src/data.py": "8eb1d26ae57d104a13a6c81d41a1aac979eff90e1fa1d077f62fc27f571b9908",
+      "src/models.py": "ec6e91fb879fd733a7a86e2ca464e45c3a1357490ec3509d8372b9a4097f0e42",
+      "scripts/prepare_submission.py": "43191386dcd6c75f9ab7fbed967508b09d79acc36b5ea7fe6968632277f16d05"
+    }
+  },
+  "T2:embryo:test_interp": {
+    "file": "submissions/ready/T2__embryo__test_interp.h5ad",
+    "method": "mixture",
+    "group": "embryo",
+    "config": {},
+    "cells": 3000,
+    "genes": 497,
+    "seed": 42,
+    "sha256": "b50dedd64085ab1bc233233dc5d0e25f07749a9ff14118e89da95541e45fb62b",
+    "source_sha256": {
+      "T2/E7.5.h5ad": "e8e47255ddeca96d5604c7cd4923bbf27765c24bc6a3cd44e800cd6ea05a7d54",
+      "T2/E8.0.h5ad": "17530e23fbfa6a139ff68d0353a489d83790f5b60f036b7d2f58303a1ff8a810"
+    },
+    "removed_duplicates": {
+      "T2/E7.5.h5ad": 0,
+      "T2/E8.0.h5ad": 2912
+    },
+    "selection_sha256": "6362be820e82ee3568d7c9694fd9c8d8170d6a4f928219ba96d7c20d08b742fa",
+    "code_sha256": {
+      "src/data.py": "8eb1d26ae57d104a13a6c81d41a1aac979eff90e1fa1d077f62fc27f571b9908",
+      "src/models.py": "ec6e91fb879fd733a7a86e2ca464e45c3a1357490ec3509d8372b9a4097f0e42",
+      "scripts/prepare_submission.py": "43191386dcd6c75f9ab7fbed967508b09d79acc36b5ea7fe6968632277f16d05"
+    }
+  },
+  "T3:bcatenin": {
+    "file": "submissions/ready/T3__bcatenin.h5ad",
+    "method": "copy",
+    "group": "perturbation",
+    "config": {
+      "strength": 0.0,
+      "depletion": 0.0
+    },
+    "cells": 3000,
+    "genes": 500,
+    "seed": 42,
+    "sha256": "3c7e4b3ed11401a3e518bd03645df0c13a1c543e54a20ecd0bdbecd027a3a2b7",
+    "source_sha256": {
+      "T2/E8.75.h5ad": "149ab6df7c99ad85046c8aebebcf0c43689b3720c59ffb7cc550edcf2f13a83c"
+    },
+    "removed_duplicates": {
+      "T2/E8.75.h5ad": 868
+    },
+    "selection_sha256": "6362be820e82ee3568d7c9694fd9c8d8170d6a4f928219ba96d7c20d08b742fa",
+    "code_sha256": {
+      "src/data.py": "8eb1d26ae57d104a13a6c81d41a1aac979eff90e1fa1d077f62fc27f571b9908",
+      "src/models.py": "ec6e91fb879fd733a7a86e2ca464e45c3a1357490ec3509d8372b9a4097f0e42",
+      "scripts/prepare_submission.py": "43191386dcd6c75f9ab7fbed967508b09d79acc36b5ea7fe6968632277f16d05"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "builder": {
+    "cli": "codex",
+    "model": "gpt-6.2-sol",
+    "effort": "medium"
+  },
+  "improver": {
+    "cli": "codex",
+    "model": "gpt-6.2-sol",
+    "effort": "medium"
+  },
+  "improve_rounds": 1,
+  "round_seconds": [
+    2400,
+    1800
+  ],
+  "max_evals": [
+    10,
+    8
+  ],
+  "max_testchecks": 0,
+  "continue_if_remaining_s": 420,
+  "max_continuations": 1,
+  "deadline": "2026-11-25T18:00:00+01:00",
+  "final_reserve_s": 3600,
+  "fallback": {
+    "cli": "codex",
+    "model": "gpt-6.2-sol",
+    "effort": "medium"
+  },
+  "retry_wait_s": 90,
+  "tune_trials": 0,
+  "fleet_hosts": [
+    "bio01.cluster.example",
+    "bio07.cluster.example",
+    "bio08.cluster.example",
+    "bio09.cluster.example"
+  ]
+}

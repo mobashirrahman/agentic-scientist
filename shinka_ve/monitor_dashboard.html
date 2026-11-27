@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shinka Monitor</title>
+<style>
+  :root {
+    --bg: #0c0e14; --card: #13161f; --hover: #1a1e2a; --border: #1e2333;
+    --fg: #c8cdd8; --dim: #7b8394; --bright: #e8ecf4; --accent: #6d9cff;
+    --green: #4ade80; --red: #f87171; --amber: #fbbf24; --code: #0a0c12;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f5f6f8; --card: #fff; --hover: #f0f1f4; --border: #dde0e7;
+      --fg: #374151; --dim: #6b7280; --bright: #111827; --accent: #3b6fd9;
+      --green: #16a34a; --red: #dc2626; --amber: #d97706; --code: #f0f1f4;
+      color-scheme: light;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f5f6f8; --card: #fff; --hover: #f0f1f4; --border: #dde0e7;
+    --fg: #374151; --dim: #6b7280; --bright: #111827; --accent: #3b6fd9;
+    --green: #16a34a; --red: #dc2626; --amber: #d97706; --code: #f0f1f4;
+    color-scheme: light;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* The bug fix: an author `display` rule must never beat the hidden attribute. */
+  [hidden] { display: none !important; }
+  body { background: var(--bg); color: var(--fg); font: 14px/1.5 system-ui, -apple-system, 'Segoe UI', sans-serif; }
+  .mono, code, pre, td.mono { font-family: ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace; }
+
+  .layout { display: flex; min-height: 100vh; }
+  nav { width: 200px; flex-shrink: 0; border-right: 1px solid var(--border); padding: 20px 12px;
+        position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; gap: 2px; }
+  nav h1 { font-family: ui-monospace, Menlo, monospace; font-size: 15px; color: var(--accent);
+           margin: 0 8px 16px; letter-spacing: .04em; display: flex; align-items: center; gap: 8px; }
+  nav button { background: none; border: 0; color: var(--dim); font: inherit; padding: 8px 12px;
+               border-radius: 6px; cursor: pointer; text-align: left; display: flex; justify-content: space-between; }
+  nav button:hover { background: var(--card); color: var(--fg); }
+  nav button.active { background: var(--card); color: var(--accent); font-weight: 600; }
+  nav .badge { font-size: 11px; color: var(--dim); }
+  .foot { margin-top: auto; font-size: 11px; color: var(--dim); padding: 0 8px; display: grid; gap: 6px; }
+  .foot select, .foot button { font: inherit; font-size: 12px; background: var(--card); color: var(--fg);
+        border: 1px solid var(--border); border-radius: 6px; padding: 4px 6px; width: 100%; cursor: pointer; }
+
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--dim); display: inline-block; flex-shrink: 0; }
+  .dot.alive { background: var(--green); box-shadow: 0 0 6px var(--green); animation: pulse 2s infinite; }
+  .dot.dead { background: var(--red); }
+  @keyframes pulse { 50% { opacity: .45; } }
+
+  main { flex: 1; min-width: 0; padding: 22px 28px 60px; }
+  h2 { font-size: 12px; font-weight: 600; color: var(--dim); text-transform: uppercase;
+       letter-spacing: .08em; margin: 0 0 12px; }
+  section.block { margin-bottom: 26px; }
+
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 26px; }
+  .stat, .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .stat .l { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: .06em; }
+  .stat .v { font-family: ui-monospace, Menlo, monospace; font-size: 24px; font-weight: 600; color: var(--bright);
+             font-variant-numeric: tabular-nums; }
+  .stat .s { font-size: 12px; color: var(--dim); }
+  .v.green { color: var(--green); } .v.red { color: var(--red); }
+
+  .chartbox { height: 280px; position: relative; padding: 14px; }
+  .boards { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+  .bar { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin: 6px 0; }
+  .bar > i { display: block; height: 100%; background: var(--accent); transition: width .5s; }
+  .board .n { font-size: 12px; color: var(--dim); text-transform: uppercase; }
+  .board .s { font-family: ui-monospace, Menlo, monospace; font-size: 18px; font-weight: 600; color: var(--bright); }
+  .board .d { font-size: 12px; }
+
+  pre.box { background: var(--code); border: 1px solid var(--border); border-radius: 10px; padding: 14px;
+            font-size: 12px; line-height: 1.55; white-space: pre-wrap; word-break: break-word;
+            max-height: 560px; overflow: auto; color: var(--fg); }
+  pre.tall { max-height: calc(100vh - 190px); min-height: 300px; }
+  .diff-add { color: var(--green); } .diff-del { color: var(--red); } .diff-hunk { color: var(--accent); }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--card); }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  th { text-align: left; font-size: 11px; font-weight: 600; color: var(--dim); text-transform: uppercase;
+       letter-spacing: .06em; padding: 9px 12px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
+  tr:last-child td { border-bottom: 0; }
+  tbody tr.row:hover td { background: var(--hover); cursor: pointer; }
+  .ok { color: var(--green); } .bad { color: var(--red); } .warn { color: var(--amber); } .muted { color: var(--dim); }
+  .pill { font-size: 11px; padding: 1px 7px; border-radius: 9px; border: 1px solid var(--border); white-space: nowrap; }
+
+  .tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--border); margin-bottom: 12px; flex-wrap: wrap; }
+  .tabs button { background: none; border: 0; border-bottom: 2px solid transparent; color: var(--dim);
+                 font: inherit; padding: 7px 14px; cursor: pointer; }
+  .tabs button:hover { color: var(--fg); }
+  .tabs button.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .live { display: grid; grid-template-columns: 340px 1fr; gap: 16px; align-items: start; }
+  .alist { display: grid; gap: 6px; max-height: calc(100vh - 150px); overflow-y: auto; padding-right: 4px; }
+  .aitem { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 9px 11px; cursor: pointer; }
+  .aitem:hover { background: var(--hover); }
+  .aitem.sel { border-color: var(--accent); }
+  .aitem .t { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--dim); }
+  .aitem .nm { font-weight: 600; color: var(--bright); word-break: break-word; }
+  .desc { font-size: 13px; margin-bottom: 12px; white-space: pre-wrap; }
+
+  .toolbar { display: flex; gap: 14px; align-items: center; margin-bottom: 10px; font-size: 12px; color: var(--dim); flex-wrap: wrap; }
+  .toolbar label { display: flex; gap: 5px; align-items: center; cursor: pointer; }
+
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: flex;
+                   align-items: center; justify-content: center; z-index: 100; padding: 16px; }
+  .modal { background: var(--card); border: 1px solid var(--border); border-radius: 12px; width: 100%;
+           max-width: 960px; max-height: 88vh; overflow-y: auto; padding: 20px; }
+  .modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .modal-head h2 { margin: 0; }
+  .x { background: none; border: 0; color: var(--dim); font-size: 24px; line-height: 1; cursor: pointer; }
+  .x:hover { color: var(--bright); }
+  .empty { color: var(--dim); padding: 18px; text-align: center; }
+
+  @media (max-width: 900px) { .live { grid-template-columns: 1fr; } .alist { max-height: 260px; } }
+  @media (max-width: 700px) {
+    .layout { flex-direction: column; }
+    nav { width: 100%; height: auto; position: static; flex-direction: row; flex-wrap: wrap;
+          border-right: 0; border-bottom: 1px solid var(--border); padding: 10px; }
+    nav h1 { margin: 0 8px 0 0; } .foot { display: none; }
+    main { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <nav>
+    <h1><span class="dot" id="dot"></span>SHINKA</h1>
+    <button data-p="overview" class="active">Overview</button>
+    <button data-p="live">Live <span class="badge" id="liveBadge"></span></button>
+    <button data-p="generations">Generations</button>
+    <button data-p="best">Best Program</button>
+    <button data-p="log">Raw Log</button>
+    <button data-p="limits">Rate Limits <span class="badge" id="limBadge"></span></button>
+    <button data-p="archive">Archive</button>
+    <div class="foot">
+      <select id="runSel" title="Run"></select>
+      <button id="themeBtn">Toggle theme</button>
+      <span id="refreshInfo">—</span>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Overview -->
+    <div class="panel" id="p-overview">
+      <div class="stats" id="stats"></div>
+      <section class="block"><h2>Score per generation</h2>
+        <div class="card chartbox"><canvas id="chart"></canvas></div></section>
+      <section class="block"><h2>Boards (best program)</h2><div class="boards" id="boards"></div></section>
+      <section class="block"><h2>Latest evaluated feedback</h2><pre class="box" id="feedback" style="max-height:200px">—</pre></section>
+    </div>
+
+    <!-- Live transcripts -->
+    <div class="panel" id="p-live" hidden>
+      <div class="live">
+        <div>
+          <h2>LLM attempts (newest first)</h2>
+          <div class="alist" id="alist"></div>
+        </div>
+        <div>
+          <h2 id="adetailTitle">Select an attempt</h2>
+          <div class="tabs" id="atabs">
+            <button data-f="llm_response.txt" class="active">Response</button>
+            <button data-f="headless_prompt.md">Prompt</button>
+            <button data-f="patch.txt">Patch</button>
+            <button data-f="metadata.json">Metadata</button>
+          </div>
+          <div class="desc" id="adesc"></div>
+          <pre class="box tall" id="abody">Pick an attempt on the left. The list refreshes every 5 s.</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Generations -->
+    <div class="panel" id="p-generations" hidden>
+      <h2>All generations — click a row for code, diff and job logs</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Gen</th><th>Score</th><th>Δ vs base</th><th>OK</th><th>T1</th><th>T2</th><th>T2 heart</th><th>T2 embryo</th><th>T3</th>
+          <th>Patch</th><th>Model</th><th>Cost</th></tr></thead>
+        <tbody id="genBody"></tbody></table></div>
+    </div>
+
+    <!-- Best -->
+    <div class="panel" id="p-best" hidden>
+      <h2>Best program <span class="muted" id="bestInfo"></span></h2>
+      <pre class="box tall" id="bestCode">Loading…</pre>
+    </div>
+
+    <!-- Log -->
+    <div class="panel" id="p-log" hidden>
+      <h2>Log</h2>
+      <div class="toolbar">
+        <label><input type="radio" name="logsrc" value="evo" checked> evolution_run.log</label>
+        <label><input type="radio" name="logsrc" value="main"> runner log</label>
+        <label><input type="checkbox" id="follow" checked> follow</label>
+        <label><input type="checkbox" id="wrap" checked> wrap lines</label>
+        <input id="logFilter" placeholder="filter lines…" style="font:inherit;background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:6px;padding:3px 8px">
+        <span id="logInfo"></span>
+      </div>
+      <pre class="box tall" id="logBox">Loading…</pre>
+    </div>
+
+    <!-- Limits -->
+    <div class="panel" id="p-limits" hidden>
+      <h2>Rate limit events</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Time</th><th>Event</th><th>Agent</th><th>Detail</th></tr></thead>
+        <tbody id="limBody"></tbody></table></div>
+    </div>
+
+    <!-- Archive -->
+    <div class="panel" id="p-archive" hidden>
+      <h2>Top programs (SQLite archive)</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>#</th><th>ID</th><th>Gen</th><th>Score</th><th>Island</th><th>OK</th><th>Parent</th><th>Children</th></tr></thead>
+        <tbody id="arcBody"></tbody></table></div>
+    </div>
+  </main>
+</div>
+
+<!-- Generation detail modal. Hidden by default via the [hidden] attribute. -->
+<div class="modal-overlay" id="modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head"><h2 id="mTitle">Generation</h2><button class="x" id="mClose" aria-label="Close">&times;</button></div>
+    <div class="tabs" id="mTabs">
+      <button data-k="code" class="active">Code</button>
+      <button data-k="diff">Diff</button>
+      <button data-k="metrics">Metrics</button>
+      <button data-k="job_out">Job stdout</button>
+      <button data-k="job_err">Job stderr</button>
+    </div>
+    <pre class="box" id="mBody" style="max-height:62vh"></pre>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt = (n, d = 2) => (typeof n === 'number' && isFinite(n)) ? n.toFixed(d) : '—';
+const store = { get(k, d) { try { return localStorage.getItem(k) ?? d; } catch { return d; } },
+                set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
+
+let run = '';            // selected run name ('' = newest)
+let panel = store.get('panel', 'overview');
+let overview = null, chart = null;
+let selAttempt = null, attemptFile = 'llm_response.txt', attemptCache = {};
+let logOffset = null, logText = '', logSrc = 'evo';
+let modalGen = null, modalData = null, modalKey = 'code';
+
+async function api(path, params = {}) {
+  const qs = new URLSearchParams(params);
+  if (run) qs.set('run', run);
+  try {
+    const r = await fetch('/api/' + path + '?' + qs);
+    return await r.json();
+  } catch { return null; }
+}
+
+/* ---------- navigation ---------- */
+function showPanel(name) {
+  if (!$('p-' + name)) name = 'overview';
+  panel = name; store.set('panel', name);
+  document.querySelectorAll('.panel').forEach(p => p.hidden = p.id !== 'p-' + name);
+  document.querySelectorAll('nav button[data-p]').forEach(b => b.classList.toggle('active', b.dataset.p === name));
+  tick(true);
+}
+document.querySelectorAll('nav button[data-p]').forEach(b => b.onclick = () => showPanel(b.dataset.p));
+
+$('themeBtn').onclick = () => {
+  const cur = document.documentElement.dataset.theme ||
+    (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  const next = cur === 'light' ? 'dark' : 'light';
+  document.documentElement.dataset.theme = next; store.set('theme', next);
+  if (chart) { chart.destroy(); chart = null; drawChart(); }
+};
+{ const t = store.get('theme', ''); if (t) document.documentElement.dataset.theme = t; }
+
+/* ---------- overview ---------- */
+function stat(l, v, s = '', cls = '') {
+  return `<div class="stat"><div class="l">${l}</div><div class="v ${cls}">${v}</div><div class="s">${s}</div></div>`;
+}
+function renderOverview(o) {
+  $('dot').className = 'dot ' + (o.alive ? 'alive' : 'dead');
+  $('dot').title = o.alive ? 'run_evo.py is running' : 'run_evo.py not found';
+  const gain = (o.best_score != null && o.baseline != null) ? o.best_score - o.baseline : null;
+  const age = o.log_mtime ? Math.max(0, Math.round(o.server_time - o.log_mtime)) : null;
+  $('stats').innerHTML =
+    stat('Status', o.alive ? 'running' : 'stopped', age != null ? `last log write ${age < 90 ? age + 's' : Math.round(age / 60) + 'm'} ago` : '', o.alive ? 'green' : 'red') +
+    stat('Generations', o.n_gens, `${o.n_correct} valid / ${o.n_evaluated} evaluated`) +
+    stat('Best score', fmt(o.best_score), o.best_gen != null ? 'gen ' + o.best_gen : '', 'green') +
+    stat('Improvement', gain == null ? '—' : (gain >= 0 ? '+' : '') + fmt(gain), `baseline ${fmt(o.baseline)}`, gain > 0 ? 'green' : '') +
+    stat('LLM cost', '$' + fmt(o.cost), 'budget $40') +
+    stat('Run', `<span style="font-size:12px;word-break:break-all">${esc(o.run_name)}</span>`);
+  $('limBadge').textContent = o.limit_events || '';
+  $('liveBadge').textContent = o.alive ? '●' : '';
+  drawChart();
+  const best = o.generations.filter(g => g.correct && g.combined_score != null)
+    .reduce((a, b) => (!a || b.combined_score > a.combined_score) ? b : a, null);
+  const base = o.generations.find(g => g.generation === 0);
+  const withT2 = bs => ({ ...bs, t2: t2(bs) });
+  const bestB = best ? withT2(best.board_scores || {}) : {}, baseB = base ? withT2(base.board_scores || {}) : {};
+  $('boards').innerHTML = best ? BOARD_ORDER.filter(([k]) => bestB[k] != null).map(([k, label]) => {
+    const v = bestB[k]; const b = baseB[k]; const d = b != null ? v - b : null;
+    return `<div class="card board"><div class="n">${esc(label)}</div><div class="bar"><i style="width:${Math.min(100, v)}%"></i></div>
+      <div class="s">${fmt(v, 1)}</div><div class="d ${d > 0 ? 'ok' : d < 0 ? 'bad' : 'muted'}">${d == null ? '' : (d >= 0 ? '+' : '') + fmt(d, 1) + ' vs baseline'}</div></div>`;
+  }).join('') : '<div class="empty">No valid program yet</div>';
+  const last = [...o.generations].reverse().find(g => g.text_feedback);
+  $('feedback').textContent = last ? `gen ${last.generation}\n${last.text_feedback}` : '—';
+}
+
+function drawChart() {
+  if (!overview || typeof Chart === 'undefined') return;
+  const gens = overview.generations.filter(g => g.evaluated);
+  const css = getComputedStyle(document.documentElement);
+  const c = n => css.getPropertyValue(n).trim();
+  let run_best = -Infinity;
+  const bestLine = gens.map(g => (run_best = g.correct ? Math.max(run_best, g.combined_score) : run_best, run_best === -Infinity ? null : run_best));
+  const labels = gens.map(g => g.generation);
+  const valid = gens.map(g => g.correct ? g.combined_score : null);
+  const invalid = gens.map(g => g.correct ? null : (g.combined_score ?? 0));
+  if (!chart) {
+    chart = new Chart($('chart'), {
+      type: 'line',
+      data: { labels, datasets: [
+        { label: 'valid', data: valid, borderColor: c('--accent'), backgroundColor: c('--accent'), showLine: false, pointRadius: 4 },
+        { label: 'invalid / failed', data: invalid, borderColor: c('--red'), backgroundColor: c('--red'), showLine: false, pointRadius: 3, pointStyle: 'crossRot' },
+        { label: 'best so far', data: bestLine, borderColor: c('--green'), borderWidth: 2, pointRadius: 0, stepped: true },
+      ] },
+      options: { responsive: true, maintainAspectRatio: false, animation: false,
+        interaction: { mode: 'nearest', intersect: false },
+        plugins: { legend: { labels: { color: c('--dim'), boxWidth: 12 } } },
+        scales: {
+          x: { grid: { color: c('--border') }, ticks: { color: c('--dim') }, title: { display: true, text: 'generation', color: c('--dim') } },
+          y: { grid: { color: c('--border') }, ticks: { color: c('--dim') }, title: { display: true, text: 'combined score', color: c('--dim') } } } }
+    });
+  } else {
+    chart.data.labels = labels;
+    chart.data.datasets[0].data = valid; chart.data.datasets[1].data = invalid; chart.data.datasets[2].data = bestLine;
+    chart.update('none');
+  }
+}
+
+/* ---------- board labels: official total = T1 + T2 + T3, T2 = mean(heart, embryo) ---------- */
+const BOARD_ORDER = [['temporal', 'T1 · temporal'], ['t2', 'T2 · spatial (mean)'], ['heart', 'T2 · heart'],
+                     ['embryo', 'T2 · embryo'], ['perturbation', 'T3 · knockout']];
+function t2(bs) { return (bs.heart != null && bs.embryo != null) ? (bs.heart + bs.embryo) / 2 : null; }
+
+/* ---------- generations ---------- */
+function renderGens(o) {
+  const base = o.baseline;
+  const best = o.best_score;
+  $('genBody').innerHTML = [...o.generations].reverse().map(g => {
+    const bs = g.board_scores || {};
+    const d = (g.combined_score != null && base != null) ? g.combined_score - base : null;
+    const status = !g.evaluated ? '<span class="warn" title="pending">⏳</span>' : g.correct ? '<span class="ok">✓</span>' : `<span class="bad" title="${esc(g.error)}">✗</span>`;
+    return `<tr class="row" data-g="${g.generation}">
+      <td class="mono">${g.generation}</td>
+      <td class="mono" style="font-weight:600${g.correct && g.combined_score === best ? ';color:var(--green)' : ''}">${fmt(g.combined_score)}</td>
+      <td class="mono ${d > 0 ? 'ok' : d < 0 ? 'bad' : 'muted'}">${d == null ? '—' : (d >= 0 ? '+' : '') + fmt(d)}</td>
+      <td>${status}${!g.correct && g.error ? ` <span class="muted" style="font-size:12px">${esc(String(g.error).slice(0, 50))}</span>` : ''}</td>
+      <td class="mono">${fmt(bs.temporal, 1)}</td><td class="mono">${fmt(t2(bs), 1)}</td><td class="mono">${fmt(bs.heart, 1)}</td><td class="mono">${fmt(bs.embryo, 1)}</td><td class="mono">${fmt(bs.perturbation, 1)}</td>
+      <td>${esc(g.patch_name || '—')}</td>
+      <td class="muted">${esc((g.model || '').replace('headless/', '').split('?')[0])}</td>
+      <td class="mono">$${fmt(g.cost, 3)}</td></tr>`;
+  }).join('') || '<tr><td colspan="12" class="empty">No generations yet</td></tr>';
+}
+$('genBody').onclick = e => { const tr = e.target.closest('tr[data-g]'); if (tr) openGen(+tr.dataset.g); };
+
+/* ---------- generation modal ---------- */
+function colorDiff(t) {
+  return esc(t).split('\n').map(l =>
+    l.startsWith('+') && !l.startsWith('+++') ? `<span class="diff-add">${l}</span>` :
+    l.startsWith('-') && !l.startsWith('---') ? `<span class="diff-del">${l}</span>` :
+    l.startsWith('@@') ? `<span class="diff-hunk">${l}</span>` : l).join('\n');
+}
+function renderModal() {
+  const d = modalData; const el = $('mBody');
+  document.querySelectorAll('#mTabs button').forEach(b => b.classList.toggle('active', b.dataset.k === modalKey));
+  if (!d) { el.textContent = 'Loading…'; return; }
+  if (d.error) { el.textContent = d.error; return; }
+  if (modalKey === 'diff') { d.diff ? el.innerHTML = colorDiff(d.diff) : el.textContent = 'No diff (initial program or full rewrite)'; return; }
+  if (modalKey === 'metrics') { el.textContent = JSON.stringify({ correct: d.correct, metrics: d.metrics }, null, 2); return; }
+  el.textContent = d[modalKey] || '(empty)';
+}
+async function openGen(g) {
+  modalGen = g; modalData = null; $('mTitle').textContent = 'Generation ' + g;
+  $('modal').hidden = false; renderModal();
+  modalData = await api('gen', { gen: g }); renderModal();
+}
+function closeModal() { $('modal').hidden = true; }
+$('mClose').onclick = closeModal;
+$('modal').addEventListener('click', e => { if (e.target === $('modal')) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+$('mTabs').onclick = e => { const b = e.target.closest('button[data-k]'); if (b) { modalKey = b.dataset.k; renderModal(); } };
+
+/* ---------- live transcripts ---------- */
+const rel = ts => { const s = Math.max(0, Date.now() / 1000 - ts); return s < 90 ? Math.round(s) + 's ago' : s < 5400 ? Math.round(s / 60) + 'm ago' : Math.round(s / 3600) + 'h ago'; };
+async function renderLive() {
+  const list = await api('attempts', { limit: 120 });
+  if (!Array.isArray(list)) return;
+  $('alist').innerHTML = list.map(a => `
+    <div class="aitem ${a.path === selAttempt ? 'sel' : ''}" data-path="${esc(a.path)}">
+      <div class="t"><span>gen ${a.generation} · ${esc((a.model || '?').replace('headless/', '').split('?')[0])}</span><span>${rel(a.mtime)}</span></div>
+      <div class="nm">${esc(a.patch_name || (a.pending ? 'in progress…' : '(unnamed)'))}</div>
+      <div class="t"><span class="${a.success ? 'ok' : a.pending ? 'warn' : 'bad'}">${a.success ? 'applied' : a.pending ? 'running' : 'failed'}</span><span>$${fmt(a.cost, 3)}</span></div>
+    </div>`).join('') || '<div class="empty">No attempts yet</div>';
+  if (!selAttempt && list.length) selectAttempt(list[0].path);
+  else if (selAttempt && list.find(a => a.path === selAttempt)?.pending) loadAttempt(true);
+}
+$('alist').onclick = e => { const it = e.target.closest('.aitem'); if (it) selectAttempt(it.dataset.path); };
+function selectAttempt(path) {
+  selAttempt = path;
+  document.querySelectorAll('.aitem').forEach(i => i.classList.toggle('sel', i.dataset.path === path));
+  loadAttempt(false);
+}
+async function loadAttempt(refresh) {
+  if (!selAttempt) return;
+  if (!refresh && attemptCache[selAttempt]) return showAttempt();
+  $('abody').textContent = 'Loading…';
+  const d = await api('attempt', { path: selAttempt });
+  if (d?.files) { attemptCache[selAttempt] = d.files; showAttempt(); }
+  else $('abody').textContent = d?.error || 'Failed to load';
+}
+function showAttempt() {
+  const f = attemptCache[selAttempt] || {};
+  let meta = {}; try { meta = JSON.parse(f['metadata.json'] || '{}'); } catch {}
+  $('adetailTitle').textContent = selAttempt.replace(/^.*?(gen_\d+)/, '$1');
+  $('adesc').textContent = meta.patch_description || '';
+  document.querySelectorAll('#atabs button').forEach(b => b.classList.toggle('active', b.dataset.f === attemptFile));
+  const t = f[attemptFile];
+  const body = $('abody');
+  if (t == null) body.textContent = '(not written yet — the agent is still working)';
+  else if (attemptFile === 'patch.txt') body.innerHTML = colorDiff(t);
+  else body.textContent = t;
+}
+$('atabs').onclick = e => { const b = e.target.closest('button[data-f]'); if (b) { attemptFile = b.dataset.f; showAttempt(); } };
+
+/* ---------- other panels ---------- */
+async function renderBest() {
+  const d = await api('best');
+  $('bestCode').textContent = d?.code || 'No best program yet';
+  const s = d?.metrics?.combined_score; $('bestInfo').textContent = s != null ? `— score ${fmt(s)}` : '';
+}
+async function renderLimits() {
+  const ev = await api('limits');
+  $('limBody').innerHTML = Array.isArray(ev) && ev.length
+    ? [...ev].reverse().map(e => `<tr><td class="mono">${esc(e.time || e.ts || '')}</td><td>${esc(e.event || '')}</td><td>${esc(e.agent || '')}</td>
+        <td class="muted" style="max-width:420px">${esc(e.tail || e.waited || e.detail || '')}</td></tr>`).join('')
+    : '<tr><td colspan="4" class="empty">No rate limit events</td></tr>';
+}
+async function renderArchive() {
+  const rows = await api('archive');
+  $('arcBody').innerHTML = Array.isArray(rows) && rows.length && !rows[0].error
+    ? rows.map((r, i) => `<tr><td class="mono">${i + 1}</td><td class="mono">${esc(String(r.id).slice(0, 8))}</td><td class="mono">${r.generation}</td>
+        <td class="mono" style="font-weight:600">${fmt(r.score)}</td><td class="mono">${r.island ?? ''}</td>
+        <td>${r.correct ? '<span class="ok">✓</span>' : '<span class="bad">✗</span>'}</td>
+        <td class="mono muted">${esc(String(r.parent_id || '').slice(0, 8))}</td><td class="mono">${r.children_count ?? ''}</td></tr>`).join('')
+    : `<tr><td colspan="8" class="empty">${esc(rows?.[0]?.error || 'No archive data')}</td></tr>`;
+}
+
+/* ---------- log (incremental) ---------- */
+function paintLog() {
+  const f = $('logFilter').value.toLowerCase();
+  const box = $('logBox');
+  const stick = $('follow').checked;
+  const txt = f ? logText.split('\n').filter(l => l.toLowerCase().includes(f)).join('\n') : logText;
+  box.textContent = txt || '(empty)';
+  box.style.whiteSpace = $('wrap').checked ? 'pre-wrap' : 'pre';
+  if (stick) box.scrollTop = box.scrollHeight;
+}
+async function renderLog() {
+  const params = { which: logSrc === 'main' ? 'main' : 'evo' };
+  if (logOffset != null) params.offset = logOffset;
+  const d = await api('log', params);
+  if (!d || d.error) return;
+  if (d.reset) logText = d.text; else if (d.text) logText += d.text; else return paintLogIfIdle();
+  if (logText.length > 600000) logText = logText.slice(-400000);
+  logOffset = d.size;
+  $('logInfo').textContent = `${(d.size / 1024).toFixed(0)} KB`;
+  paintLog();
+}
+function paintLogIfIdle() { $('logInfo').textContent = $('logInfo').textContent; }
+document.querySelectorAll('input[name=logsrc]').forEach(r => r.onchange = () => { logSrc = r.value; logOffset = null; logText = ''; renderLog(); });
+$('logFilter').oninput = paintLog; $('wrap').onchange = paintLog;
+$('follow').onchange = () => { if ($('follow').checked) paintLog(); };
+
+/* ---------- polling ---------- */
+let busy = false;
+async function tick(force) {
+  if (busy && !force) return; busy = true;
+  try {
+    const o = await api('overview');
+    if (o && !o.error) {
+      overview = o; renderOverview(o); renderGens(o);
+      $('refreshInfo').textContent = 'updated ' + new Date().toLocaleTimeString();
+    } else $('refreshInfo').textContent = 'server unreachable';
+    if (panel === 'live') await renderLive();
+    if (panel === 'best') await renderBest();
+    if (panel === 'log') await renderLog();
+    if (panel === 'limits') await renderLimits();
+    if (panel === 'archive') await renderArchive();
+  } finally { busy = false; }
+}
+
+async function init() {
+  const runs = await fetch('/api/runs').then(r => r.json()).catch(() => []);
+  $('runSel').innerHTML = runs.map(r => `<option>${esc(r)}</option>`).join('');
+  $('runSel').onchange = () => { run = $('runSel').value; selAttempt = null; attemptCache = {}; logOffset = null; logText = '';
+    if (chart) { chart.destroy(); chart = null; } tick(true); };
+  showPanel(panel);
+  setInterval(() => { if (!document.hidden) tick(false); }, panel === 'log' ? 3000 : 5000);
+}
+init();
+// log tails faster than other panels
+setInterval(() => { if (!document.hidden && panel === 'log') renderLog(); }, 2500);
+</script>
+</body>
+</html>

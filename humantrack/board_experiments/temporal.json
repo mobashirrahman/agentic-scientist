@@ -1,0 +1,154 @@
+{
+ "temporal_test_composition": {
+  "baseline": {
+   "42": {
+    "prediction": {
+     "blood": 0.13566666666666666,
+     "cardiomyocyte": 0.098,
+     "endothelial": 0.14433333333333334,
+     "epicardial": 0.13
+    },
+    "reference": {
+     "blood": 0.1125745626326114,
+     "cardiomyocyte": 0.11333520156931823,
+     "endothelial": 0.132951679410705,
+     "epicardial": 0.1076103927298931
+    },
+    "blood_limit": 0.17505935274272147,
+    "failures": []
+   },
+   "101": {
+    "prediction": {
+     "blood": 0.135,
+     "cardiomyocyte": 0.101,
+     "endothelial": 0.156,
+     "epicardial": 0.11733333333333333
+    },
+    "reference": {
+     "blood": 0.1125745626326114,
+     "cardiomyocyte": 0.11333520156931823,
+     "endothelial": 0.132951679410705,
+     "epicardial": 0.1076103927298931
+    },
+    "blood_limit": 0.17505935274272147,
+    "failures": []
+   },
+   "211": {
+    "prediction": {
+     "blood": 0.14333333333333334,
+     "cardiomyocyte": 0.09133333333333334,
+     "endothelial": 0.157,
+     "epicardial": 0.12433333333333334
+    },
+    "reference": {
+     "blood": 0.1125745626326114,
+     "cardiomyocyte": 0.11333520156931823,
+     "endothelial": 0.132951679410705,
+     "epicardial": 0.1076103927298931
+    },
+    "blood_limit": 0.17505935274272147,
+    "failures": []
+   }
+  },
+  "composition": {
+   "42": {
+    "prediction": {
+     "blood": 0.108,
+     "cardiomyocyte": 0.10633333333333334,
+     "endothelial": 0.127,
+     "epicardial": 0.10033333333333333
+    },
+    "reference": {
+     "blood": 0.1125745626326114,
+     "cardiomyocyte": 0.11333520156931823,
+     "endothelial": 0.132951679410705,
+     "epicardial": 0.1076103927298931
+    },
+    "blood_limit": 0.17505935274272147,
+    "failures": []
+   },
+   "101": {
+    "prediction": {
+     "blood": 0.11166666666666666,
+     "cardiomyocyte": 0.093,
+     "endothelial": 0.133,
+     "epicardial": 0.10566666666666667
+    },
+    "reference": {
+     "blood": 0.1125745626326114,
+     "cardiomyocyte": 0.11333520156931823,
+     "endothelial": 0.132951679410705,
+     "epicardial": 0.1076103927298931
+    },
+    "blood_limit": 0.17505935274272147,
+    "failures": []
+   },
+   "211": {
+    "prediction": {
+     "blood": 0.11666666666666667,
+     "cardiomyocyte": 0.111,
+     "endothelial": 0.128,
+     "epicardial": 0.10466666666666667
+    },
+    "reference": {
+     "blood": 0.1125745626326114,
+     "cardiomyocyte": 0.11333520156931823,
+     "endothelial": 0.132951679410705,
+     "epicardial": 0.1076103927298931
+    },
+    "blood_limit": 0.17505935274272147,
+    "failures": []
+   }
+  },
+  "expression": {
+   "42": {
+    "prediction": {
+     "blood": 0.141,
+     "cardiomyocyte": 0.098,
+     "endothelial": 0.14433333333333334,
+     "epicardial": 0.13
+    },
+    "reference": {
+     "blood": 0.1125745626326114,
+     "cardiomyocyte": 0.11333520156931823,
+     "endothelial": 0.132951679410705,
+     "epicardial": 0.1076103927298931
+    },
+    "blood_limit": 0.17505935274272147,
+    "failures": []
+   },
+   "101": {
+    "prediction": {
+     "blood": 0.14066666666666666,
+     "cardiomyocyte": 0.101,
+     "endothelial": 0.156,
+     "epicardial": 0.11733333333333333
+    },
+    "reference": {
+     "blood": 0.1125745626326114,
+     "cardiomyocyte": 0.11333520156931823,
+     "endothelial": 0.132951679410705,
+     "epicardial": 0.1076103927298931
+    },
+    "blood_limit": 0.17505935274272147,
+    "failures": []
+   },
+   "211": {
+    "prediction": {
+     "blood": 0.149,
+     "cardiomyocyte": 0.09133333333333334,
+     "endothelial": 0.157,
+     "epicardial": 0.12433333333333334
+    },
+    "reference": {
+     "blood": 0.1125745626326114,
+     "cardiomyocyte": 0.11333520156931823,
+     "endothelial": 0.132951679410705,
+     "epicardial": 0.1076103927298931
+    },
+    "blood_limit": 0.17505935274272147,
+    "failures": []
+   }
+  }
+ }
+}

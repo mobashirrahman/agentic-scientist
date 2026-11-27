@@ -1,0 +1,249 @@
+{
+ "_about": "AgenticScientist FINAL run (2026-11-23 -> deadline 25 Nov 23:59 AoE = Thu 26 Nov 12:59 CET). One worker per board; the researcher (alternating gpt-6.2-sol / claude-opus-5-5) designs AND implements; promotion review by the other model on accepted candidates; DeepSeek/GLM curate, distil, plan and are the last-resort overflow. Quota: a premium role whose CLI is out of quota runs on agy claude-opus-4-6-thinking, then OpenCode DeepSeek V4.1 Flash, then Command Code DeepSeek V4.1 Flash (then the other researcher); cheap roles fall back to Command Code DeepSeek.",
+ "workers": 4,
+ "cycles_per_worker": 200,
+ "max_cycles_factor": 1.0,
+ "min_cycles_per_worker": 0,
+ "patience_cycles": 1000,
+ "max_research_seconds": null,
+ "cycle_drain_seconds": 0,
+ "no_new_cycles_at": "2026-11-26T05:59:00+01:00",
+ "research_kill_at": "2026-11-26T06:59:00+01:00",
+ "hard_stop_at": "2026-11-26T09:59:00+01:00",
+ "max_debug_attempts": 2,
+ "debug_timeout_s": 1800,
+ "review_timeout_s": 1500,
+ "shortlist": 2,
+ "researcher_implements": true,
+ "evidence_retry": false,
+ "promotion_review": true,
+ "ideator": {
+  "cli": "codex",
+  "model": "gpt-6.2-sol",
+  "effort": "high",
+  "timeout_s": 3600
+ },
+ "ideator_cycle": [
+  {
+   "cli": "codex",
+   "model": "gpt-6.2-sol",
+   "effort": "high",
+   "timeout_s": 3600
+  },
+  {
+   "cli": "claude",
+   "model": "claude-opus-5-5",
+   "effort": "high",
+   "timeout_s": 3600
+  }
+ ],
+ "implementers": [
+  {
+   "cli": "opencode",
+   "model": "opencode-go/deepseek-v4.1-flash#max",
+   "timeout_s": 3600
+  }
+ ],
+ "distiller": {
+  "cli": "opencode",
+  "model": "opencode-go/glm-5.3#max",
+  "timeout_s": 1200
+ },
+ "curator": {
+  "cli": "opencode",
+  "model": "opencode-go/deepseek-v4.1-flash#max",
+  "timeout_s": 1500
+ },
+ "planner": {
+  "cli": "opencode",
+  "model": "opencode-go/glm-5.3#max",
+  "timeout_s": 1800
+ },
+ "planner_every": 8,
+ "overflow": {
+  "cli": "opencode",
+  "model": "opencode-go/deepseek-v4.1-flash#max",
+  "timeout_s": 3600
+ },
+ "critic": {
+  "cli": "claude",
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "timeout_s": 3600
+ },
+ "critic_plan": false,
+ "critic_code": false,
+ "claude_max_week_util": 0.99,
+ "claude_fallback": {
+  "cli": "agy",
+  "model": "claude-opus-4-6-thinking",
+  "timeout_s": 3600
+ },
+ "provider_concurrency": {
+  "codex": 3,
+  "claude": 2,
+  "agy": 2,
+  "opencode": 4,
+  "commandcode": 3
+ },
+ "max_agent_calls": 4000,
+ "holdout_forbidden": [
+  ".claude/projects",
+  "/T2/E10.5",
+  "/T2/E7.5.h5ad",
+  "E10.5.h5ad",
+  "E7.5.h5ad",
+  "T2/E10.5.h5ad",
+  "T2/E7.5.h5ad",
+  "holdout.enc/",
+  "ve-holdout-t3",
+  "T3__unseen",
+  "unseen_wt_a",
+  "unseen_wt_b",
+  "unseen_ko",
+  "unseen_spec"
+ ],
+ "kb_chars": 9000,
+ "acceptance": {
+  "alpha": 0.05,
+  "margin": 0.25,
+  "reject_z": -2.0,
+  "batches": [
+   8
+  ],
+  "board_drop": 0.5,
+  "rule": "screen one seed pair; confirm with all eight paired evaluations; accept when the proxy or changed board clears the margin with a one-sided 95% lower bound, subject to board and condition loss limits",
+  "board_margin": {
+   "heart": 0.5,
+   "embryo": 0.5
+  }
+ },
+ "condition_drop": 0.5,
+ "holdout_margin": 0.25,
+ "holdout_seed_pairs": [
+  [
+   202,
+   0
+  ],
+  [
+   313,
+   1
+  ],
+  [
+   424,
+   2
+  ]
+ ],
+ "holdout_select_boards": [
+  "embryo"
+ ],
+ "merge": false,
+ "sanity": true,
+ "elites": 3,
+ "lineage_max": 6,
+ "tune": {
+  "on_demand": true,
+  "boards": [
+   "temporal",
+   "heart",
+   "embryo",
+   "perturbation"
+  ],
+  "rounds": 2,
+  "parallel": "fleet",
+  "top": 3,
+  "max_tunes": 12,
+  "seed": 0
+ },
+ "max_slowdown": null,
+ "slow_floor_s": 240,
+ "monitor_late": true,
+ "initial_elites": {},
+ "free_roam": false,
+ "group_floor": 0.25,
+ "ablation_tol": 0.25,
+ "guard": {
+  "pairs": [
+   [
+    301,
+    0
+   ],
+   [
+    302,
+    1
+   ],
+   [
+    303,
+    2
+   ],
+   [
+    304,
+    3
+   ]
+  ],
+  "mean": 0.25,
+  "lb": 0.5,
+  "boards": [
+   "embryo"
+  ],
+  "_note": "Validated 2026-11-18 on Turing: the embryo guard scored the holdout loser w2_c04 -2.9 below the seed; the heart guard scored both heart holdout losers +5 to +6 ABOVE the seed (E10.5 losses are horizon-specific), so heart is judged by its E10.5 holdout only."
+ },
+ "scope_quick_eval": true,
+ "focus": {
+  "w0": "temporal",
+  "w1": "heart",
+  "w2": "embryo",
+  "w3": "perturbation"
+ },
+ "directives": {
+  "w0": "Replicate first: until a replication of the strongest decodable public recipe for your board (`leaderboard.py recipes <board>`) has been raced in this run (see the knowledge bank), make that replication this cycle's hypothesis, on top of the parent. After that, build on what won.",
+  "w1": "Replicate first: until a replication of the strongest decodable public recipe for your board (`leaderboard.py recipes <board>`) has been raced in this run (see the knowledge bank), make that replication this cycle's hypothesis, on top of the parent. After that, build on what won.",
+  "w2": "Replicate first: until a replication of the strongest decodable public recipe for your board (`leaderboard.py recipes <board>`) has been raced in this run (see the knowledge bank), make that replication this cycle's hypothesis, on top of the parent. After that, build on what won.",
+  "w3": "Replicate first: until a replication of the strongest decodable public recipe for your board (`leaderboard.py recipes <board>`) has been raced in this run (see the knowledge bank), make that replication this cycle's hypothesis, on top of the parent. After that, build on what won."
+ },
+ "seed_dir": "agentic_scientist/seed_final",
+ "brief": "agentic_scientist/prompts/brief_final.md",
+ "prompt_overrides": {},
+ "local_evaluation_only": true,
+ "fleet_research": true,
+ "research_enabled": true,
+ "require_calibrated_final": false,
+ "t1_composition_veto": true,
+ "embryo_native_min": null,
+ "sandbox": true,
+ "session_root": "/scratch/user/as_sessions",
+ "private_root": "/scratch/user/as_private",
+ "private_monitor": true,
+ "checkpoint_hours": 6,
+ "leaderboard_refresh_minutes": 60,
+ "separate_final": true,
+ "auto_final": true,
+ "final_export": true,
+ "survive_cycle_errors": true,
+ "quota_fallback": [
+  {
+   "cli": "agy",
+   "model": "claude-opus-4-6-thinking",
+   "timeout_s": 3600
+  },
+  {
+   "cli": "opencode",
+   "model": "opencode-go/deepseek-v4.1-flash#max",
+   "timeout_s": 3600
+  },
+  {
+   "cli": "commandcode",
+   "model": "deepseek/deepseek-v4.1-flash",
+   "effort": "max",
+   "timeout_s": 3600
+  }
+ ],
+ "cheap_fallback": [
+  {
+   "cli": "commandcode",
+   "model": "deepseek/deepseek-v4.1-flash",
+   "effort": "max",
+   "timeout_s": 3600
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "correct": true,
+ "error": null,
+ "set": "sanity",
+ "plausible": true,
+ "fails": [],
+ "splits": {
+  "heart_3d": {
+   "split": "heart_3d",
+   "board": "heart",
+   "sanity": {
+    "metrics": {
+     "gene_blowup_frac": 0.0,
+     "var_ratio": 0.8672212442250529,
+     "drift_ratio": 0.10204347011901845,
+     "max_type_share": 0.20625,
+     "max_type": "A-CM",
+     "max_type_input_share": 0.09404190391127981,
+     "radius_ratio": 1.7999999983286006
+    },
+    "fails": []
+   },
+   "seconds": 6.7
+  }
+ }
+}

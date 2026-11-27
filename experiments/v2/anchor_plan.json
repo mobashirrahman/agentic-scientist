@@ -1,0 +1,22 @@
+{
+  "phase": "development, then frozen confirmation",
+  "question": "Does a calibrated external late anchor (Qiu 2024, Theiler stage 23, ~E15) improve T1 over the frozen second-candidate latent flow?",
+  "external": {"source": "Qiu et al. 2024 Nature 626:1084, CELLxGENE Census 2025-11-08",
+               "anchor_stages": ["Theiler stage 23"], "calibration_stages": ["Theiler stage 12", "Theiler stage 13"],
+               "never_fetched": "Theiler stages 14-22 (covers the excluded window after E9.5 through E13.5 with margin)"},
+  "backtest": {"inputs": ["T1/E8.5_RNA.h5ad", "T1/E9.5_RNA.h5ad"], "target": "T1/E10.5_RNA.h5ad",
+               "t_earlier": 8.5, "t_latest": 9.5, "t_target": 10.5, "t_anchor": 15.0},
+  "candidates": {
+    "first": "first-submission control",
+    "flow": {"state": 0.35, "growth": 0.25, "weight": 0.0},
+    "anchor_half": {"state": 0.35, "growth": 0.25, "weight": 0.5},
+    "anchor_full": {"state": 0.35, "growth": 0.25, "weight": 1.0},
+    "anchor_only": {"state": 0.0, "growth": 0.25, "weight": 1.0}
+  },
+  "development_runs": [{"fit_seed": 0, "prediction_seed": 101}, {"fit_seed": 1, "prediction_seed": 102}, {"fit_seed": 2, "prediction_seed": 103}],
+  "development_scoring_seeds": [101, 102, 103, 104, 105],
+  "confirmation_runs": [{"fit_seed": 3, "prediction_seed": 201}, {"fit_seed": 4, "prediction_seed": 202}],
+  "confirmation_scoring_seeds": [201, 202, 203, 204, 205, 206, 207, 208, 209, 210],
+  "decision_rule": "Pick at most one anchor candidate by development mean paired gain over 'flow'. Adopt only if, in BOTH confirmation runs, its mean paired gain over 'flow' is > +1.0 and no headline metric group drops by more than 1 point on average. Otherwise keep the second candidate unchanged.",
+  "caveat": "E10.5 was already used in development of the second candidate; this is not a fresh biological holdout. The anchor fraction in the backtest (1/5.5) is smaller than for the real target (2/4.5)."
+}

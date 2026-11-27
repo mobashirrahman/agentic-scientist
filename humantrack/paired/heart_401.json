@@ -1,0 +1,127 @@
+{
+ "boards": {
+  "heart": 58.33027777777777
+ },
+ "proxy": 29.165138888888887,
+ "board_se": {
+  "heart": 0.2564705840712092
+ },
+ "proxy_se": 0.1282352920356046,
+ "correct": true,
+ "error": null,
+ "set": "dev",
+ "pred_seed": 401,
+ "fit_seed": 0,
+ "splits": {
+  "heart_early": {
+   "board": "heart",
+   "score": 58.10333333333333,
+   "metrics": {
+    "de_score": 57.876666666666665,
+    "de_direction": 60.09,
+    "mmd_u": 58.54,
+    "variogram": 56.51666666666667,
+    "d2_shape": 48.28333333333333,
+    "occupancy_dice": 51.580000000000005,
+    "scale_log_ratio": 75.37,
+    "neighborhood_mmd": 57.28333333333333
+   },
+   "seed_scores": [
+    58.11,
+    59.02,
+    57.18
+   ],
+   "seed_sd": 0.9200181157636715,
+   "seconds": 59.9,
+   "cpu_seconds": 60.5
+  },
+  "heart_late": {
+   "board": "heart",
+   "score": 57.26,
+   "metrics": {
+    "de_score": 55.25,
+    "de_direction": 57.85,
+    "mmd_u": 57.39333333333334,
+    "variogram": 54.35,
+    "d2_shape": 48.96666666666666,
+    "occupancy_dice": 53.09333333333333,
+    "scale_log_ratio": 75.71666666666665,
+    "neighborhood_mmd": 57.076666666666675
+   },
+   "seed_scores": [
+    57.29,
+    58.78,
+    55.71
+   ],
+   "seed_sd": 1.5352198539622917,
+   "seconds": 55.0,
+   "cpu_seconds": 55.6
+  },
+  "heart_long": {
+   "board": "heart",
+   "score": 55.0,
+   "metrics": {
+    "de_score": 48.82666666666666,
+    "de_direction": 59.07,
+    "mmd_u": 56.96666666666667,
+    "variogram": 53.803333333333335,
+    "d2_shape": 34.78,
+    "occupancy_dice": 48.173333333333325,
+    "scale_log_ratio": 68.29666666666667,
+    "neighborhood_mmd": 59.906666666666666
+   },
+   "seed_scores": [
+    54.81,
+    55.69,
+    54.5
+   ],
+   "seed_sd": 0.6173329733620244,
+   "seconds": 60.3,
+   "cpu_seconds": 60.8
+  },
+  "heart_e875": {
+   "board": "heart",
+   "score": 55.42666666666667,
+   "metrics": {
+    "de_score": 50.0,
+    "de_direction": 53.81333333333333,
+    "mmd_u": 53.196666666666665,
+    "variogram": 50.01,
+    "d2_shape": 50.57,
+    "occupancy_dice": 50.089999999999996,
+    "scale_log_ratio": 81.56666666666666,
+    "neighborhood_mmd": 57.11666666666667
+   },
+   "seed_scores": [
+    55.160000000000004,
+    55.99,
+    55.13
+   ],
+   "seed_sd": 0.48809152147249263,
+   "seconds": 32.0,
+   "cpu_seconds": 33.3
+  },
+  "heart_organ_proxy": {
+   "board": "heart",
+   "score": 65.67999999999999,
+   "metrics": {
+    "de_score": 68.19666666666667,
+    "de_direction": 68.87,
+    "mmd_u": 67.51333333333334,
+    "variogram": 62.78,
+    "d2_shape": 51.42666666666667,
+    "occupancy_dice": 45.35,
+    "scale_log_ratio": 87.23,
+    "neighborhood_mmd": 67.26
+   },
+   "seed_scores": [
+    66.39,
+    66.52,
+    64.13
+   ],
+   "seed_sd": 1.34391219951305,
+   "seconds": 33.0,
+   "cpu_seconds": 33.8
+  }
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "_doc": "T1 cell types (released E8.5, E9.5, E10.5 files) by whether they belong to the heart chambers that the E12.5 target dissects (organisers: E12.5 = heart chambers only, plus a few oesophagus-junction cells; all cells scored). Built by hand from the organiser protocol and standard anatomy (LLM-assisted, as the organisers suggested). 'uncertain' = could be partly inside the dissected heart; kept OUT of the heart-only dev target to keep it conservative.",
+ "cardiac": [
+  "Endothelium",
+  "OFT/RV-CM",
+  "IFT-CM",
+  "AVC-CM",
+  "RV-CM",
+  "LV-CM",
+  "SV-CM",
+  "V-CM",
+  "OFT-CM",
+  "Endocardium",
+  "Endocardium-1",
+  "Endocardium-2",
+  "EndoMT Endocardium",
+  "Early VIC",
+  "Epicardium",
+  "NCC-derived"
+ ],
+ "uncertain": [
+  "Proepicardium",
+  "pSHF",
+  "aSHF",
+  "JCF",
+  "Pericardium",
+  "NCC",
+  "BEC",
+  "Blood",
+  "Macrophage"
+ ],
+ "non_cardiac": [
+  "Foregut",
+  "Surface Ectoderm",
+  "Paraxial Mesoderm",
+  "EXEM",
+  "Neural Tube",
+  "pPHM",
+  "aPHM",
+  "Hepatocyte",
+  "ST",
+  "Gut Endoderm",
+  "Epithelium"
+ ]
+}

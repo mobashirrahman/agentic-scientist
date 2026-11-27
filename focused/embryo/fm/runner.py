@@ -1,0 +1,111 @@
+"""Run one workspace program on one split configuration and write a format-checked prediction.
+
+Always started by the evaluation service inside Landlock: it can read only the harness, the Python environment, the
+program snapshot and the INPUT stage files of the split (never the target), write only its output directory, and open
+no TCP connection.
+
+  python -I fm/runner.py --snapshot DIR --split NAME --seed N --out DIR
+Writes OUT/pred.h5ad and OUT/meta.json (ok, n_cells, seconds, error_type, error, trace).
+"""
+import argparse
+import importlib.util
+import json
+import sys
+import time
+import traceback
+from pathlib import Path
+
+import numpy as np  # noqa: E402
+
+# Inside Landlock the run folder itself is not listable, so the harness module is loaded by file path (and under a
+# name no agent module can shadow).
+_spec = importlib.util.spec_from_file_location('fm_harness_common', Path(__file__).resolve().parent / 'common.py')
+_c = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_c)
+MIN_CELLS, SPLITS, STAGES, panel_genes, target_time = _c.MIN_CELLS, _c.SPLITS, _c.STAGES, _c.panel_genes, _c.target_time
+
+
+def load_inputs(split, genes):
+    import anndata as ad
+    out = []
+    for name in SPLITS[split]['inputs']:
+        a = ad.read_h5ad(STAGES[name]['file'])
+        missing = [g for g in genes if g not in set(a.var_names)]
+        if missing:
+            raise RuntimeError(f'stage {name} lacks panel genes {missing[:5]}')
+        a = a[:, genes].copy()
+        a.obs_names_make_unique()
+        out.append(a)
+    return out
+
+
+def check_and_clean(pred, genes, max_cells):
+    import anndata as ad
+    from scipy import sparse
+    if not isinstance(pred, ad.AnnData):
+        raise TypeError(f'predict() must return an AnnData, got {type(pred).__name__}')
+    if not MIN_CELLS <= pred.n_obs <= max_cells:
+        raise ValueError(f'prediction must have {MIN_CELLS}-{max_cells} cells for this configuration, got {pred.n_obs}')
+    missing = [g for g in genes if g not in set(map(str, pred.var_names))]
+    if missing:
+        raise ValueError(f'prediction lacks {len(missing)} panel genes, e.g. {missing[:5]}')
+    if not pred.var_names.is_unique:
+        raise ValueError('prediction var_names are not unique')
+    pred = pred[:, genes]
+    X = pred.X
+    X = X.toarray() if sparse.issparse(X) else np.asarray(X)
+    X = np.asarray(X, dtype=np.float32)
+    if not np.all(np.isfinite(X)) or (X < 0).any():
+        raise ValueError('expression must be finite and non-negative (log1p CP10k)')
+    sp = pred.obsm.get('spatial_3D') if hasattr(pred, 'obsm') else None
+    if sp is None:
+        raise ValueError("obsm['spatial_3D'] is required")
+    sp = np.asarray(sp, dtype=np.float32)
+    if sp.ndim != 2 or sp.shape[0] != pred.n_obs or sp.shape[1] < 3 or not np.all(np.isfinite(sp[:, :3])):
+        raise ValueError("obsm['spatial_3D'] must be a finite (n_cells, 3) array")
+    out = ad.AnnData(X=X, var=pred.var[[]].copy())
+    out.var_names = genes
+    out.obs_names = [f'c{i}' for i in range(pred.n_obs)]
+    out.obsm['spatial_3D'] = sp[:, :3].copy()
+    return out
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--snapshot', required=True)
+    ap.add_argument('--split', required=True, choices=list(SPLITS))
+    ap.add_argument('--seed', type=int, default=0)
+    ap.add_argument('--out', required=True)
+    a = ap.parse_args()
+    out = Path(a.out)
+    out.mkdir(parents=True, exist_ok=True)
+    meta = dict(split=a.split, seed=a.seed, ok=False)
+    t0 = time.time()
+    try:
+        genes = panel_genes('test_interp')
+        spec = SPLITS[a.split]
+        inputs = load_inputs(a.split, genes)
+        times = [STAGES[n]['time'] for n in spec['inputs']]
+        tp = Path(a.snapshot) / 'tuned_params.json'  # written only by the harness tuner (fm/tune.py)
+        params = json.loads(tp.read_text()) if tp.exists() else {}
+        context = dict(seed=a.seed, dissection=spec.get('dissection'), max_cells=spec['max_cells'],
+                       min_cells=MIN_CELLS, n=3000, genes=list(genes), params=params)
+        sys.path.insert(0, str(Path(a.snapshot).resolve()))
+        mspec = importlib.util.spec_from_file_location('fm_program', Path(a.snapshot) / 'program.py')
+        mod = importlib.util.module_from_spec(mspec)
+        mspec.loader.exec_module(mod)
+        t1 = time.time()
+        pred = mod.predict(inputs, times, float(target_time(a.split)), context)
+        meta['predict_seconds'] = round(time.time() - t1, 1)
+        pred = check_and_clean(pred, genes, spec['max_cells'])
+        pred.write_h5ad(out / 'pred.h5ad')
+        meta.update(ok=True, n_cells=int(pred.n_obs))
+    except BaseException as e:  # noqa: BLE001 - reported to the service
+        meta.update(error_type=type(e).__name__, error=str(e)[:2000], trace=traceback.format_exc()[-6000:])
+    meta['seconds'] = round(time.time() - t0, 1)
+    (out / 'meta.json').write_text(json.dumps(meta, indent=1))
+    return 0 if meta['ok'] else 1
+
+
+if __name__ == '__main__':
+    sys.exit(main())

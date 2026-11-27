@@ -1,0 +1,12 @@
+# What previous experiments established
+
+| Observation | Evidence | Design consequence |
+|---|---|---|
+| Heart validation improved as shorter holdout performance plateaued | Focused checkpoints rose from 64.88 to 66.96 in matched validation draws, while average holdout moved from 60.59 to 60.30. The 47.77 portal result lost cell-state and shape skill versus the 49.15 incumbent. | Keep separate long and short replay rows, pair comparisons with fixed controls, and seek an independent transfer sample. |
+| Shape size does not capture local cell organization | The later heart entry reached scale skill 95.5 and neighborhood skill 41.5. GoodCell and the incumbent have nearly equal global shape-distance skill and differ by roughly 36 neighborhood points. | Compare a hard crop, bounded geometric scaling, composition changes, and local placement separately. |
+| Bigger export caused rejection | The historical model wrote 34,641 rows. The portal enforced 25,179, despite the public index listing a different bound. | Generate 3,000 rows inside the locked run and check the same file by SHA-256. |
+| Embryo validation promoted changes that failed the historical guard | The 78.67-validation checkpoint scored 72.43 on the guard, behind the exported round-zero checkpoint at 75.86. The exported method scored 69.14 with occupancy skill 2.84 at P3. | Compare both scaffolds while holding expression and physical size fixed. Evaluate occupancy against the observed intermediate embryo. |
+| T1's later whole-heart guard selected a method with weak same-domain evidence | Selected candidate 66.50 versus seed 54.35 in the whole-heart guard, and 51.60 in challenge E10.5 validation. Focused artifact was generated after the available two P3 scores. | Keep older tissue replays as domain-shift evidence. Optimize against measured cell mixtures and state distributions in the closest stage and assay. |
+| Extra architecture capacity did not fix dataset shift | Historical heart spatial VAE pilots were about 1.2–1.6 points below their local control. Some geometry edits gained about 2 points on the late replay. T1 latent transport gave larger retrospective gains, with varying biological transfer. | First compare classical models and modest learned operators under the same inputs. Include a random-encoder control for any foundation-model claim. |
+
+Historical results and their attribution limits appear in [the archive](../results/historical/README.md). The source of official scores is the [P3 leaderboard](https://virtualembryo.ai/challenge/leaderboard).

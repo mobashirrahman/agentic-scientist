@@ -1,0 +1,49 @@
+{
+ "models": {
+  "baseline": {
+   "normalized_marker_shares": {
+    "cardiomyocyte": 0.26320501342882724,
+    "endothelial": 0.38764547896150403,
+    "epicardial": 0.34914950760966873
+   },
+   "distance": {
+    "c57bl6": 0.597862106238008,
+    "cd1": 1.1760249636459714
+   }
+  },
+  "composition": {
+   "normalized_marker_shares": {
+    "cardiomyocyte": 0.31868131868131866,
+    "endothelial": 0.3806193806193806,
+    "epicardial": 0.3006993006993007
+   },
+   "distance": {
+    "c57bl6": 0.4869094957330251,
+    "cd1": 1.0650723531409885
+   }
+  },
+  "expression": {
+   "normalized_marker_shares": {
+    "cardiomyocyte": 0.26320501342882724,
+    "endothelial": 0.38764547896150403,
+    "epicardial": 0.34914950760966873
+   },
+   "distance": {
+    "c57bl6": 0.597862106238008,
+    "cd1": 1.1760249636459714
+   }
+  },
+  "enigma": {
+   "normalized_marker_shares": {
+    "cardiomyocyte": 0.2725146198830409,
+    "endothelial": 0.40467836257309936,
+    "epicardial": 0.3228070175438596
+   },
+   "distance": {
+    "c57bl6": 0.5792428933295806,
+    "cd1": 1.1574057507375441
+   }
+  }
+ },
+ "recovers_order_in_both_strains": false
+}

@@ -1,0 +1,12 @@
+{
+ "knobs_sha": "0439245a9e18866b",
+ "params": {
+  "ery_mass_budget": 0.12,
+  "ery_max_odds": 13.36468815618264,
+  "state_gain_rho": 0.8
+ },
+ "tuned_by": "w3_c05",
+ "improved": false,
+ "gain": null,
+ "gain_se": null
+}

@@ -1,0 +1,151 @@
+{
+ "boards": {
+  "heart": 53.081944444444446,
+  "embryo": 56.44
+ },
+ "proxy": 54.76097222222222,
+ "board_se": {
+  "heart": 0.3733102878138425,
+  "embryo": 0.8553946457629956
+ },
+ "proxy_se": 0.46665312893723715,
+ "correct": true,
+ "error": null,
+ "set": "dev",
+ "pred_seed": 101,
+ "fit_seed": 0,
+ "splits": {
+  "heart_early": {
+   "board": "heart",
+   "score": 54.15,
+   "metrics": {
+    "de_score": 56.39333333333334,
+    "de_direction": 58.666666666666664,
+    "mmd_u": 54.199999999999996,
+    "variogram": 53.19,
+    "d2_shape": 47.5,
+    "occupancy_dice": 52.00666666666666,
+    "scale_log_ratio": 54.47333333333333,
+    "neighborhood_mmd": 53.97
+   },
+   "seed_scores": [
+    54.120000000000005,
+    55.51,
+    52.82
+   ],
+   "seed_sd": 1.3452509059651276,
+   "seconds": 54.6,
+   "cpu_seconds": 55.2
+  },
+  "heart_late": {
+   "board": "heart",
+   "score": 54.53666666666667,
+   "metrics": {
+    "de_score": 57.44,
+    "de_direction": 58.99,
+    "mmd_u": 53.73999999999999,
+    "variogram": 54.37,
+    "d2_shape": 47.26666666666667,
+    "occupancy_dice": 53.10999999999999,
+    "scale_log_ratio": 59.18,
+    "neighborhood_mmd": 52.76666666666667
+   },
+   "seed_scores": [
+    54.63,
+    55.69,
+    53.29
+   ],
+   "seed_sd": 1.2027191415011786,
+   "seconds": 57.7,
+   "cpu_seconds": 58.4
+  },
+  "heart_long": {
+   "board": "heart",
+   "score": 54.336666666666666,
+   "metrics": {
+    "de_score": 49.81666666666666,
+    "de_direction": 57.46333333333333,
+    "mmd_u": 52.91,
+    "variogram": 52.96666666666667,
+    "d2_shape": 55.51,
+    "occupancy_dice": 47.949999999999996,
+    "scale_log_ratio": 69.95,
+    "neighborhood_mmd": 52.92333333333334
+   },
+   "seed_scores": [
+    53.65,
+    56.62,
+    52.74
+   ],
+   "seed_sd": 2.029096679148957,
+   "seconds": 61.4,
+   "cpu_seconds": 62.0
+  },
+  "heart_e875": {
+   "board": "heart",
+   "score": 51.77,
+   "metrics": {
+    "de_score": 50.28666666666666,
+    "de_direction": 52.78333333333333,
+    "mmd_u": 52.10999999999999,
+    "variogram": 53.03333333333333,
+    "d2_shape": 49.54333333333333,
+    "occupancy_dice": 50.96666666666666,
+    "scale_log_ratio": 49.74,
+    "neighborhood_mmd": 52.99666666666667
+   },
+   "seed_scores": [
+    52.78,
+    51.260000000000005,
+    51.27
+   ],
+   "seed_sd": 0.8746999485537866,
+   "seconds": 32.7,
+   "cpu_seconds": 33.7
+  },
+  "heart_organ_proxy": {
+   "board": "heart",
+   "score": 54.446666666666665,
+   "metrics": {
+    "de_score": 59.30666666666667,
+    "de_direction": 60.01666666666667,
+    "mmd_u": 52.75,
+    "variogram": 53.669999999999995,
+    "d2_shape": 46.580000000000005,
+    "occupancy_dice": 48.99666666666667,
+    "scale_log_ratio": 61.910000000000004,
+    "neighborhood_mmd": 52.553333333333335
+   },
+   "seed_scores": [
+    55.25,
+    55.57,
+    52.52
+   ],
+   "seed_sd": 1.6761960903585618,
+   "seconds": 35.2,
+   "cpu_seconds": 36.0
+  },
+  "embryo_early": {
+   "board": "embryo",
+   "score": 56.44,
+   "metrics": {
+    "de_score": 56.23333333333333,
+    "de_direction": 66.73,
+    "mmd_u": 53.56,
+    "variogram": 19.523333333333333,
+    "d2_shape": 94.35666666666667,
+    "occupancy_dice": 48.31666666666666,
+    "scale_log_ratio": 51.04333333333333,
+    "neighborhood_mmd": 59.75666666666666
+   },
+   "seed_scores": [
+    57.25,
+    54.73,
+    57.339999999999996
+   ],
+   "seed_sd": 1.4815869869838902,
+   "seconds": 14.3,
+   "cpu_seconds": 14.9
+  }
+ }
+}

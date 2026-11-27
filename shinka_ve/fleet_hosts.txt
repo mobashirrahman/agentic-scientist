@@ -1,0 +1,15 @@
+# One Shinka evaluation per host at a time. bio06 = workspace (runs LLM proposals); bio05 busy.
+bio01.cluster.example
+bio02.cluster.example
+bio07.cluster.example
+bio08.cluster.example
+bio09.cluster.example
+bio11.cluster.example
+bio12.cluster.example
+bio13.cluster.example
+bio14.cluster.example
+bio15.cluster.example
+bio16.cluster.example
+bio18.cluster.example
+bio19.cluster.example
+bio21.cluster.example

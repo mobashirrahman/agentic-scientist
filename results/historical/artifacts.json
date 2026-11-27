@@ -1,0 +1,107 @@
+{
+  "source_revision": "777817e1335e2d2f6d6c8335210c7feb2f6ceed9",
+  "artifacts": [
+    {
+      "artifact": "artifacts/historical/heart/T2__heart__test_extrap.h5ad",
+      "kind": "focused prediction",
+      "bytes": 71167821,
+      "sha256": "685ea4fea1fc91dbcaf4c86b47984a85e84682ebcbbacd0d1e60b78a6f4f5c04",
+      "origin": "t2h_20261120_175121"
+    },
+    {
+      "artifact": "artifacts/historical/embryo/T2__embryo__test_interp.h5ad",
+      "kind": "focused prediction",
+      "bytes": 10245288,
+      "sha256": "27001e42e160958fa00f1ebd2b04b216da270f712dc554c6aad4f3e29c039ed1",
+      "origin": "t2e_20261121_005509"
+    },
+    {
+      "artifact": "artifacts/historical/temporal/T1__test.h5ad",
+      "kind": "focused prediction",
+      "bytes": 46628156,
+      "sha256": "b54f9af8afebda54eb618d48cd3ca09b4a2a8271e6c90ccb5421e699732e4bff",
+      "origin": "t1_20261121_055147"
+    },
+    {
+      "artifact": "artifacts/historical/turing/T1__test.h5ad",
+      "kind": "historical bundle artifact; portal identity unverified",
+      "bytes": 47602720,
+      "sha256": "ea91c9fedf01f949462350be5eac11c36fe5a1df2a73573c1c8326ae491ef7b1",
+      "origin": "turing",
+      "source_sha256": "e933f147580445a18ac96dde20c991f05cb2ccef29200d5d02050609e9ffa239",
+      "local_derivative": "Historical prefix replaced in observation identifiers; expression and coordinates verified equal."
+    },
+    {
+      "artifact": "artifacts/historical/turing/T2__embryo__test_interp.h5ad",
+      "kind": "historical bundle artifact; portal identity unverified",
+      "bytes": 837040,
+      "sha256": "46c16a8a18085780eb235b896bcd432fe8b659dc8ed6aa5778459675c718859b",
+      "origin": "turing",
+      "source_sha256": "fabdc3073916332068a9720bedc0bec5a74b8d304b419f2e5767117baf863bb3",
+      "local_derivative": "Historical prefix replaced in observation identifiers; expression and coordinates verified equal."
+    },
+    {
+      "artifact": "artifacts/historical/turing/T2__heart__test_extrap.h5ad",
+      "kind": "historical bundle artifact; portal identity unverified",
+      "bytes": 632401,
+      "sha256": "79a2d27f1d326500d8fac5b99f98121d0c157822925cc47998123ef6e522cf9b",
+      "origin": "turing",
+      "source_sha256": "6fca8c6b57fa05463176dd4dee205c419159ac18ed0735b8d2512162af052a4e",
+      "local_derivative": "Historical prefix replaced in observation identifiers; expression and coordinates verified equal."
+    },
+    {
+      "artifact": "artifacts/historical/turing/T3__bcatenin.h5ad",
+      "kind": "historical bundle artifact; portal identity unverified",
+      "bytes": 2535411,
+      "sha256": "12d56105c8c540bb03f46ff5fc72dee81ac558927315844c5ab405a0a20fe416",
+      "origin": "turing",
+      "source_sha256": "e6e7f0e27970e5d64a1c481c55287e9a4177191b2c166dc91f58b80a16914a82",
+      "local_derivative": "Historical prefix replaced in observation identifiers; expression and coordinates verified equal."
+    },
+    {
+      "artifact": "artifacts/historical/enigma/T1__test.h5ad",
+      "kind": "historical bundle artifact; portal identity unverified",
+      "bytes": 47898335,
+      "sha256": "c3705b9ac2a7e0c8d30a5c999b2eecf948c12c39623d5bd2f7f0533f9b470af7",
+      "origin": "enigma",
+      "source_sha256": "dabf23f0fe84d7459a1fe149bd86ff25cfcf0f3e9cdf9cf0775a0d1f77f57bf3",
+      "local_derivative": "Historical prefix replaced in observation identifiers; expression and coordinates verified equal."
+    },
+    {
+      "artifact": "artifacts/historical/enigma/T2__embryo__test_interp.h5ad",
+      "kind": "historical bundle artifact; portal identity unverified",
+      "bytes": 837040,
+      "sha256": "46c16a8a18085780eb235b896bcd432fe8b659dc8ed6aa5778459675c718859b",
+      "origin": "enigma",
+      "source_sha256": "fabdc3073916332068a9720bedc0bec5a74b8d304b419f2e5767117baf863bb3",
+      "local_derivative": "Historical prefix replaced in observation identifiers; expression and coordinates verified equal."
+    },
+    {
+      "artifact": "artifacts/historical/enigma/T2__heart__test_extrap.h5ad",
+      "kind": "historical bundle artifact; portal identity unverified",
+      "bytes": 632401,
+      "sha256": "79a2d27f1d326500d8fac5b99f98121d0c157822925cc47998123ef6e522cf9b",
+      "origin": "enigma",
+      "source_sha256": "6fca8c6b57fa05463176dd4dee205c419159ac18ed0735b8d2512162af052a4e",
+      "local_derivative": "Historical prefix replaced in observation identifiers; expression and coordinates verified equal."
+    },
+    {
+      "artifact": "artifacts/historical/enigma/T3__bcatenin.h5ad",
+      "kind": "historical bundle artifact; portal identity unverified",
+      "bytes": 2550002,
+      "sha256": "882dbd1390c0120fe707ffb1be0e375526d215de08ae3fd10e485a1cfb1f6f34",
+      "origin": "enigma",
+      "source_sha256": "afeb159a1c1721491de6b5050679e507a8f2f04bc337fb5d983df268c363af48",
+      "local_derivative": "Historical prefix replaced in observation identifiers; expression and coordinates verified equal."
+    },
+    {
+      "artifact": "artifacts/historical/heart/T2_heart_submission_5000.h5ad",
+      "kind": "local subset; portal identity unverified",
+      "bytes": 1069351,
+      "sha256": "4e59c51202ead3a8a9c6f9f874229a61909c51eec732c40da5c73dcb9242f16e",
+      "origin": "focused heart"
+    }
+  ],
+  "raw_evidence_copied": false,
+  "historical_json_may_refer_to_original_paths": true
+}

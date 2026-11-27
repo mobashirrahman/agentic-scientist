@@ -1,0 +1,14 @@
+{
+ "$schema": "https://opencode.ai/config.json",
+ "mcp": {
+  "lit": {
+   "type": "local",
+   "enabled": true,
+   "command": [
+    "/scratch/user/virtual-embryo-sota/.venv/bin/python",
+    "-I",
+    "/scratch/user/virtual-embryo-sota/agentic_scientist/tools/lit_mcp.py"
+   ]
+  }
+ }
+}
